@@ -2,7 +2,7 @@ import './LandingPage.css';
 
 function LandingPage() {
     return (
-        <div class="main">
+        <div class="main4">
             <h1>Find Your Dream Home</h1>
         </div>
     );

@@ -2,7 +2,7 @@ import './FindAnAgent.css';
 
 function FindAnAgent() {
     return(
-        <div class="main">
+        <div class="main5">
             <h1>Find an Agent</h1>
         </div>
     );
