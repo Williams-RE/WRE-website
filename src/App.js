@@ -23,11 +23,21 @@ function App() {
         
         <HashRouter>
           <nav class = "navigation">
-            <NavLink activeClassName="selected-navlink" to="/"><img src={ logo } alt="logo" /></NavLink>
-            <h1><NavLink activeClassName="selected-navlink" to="/Buy">Buy a Home</NavLink></h1> 
-            <h1><NavLink activeClassName="selected-navlink" to="/Sell">Sell a Home</NavLink></h1> 
-            <h1><NavLink activeClassName="selected-navlink" to="/FindAgent">Find an Agent</NavLink></h1> 
-            <h1><NavLink activeClassName="selected-navlink" to="/About">About Us</NavLink></h1>
+            <NavLink activeClassName="selected-navlink" to="/">
+              <img src={ logo } alt="logo" />
+            </NavLink>
+            <NavLink activeClassName="selected-navlink" to="/Buy">
+              <span class="navlink-text">Buy a Home</span>
+            </NavLink> 
+            <NavLink activeClassName="selected-navlink" to="/Sell">
+              <span class="navlink-text">Sell a Home</span>
+            </NavLink>
+            <NavLink activeClassName="selected-navlink" to="/FindAgent">
+              <span class="navlink-text">Find an Agent</span>
+            </NavLink> 
+            <NavLink activeClassName="selected-navlink" to="/About">
+              <span class="navlink-text">About Us</span>
+            </NavLink>
           </nav>
           <div class="navigation-content">
             <Route exact path="/" component={ LandingPage } />

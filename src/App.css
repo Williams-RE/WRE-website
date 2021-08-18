@@ -18,7 +18,6 @@
 .navigation-bar {
     position: absolute;
     width: 100%;
-    size: 80%;
 }
 
 .navigation-bar img {
@@ -32,28 +31,39 @@
     width: 100%;
     align-items: center;
     justify-content: space-between;
+    height: 75px;
 }
 
 .navigation > * {
     margin: 1% 2% 0 2%;
+    flex-basis: 100%;
 }
 
-.navigation h1 {
-    font-size: 2.5vw;
+.navlink-button {
+    background: white;
+    border: none;
+    border-radius: 54px;
+    cursor: pointer;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    
+    padding-top: 18px;
+    padding-bottom: 18px;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.navlink-text {
+    text-decoration: none;
+    background: linear-gradient(90deg, #2a2307,#7e4a38);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.5em;
+    font-weight: 600;
 }
 
 a {
-    color: white;
     text-decoration: none;
-}
-
-a:hover {
-    color: red;
-}
-
-.selected-navlink {
-    color: red;
-    text-decoration: none;
+    cursor: auto;
 }
 
 .navigation-content {
