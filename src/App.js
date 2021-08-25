@@ -15,6 +15,11 @@ import "typeface-roboto";
 function App() {
   return (
     <div class="main">
+
+<img class="pull-right"
+            src="https://www.userbenchmark.com/resources/img/wri/creatives/assets/flame.gif" alt = "fire">
+
+            </img>
       
       <div class="background">
       </div>
@@ -39,6 +44,7 @@ function App() {
               <span class="navlink-text">About Us</span>
             </NavLink>
           </nav>
+          
           <div class="navigation-content">
             <Route exact path="/" component={ LandingPage } />
             <Route path="/Buy" component={ BuyAHome } />

@@ -76,4 +76,18 @@ a {
     text-align: center;
     position: relative;
     top: 60vh;
+
 }
+
+.pull-right {
+    z-index: 1;
+    position: absolute;
+    width:10vw;
+    height: 10vh;
+    left: 50%;
+    
+    /* margin-right:3%; */
+    /* border-bottom:1px solid #CC8400; */
+    
+    
+  }
