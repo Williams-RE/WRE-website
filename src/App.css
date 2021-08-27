@@ -5,11 +5,12 @@
 
 p {
     width: 90vw;
+    color: white;
 }
 
 .main {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     position: relative;
 }
 
@@ -27,6 +28,7 @@ p {
 .navigation-bar {
     position: fixed;
     width: 100%;
+    background-color: white;
 }
 
 .navigation-bar img {
@@ -48,7 +50,11 @@ p {
     flex-basis: 100%;
 }
 
-.navlink-button {
+.page {
+    padding-top: 75px;
+}
+
+/* .navlink-button {
     background: white;
     border: none;
     border-radius: 54px;
@@ -68,17 +74,7 @@ p {
     -webkit-text-fill-color: transparent;
     font-size: 1.5em;
     font-weight: 600;
-}
-
-a {
-    text-decoration: none;
-    cursor: auto;
-}
-
-.navigation-content {
-    width: 100%;
-    height: 100%;
-}
+} */
 
 .slogan {
     color: black;
@@ -91,7 +87,8 @@ a {
 .pull-right {
     z-index: 1;
     position: absolute;
-    width:10vw;
+    width: 10vw;
+    top: 5vh;
     height: 10vh;
     left: 50%;
     
