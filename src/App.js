@@ -11,6 +11,7 @@ import BuyAHome from './BuyAHome/BuyAHome';
 import SellAHome from './SellAHome/SellAHome';
 // import FindAnAgent from './FindAnAgent/FindAnAgent';
 import AboutUs from './AboutUs/AboutUs';
+import ContactForm from './ContactForm/ContactForm';
 
 
 
@@ -64,7 +65,9 @@ function App() {
         </nav>
 
       </div>
-
+      <div class="page">
+        <ContactForm />
+      </div>
       <div class="page" ref={landingPageRef}>
         <LandingPage />
       </div>
