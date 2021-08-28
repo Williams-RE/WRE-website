@@ -1,5 +1,5 @@
 import './App.css';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import logo from './images/wre-logo.png';
 // import {
 //   Route,
@@ -20,6 +20,7 @@ function App() {
   const buyAHomeRef = useRef();
   const sellAHomeRef = useRef();
   const aboutUsRef = useRef();
+  const [contactFormState, setContactFormState] = useState("show-contact-form");
 
   function scrollToLandingPage() {
     landingPageRef.current.scrollIntoView({ behavior: 'smooth'});
@@ -35,6 +36,10 @@ function App() {
   
   function scrollToAboutUs() {
     aboutUsRef.current.scrollIntoView({ behavior: 'smooth'});
+  }
+
+  function changeContactFormState(newState) {
+    setContactFormState(newState);
   }
 
   return (
@@ -65,8 +70,14 @@ function App() {
         </nav>
 
       </div>
+
+      <div className={contactFormState}>
+        <ContactForm changeContactFormState={changeContactFormState}/>
+      </div>
       <div class="page">
-        <ContactForm />
+        <button onClick={() => {changeContactFormState("show-contact-form")}}>
+          Contact Us
+        </button>
       </div>
       <div class="page" ref={landingPageRef}>
         <LandingPage />

@@ -1,6 +1,7 @@
+// import { useState } from 'react';
 import './ContactForm.css';
 
-function ContactForm() {
+function ContactForm(props) {
     return (
       <form action="http://localhost:3001/send-email" method="POST">
           <label for="name">Name:</label>
@@ -10,7 +11,7 @@ function ContactForm() {
           <label for="message">Message:</label>
           <input type="text" name="message" placeholder="Tell us about yourself" required />
 
-          <button type="submit">Submit</button>
+          <button type="submit" onClick={() => {props.changeContactFormState("display-none")}}>Submit</button>
       </form>  
     );
 }

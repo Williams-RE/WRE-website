@@ -84,6 +84,16 @@ p {
 
 }
 
+.show-contact-form {
+    position: absolute;
+    top: 50vh;
+    left: 50vw;
+}
+
+.display-none {
+    display: none;
+}
+
 .pull-right {
     z-index: 1;
     position: absolute;
@@ -96,4 +106,4 @@ p {
     /* border-bottom:1px solid #CC8400; */
     
     
-  }
+}
