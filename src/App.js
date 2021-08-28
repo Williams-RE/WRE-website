@@ -20,7 +20,7 @@ function App() {
   const buyAHomeRef = useRef();
   const sellAHomeRef = useRef();
   const aboutUsRef = useRef();
-  const [contactFormState, setContactFormState] = useState("show-contact-form");
+  const [contactFormState, setContactFormState] = useState("display-none");
 
   function scrollToLandingPage() {
     landingPageRef.current.scrollIntoView({ behavior: 'smooth'});
