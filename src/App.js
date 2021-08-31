@@ -1,3 +1,4 @@
+import React from 'react';
 import './App.css';
 import { useRef, useState } from 'react';
 import logo from './images/wre-logo.png';
