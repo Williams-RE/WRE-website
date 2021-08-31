@@ -1,3 +1,4 @@
+import React from 'react';
 import './SellAHome.css';
 
 function SellAHome() {

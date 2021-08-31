@@ -1,5 +1,6 @@
-import './AgentProfile.css';
 import React from 'react';
+import './AgentProfile.css';
+
 
  function AgentProfile(props) {
      return (
