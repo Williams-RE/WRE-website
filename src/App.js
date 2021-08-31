@@ -51,25 +51,21 @@ function App() {
       
       <div class="background">
       </div>
-
-      <div class="navigation-bar">
         
         <nav class = "navigation">
-          <button onClick={scrollToLandingPage}>
+          <button class="logo-button" onClick={scrollToLandingPage}>
             <img src={ logo } alt="logo" />
           </button>
-          <button onClick={scrollToBuyAHome}>
-            <span class="navlink-text">Buy a Home</span>
+          <button class="navigation-button" onClick={scrollToBuyAHome}>
+            <span class="">Buy a Home</span>
           </button> 
-          <button onClick={scrollToSellAHome}>
-            <span class="navlink-text">Sell a Home</span>
+          <button class="navigation-button" onClick={scrollToSellAHome}>
+            <span class="">Sell a Home</span>
           </button>
-          <button onClick={scrollToAboutUs}>
-            <span class="navlink-text">About Us</span>
+          <button class="navigation-button" onClick={scrollToAboutUs}>
+            <span class="">About Us</span>
           </button>
         </nav>
-
-      </div>
 
       <div className={contactFormState}>
         <ContactForm changeContactFormState={changeContactFormState}/>

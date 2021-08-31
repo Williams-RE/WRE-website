@@ -6,6 +6,7 @@
 p {
     width: 90vw;
     color: white;
+    font-size: 1.5vw;
 }
 
 .main {
@@ -25,13 +26,11 @@ p {
     z-index: -1;
 }
 
-.navigation-bar {
-    position: fixed;
-    width: 100%;
-    background-color: white;
-}
+/* .navigation-bar {
+    
+} */
 
-.navigation-bar img {
+.navigation img {
     border-radius: 5px;
     width: 10.5vw;
     height: 10vh;
@@ -43,11 +42,33 @@ p {
     align-items: center;
     justify-content: space-between;
     height: 75px;
+    position: fixed;
+    background-color: #283618;
 }
 
 .navigation > * {
     margin: 0 2% 0 2%;
     flex-basis: 100%;
+}
+
+button {
+    cursor: pointer;
+    border-radius: 50px;
+}
+
+.navigation-button {
+    background-color: #606C38;
+    color: #FEFAE0;
+}
+
+.navigation-button:hover {
+    background-color: #FEFAE0;
+    color: #283618;
+}
+
+.logo-button {
+    background: transparent;
+    border: none;
 }
 
 .page {
