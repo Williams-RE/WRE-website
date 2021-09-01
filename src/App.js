@@ -2,15 +2,9 @@ import React from 'react';
 import './App.css';
 import { useRef, useState } from 'react';
 import logo from './images/wre-logo.png';
-// import {
-//   Route,
-//   NavLink,
-//   HashRouter
-// } from "react-router-dom";
 import LandingPage from './LandingPage/LandingPage';
 import BuyAHome from './BuyAHome/BuyAHome';
 import SellAHome from './SellAHome/SellAHome';
-// import FindAnAgent from './FindAnAgent/FindAnAgent';
 import AboutUs from './AboutUs/AboutUs';
 import ContactForm from './ContactForm/ContactForm';
 
