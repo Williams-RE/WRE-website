@@ -40,6 +40,8 @@ button {
     position: fixed;
     background-color: #283618;
     z-index: 1;
+    box-shadow: 0 3px 4px 0 rgba(0,0,0,.2);
+
 }
 
 .navigation button {
