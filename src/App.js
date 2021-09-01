@@ -35,9 +35,9 @@ function App() {
     aboutUsRef.current.scrollIntoView({ behavior: 'smooth'});
   }
 
-  function changeContactFormState(newState) {
-    setContactFormState(newState);
-  }
+  // function changeContactFormState(newState) {
+  //   setContactFormState(newState);
+  // }
 
 
   const triggerText = "Contact Us";
