@@ -6,7 +6,9 @@ import LandingPage from './LandingPage/LandingPage';
 import BuyAHome from './BuyAHome/BuyAHome';
 import SellAHome from './SellAHome/SellAHome';
 import AboutUs from './AboutUs/AboutUs';
-import ContactForm from './ContactForm/ContactForm';
+// import ContactForm from './ContactForm/ContactForm';
+import ModalContainer from './ModalContainer/ModalContainer';
+
 
 
 
@@ -37,6 +39,18 @@ function App() {
     setContactFormState(newState);
   }
 
+
+  const triggerText = "Contact Us";
+  const onSubmit = (event) => {
+    event.preventDefault(event);
+    console.log(event.target.name.value);
+    console.log(event.target.email.value);
+    console.log(event.target.agent.value);
+    console.log(event.target.comment.value);
+  
+  };
+
+
   return (
     <div class="main">
 
@@ -52,6 +66,9 @@ function App() {
       <button class="" onClick={() => {changeContactFormState("show-contact-form")}}>
         Contact Us
       </button> */}
+      <div className="modal-container">
+      <ModalContainer triggerText={triggerText} onSubmit={onSubmit} />
+    </div>
         
       <nav class = "navigation">
         <button class="logo-button" onClick={scrollToLandingPage}>
