@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { useRef, useState } from 'react';
-import logo from './images/wre-logo.png';
+import logo from './images/wre-logo-new.png';
 import LandingPage from './LandingPage/LandingPage';
 import BuyAHome from './BuyAHome/BuyAHome';
 import SellAHome from './SellAHome/SellAHome';
@@ -40,37 +40,35 @@ function App() {
   return (
     <div class="main">
 
-      <img class="pull-right"
+      {/* <img class="pull-right"
         src="https://www.userbenchmark.com/resources/img/wri/creatives/assets/flame.gif" alt = "fire">
-      </img>
+      </img> */}
       
       <div class="background">
       </div>
-        
-        <nav class = "navigation">
-          <button class="logo-button" onClick={scrollToLandingPage}>
-            <img src={ logo } alt="logo" />
-          </button>
-          <button class="navigation-button" onClick={scrollToBuyAHome}>
-            <span class="">Buy a Home</span>
-          </button> 
-          <button class="navigation-button" onClick={scrollToSellAHome}>
-            <span class="">Sell a Home</span>
-          </button>
-          <button class="navigation-button" onClick={scrollToAboutUs}>
-            <span class="">About Us</span>
-          </button>
-        </nav>
-
-      <div className={contactFormState}>
+      {/* <div className={contactFormState}>
         <ContactForm changeContactFormState={changeContactFormState}/>
       </div>
-      <div class="page">
-        <button onClick={() => {changeContactFormState("show-contact-form")}}>
-          Contact Us
+      <button class="" onClick={() => {changeContactFormState("show-contact-form")}}>
+        Contact Us
+      </button> */}
+        
+      <nav class = "navigation">
+        <button class="logo-button" onClick={scrollToLandingPage}>
+          <img class="logo" src={ logo } alt="logo" />
         </button>
-      </div>
-      <div class="page" ref={landingPageRef}>
+        <button class="navigation-button" onClick={scrollToBuyAHome}>
+          <span class="">Buy a Home</span>
+        </button> 
+        <button class="navigation-button" onClick={scrollToSellAHome}>
+          <span class="">Sell a Home</span>
+        </button>
+        <button class="navigation-button" onClick={scrollToAboutUs}>
+          <span class="">About Us</span>
+        </button>
+      </nav>
+
+      <div ref={landingPageRef}>
         <LandingPage />
       </div>
       <div class="page" ref={buyAHomeRef}>
