@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import './App.css';
 import logo from './images/wre-logo-new.png';
-import niceHouse from './images/background.jpeg';
+// import niceHouse from './images/background.jpeg';
 import LandingPage from './LandingPage/LandingPage';
 import BuyAHome from './BuyAHome/BuyAHome';
 import SellAHome from './SellAHome/SellAHome';
