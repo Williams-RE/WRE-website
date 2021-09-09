@@ -97,7 +97,7 @@ function App() {
       </Modal>
         
       <nav class = "navigation">
-        <button class="logo-button" onClick={scrollToLandingPage}>
+        <button class="navigation-logo" onClick={scrollToLandingPage}>
           <img class="logo" src={ logo } alt="logo" />
         </button>
         <button class="navigation-button" onClick={scrollToBuyAHome}>

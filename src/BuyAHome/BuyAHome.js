@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './BuyAHome.css';
-import beforeYouStart from '../images/before-you-start.jpg';
-import findingTheDeal from '../images/finding-the-deal.jpg';
-import sealingTheDeal from '../images/sealing-the-deal.jpg';
+import beforeYouStart from '../images/buy-a-home/before-you-start.jpg';
+import findingTheDeal from '../images/buy-a-home/finding-the-deal.jpg';
+import sealingTheDeal from '../images/buy-a-home/sealing-the-deal.jpg';
 
 function BuyAHome() {
     const [showBuyAHomeParagraphBefore, setShowBuyAHomeParagraphBefore] = useState(true);

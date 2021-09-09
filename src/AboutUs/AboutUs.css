@@ -1,3 +1,48 @@
 .about-us-main {
     height: 100vh;
+    width: 100vw;
+    max-width: 100%;
+}
+
+.carousel {
+    margin-top: 17vh;
+    margin-left: 15vw;
+    width: 70vw;
+}
+
+.carousel-agent img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.agent-image:hover {
+    cursor: pointer;
+}
+
+.agent-image {
+    height: 200px;
+    width: auto;
+    vertical-align: middle;
+}
+
+.button-group {
+    position: relative;
+    text-align: center;
+}
+
+.button-group img:hover {
+    cursor: pointer;
+}
+
+.left-carousel-arrow {
+    position: absolute;
+    left: 9vw;
+    bottom: 7vh;
+}
+
+.right-carousel-arrow {
+    position: absolute;
+    right: 7.7vw;
+    bottom: 7vh;
 }
