@@ -8,6 +8,7 @@ import SellAHome from './SellAHome/SellAHome';
 import AboutUs from './AboutUs/AboutUs';
 import Modal from 'react-modal';
 import axios from 'axios';
+import { getByTitle } from '@testing-library/react';
 
 Modal.setAppElement('#root');
 
@@ -69,37 +70,91 @@ function App() {
       
 
 
-      <button class='modal-button' onClick = {() => setModalIsOpen(true)}> Contact Us  </button>
-      <Modal isOpen = {modalIsOpen}> 
+      <button class="modal-button" onClick = {() => setModalIsOpen(true)}> Contact Us  </button>
+      <Modal className = "modal" isOpen = {modalIsOpen} onRequestClose={() => setModalIsOpen(false)}  
+        style={{
 
-        <label> Name: </label>
-        <input  type="text"  value={name} onInput={e => setName(e.target.value)}/>
-        <br></br>
+          overlay: {
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: 'rgba(0, 0, 0, 0.75)'
+          },
+          content: {
+            position: 'absolute',
+            top: '20%',
+            left: '35%',
+            right: '35%',
+            bottom: '20%',
+            border: '1px solid #ccc',
+            background: 'white',
+            overflow: 'auto',
+            WebkitOverflowScrolling: 'touch',
+            borderRadius: '4px',
+            outline: 'none',
+            padding: '20px',
+            radius: '1px'
+              }
+            }}
+      >
 
-        <label> Email: </label>
-        <input type="email"  value={email} onInput={e => setEmail(e.target.value)}/> 
-        <br></br>
+        <h1 class="title"> Contact Form </h1>
 
-        <label> Select Agents: </label>
-        <select name ='selectAgents'  value={agent} onChange={e => setAgent(e.target.value)} >
+        <hr class="contact-line"/> 
 
-          <option value="JACOB">JACOB</option>
-          <option value="saab">Saab</option>
-          <option value="opel">Opel</option>
-          <option value="audi">Audi</option>
 
-        </select> 
+        <div class="name">
 
-        <br></br>
+          <label class="modal-label"> Name: </label> 
+
+          <input class="modal-input" placeholder="First & Last" type="text"  value={name} onInput={e => setName(e.target.value)}/> 
+          
+        </div>
+      
         
-        <label> Comment: </label> 
-        <textarea  value={comment} onInput={e => setComment(e.target.value)}>  </textarea>
-        
-        <br></br>
+        <div class="modal-element"> 
 
-        <button class="submit-button" onClick = { () => submitContactForm(name, email, agent, comment)}> Submit</button>
+          <label class="modal-label"> Email: </label>
+
+          <input class="modal-input" placeholder="you@domain.com" type="email"   value={email} onInput={e => setEmail(e.target.value)}/> 
+          
+        </div>
 
         
+        <div class='modal-element'>  
+
+          <label class="modal-label"> Select Agent: </label>
+
+          <select class='select-agents' name ='selectAgents'  value={agent} onChange={e => setAgent(e.target.value)} >
+
+            <option value="Jacob Williams">Jacob Williams</option>
+            <option value="Pam Buzzeo">Pam Buzzeo</option>
+            <option value="Mathew Thomas"> Mathew Thomas</option>
+            <option value="Binu Jacob">Binu Jacob</option>
+            <option value="Hilda Christi">Hilda Christi</option>
+            <option value="Shazzat Tanvir">Shazzat Tanvir</option>
+            <option value="Karen Bruno">Karen Bruno</option>
+            <option value="Kerri Kaylor">Kerri Kaylor</option>
+            <option value="Rashed Ahmed">Rashed Ahmed</option>
+
+          </select> 
+        
+        </div>
+
+
+        <div class="modal-element">
+        
+          <label class="modal-label" > Message: </label> 
+
+          <textarea class="modal-textarea" rows ="7"  placeholder="Comments" value={comment} onInput={e => setComment(e.target.value)}>  </textarea>
+
+          <button class="submit-button" onClick = { () => submitContactForm(name, email, agent, comment)}> Submit</button>
+
+        </div>
+
+
       </Modal>
 
 
