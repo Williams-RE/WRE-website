@@ -1,3 +1,48 @@
 .sell-a-home-main {
     height: 100vh;
 }
+
+.sell-a-home-heading {
+    text-align: center;
+    font-size: 4vh;
+}
+
+.sell-a-home-button-group {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 4vh;
+}
+
+.sell-a-home-button {
+    font-size: 1.5em;
+}
+
+.sell-a-home-content {
+    position: relative;
+    height: 78vh;
+    animation-name: sell-a-home-content;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+.sell-a-home-content[animation='1'] {
+    animation: fadeInSellAHomeContent .5s 1;
+}
+
+.sell-a-home-paragraph {
+    margin-left: 4%;
+    width: 45%;
+}
+
+.sell-a-home-image {
+    position: absolute;
+    width: 600px;
+    height: auto;
+    right: 5vw;
+    bottom: 5vh;
+}
+
+@keyframes fadeInSellAHomeContent {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

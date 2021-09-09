@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import './App.css';
-import { useRef, useState } from 'react';
 import logo from './images/wre-logo-new.png';
+// import niceHouse from './images/background.jpeg';
 import LandingPage from './LandingPage/LandingPage';
 import BuyAHome from './BuyAHome/BuyAHome';
 import SellAHome from './SellAHome/SellAHome';
@@ -18,6 +18,7 @@ function App() {
   const buyAHomeRef = useRef();
   const sellAHomeRef = useRef();
   const aboutUsRef = useRef();
+
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -54,8 +55,6 @@ function App() {
     console.log(response.data)
 
   }
-
-
   
   function submitContactForm(name, email, agent, comment) {
     setModalIsOpen(false);
@@ -65,10 +64,6 @@ function App() {
 
   return (
     <div class="main">
-      
-      <div class="background"> </div>
-      
-
 
       <button class="modal-button" onClick = {() => setModalIsOpen(true)}> Contact Us  </button>
       <Modal className = "modal" isOpen = {modalIsOpen} onRequestClose={() => setModalIsOpen(false)}  
@@ -156,11 +151,9 @@ function App() {
 
 
       </Modal>
-
-
         
       <nav class = "navigation">
-        <button class="logo-button" onClick={scrollToLandingPage}>
+        <button class="navigation-logo" onClick={scrollToLandingPage}>
           <img class="logo" src={ logo } alt="logo" />
         </button>
         <button class="navigation-button" onClick={scrollToBuyAHome}>
@@ -174,19 +167,23 @@ function App() {
         </button>
       </nav>
 
-      <div ref={landingPageRef}>
-        <LandingPage />
-      </div>
-      <div class="page" ref={buyAHomeRef}>
-        <BuyAHome />
-      </div>
-      <div class="page" ref={sellAHomeRef}>
-        <SellAHome />
-      </div>
-      <div class="page" ref={aboutUsRef}>
-        <AboutUs />
-      </div>
+      {/* <img src={niceHouse} alt="A nice home" class="landing-page-image"/> */}
+      <div class="background"> </div>
 
+      <div class="content">
+        <div ref={landingPageRef}>
+          <LandingPage />
+        </div>
+        <div class="page" ref={buyAHomeRef}>
+          <BuyAHome />
+        </div>
+        <div class="page" ref={sellAHomeRef}>
+          <SellAHome />
+        </div>
+        <div class="page" ref={aboutUsRef}>
+          <AboutUs />
+        </div>
+      </div>
     </div>
   );
 }

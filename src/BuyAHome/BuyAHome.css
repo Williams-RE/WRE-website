@@ -1,3 +1,48 @@
 .buy-a-home-main {
     height: 100vh;
 }
+
+.buy-a-home-heading {
+    text-align: center;
+    font-size: 4vh;
+}
+
+.buy-a-home-button-group {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 4vh;
+}
+
+.buy-a-home-button {
+    font-size: 1.5em;
+}
+
+.buy-a-home-content {
+    position: relative;
+    height: 78vh;
+    animation-name: buy-a-home-content;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+.buy-a-home-content[animation='1'] {
+    animation: fadeInBuyAHomeContent .5s 1;
+}
+
+.buy-a-home-paragraph {
+    margin-left: 4%;
+    width: 45%;
+}
+
+.buy-a-home-image {
+    position: absolute;
+    width: 600px;
+    height: auto;
+    right: 5vw;
+    bottom: 5vh;
+}
+
+@keyframes fadeInBuyAHomeContent {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

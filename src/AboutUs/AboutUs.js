@@ -1,7 +1,40 @@
 import React from 'react';
 import './AboutUs.css';
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
+import rightCarouselArrow from '../images/right-carousel-arrow.png';
+import leftCarouselArrow from '../images/left-carousel-arrow.png';
+import Jacob from '../images/agents/Jacob.jpg';
+import Pam from '../images/agents/Pam.jpg';
+import Mathews from '../images/agents/Mathews.jfif';
+import Binu from '../images/agents/Binu.gif';
+import Hilda from '../images/agents/Hilda.gif';
+import Shazzat from '../images/agents/Shazzat.gif';
+import Karen from '../images/agents/Karen.png';
+import Kerri from '../images/agents/Kerri.gif';
+import Rashed from '../images/agents/Rashed.jpg';
 
 function AboutUs() {
+    const responsive = {
+        superLargeDesktop: {
+          // the naming can be any, depends on you.
+          breakpoint: { max: 4000, min: 3000 },
+          items: 5
+        },
+        desktop: {
+          breakpoint: { max: 3000, min: 1024 },
+          items: 5
+        },
+        tablet: {
+          breakpoint: { max: 1024, min: 464 },
+          items: 5
+        },
+        mobile: {
+          breakpoint: { max: 464, min: 0 },
+          items: 5
+        }
+      };
+
     return (
         <div class="about-us-main">
             <h1>About Us</h1>
@@ -11,8 +44,50 @@ function AboutUs() {
             Aliquam ullamcorper facilisis malesuada. Nam ullamcorper fermentum ipsum sed dictum. Quisque tincidunt commodo orci vitae rhoncus. Suspendisse fermentum magna et tempus porta. Vivamus blandit mi enim, sit amet pretium sem varius in. 
             Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent id volutpat elit, in tristique mauris. Maecenas purus magna, ornare quis mauris ornare, aliquam sollicitudin tellus. Fusce sollicitudin aliquet commodo.
             </p>
+            <Carousel responsive={responsive} slidesToSlide={5} containerClass="carousel" itemClass="carousel-agent" arrows={false} customButtonGroup={<CustomButtonGroupAsArrows />} renderButtonGroupOutside={true} dotListClass="custom-dot-list-style">
+                    <img class="agent-image" alt="Jacob" src={Jacob}/>
+                    <img class="agent-image" alt="Pam" src={Pam}/>
+                    <img class="agent-image" alt="Mathews" src={Mathews}/>
+                    <img class="agent-image" alt="Binu" src={Binu}/>
+                    <img class="agent-image" alt="Hilda" src={Hilda}/>
+                    <img class="agent-image" alt="Shazzat" src={Shazzat}/>
+                    <img class="agent-image" alt="Karen" src={Karen}/>
+                    <img class="agent-image" alt="Kerri" src={Kerri}/>
+                    <img class="agent-image" alt="Rashed" src={Rashed}/>
+                {/* <div class="carousel-agent"><img class="agent-image" alt="Jacob" src={Jacob}/></div>
+                <div class="carousel-agent"><img class="agent-image" alt="Pam" src={Pam}/></div>
+                <div class="carousel-agent"><img class="agent-image" alt="Mathews" src={Mathews}/></div>
+                <div class="carousel-agent"><img class="agent-image" alt="Binu" src={Binu}/></div>
+                <div class="carousel-agent"><img class="agent-image" alt="Hilda" src={Hilda}/></div>
+                <div class="carousel-agent"><img class="agent-image" alt="Shazzat" src={Shazzat}/></div>
+                <div class="carousel-agent"><img class="agent-image" alt="Karen" src={Karen}/></div>
+                <div class="carousel-agent"><img class="agent-image" alt="Kerri" src={Kerri}/></div>
+                <div class="carousel-agent"><img class="agent-image" alt="Rashed" src={Rashed}/></div> */}
+            </Carousel>
+            {/* <div class="center">
+                <div class="agent-pagination-group">
+                    <img class="agent-image" alt="Jacob" src={Jacob}/>
+                    <img class="agent-image" alt="Pam" src={Pam}/>
+                    <img class="agent-image" alt="Mathews" src={Mathews}/>
+                    <img class="agent-image" alt="Binu" src={Binu}/>
+                    <img class="agent-image" alt="Hilda" src={Hilda}/>
+                    <img class="agent-image" alt="Shazzat" src={Shazzat}/>
+                    <img class="agent-image" alt="Karen" src={Karen}/>
+                    <img class="agent-image" alt="Kerri" src={Kerri}/>
+                    <img class="agent-image" alt="Rashed" src={Rashed}/>
+                </div>
+            </div> */}
         </div>
     );
 }
+
+const CustomButtonGroupAsArrows = ({ next, previous }) => {
+    return (
+      <div class="button-group">
+        <img src={leftCarouselArrow} alt="Left Carousel Arrow" class="left-carousel-arrow" onClick={previous}/>
+        <img src={rightCarouselArrow} alt="Right Carousel Arrow" class="right-carousel-arrow" onClick={next}/>
+      </div>
+    );
+  };
 
 export default AboutUs;

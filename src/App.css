@@ -11,24 +11,33 @@ p {
 
 button {
     cursor: pointer;
-    
 }
 
 .main {
     width: 100%;
     height: 100%;
     position: relative;
+    background-color: #dda15e;
 }
 
+/* .landing-page-image {
+  position: absolute;
+  height: 90vh;
+  width: 90%;
+  top: 75px;
+  left: 50%;
+  transform: translate(-50%,0);
+  filter: brightness(85%);
+} */
+
 .background {
-    position: fixed;
+    position: absolute;
+    height: 100vh;
     width: 100%;
-    height: 100%;
     background: url('./images/background.jpeg');
     background-position: center;
     background-size: cover;
     filter: brightness(85%);
-    z-index: -1;
 }
 
 .navigation { 
@@ -39,8 +48,8 @@ button {
     height: 75px;
     position: fixed;
     background-color: #283618;
-    z-index: 0;
     box-shadow: 0 3px 4px 0 rgba(0,0,0,.2);
+    z-index: 1;
 
 }
 
@@ -71,17 +80,17 @@ button {
     color: #283618;
 }
 
-.logo-button {
+.navigation-logo {
     background: transparent;
     border: none;
 }
 
+/* .content {
+  padding: 3%;
+} */
+
 .page {
     padding-top: 75px;
-}
-
-.landing-page {
-    /* border: 1px solid white; */
 }
 
 /* .navlink-button {
