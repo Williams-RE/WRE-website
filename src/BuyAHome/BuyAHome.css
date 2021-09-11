@@ -15,7 +15,12 @@
 
 .buy-a-home-button {
     font-size: 1.5em;
-    background-color: var(--tertiary-color);
+    background-color: var(--quarternary-color);
+    background: transparent;
+    color: var(--tertiary-color);
+    border: 2px solid var(--tertiary-color);
+    border-radius: 20px;
+    padding: 5px;
 }
 
 .buy-a-home-content {
