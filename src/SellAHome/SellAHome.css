@@ -15,6 +15,7 @@
 
 .sell-a-home-button {
     font-size: 1.5em;
+    background-color: var(--tertiary-color);
 }
 
 .sell-a-home-content {

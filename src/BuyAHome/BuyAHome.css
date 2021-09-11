@@ -15,6 +15,7 @@
 
 .buy-a-home-button {
     font-size: 1.5em;
+    background-color: var(--tertiary-color);
 }
 
 .buy-a-home-content {

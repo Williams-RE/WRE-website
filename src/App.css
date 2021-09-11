@@ -3,9 +3,16 @@
     padding: 0;
 }
 
+:root {
+  --primary-color: #dda15e;
+  --secondary-color: #283618;
+  --tertiary-color: #FEFAE0;
+  --quarternary-color: black;
+}
+
 p {
     width: 90vw;
-    color: white;
+    color: var(--tertiary-color);
     font-size: 1.5vw;
 }
 
@@ -17,7 +24,7 @@ button {
     width: 100%;
     height: 100%;
     position: relative;
-    background-color: #dda15e;
+    background-color: var(--primary-color);
 }
 
 /* .landing-page-image {
@@ -47,7 +54,7 @@ button {
     justify-content: space-between;
     height: 75px;
     position: fixed;
-    background-color: #283618;
+    background-color: var(--secondary-color);
     box-shadow: 0 3px 4px 0 rgba(0,0,0,.2);
     z-index: 1;
 
@@ -67,7 +74,7 @@ button {
 
 .navigation-button {
     background-color: #606C38;
-    color: #FEFAE0;
+    color: var(--tertiary-color);
     font-size: 1.5vw;
     height: 90%;
     width: 50%;
@@ -76,7 +83,7 @@ button {
 }
 
 .navigation-button:hover {
-    background-color: #FEFAE0;
+    background-color: var(--tertiary-color);
     color: #283618;
 }
 
@@ -116,7 +123,7 @@ button {
 } */
 
 .slogan {
-    color: black;
+    color: var(--quarternary-color);
     text-align: center;
     position: relative;
     top: 60vh;
@@ -170,8 +177,8 @@ button {
   margin: 0.5rem 1rem;
   width: 12rem;
   background: transparent;
-  color: white;
-  border: 2px solid white;
+  color: var(--tertiary-color);
+  border: 2px solid var(--tertiary-color);
   font-size: 19px;
   line-height: 1.6;
   z-index: 1;
@@ -193,8 +200,8 @@ button {
 
 .modal-button:hover {
     /* background-color: #FEFAE0; */
-    background-color: white;
-    color: #283618;
+    background-color: var(--tertiary-color);
+    color: var(--secondary-color);
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
     
 }
@@ -207,7 +214,7 @@ button {
 }
 .contact-line {
  
-  border-top: 1px solid black;
+  border-top: 1px solid var(--quarternary-color);
   text-align:left; 
 }
 
