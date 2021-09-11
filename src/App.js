@@ -9,7 +9,7 @@ import AboutUs from './AboutUs/AboutUs';
 import Modal from 'react-modal';
 import axios from 'axios';
 import { getByTitle } from '@testing-library/react';
-
+import homevideo from './images/keys-to-the-house.mp4';
 Modal.setAppElement('#root');
 
 
@@ -168,7 +168,15 @@ function App() {
       </nav>
 
       {/* <img src={niceHouse} alt="A nice home" class="landing-page-image"/> */}
-      <div class="background"> </div>
+      
+      <div class="background"> 
+      {/* in case we want to include a video 
+      <video autoplay loop>
+         <source src= {homevideo} type="video/mp4"/> 
+         Your browser is not supported.
+        </video>  */}
+      
+      </div>
 
       <div class="content">
         <div ref={landingPageRef}>
