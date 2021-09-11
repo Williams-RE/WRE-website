@@ -89,7 +89,7 @@ function App() {
             WebkitOverflowScrolling: 'touch',
             borderRadius: '4px',
             outline: 'none',
-            padding: '20px',
+            padding: '1.5071590052750565vh',
             radius: '1px'
               }
             }}
@@ -143,7 +143,7 @@ function App() {
         
           <label class="modal-label" > Message: </label> 
 
-          <textarea class="modal-textarea" rows ="7"  placeholder="Comments" value={comment} onInput={e => setComment(e.target.value)}>  </textarea>
+          <textarea class="modal-textarea" rows ="4"  placeholder="Comments" value={comment} onInput={e => setComment(e.target.value)}>  </textarea>
 
           <button class="submit-button" onClick = { () => submitContactForm(name, email, agent, comment)}> Submit</button>
 

@@ -153,7 +153,7 @@ button {
   position: fixed;
   top: 80vh;
   left: 87vw;
-  display: inline-block;
+  /* display: inline-block; */
   border-radius: 5px;
   padding: 1rem 0;
   margin: 0.5rem 1rem;
@@ -192,12 +192,12 @@ button {
 
 .name {
   margin: 9% 17% 10%;
-  height: 30px;
+  height: 2.260738507912585vh;
 
 }
 .modal-element {
   margin: 10% 17% 10%;
-  height: 30px;
+  height: 2.260738507912585vh;
 
 }
 
@@ -206,7 +206,7 @@ button {
 .modal-textarea {
   position: relative; 
   float:right;
-  width:300px;
+  width:11.71875vw;
   border:1px solid grey;
   border-radius:7px;
   font-size:20px;
@@ -216,15 +216,15 @@ button {
 }
 
 .modal-label { 
-  margin: 5px;
-  width:  420px;
+  /* margin: 5px; */
+  width: 2vw;
   overflow: auto;
   font-family: sans-serif;
   font-weight: bold;
   font-size:20px;
   color:#444;
   text-shadow:0 0 2px #ddd;
-  padding:20px 10px 10px 0;
+  /* padding:1.5071590052750565vh,  0.390625vw; */
 
   /* border: 1px solid black; */
 }
@@ -233,7 +233,7 @@ button {
 .modal-input {
   position: relative; 
   float:right;
-  width:300px;
+  width:11.71875vw;
   border:1px solid grey;
   border-radius:7px;
   font-size:20px;
@@ -253,7 +253,7 @@ button {
   float: right;
   border: 1px solid grey ;
   border-radius:7px;
-  width:302px;
+  width: 11.796875vw;
   font: inherit;
   font-size: 20px;
   color: grey;
@@ -269,15 +269,15 @@ button {
 
 
 .submit-button {
-  background-color: #008CBA;
+  background-color: hsl(0, 80%, 53%);
   color: white;
-  padding: 15px 32px;
+  padding: 1.2057272042200453vh 1.25vw;
   text-align: center;
   display: inline-block;
   font-size: 26px;
   font-weight: 800;
   font-family:Verdana, Geneva, Tahoma, sans-serif; 
-  radius: 2px;
+  border-radius: 2px;
   position: fixed;
   top: 71vh;
   left: 48vw;
