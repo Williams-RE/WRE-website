@@ -3,6 +3,13 @@
     padding: 0;
 }
 
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
+body{
+   font-family: 'Roboto',serif;
+}
+
 :root {
   --primary-color: #c59775;
   --secondary-color: #664738;
@@ -69,7 +76,7 @@ button {
 .navigation button {
     margin: 0 2% 0 2%;
     flex-basis: 15%;
-    border-radius: 50px;
+    border-radius: 5%;
 }
 
 .logo {
@@ -168,20 +175,26 @@ button {
   font-weight: 100;
   line-height: 1.6;
   z-index: 1;
+  opacity: .9;
+  transition: 0.3s;
+
+     
 } 
 
 .modal-button:hover {
     /* background-color: #FEFAE0; */
-    background-color: var(--quinary-color);
+    /* single transition: background 0.4s ease-in  */
+    opacity: 1;
     color: var(--quarternary-color);
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
     
 }
 
-.title {
+.title-contact {
   margin-top: 2%;
   margin-bottom: 2%;
-
+  font-weight: bold;
+  color: var(--tertiary-color);
 
 }
 .contact-line {
@@ -269,17 +282,24 @@ button {
 
 
 .submit-button {
-  background-color: hsl(0, 80%, 53%);
+  background-color: var(--quinary-color);
   color: white;
   padding: 1.2057272042200453vh 1.25vw;
   text-align: center;
   display: inline-block;
   font-size: 26px;
-  font-weight: 800;
-  font-family:Verdana, Geneva, Tahoma, sans-serif; 
+  font-weight: 300;
   border-radius: 2px;
+  opacity: .8;
+  transition: .3s;
   position: fixed;
   top: 71vh;
   left: 48vw;
 
+}
+
+.submit-button:hover {
+
+  opacity: 1;
+  
 }

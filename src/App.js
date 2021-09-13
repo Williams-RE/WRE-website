@@ -95,7 +95,7 @@ function App() {
             }}
       >
 
-        <h1 class="title"> Contact Form </h1>
+        <h1 class="title-contact"> Contact Form </h1>
 
         <hr class="contact-line"/> 
 
