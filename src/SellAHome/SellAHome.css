@@ -1,5 +1,5 @@
 .sell-a-home-main {
-    height: 100vh;
+    /* height: 100vh; */
 }
 
 .sell-a-home-heading {
@@ -45,7 +45,7 @@
     width: 600px;
     height: auto;
     right: 5vw;
-    bottom: 5vh;
+    bottom: 0;
 }
 
 @keyframes fadeInSellAHomeContent {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './BuyAHome.css';
-import beforeYouStart from '../images/buy-a-home/before-you-start.jpg';
+import beforeYouBuy from '../images/buy-a-home/before-you-buy.jpg';
 import findingTheDeal from '../images/buy-a-home/finding-the-deal.jpg';
 import sealingTheDeal from '../images/buy-a-home/sealing-the-deal.jpg';
 
@@ -10,7 +10,7 @@ function BuyAHome() {
     const [showBuyAHomeParagraphSealing, setShowBuyAHomeParagraphSealing] = useState(false);
     const [fadeInBuyAHomeContent, setFadeInBuyAHomeContent] = useState(0);
 
-    function onBeforeYouStartClick() {
+    function onBeforeYouBuyClick() {
         setFadeInBuyAHomeContent(1);
         setShowBuyAHomeParagraphBefore(true);
         setShowBuyAHomeParagraphFinding(false);
@@ -35,7 +35,7 @@ function BuyAHome() {
         <div class="buy-a-home-main">
             <h1 class="buy-a-home-heading">Buy a Home</h1>
             <div class="buy-a-home-button-group">
-                <button class="buy-a-home-button" onClick={onBeforeYouStartClick}>Before You Start</button>
+                <button class="buy-a-home-button" onClick={onBeforeYouBuyClick}>Before You Buy</button>
                 <button class="buy-a-home-button" onClick={onFindingTheDealClick}>Finding The Deal</button>
                 <button class="buy-a-home-button" onClick={onSealingTheDealClick}>Sealing The Deal</button>
             </div>
@@ -48,7 +48,7 @@ function BuyAHome() {
                     Aliquam ullamcorper facilisis malesuada. Nam ullamcorper fermentum ipsum sed dictum. Quisque tincidunt commodo orci vitae rhoncus. Suspendisse fermentum magna et tempus porta. Vivamus blandit mi enim, sit amet pretium sem varius in. 
                     Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent id volutpat elit, in tristique mauris. Maecenas purus magna, ornare quis mauris ornare, aliquam sollicitudin tellus. Fusce sollicitudin aliquet commodo.
                     </p> 
-                    <img src={beforeYouStart} alt="Before You Start" class="buy-a-home-image"/> 
+                    <img src={beforeYouBuy} alt="Before You Buy" class="buy-a-home-image"/> 
                 </div>
                 : null }
 
