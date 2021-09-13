@@ -2,23 +2,43 @@
     height: 100vh;
     width: 100%;
     position: relative;
-    z-index: -1;
+    z-index: 0;
+    /* border: 1px solid pink; */
 }
 
 .landing-page-heading {
     position: absolute;
     top: 16%;
     left: 33%;
-    font-size: 3em;
-    font-family:Verdana, Geneva, Tahoma, sans-serif ;
-    color: #FEFAE0;
+    font-size: 4.3em;
+    font-weight: 600;
+    font-family: Roboto;
+    color: var(--tertiary-color);
     text-align: center;
-    -webkit-text-stroke: 1px black;
-    text-shadow:
-        2px 2px 0 #000,
-        -1px -1px 0 #000,  
-        1px -1px 0 #000,
-        -1px 1px 0 #000,
-        1px 1px 0 #000;
+    animation: fadeIn linear 3.5s;
+    -webkit-animation: fadeIn linear 3.5s;
+    -moz-animation: fadeIn linear 3.5s;
+    -o-animation: fadeIn linear 3.5s;
+    -ms-animation: fadeIn linear 3.5s;
      
+}
+
+@keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+
+@-moz-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+
+@-webkit-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+
+@-o-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
 }

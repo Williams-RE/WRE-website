@@ -3,6 +3,13 @@
     padding: 0;
 }
 
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
+body{
+   font-family: 'Roboto',serif;
+}
+
 :root {
   --primary-color: #c59775;
   --secondary-color: #664738;
@@ -48,7 +55,7 @@ button {
     position: absolute;
     height: 100vh;
     width: 100%;
-    background: url('./images/background.jpeg');
+     background: url('./images/background.jpeg');
     background-position: center;
     background-size: cover;
     filter: brightness(85%);
@@ -70,7 +77,7 @@ button {
 .navigation button {
     margin: 0 2% 0 2%;
     flex-basis: 15%;
-    border-radius: 50px;
+    border-radius: 5%;
 }
 
 .logo {
@@ -154,20 +161,26 @@ button {
   font-weight: 100;
   line-height: 1.6;
   z-index: 1;
+  opacity: .9;
+  transition: 0.3s;
+
+     
 } 
 
 .modal-button:hover {
     /* background-color: #FEFAE0; */
-    background-color: var(--quinary-color);
+    /* single transition: background 0.4s ease-in  */
+    opacity: 1;
     color: var(--quarternary-color);
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
     
 }
 
-.title {
+.title-contact {
   margin-top: 2%;
   margin-bottom: 2%;
-
+  font-weight: bold;
+  color: var(--tertiary-color);
 
 }
 .contact-line {
@@ -178,12 +191,12 @@ button {
 
 .name {
   margin: 9% 17% 10%;
-  height: 30px;
+  height: 2.260738507912585vh;
 
 }
 .modal-element {
   margin: 10% 17% 10%;
-  height: 30px;
+  height: 2.260738507912585vh;
 
 }
 
@@ -192,7 +205,7 @@ button {
 .modal-textarea {
   position: relative; 
   float:right;
-  width:300px;
+  width:11.71875vw;
   border:1px solid grey;
   border-radius:7px;
   font-size:20px;
@@ -202,15 +215,15 @@ button {
 }
 
 .modal-label { 
-  margin: 5px;
-  width:  420px;
+  /* margin: 5px; */
+  width: 2vw;
   overflow: auto;
   font-family: sans-serif;
   font-weight: bold;
   font-size:20px;
   color:#444;
   text-shadow:0 0 2px #ddd;
-  padding:20px 10px 10px 0;
+  /* padding:1.5071590052750565vh,  0.390625vw; */
 
   /* border: 1px solid black; */
 }
@@ -219,7 +232,7 @@ button {
 .modal-input {
   position: relative; 
   float:right;
-  width:300px;
+  width:11.71875vw;
   border:1px solid grey;
   border-radius:7px;
   font-size:20px;
@@ -239,7 +252,7 @@ button {
   float: right;
   border: 1px solid grey ;
   border-radius:7px;
-  width:302px;
+  width: 11.796875vw;
   font: inherit;
   font-size: 20px;
   color: grey;
@@ -255,17 +268,24 @@ button {
 
 
 .submit-button {
-  background-color: #008CBA;
+  background-color: var(--quinary-color);
   color: white;
-  padding: 15px 32px;
+  padding: 1.2057272042200453vh 1.25vw;
   text-align: center;
   display: inline-block;
   font-size: 26px;
-  font-weight: 800;
-  font-family:Verdana, Geneva, Tahoma, sans-serif; 
-  radius: 2px;
+  font-weight: 300;
+  border-radius: 2px;
+  opacity: .8;
+  transition: .3s;
   position: fixed;
   top: 71vh;
   left: 48vw;
 
+}
+
+.submit-button:hover {
+
+  opacity: 1;
+  
 }

@@ -9,7 +9,7 @@ import AboutUs from './AboutUs/AboutUs';
 import Modal from 'react-modal';
 import axios from 'axios';
 import { getByTitle } from '@testing-library/react';
-
+import homevideo from './images/keys-to-the-house.mp4';
 Modal.setAppElement('#root');
 
 
@@ -89,13 +89,13 @@ function App() {
             WebkitOverflowScrolling: 'touch',
             borderRadius: '4px',
             outline: 'none',
-            padding: '20px',
+            padding: '1.5071590052750565vh',
             radius: '1px'
               }
             }}
       >
 
-        <h1 class="title"> Contact Form </h1>
+        <h1 class="title-contact"> Contact Form </h1>
 
         <hr class="contact-line"/> 
 
@@ -143,7 +143,7 @@ function App() {
         
           <label class="modal-label" > Message: </label> 
 
-          <textarea class="modal-textarea" rows ="7"  placeholder="Comments" value={comment} onInput={e => setComment(e.target.value)}>  </textarea>
+          <textarea class="modal-textarea" rows ="4"  placeholder="Comments" value={comment} onInput={e => setComment(e.target.value)}>  </textarea>
 
           <button class="submit-button" onClick = { () => submitContactForm(name, email, agent, comment)}> Submit</button>
 
@@ -168,7 +168,15 @@ function App() {
       </nav>
 
       {/* <img src={niceHouse} alt="A nice home" class="landing-page-image"/> */}
-      <div class="background"> </div>
+      
+      <div class="background"> 
+      {/* in case we want to include a video 
+      <video autoplay loop>
+         <source src= {homevideo} type="video/mp4"/> 
+         Your browser is not supported.
+        </video>  */}
+      
+      </div>
 
       <div class="content">
         <div ref={landingPageRef}>
