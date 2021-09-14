@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './AboutUs.css';
+import AgentProfile from './AgentProfile/AgentProfile';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import rightCarouselArrow from '../images/right-carousel-arrow.png';
@@ -15,6 +16,15 @@ import Kerri from '../images/agents/Kerri.gif';
 import Rashed from '../images/agents/Rashed.jpg';
 
 function AboutUs() {
+    const [agentProfileModalIsOpen, setAgentProfileModalIsOpen] = useState(false);
+    const [agentProfileName, setAgentProfileName] = useState('Jacob');
+    const [agentProfileTitle, setAgentProfileTitle] = useState('Broker');
+    const [agentProfileImagePath, setAgentProfileImagePath] = useState('');
+    const [agentProfileOfficeNumber, setAgentProfileOfficeNumber] = useState('');
+    const [agentProfileCellNumber, setAgentProfileCellNumber] = useState('');
+    const [agentProfileEmail, setAgentProfileEmail] = useState('');
+
+
     const responsive = {
         superLargeDesktop: {
           // the naming can be any, depends on you.
@@ -35,8 +45,19 @@ function AboutUs() {
         }
       };
 
+      function openAgentProfileModal() {
+          // Set all the agent profile states
+          // Where should the agent profile data be stored for reference?
+          
+      }
+
     return (
         <div class="about-us-main">
+            <AgentProfile agentProfileModalIsOpen={agentProfileModalIsOpen} setAgentProfileModalIsOpen={setAgentProfileModalIsOpen}
+              agentProfileName={agentProfileName} agentProfileTitle={agentProfileTitle}
+              agentProfileImagePath={agentProfileImagePath} agentProfileOfficeNumber={agentProfileOfficeNumber}
+              agentProfileCellNumber={agentProfileCellNumber} agentProfileEmail={agentProfileEmail}
+              />
             <h1>About Us</h1>
             <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque arcu, ultrices sit amet ullamcorper a, luctus ut ante. Duis ullamcorper non elit at euismod. Duis posuere nec justo sit amet vestibulum. 
@@ -44,8 +65,8 @@ function AboutUs() {
             Aliquam ullamcorper facilisis malesuada. Nam ullamcorper fermentum ipsum sed dictum. Quisque tincidunt commodo orci vitae rhoncus. Suspendisse fermentum magna et tempus porta. Vivamus blandit mi enim, sit amet pretium sem varius in. 
             Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent id volutpat elit, in tristique mauris. Maecenas purus magna, ornare quis mauris ornare, aliquam sollicitudin tellus. Fusce sollicitudin aliquet commodo.
             </p>
-            <Carousel responsive={responsive} slidesToSlide={5} containerClass="carousel" itemClass="carousel-agent" arrows={false} customButtonGroup={<CustomButtonGroupAsArrows />} renderButtonGroupOutside={true} dotListClass="custom-dot-list-style">
-                    <img class="agent-image" alt="Jacob" src={Jacob}/>
+            <Carousel responsive={responsive} slidesToSlide={5} containerClass="carousel" itemClass="carousel-agent" arrows={false} customButtonGroup={<CustomButtonGroupAsArrows />} renderButtonGroupOutside={true}>
+                    <img class="agent-image" alt="Jacob" src={Jacob} onClick={() => openAgentProfileModal()}/>
                     <img class="agent-image" alt="Pam" src={Pam}/>
                     <img class="agent-image" alt="Mathews" src={Mathews}/>
                     <img class="agent-image" alt="Binu" src={Binu}/>
@@ -54,29 +75,7 @@ function AboutUs() {
                     <img class="agent-image" alt="Karen" src={Karen}/>
                     <img class="agent-image" alt="Kerri" src={Kerri}/>
                     <img class="agent-image" alt="Rashed" src={Rashed}/>
-                {/* <div class="carousel-agent"><img class="agent-image" alt="Jacob" src={Jacob}/></div>
-                <div class="carousel-agent"><img class="agent-image" alt="Pam" src={Pam}/></div>
-                <div class="carousel-agent"><img class="agent-image" alt="Mathews" src={Mathews}/></div>
-                <div class="carousel-agent"><img class="agent-image" alt="Binu" src={Binu}/></div>
-                <div class="carousel-agent"><img class="agent-image" alt="Hilda" src={Hilda}/></div>
-                <div class="carousel-agent"><img class="agent-image" alt="Shazzat" src={Shazzat}/></div>
-                <div class="carousel-agent"><img class="agent-image" alt="Karen" src={Karen}/></div>
-                <div class="carousel-agent"><img class="agent-image" alt="Kerri" src={Kerri}/></div>
-                <div class="carousel-agent"><img class="agent-image" alt="Rashed" src={Rashed}/></div> */}
             </Carousel>
-            {/* <div class="center">
-                <div class="agent-pagination-group">
-                    <img class="agent-image" alt="Jacob" src={Jacob}/>
-                    <img class="agent-image" alt="Pam" src={Pam}/>
-                    <img class="agent-image" alt="Mathews" src={Mathews}/>
-                    <img class="agent-image" alt="Binu" src={Binu}/>
-                    <img class="agent-image" alt="Hilda" src={Hilda}/>
-                    <img class="agent-image" alt="Shazzat" src={Shazzat}/>
-                    <img class="agent-image" alt="Karen" src={Karen}/>
-                    <img class="agent-image" alt="Kerri" src={Kerri}/>
-                    <img class="agent-image" alt="Rashed" src={Rashed}/>
-                </div>
-            </div> */}
         </div>
     );
 }
