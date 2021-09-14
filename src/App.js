@@ -9,7 +9,7 @@ import AboutUs from './AboutUs/AboutUs';
 import Modal from 'react-modal';
 import axios from 'axios';
 import { getByTitle } from '@testing-library/react';
-import homevideo from './images/keys-to-the-house.mp4';
+// import homevideo from './images/keys-to-the-house.mp4';
 Modal.setAppElement('#root');
 
 
