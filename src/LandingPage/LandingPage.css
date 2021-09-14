@@ -13,9 +13,9 @@
 
 .landing-page-heading {
     position: absolute;
-    top: 16%;
-    left: 33%;
-    font-size: 4.3em;
+    top: 12%;
+    left: 29%;
+    font-size: 7em;
     font-weight: 600;
     font-family: Roboto;
     color: var(--tertiary-color);
