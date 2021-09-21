@@ -99,6 +99,7 @@ button {
 .navigation-button:hover {
     background-color: var(--quarternary-color);
     color: var(--tertiary-color);
+
 }
 
 .navigation-logo {
@@ -148,9 +149,9 @@ button {
   left: 85vw;
   display: inline-block;
   border-radius: 5px;
-  padding: 1rem 0;
-  margin: 0.5rem 1rem;
-  width: 12vw;
+  padding: 1rem;
+  margin: 0.9rem 1rem;
+  width: 12rem;
   /* background: transparent; */
   color: var(--quarternary-color);
   /* text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; */
