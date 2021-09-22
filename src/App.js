@@ -76,6 +76,7 @@ function App() {
             right: 0,
             bottom: 0,
             backgroundColor: 'rgba(0, 0, 0, 0.75)'
+           
           },
           content: {
             position: 'absolute',
@@ -90,7 +91,8 @@ function App() {
             borderRadius: '4px',
             outline: 'none',
             padding: '1.5071590052750565vh',
-            radius: '1px'
+            radius: '1px',
+           
               }
             }}
       >

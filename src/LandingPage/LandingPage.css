@@ -14,15 +14,15 @@
     left: 51%;
     transform: translate(-50%, -50%);
     font-size: 4.5vw;
-    font-weight: 600;
+    font-weight: 300;
     font-family: Roboto;
     color: var(--quarternary-color);
     /* text-align: center; */
-    animation: fadeIn linear 3.5s;
-    -webkit-animation: fadeIn linear 3.5s;
-    -moz-animation: fadeIn linear 3.5s;
-    -o-animation: fadeIn linear 3.5s;
-    -ms-animation: fadeIn linear 3.5s;
+    animation: fadeIn linear 2.5s;
+    -webkit-animation: fadeIn linear 2.5s;
+    -moz-animation: fadeIn linear 2.5s;
+    -o-animation: fadeIn linear 2.5s;
+    -ms-animation: fadeIn linear 2.5s;
      
 }
 
