@@ -153,14 +153,15 @@ function App() {
       </Modal>
         
       <nav class = "navigation">
-        <button class="navigation-logo" onClick={scrollToLandingPage}>
-          <img class="logo" src={ logo } alt="logo" />
+        <button class="navigation-button" onClick={scrollToLandingPage}>
+          {/* <img class="logo" src={ logo } alt="logo" /> */}
+          <span class="">WRE </span>
         </button>
         <button class="navigation-button" onClick={scrollToBuyAHome}>
-          <span class="">Buy a Home</span>
+          <span class=""> Buy</span>
         </button> 
         <button class="navigation-button" onClick={scrollToSellAHome}>
-          <span class="">Sell a Home</span>
+          <span class=""> Sell </span>
         </button>
         <button class="navigation-button" onClick={scrollToAboutUs}>
           <span class="">About Us</span>

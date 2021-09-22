@@ -3,6 +3,7 @@ import './BuyAHome.css';
 import beforeYouBuy from '../images/buy-a-home/before-you-buy.jpg';
 import findingTheDeal from '../images/buy-a-home/finding-the-deal.jpg';
 import sealingTheDeal from '../images/buy-a-home/sealing-the-deal.jpg';
+import StylizedParagraphs from '../TextFomatting/StylizedParagraphs.js';
 
 function BuyAHome() {
     const [showBuyAHomeParagraphBefore, setShowBuyAHomeParagraphBefore] = useState(true);
@@ -41,34 +42,28 @@ function BuyAHome() {
             </div>
             <div className="buy-a-home-content" onAnimationEnd={() => setFadeInBuyAHomeContent(0)} animation={fadeInBuyAHomeContent}>
                 { showBuyAHomeParagraphBefore ? 
+
                 <div>
-                    <p class="buy-a-home-paragraph">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque arcu, ultrices sit amet ullamcorper a, luctus ut ante. Duis ullamcorper non elit at euismod. Duis posuere nec justo sit amet vestibulum. 
-                    Sed ex odio, molestie non faucibus vitae, consequat ut quam. Vestibulum porttitor metus a diam viverra, quis blandit tellus condimentum. In laoreet, justo id eleifend dictum, augue risus blandit orci, vel finibus ligula massa a sapien. 
-                    Aliquam ullamcorper facilisis malesuada. Nam ullamcorper fermentum ipsum sed dictum. Quisque tincidunt commodo orci vitae rhoncus. Suspendisse fermentum magna et tempus porta. Vivamus blandit mi enim, sit amet pretium sem varius in. 
-                    Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent id volutpat elit, in tristique mauris. Maecenas purus magna, ornare quis mauris ornare, aliquam sollicitudin tellus. Fusce sollicitudin aliquet commodo.
-                    </p> 
+                    <StylizedParagraphs passage = "Buying a home is one of the most challenging and rewarding experiences in your life.  
+                    To guarantee a smooth process, contact your bank to get a prapproval letter. 
+                    If you have any questions feel free to reach out to one of our qualified agents.  WRE is always here to serve you." />
+                        
                     <img src={beforeYouBuy} alt="Before You Buy" class="buy-a-home-image"/> 
                 </div>
                 : null }
 
                 { showBuyAHomeParagraphFinding ? 
                 <div>
-                    <p class="buy-a-home-paragraph">
-                    Sed neque arcu, ultrices sit amet ullamcorper a, luctus ut ante. Duis ullamcorper non elit at euismod. Duis posuere nec justo sit amet vestibulum. 
-                    Sed ex odio, molestie non faucibus vitae, consequat ut quam. Vestibulum porttitor metus a diam viverra, quis blandit tellus condimentum. In laoreet, justo id eleifend dictum, augue risus blandit orci, vel finibus ligula massa a sapien. 
-                    Aliquam ullamcorper facilisis malesuada. Nam ullamcorper fermentum ipsum sed dictum. Quisque tincidunt commodo orci vitae rhoncus. Suspendisse fermentum magna et tempus porta. Vivamus blandit mi enim, sit amet pretium sem varius in. 
-                    </p>
+                    <StylizedParagraphs passage = "Finding the right home is as much as an art as it is a science. The first step is figure out what you want vs what you need in a home. When house hunting you should consider other factors beyond the price and style. How many bedrooms?  How is the neighborhood and how are the schools? Our agents at WRE are best in understanding your budget, tastes, and lifestyles. We will make sure you find the right home. " />
+                    
+            
                     <img src={findingTheDeal} alt="Finding The Deal" class="buy-a-home-image"/>
                 </div>
                 : null }
                 { showBuyAHomeParagraphSealing ? 
                 <div>
                     <p class="buy-a-home-paragraph">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque arcu, ultrices sit amet ullamcorper a, luctus ut ante. Duis ullamcorper non elit at euismod. Duis posuere nec justo sit amet vestibulum. 
-                    Sed ex odio, molestie non faucibus vitae, consequat ut quam. Vestibulum porttitor metus a diam viverra, quis blandit tellus condimentum. In laoreet, justo id eleifend dictum, augue risus blandit orci, vel finibus ligula massa a sapien. 
-                    Quisque tincidunt commodo orci vitae rhoncus. Suspendisse fermentum magna et tempus porta. Vivamus blandit mi enim, sit amet pretium sem varius in. 
-                    Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent id volutpat elit, in tristique mauris. Maecenas purus magna, ornare quis mauris ornare, aliquam sollicitudin tellus. Fusce sollicitudin aliquet commodo.
+                    
                     </p>
                     <img src={sealingTheDeal} alt="Sealing The Deal" class="buy-a-home-image" />
                 </div>

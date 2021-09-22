@@ -6,6 +6,7 @@ function LandingPage() {
         <div class="landing-page-main">
             <h1 class="landing-page-heading">Find Your Dream Home</h1>
         </div>
+        
     );
 }
 
