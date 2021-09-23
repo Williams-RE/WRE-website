@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import './BuyAHome.css';
+import ListingsLayout from './Listings/ListingsLayout.js';
 import beforeYouBuy from '../images/buy-a-home/before-you-buy.jpg';
 import findingTheDeal from '../images/buy-a-home/finding-the-deal.jpg';
 import sealingTheDeal from '../images/buy-a-home/sealing-the-deal.jpg';
@@ -16,6 +18,7 @@ function BuyAHome() {
         setShowBuyAHomeParagraphBefore(true);
         setShowBuyAHomeParagraphFinding(false);
         setShowBuyAHomeParagraphSealing(false);
+        getListings();
     }
 
     function onFindingTheDealClick() {
@@ -32,9 +35,24 @@ function BuyAHome() {
         setShowBuyAHomeParagraphSealing(true);
     }
 
+    const [listings, setListings] = useState({});
+    async function getListings() {
+        const response = await axios.get('http://localhost:3001/get-listings', 
+        {
+            headers: { 'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin' : '*',
+                    'Access-Control-Allow-Methods': 'DELETE, POST, GET, OPTIONS',
+                    'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With'}
+        })
+        // For reach row in the response JSON, create a Listing Component
+        setListings(response.data);
+        // console.log(listings);
+    }
+
     return (
         <div class="buy-a-home-main">
             <h1 class="buy-a-home-heading">Buy a Home</h1>
+            <ListingsLayout listings={listings}/>
             <div class="buy-a-home-button-group">
                 <button class="buy-a-home-button" onClick={onBeforeYouBuyClick}>Before You Buy</button>
                 <button class="buy-a-home-button" onClick={onFindingTheDealClick}>Finding The Deal</button>
