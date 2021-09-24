@@ -9,7 +9,7 @@ import AboutUs from './AboutUs/AboutUs';
 import Modal from 'react-modal';
 import axios from 'axios';
 import { getByTitle } from '@testing-library/react';
-import homevideo from './images/keys-to-the-house.mp4';
+// import homevideo from './images/keys-to-the-house.mp4';
 Modal.setAppElement('#root');
 
 
@@ -76,6 +76,7 @@ function App() {
             right: 0,
             bottom: 0,
             backgroundColor: 'rgba(0, 0, 0, 0.75)'
+           
           },
           content: {
             position: 'absolute',
@@ -90,7 +91,8 @@ function App() {
             borderRadius: '4px',
             outline: 'none',
             padding: '1.5071590052750565vh',
-            radius: '1px'
+            radius: '1px',
+           
               }
             }}
       >
@@ -153,14 +155,15 @@ function App() {
       </Modal>
         
       <nav class = "navigation">
-        <button class="navigation-logo" onClick={scrollToLandingPage}>
-          <img class="logo" src={ logo } alt="logo" />
+        <button class="navigation-button" onClick={scrollToLandingPage}>
+          {/* <img class="logo" src={ logo } alt="logo" /> */}
+          <span class="">WRE </span>
         </button>
         <button class="navigation-button" onClick={scrollToBuyAHome}>
-          <span class="">Buy a Home</span>
+          <span class=""> Buy</span>
         </button> 
         <button class="navigation-button" onClick={scrollToSellAHome}>
-          <span class="">Sell a Home</span>
+          <span class=""> Sell </span>
         </button>
         <button class="navigation-button" onClick={scrollToAboutUs}>
           <span class="">About Us</span>

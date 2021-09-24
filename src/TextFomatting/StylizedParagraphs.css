@@ -1,0 +1,17 @@
+.first-character {
+    color: rgb(18, 65, 10);
+    float: left;
+    font-family: Georgia;
+    font-size: 6vw;
+    line-height: 60px;
+    padding-top: 4px;
+    padding-right: 8px;
+    padding-left: 3px;
+ 
+}
+
+.paragraph {
+    margin-left: 4%;
+    width: 55%;
+    line-height: 190%;
+}

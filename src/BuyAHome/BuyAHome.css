@@ -14,14 +14,31 @@
 }
 
 .buy-a-home-button {
-    font-size: 1.5em;
-    background-color: var(--quarternary-color);
-    background: transparent;
-    color: var(--tertiary-color);
-    border: 2px solid var(--tertiary-color);
-    border-radius: 20px;
-    padding: 5px;
+
+
+    display: inline-block;
+    border-radius: 5px;
+    padding: 1rem;
+    margin: 0.9rem 1rem;
+    width: 35rem;
+    height: 30rem;
+    /* background: transparent; */
+    color: var(--secondary-color);
+    background-color: transparent;
+    border: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 60px;
+    font-weight: 200;
+    line-height: 1.6;
+    opacity: .6;
+    transition: 0.7s;
 }
+
+.buy-a-home-button:hover {
+    color: var(--quarternary-color);
+    opacity: 1;
+}
+
 
 .buy-a-home-content {
     position: relative;
@@ -37,7 +54,8 @@
 
 .buy-a-home-paragraph {
     margin-left: 4%;
-    width: 45%;
+    width: 55%;
+    line-height: 140%;
 }
 
 .buy-a-home-image {
