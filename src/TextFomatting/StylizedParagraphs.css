@@ -1,5 +1,5 @@
 .first-character {
-    color: rgb(18, 65, 10);
+    color: var(--quarternary-color);
     float: left;
     font-family: Georgia;
     font-size: 6vw;

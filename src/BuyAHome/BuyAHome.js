@@ -80,10 +80,10 @@ function BuyAHome() {
                 : null }
                 { showBuyAHomeParagraphSealing ? 
                 <div>
-                    <p class="buy-a-home-paragraph">
-                    
-                    </p>
+                    <StylizedParagraphs passage = "You spotted the perfect home! Now the next step is to make the offer, and making an agreement with the seller. This is a grueling and tedious time but you do not have to worry.  Our trusted agents will guide you through the process so you will be able to lay back on your new porch and watch the sunset.     " />
                     <img src={sealingTheDeal} alt="Sealing The Deal" class="buy-a-home-image" />
+
+
                 </div>
                  : null }
             </div>
