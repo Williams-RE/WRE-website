@@ -1,0 +1,12 @@
+.listing {
+    width: 48%;
+    border: 1px solid black;
+    box-sizing: border-box;
+    display: inline-block;
+    margin: 1%;
+}
+
+.listing-image {
+    height: auto;
+    width: 50%;
+}

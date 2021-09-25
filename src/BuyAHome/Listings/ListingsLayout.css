@@ -1,0 +1,11 @@
+.listings-layout {
+    height: 100%;
+    width: 100%;
+    /* border: 10px solid black; */
+    /* display: inline-grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 50%; */
+    /* display: inline-block; */
+    box-sizing: border-box;
+    /* position: relative; */
+}
