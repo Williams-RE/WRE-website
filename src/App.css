@@ -65,9 +65,10 @@ button {
 .navigation { 
   border-radius: 12px;
   width: auto;
-  /* height: fit-content; */
+  height: auto;
+  justify-content: space-between;
   position: fixed;
-  display: inline-block;
+  /* display: inline-block; */
   display: flex;
   text-align: center;
   align-items: center;
@@ -99,36 +100,45 @@ button {
 }  */
 
 .logo {
-    border-radius: 5px;
-    width: 230px;
-    height: 75px;
+  border-radius: 5px;
+  width: 230px;
+  height: 75px;
 }
 
 .navigation-button {
-    background-color: var(--quinary-color);
-    color: var(--quarternary-color);
-    font-size: 1.5vw;
-    width: 40rem; 
-    height: 90%;
-    width: 30%;
-
-    /* make background transparent */
-    background-color: Transparent;
-    background-repeat:no-repeat;
-    border: none;
-    /* margin: 0 2% 0 2%;
-    flex-basis: 15%;
-    border-radius: 5%; */
+  white-space: nowrap ;
+  width: fit-content;
+  color: var(--quarternary-color);
+  font-size: 1.4vw;
+  height: 90%;
 
 
-}
+  /* make background transparent */
+  /* background-color: Transparent;
+  background-repeat:no-repeat; */
+  border: none;
+  margin: 0 2% 0 2%;
+  flex-basis: auto;
+  border-radius: 5%;
+
+
+
+} 
 
 .navigation-button:hover {
     background-color: transparent;
     /* color: var(--tertiary-color); */
-    transform: scale(1.05);
+    color: var(--tertiary-color)
 
 }
+
+
+.navigation-button:active {
+  transform: scale(.90);
+
+}
+
+
 
 .navigation-logo {
     background: transparent;

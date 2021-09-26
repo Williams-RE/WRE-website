@@ -160,7 +160,7 @@ function App() {
           <span class="">WRE </span>
         </button>
         <button class="navigation-button" onClick={scrollToBuyAHome}>
-          <span class=""> Buy</span>
+          <span class=""> Buy </span>
         </button> 
         <button class="navigation-button" onClick={scrollToSellAHome}>
           <span class=""> Sell </span>

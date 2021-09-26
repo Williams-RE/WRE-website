@@ -3,15 +3,17 @@
     width: 100vw; 
     position: relative; 
     z-index: 0;
-    /* border: 1px solid pink; */
+    /* border: 1px solid pink;  */
+
 }
 
 
 
 .landing-page-heading {
     position: absolute;
+    width: fit-content;
     top: 23%;
-    left: 51%;
+    left: 52%;
     transform: translate(-50%, -50%);
     font-size: 4.5vw;
     font-weight: 300;
