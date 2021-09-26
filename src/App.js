@@ -122,7 +122,7 @@ function App() {
         
         <div class='modal-element'>  
 
-          <label class="modal-label"> Select Agent: </label>
+          <label class="modal-label"> Agent: </label>
 
           <select class='select-agents' name ='selectAgents'  value={agent} onChange={e => setAgent(e.target.value)} >
 
@@ -143,9 +143,9 @@ function App() {
 
         <div class="modal-element">
         
-          <label class="modal-label" > Message: </label> 
+          <label class="modal-label" > Subject:</label> 
 
-          <textarea class="modal-textarea" rows ="4"  placeholder="Comments" value={comment} onInput={e => setComment(e.target.value)}>  </textarea>
+          <textarea class="modal-textarea" rows ="4"  placeholder="Write something.." value={comment} onInput={e => setComment(e.target.value)}>  </textarea>
 
           <button class="submit-button" onClick = { () => submitContactForm(name, email, agent, comment)}> Submit</button>
 
