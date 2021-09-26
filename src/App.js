@@ -75,7 +75,8 @@ function App() {
             left: 0,
             right: 0,
             bottom: 0,
-            backgroundColor: 'rgba(0, 0, 0, 0.75)'
+            backgroundColor: 'rgba(0, 0, 0, 0.75)',
+            zIndex: 1
            
           },
           content: {
@@ -157,7 +158,7 @@ function App() {
       <nav class = "navigation">
         <button class="navigation-button" onClick={scrollToLandingPage}>
           {/* <img class="logo" src={ logo } alt="logo" /> */}
-          <span class="">WRE </span>
+          <span class="">Home </span>
         </button>
         <button class="navigation-button" onClick={scrollToBuyAHome}>
           <span class=""> Buy </span>
