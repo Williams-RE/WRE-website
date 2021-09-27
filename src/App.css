@@ -12,7 +12,7 @@ body{
 
 :root {
   --primary-color: rgba(240, 234, 214);
-  --secondary-color: #664738;
+  --secondary-color:rgb(211, 122, 71);
   /* --secondary-color: #73584b; */
   --tertiary-color: #8f1402;
   --quarternary-color: #efeae6;
@@ -138,14 +138,15 @@ button {
 
 .navigation-button:hover {
     background-color: transparent;
-    /* color: var(--tertiary-color); */
-    color: var(--tertiary-color)
+    color: var(--secondary-color);
+    transform: scale(1.1);
+    
 
 }
 
 
 .navigation-button:active {
-  transform: scale(.90);
+  transform: scale(.98);
 
 }
 
