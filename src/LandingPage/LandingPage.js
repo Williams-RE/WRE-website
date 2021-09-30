@@ -4,7 +4,7 @@ import './LandingPage.css';
 function LandingPage() {
     return (
         <div class="landing-page-main">
-            <h1 class="landing-page-heading">Find Your Dream Home</h1>
+            <h1 class="landing-page-heading">Your Dream Home Awaits</h1>
         </div>
         
     );

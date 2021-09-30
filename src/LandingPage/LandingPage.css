@@ -3,45 +3,50 @@
     width: 100vw; 
     position: relative; 
     z-index: 0;
-    /* border: 1px solid pink; */
+    /* border: 1px solid pink;  */
+
 }
 
 
 
 .landing-page-heading {
+
     position: absolute;
+    block-size: fit-content;
+    display: table;             /* Fixed Firefox issue */ 
+    width: intrinsic;           /* Safari/WebKit uses a non-standard name */
+    width: -moz-max-content;    /* Firefox/Gecko */
+    width: -webkit-max-content; /* Chrome */
+    width: fit-content;
     top: 23%;
-    left: 51%;
+    left: 52.5%;
     transform: translate(-50%, -50%);
     font-size: 4.5vw;
     font-weight: 300;
+    font-style: italic;
     font-family: Roboto;
     color: var(--quarternary-color);
     /* text-align: center; */
-    animation: fadeIn linear 2.5s;
-    -webkit-animation: fadeIn linear 2.5s;
-    -moz-animation: fadeIn linear 2.5s;
-    -o-animation: fadeIn linear 2.5s;
-    -ms-animation: fadeIn linear 2.5s;
+    animation: fadeIn 2.5s ease;
+    -webkit-animation: fadeIn 2.5s ease;
+    -moz-animation: fadeIn 2.5s  ease;
+    -o-animation: fadeIn 2.5s  ease;
+    -ms-animation: fadeIn 2.5s  ease;
      
 }
 
 @keyframes fadeIn {
-    0% {opacity:0;}
-    100% {opacity:1;}
+    from { opacity: 0;}
 }
 
 @-moz-keyframes fadeIn {
-    0% {opacity:0;}
-    100% {opacity:1;}
+    from { opacity: 0;}
 }
 
 @-webkit-keyframes fadeIn {
-    0% {opacity:0;}
-    100% {opacity:1;}
+    from { opacity: 0;}
 }
 
 @-o-keyframes fadeIn {
-    0% {opacity:0;}
-    100% {opacity:1;}
+    from { opacity: 0;}
 }

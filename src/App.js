@@ -20,6 +20,7 @@ function App() {
   const aboutUsRef = useRef();
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalButtonAnimeClass, setModalButtonAnimeClass] = useState('');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [agent, setAgent] = useState('Jacob');
@@ -61,11 +62,16 @@ function App() {
     sendEmail(name, email, agent, comment);
   }
 
+  function modalOnClick()  {
+    setModalIsOpen(true);
+    setModalButtonAnimeClass("pause-animation");
+
+  }
 
   return (
     <div class="main">
 
-      <button class="modal-button" onClick = {() => setModalIsOpen(true)}> Contact Us  </button>
+      <button class={"modal-button " + modalButtonAnimeClass} onClick = {() => modalOnClick()}> Contact Us  </button>
       <Modal className = "modal" isOpen = {modalIsOpen} onRequestClose={() => setModalIsOpen(false)}  
         style={{
 
@@ -75,7 +81,8 @@ function App() {
             left: 0,
             right: 0,
             bottom: 0,
-            backgroundColor: 'rgba(0, 0, 0, 0.75)'
+            backgroundColor: 'rgba(0, 0, 0, 0.75)',
+            zIndex: 1
            
           },
           content: {
@@ -122,7 +129,7 @@ function App() {
         
         <div class='modal-element'>  
 
-          <label class="modal-label"> Select Agent: </label>
+          <label class="modal-label"> Agent: </label>
 
           <select class='select-agents' name ='selectAgents'  value={agent} onChange={e => setAgent(e.target.value)} >
 
@@ -143,9 +150,9 @@ function App() {
 
         <div class="modal-element">
         
-          <label class="modal-label" > Message: </label> 
+          <label class="modal-label" > Subject:</label> 
 
-          <textarea class="modal-textarea" rows ="4"  placeholder="Comments" value={comment} onInput={e => setComment(e.target.value)}>  </textarea>
+          <textarea class="modal-textarea" rows ="4"  placeholder="Write something.." value={comment} onInput={e => setComment(e.target.value)}>  </textarea>
 
           <button class="submit-button" onClick = { () => submitContactForm(name, email, agent, comment)}> Submit</button>
 
@@ -157,10 +164,10 @@ function App() {
       <nav class = "navigation">
         <button class="navigation-button" onClick={scrollToLandingPage}>
           {/* <img class="logo" src={ logo } alt="logo" /> */}
-          <span class="">WRE </span>
+          <span class="">Home </span>
         </button>
         <button class="navigation-button" onClick={scrollToBuyAHome}>
-          <span class=""> Buy</span>
+          <span class=""> Buy </span>
         </button> 
         <button class="navigation-button" onClick={scrollToSellAHome}>
           <span class=""> Sell </span>

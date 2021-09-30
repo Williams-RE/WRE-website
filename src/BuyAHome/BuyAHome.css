@@ -37,6 +37,7 @@
 .buy-a-home-button:hover {
     color: var(--quarternary-color);
     opacity: 1;
+    background-color: ;
 }
 
 
@@ -71,9 +72,4 @@
     to { opacity: 1; }
 }
 
-.test {
-    border: 3px solid black;
-    /* width: 50%; */
-    box-sizing: border-box;
-    display: inline;
-}
+

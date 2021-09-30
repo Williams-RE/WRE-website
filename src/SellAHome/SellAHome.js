@@ -36,28 +36,25 @@ function SellAHome() {
             <h1 class="sell-a-home-heading">Sell a Home</h1>
             <div class="sell-a-home-button-group">
                 <button class="sell-a-home-button" onClick={onBeforeYouStartClick}>Before You Start</button>
-                <button class="sell-a-home-button" onClick={onFindingTheDealClick}>Finding The Deal</button>
-                <button class="sell-a-home-button" onClick={onSealingTheDealClick}>Sealing The Deal</button>
+                <button class="sell-a-home-button" onClick={onFindingTheDealClick}>Getting the offer</button>
+                <button class="sell-a-home-button" onClick={onSealingTheDealClick}>Making The Deal</button>
             </div>
             <div className="sell-a-home-content" onAnimationEnd={() => setFadeInSellAHomeContent(0)} animation={fadeInSellAHomeContent}>
                 { showSellAHomeParagraphBefore ? 
                 <div>
                     <p class="sell-a-home-paragraph">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque arcu, ultrices sit amet ullamcorper a, luctus ut ante. Duis ullamcorper non elit at euismod. Duis posuere nec justo sit amet vestibulum. 
-                    Sed ex odio, molestie non faucibus vitae, consequat ut quam. Vestibulum porttitor metus a diam viverra, quis blandit tellus condimentum. In laoreet, justo id eleifend dictum, augue risus blandit orci, vel finibus ligula massa a sapien. 
-                    Aliquam ullamcorper facilisis malesuada. Nam ullamcorper fermentum ipsum sed dictum. Quisque tincidunt commodo orci vitae rhoncus. Suspendisse fermentum magna et tempus porta. Vivamus blandit mi enim, sit amet pretium sem varius in. 
-                    Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent id volutpat elit, in tristique mauris. Maecenas purus magna, ornare quis mauris ornare, aliquam sollicitudin tellus. Fusce sollicitudin aliquet commodo.
+                    Selling your home is a hard decision. The four walls have held years full of love and memories. But now you have decided to depart whether  downsize, but you don't know when is the right moment. This is a daunting task but no need to fear.
+                     Our agents at WRE our experts in the market and we will ensure you are informed. Now that you've made the decision to sell your house, your trusted agent will help you put your best foot forward when preparing to sell your home. Your agent can walk you through the appraisal, 
+                     give you tips on staging your home, and advise you on doing renovations or making any necessary repairs 
                     </p> 
                     <img src={beforeYouStart} alt="Before You Start" class="sell-a-home-image"/> 
                 </div>
                 : null }
 
-                { showSellAHomeParagraphFinding ? 
+                 { showSellAHomeParagraphFinding ? 
                 <div>
                     <p class="sell-a-home-paragraph">
-                    Sed neque arcu, ultrices sit amet ullamcorper a, luctus ut ante. Duis ullamcorper non elit at euismod. Duis posuere nec justo sit amet vestibulum. 
-                    Sed ex odio, molestie non faucibus vitae, consequat ut quam. Vestibulum porttitor metus a diam viverra, quis blandit tellus condimentum. In laoreet, justo id eleifend dictum, augue risus blandit orci, vel finibus ligula massa a sapien. 
-                    Aliquam ullamcorper facilisis malesuada. Nam ullamcorper fermentum ipsum sed dictum. Quisque tincidunt commodo orci vitae rhoncus. Suspendisse fermentum magna et tempus porta. Vivamus blandit mi enim, sit amet pretium sem varius in. 
+                    You have an offer. There are multiple steps you can take, accept, counteroffer, or reject. But do not fear. Our agents will do the hard work and weigh the options and advise you on the best course of action.
                     </p>
                     <img src={findingTheDeal} alt="Finding The Deal" class="sell-a-home-image"/>
                 </div>
@@ -65,12 +62,9 @@ function SellAHome() {
                 { showSellAHomeParagraphSealing ? 
                 <div>
                     <p class="sell-a-home-paragraph">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque arcu, ultrices sit amet ullamcorper a, luctus ut ante. Duis ullamcorper non elit at euismod. Duis posuere nec justo sit amet vestibulum. 
-                    Sed ex odio, molestie non faucibus vitae, consequat ut quam. Vestibulum porttitor metus a diam viverra, quis blandit tellus condimentum. In laoreet, justo id eleifend dictum, augue risus blandit orci, vel finibus ligula massa a sapien. 
-                    Quisque tincidunt commodo orci vitae rhoncus. Suspendisse fermentum magna et tempus porta. Vivamus blandit mi enim, sit amet pretium sem varius in. 
-                    Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent id volutpat elit, in tristique mauris. Maecenas purus magna, ornare quis mauris ornare, aliquam sollicitudin tellus. Fusce sollicitudin aliquet commodo.
+                    Congratulations! You have sold your home. The hard work and patience has paid off and you have entered  a new chapter of your life. 
                     </p>
-                    <img src={sealingTheDeal} alt="Sealing The Deal" class="sell-a-home-image" />
+                    <img src={sealingTheDeal} alt="Making The Deal" class="sell-a-home-image" />
                 </div>
                  : null }
             </div>

@@ -61,16 +61,37 @@ function BuyAHome() {
         <div class="buy-a-home-main">
             <h1 class="buy-a-home-heading">Buy a Home</h1>
             <div class="buy-a-home-button-group">
-                <button class="buy-a-home-button" onClick={onBeforeYouBuyClick}>Before You Buy</button>
-                <button class="buy-a-home-button" onClick={onFindingTheDealClick}>Finding The Deal</button>
-                <button class="buy-a-home-button" onClick={onSealingTheDealClick}>Sealing The Deal</button>
+                
+                <button class="buy-a-home-button" onClick={onBeforeYouBuyClick}>Before You Buy  
+                <div class="button__horizontal"></div>
+                <div class="button__vertical"></div>
+                </button>
+
+                <button class="buy-a-home-button" onClick={onFindingTheDealClick}>Finding The Deal
+                <div class="button__horizontal"></div>
+                <div class="button__vertical"></div>
+                </button>
+
+
+                <button class="buy-a-home-button" onClick={onSealingTheDealClick}>Sealing The Deal
+                <div class="button__horizontal"></div>
+                <div class="button__vertical"></div>
+                </button>
             </div>
+            
+
+
+
+
+
             <button class="listings-modal-button" onClick = {() => setListingsModalIsOpen(true)}> See Our Listings  </button>
             <div className="buy-a-home-content" onAnimationEnd={() => setFadeInBuyAHomeContent(0)} animation={fadeInBuyAHomeContent}>
                 { showBuyAHomeParagraphBefore ? 
 
                 <div>
-                    <StylizedParagraphs passage = "Buying a home is one of the most challenging and rewarding experiences in your life. To guarantee a smooth process, contact your bank to get a prapproval letter. If you have any questions feel free to reach out to one of our qualified agents.  WRE is always here to serve you." />
+                    <StylizedParagraphs passage = "Buying a home is one of the most challenging and rewarding experiences in your life.  
+                    To guarantee a smooth process, contact your bank to get a preapproval letter. 
+                    If you have any questions feel free to reach out to one of our qualified agents.  WRE is always here to serve you."/>
                         
                     <img src={beforeYouBuy} alt="Before You Buy" class="buy-a-home-image"/> 
                 </div>
@@ -86,10 +107,10 @@ function BuyAHome() {
                 : null }
                 { showBuyAHomeParagraphSealing ? 
                 <div>
-                    <p class="buy-a-home-paragraph">
-                    
-                    </p>
+                    <StylizedParagraphs passage = "You spotted the perfect home! Now the next step is to make the offer, and making an agreement with the seller. This is a grueling and tedious time but you do not have to worry.  Our trusted agents will guide you through the process so you will be able to lay back on your new porch and watch the sunset.     " />
                     <img src={sealingTheDeal} alt="Sealing The Deal" class="buy-a-home-image" />
+
+
                 </div>
                  : null }
             </div>
