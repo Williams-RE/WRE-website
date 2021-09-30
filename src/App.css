@@ -15,7 +15,7 @@ body{
   --primary-color: rgba(240, 234, 214);
   --secondary-color:rgb(211, 122, 71);
   /* --secondary-color: #73584b; */
-  --tertiary-color: #8f1402;
+  --tertiary-color: rgba(143,20,2,1);
   --quarternary-color: #efeae6;
   --quinary-color: #4e81d5;
 }
@@ -132,23 +132,37 @@ button {
   border: none;
   margin: 0 4% 0 2%;
   flex-basis: auto;
-  border-radius: 5%;
-
+  border-radius: 10%;
+  box-shadow: inset 0 0 0 0 rgba(211, 122, 71, .8);
+  transition: ease-out 0.4s;
 
 
 } 
 
 .navigation-button:hover {
-    background-color: transparent;
-    color: var(--secondary-color);
-    transform: scale(1.1);
+   /* background-color: transparent; */
+    /* color: var(--secondary-color);
+    transform: scale(1.1); */
+    box-shadow: inset 10vw 0 0 0 rgba(211, 122, 71, .8);
+    cursor: pointer;
+
+
+    
+  
     
 
 }
 
 
+
+
+
+
+
+
+
 .navigation-button:active {
-  transform: scale(.98);
+  transform: scale(.96);
 
 }
 
@@ -213,6 +227,10 @@ button {
   /* border: 5px solid var(--secondary-color); */
   border: none;
   font-size: 1.3vw;
+
+  /* -webkit-font-weight: 50;
+  -moz-font-weight: thin; */
+
   font-weight: 100;
   line-height: 1.6;
   z-index: 1;
@@ -278,7 +296,7 @@ button {
 .modal-button:hover {
     opacity: 1;
     box-shadow: 0px 15px 25px -5px rgba(darken((0,0,0,0.24),40%));
-    transform: scale(1.07);
+    transform: scale(1.05);
     animation-play-state: paused;
 
     
@@ -287,8 +305,7 @@ button {
 .modal-button:active {
   opacity: 1;
   box-shadow: 0px 4px 8px  rgba(darken((0,0,0,0.24), 30%));
-  transform: scale(.95);
-  animation-play-state:revert;
+  transform: scale(.97);
 }
 
 .pause-animation {
