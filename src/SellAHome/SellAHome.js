@@ -43,7 +43,7 @@ function SellAHome() {
                 { showSellAHomeParagraphBefore ? 
                 <div>
                     <p class="sell-a-home-paragraph">
-                    Selling your home is a hard decision. Years of memories of  have been etched in the tiles on    You have had years of experience  want to move or downsize, but you don't know when is the right moment. This is a daunting task but no need to fear.
+                    Selling your home is a hard decision. The four walls have held years full of love and memories. But now you have decided to depart whether  downsize, but you don't know when is the right moment. This is a daunting task but no need to fear.
                      Our agents at WRE our experts in the market and we will ensure you are informed. Now that you've made the decision to sell your house, your trusted agent will help you put your best foot forward when preparing to sell your home. Your agent can walk you through the appraisal, 
                      give you tips on staging your home, and advise you on doing renovations or making any necessary repairs 
                     </p> 
@@ -54,7 +54,7 @@ function SellAHome() {
                  { showSellAHomeParagraphFinding ? 
                 <div>
                     <p class="sell-a-home-paragraph">
-                    You have an offer. There are multiple steps you can take, accept, counteroffer, or reject. But no need to fear as Our agents will weigh the multiple options and advice you on the best course of action.
+                    You have an offer. There are multiple steps you can take, accept, counteroffer, or reject. But do not fear. Our agents will do the hard work and weigh the options and advise you on the best course of action.
                     </p>
                     <img src={findingTheDeal} alt="Finding The Deal" class="sell-a-home-image"/>
                 </div>

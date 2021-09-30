@@ -20,6 +20,7 @@ function App() {
   const aboutUsRef = useRef();
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalButtonAnimeClass, setModalButtonAnimeClass] = useState('');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [agent, setAgent] = useState('Jacob');
@@ -61,11 +62,16 @@ function App() {
     sendEmail(name, email, agent, comment);
   }
 
+  function modalOnClick()  {
+    setModalIsOpen(true);
+    setModalButtonAnimeClass("pause-animation");
+
+  }
 
   return (
     <div class="main">
 
-      <button class="modal-button" onClick = {() => setModalIsOpen(true)}> Contact Us  </button>
+      <button class={"modal-button " + modalButtonAnimeClass} onClick = {() => modalOnClick()}> Contact Us  </button>
       <Modal className = "modal" isOpen = {modalIsOpen} onRequestClose={() => setModalIsOpen(false)}  
         style={{
 

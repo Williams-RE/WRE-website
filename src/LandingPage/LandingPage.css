@@ -10,10 +10,16 @@
 
 
 .landing-page-heading {
+
     position: absolute;
+    block-size: fit-content;
+    display: table;             /* Fixed Firefox issue */ 
+    width: intrinsic;           /* Safari/WebKit uses a non-standard name */
+    width: -moz-max-content;    /* Firefox/Gecko */
+    width: -webkit-max-content; /* Chrome */
     width: fit-content;
     top: 23%;
-    left: 52%;
+    left: 51%;
     transform: translate(-50%, -50%);
     font-size: 4.5vw;
     font-weight: 300;
@@ -21,11 +27,11 @@
     font-family: Roboto;
     color: var(--quarternary-color);
     /* text-align: center; */
-    animation: fadeIn 1.5s ease;
-    -webkit-animation: fadeIn 1.5s ease;
-    -moz-animation: fadeIn 1.5s  ease;
-    -o-animation: fadeIn 1.5s  ease;
-    -ms-animation: fadeIn 1.5s  ease;
+    animation: fadeIn 2.5s ease;
+    -webkit-animation: fadeIn 2.5s ease;
+    -moz-animation: fadeIn 2.5s  ease;
+    -o-animation: fadeIn 2.5s  ease;
+    -ms-animation: fadeIn 2.5s  ease;
      
 }
 
