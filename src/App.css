@@ -220,11 +220,8 @@ button {
   padding: 1rem;
   margin: 0.9rem 1rem;
   width: 10vw;
-  /* background: transparent; */
   color: var(--quarternary-color);
-  /* text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; */
   background-color: var(--quinary-color);
-  /* border: 5px solid var(--secondary-color); */
   border: none;
   font-size: 1.3vw;
 
@@ -238,7 +235,7 @@ button {
   transition: 0.3s;
 
   animation-name: scaleIn;
-  animation-duration: 15.4s;
+  animation-duration: 19s;
   animation-iteration-count: infinite;
   animation-delay: 2.5s;
 
@@ -247,24 +244,38 @@ button {
 } 
 
 @keyframes scaleIn {
-  5.85%{ 
-    transform: scale(1.125);
+  4.7%{ 
+    transform: scale(1.20);
   }
-  11.7% { 
+  9.5% { 
     transform: scale(1);
   }
 
-  17.55%{ 
-    transform: scale(1.125);
+  14.2%{ 
+    transform: scale(1.20);
   }
-  23.4% { 
+  18.9% { 
     transform: scale(1);
   }
 
-  29.25%{ 
-    transform: scale(1.125);
+  23.57%{ 
+    transform: scale(1.20);
   }
-  35.1% { 
+  28.2% { 
+    transform: scale(1);
+  }
+
+  32.97%{ 
+    transform: scale(1.20);
+  }
+  37.67% { 
+    transform: scale(1);
+  }
+
+  42.37%{ 
+    transform: scale(1.20);
+  }
+  47% { 
     transform: scale(1);
   }
 
