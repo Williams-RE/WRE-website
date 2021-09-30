@@ -5,7 +5,7 @@ import beforeYouBuyImg from '../../images/buy-a-home/before-you-buy.jpg';
 function Listing({imagePath, address, price, propertyInfo, listingAgent}) {
     return (
         <div class="listing">
-            <img src={beforeYouBuyImg} class="listing-image" alt="Listing"/>
+            <img src={imagePath} class="listing-image" alt="Listing"/>
             <h3>{price}</h3>
             <p>{address}</p>
             <p>{propertyInfo}</p>

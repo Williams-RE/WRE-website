@@ -10,14 +10,11 @@ function ListingsLayout({listings}) {
     return (
         <div class="listings-layout">
             {listingsArray.map(listing => {
-                return (<Listing imagePath="" address={listing['Address']} price={listing['Price']}
+                return (<Listing imagePath={'http://localhost:3001/listingImages/' + listing['Matrix_Unique_ID'] + '.jpg'} address={listing['Address']} price={listing['Price']}
                     propertyInfo = {listing['PropertyInfo']} listingAgent={listing['ListAgentFullName']}/>);
             })}
-            {/* <Listing imagePath="" address={listingsArray[0]['Address']} price={listingsArray[0]['Price']} 
-                propertyInfo={listingsArray[0]['PropertyInfo']} listingAgent={listingsArray[0]['ListAgentFillName']} />
-            <Listing imagePath="" address={listingsArray[0]['Address']} price={listingsArray[0]['Price']} 
-                propertyInfo={listingsArray[0]['PropertyInfo']} listingAgent={listingsArray[0]['ListAgentFillName']} /> */}
-            {/* <p>Test</p> */}
+            {/* <Listing imagePath={'http://localhost:3001/listingImages/48542171.jpg'} address={listingsArray[0]['Address']} price={listingsArray[0]['Price']}
+                    propertyInfo = {listingsArray[0]['PropertyInfo']} listingAgent={listingsArray[0]['ListAgentFullName']}/> */}
         </div>
     )
 }

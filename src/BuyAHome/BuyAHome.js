@@ -52,6 +52,7 @@ function BuyAHome() {
                     'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With'}
         })
         setListings(response.data)
+        // console.log(response.data)
     }
 
     
@@ -69,9 +70,7 @@ function BuyAHome() {
                 { showBuyAHomeParagraphBefore ? 
 
                 <div>
-                    <StylizedParagraphs passage = "Buying a home is one of the most challenging and rewarding experiences in your life.  
-                    To guarantee a smooth process, contact your bank to get a prapproval letter. 
-                    If you have any questions feel free to reach out to one of our qualified agents.  WRE is always here to serve you." />
+                    <StylizedParagraphs passage = "Buying a home is one of the most challenging and rewarding experiences in your life. To guarantee a smooth process, contact your bank to get a prapproval letter. If you have any questions feel free to reach out to one of our qualified agents.  WRE is always here to serve you." />
                         
                     <img src={beforeYouBuy} alt="Before You Buy" class="buy-a-home-image"/> 
                 </div>
