@@ -4,6 +4,16 @@
     max-width: 100%;
 }
 
+.about-us-text {
+    position: relative;
+    right: 30%;
+    border: solid black 10px;
+    font: 5vw light;
+    color: var(--secondary-color);
+    /* padding: 10vw;
+    margin: 10 10 10 10; */
+}
+]
 .carousel {
     margin-top: 17vh;
     margin-left: 15vw;

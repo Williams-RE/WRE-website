@@ -15,28 +15,24 @@
 
 
 .sell-a-home-button {
-
-
-    display: inline-block;
+    white-space: nowrap;
     border-radius: 5px;
-    padding: 1rem;
-    margin: 0.9rem 1rem;
-    width: 35rem;
-    height: 30rem;
-    /* background: transparent; */
+    padding: 2vw 2vh;
+    width: fit-content;
+    margin-top: 5vh;
+    margin-bottom: 8vh;
     color: var(--secondary-color);
     background-color: transparent;
-    border: none;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 60px;
     font-weight: 200;
     line-height: 1.6;
-    opacity: .6;
-    transition: 0.7s;
+    opacity: .8;
+    transition: 0.9s;
 }
 
 .sell-a-home-button:hover {
-    color: var(--quarternary-color);
+    color: var(--tertiary-color);
     opacity: 1;
 }
 .sell-a-home-content {
@@ -58,9 +54,10 @@
 
 .sell-a-home-image {
     position: absolute;
-    width: 600px;
+    top: 0%;
+    width: 31vw;
     height: auto;
-    right: 5vw;
+    right: 16vw;
     bottom: 0;
 }
 

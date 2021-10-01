@@ -4,13 +4,11 @@
     position: relative; 
     z-index: 0;
     /* border: 1px solid pink;  */
-
 }
 
 
 
 .landing-page-heading {
-
     position: absolute;
     block-size: fit-content;
     display: table;             /* Fixed Firefox issue */ 
