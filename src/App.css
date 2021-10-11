@@ -196,9 +196,12 @@ button {
   top: 80vh;
   left: 85vw;
   display: inline-block;
+  white-space: nowrap;
+  width: fit-content;
   border-radius: 5px;
   padding: 1rem;
   margin: 0.9rem 1rem;
+  align-items: center;
   width: 10vw;
   color: var(--quarternary-color);
   background-color: var(--quinary-color);
@@ -207,10 +210,12 @@ button {
   font-weight: 100;
   line-height: 1.6;
   z-index: 1;
-  opacity: .9;
+  opacity: .85;
   transition: 0.3s;
   animation: scaleIn 19s infinite;
   animation-delay: 2.5s;
+
+  
 
 
      
@@ -339,7 +344,7 @@ button {
     opacity: 1;
     box-shadow: 0px 15px 25px -5px rgba(darken((0,0,0,0.24),40%));
     transform: scale(1.05);
-    animation-play-state: paused;
+    /* animation-play-state: paused; */
 
     
 }

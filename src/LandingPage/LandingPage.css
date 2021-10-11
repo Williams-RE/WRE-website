@@ -25,7 +25,8 @@
     font-family: Roboto;
     color: var(--quarternary-color);
     /* text-align: center; */
-    animation: fadeIn 2.5s ease;
+    /* animation: fadeIn 2.5s ease; */
+    animation: 3s ease-in 1s infinite reverse both running slidein;
     -webkit-animation: fadeIn 2.5s ease;
     -moz-animation: fadeIn 2.5s  ease;
     -o-animation: fadeIn 2.5s  ease;
