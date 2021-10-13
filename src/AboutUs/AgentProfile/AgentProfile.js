@@ -8,54 +8,25 @@ Modal.setAppElement('#root');
  function AgentProfile(props) {
      return (
         <div class="agent-profile-container">
-            <Modal className = "modal" isOpen = {props.agentProfileModalIsOpen} onRequestClose={() => props.setAgentProfileModalIsOpen(false)}  
-                style={{
-
-                overlay: {
-                    position: 'fixed',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    backgroundColor: 'rgba(0, 0, 0, 0.75)'
-                },
-                content: {
-                    position: 'absolute',
-                    top: '20%',
-                    left: '35%',
-                    right: '35%',
-                    bottom: '20%',
-                    border: '1px solid #ccc',
-                    background: 'white',
-                    overflow: 'auto',
-                    WebkitOverflowScrolling: 'touch',
-                    borderRadius: '4px',
-                    outline: 'none',
-                    padding: '20px',
-                    radius: '1px'
-                }
-                }}
-            > 
                 <div class="agent-profile-heading">
-                    <h2>{props.agentProfileName}</h2>
-                    <h3>{props.agentProfileTitle}</h3>
+                    <h1 class="agent-profile-name">{props.agentProfileName}</h1>
+                    <h2>{props.agentProfileTitle}</h2>
                 </div>
                 <div class="agent-profile-content">
-                    <img src={props.agentProfileImagePath} alt={props.agentProfileName}/>
-                    <p>
+                    <img class="agent-profile-image" src={props.agentProfileImagePath} alt={props.agentProfileName}/>
+                    <h4>
                         {props.agentProfileBio}
-                    </p>
-                    <p>
-                        {props.agentProfileOfficeNumber}
-                    </p>
-                    <p>
-                        {props.agentProfileCellNumber}
-                    </p>
-                    <p>
-                        {props.agentProfileEmail}
-                    </p>
+                    </h4>
+                    <h4>
+                        Office Number: {props.agentProfileOfficeNumber}
+                    </h4>
+                    <h4>
+                        Cell Number: {props.agentProfileCellNumber}
+                    </h4>
+                    <h4>
+                        Email: {props.agentProfileEmail}
+                    </h4>
                 </div>
-            </Modal>
         </div>
      );
  }

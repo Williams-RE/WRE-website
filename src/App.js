@@ -1,5 +1,6 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import './App.css';
+import config from './config.json';
 import logo from './images/wre-logo-new.png';
 // import niceHouse from './images/background.jpeg';
 import LandingPage from './LandingPage/LandingPage';
@@ -19,6 +20,7 @@ function App() {
   const sellAHomeRef = useRef();
   const aboutUsRef = useRef();
 
+  const [agents, setAgents] = useState({})
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalButtonAnimeClass, setModalButtonAnimeClass] = useState('');
   const [name, setName] = useState('');
@@ -42,9 +44,26 @@ function App() {
     aboutUsRef.current.scrollIntoView({ behavior: 'smooth'});
   }
 
+  useEffect(() => {
+    getAgents()
+    // Turn agents into array maybe
+  }, [])
+
+  async function getAgents() {
+    const response = await axios.get(config.SERVER_URL + 'get-agents', 
+    {
+        headers: { 'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin' : '*',
+                'Access-Control-Allow-Methods': 'DELETE, POST, GET, OPTIONS',
+                'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With'}
+    })
+    setAgents(response.data)
+    // Should I create agents array?
+}
+
   async function sendEmail(name, email, agent, comment) {
     const response = await axios.post(
-      'http://localhost:3001/send-email',
+      config.SERVER_URL + 'send-email',
       { 
         "name": name, "email": email, "agent": agent, "comment": comment,
         headers: { 'Content-Type': 'application/json',
@@ -199,7 +218,7 @@ function App() {
           <SellAHome />
         </div>
         <div class="page" ref={aboutUsRef}>
-          <AboutUs />
+          <AboutUs agents={agents} />
         </div>
       </div>
     </div>

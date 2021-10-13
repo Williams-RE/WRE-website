@@ -1,0 +1,35 @@
+.agent-profile-container {
+    overflow-wrap: break-word;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.agent-profile-container > *, .agent-profile-container > * > * {
+    margin-top: 5%;
+    font-weight: normal;
+}
+
+.agent-profile-heading {
+    text-align: center;
+}
+
+.agent-profile-name {
+    color: black;
+}
+
+.agent-profile-image {
+    margin: auto;
+    display: block;
+    height: 30%;
+    width: 30%;
+}
+
+.agent-profile-content {
+    white-space: normal;
+    overflow-wrap: break-word;
+    width: 100%;
+    box-sizing: border-box;
+    /* text-align: left; */
+    padding-left: 5%;
+    padding-right: 5%;
+}

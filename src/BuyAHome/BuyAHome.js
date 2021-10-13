@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Modal from 'react-modal';
 import './BuyAHome.css';
+import config from '../config.json';
 import ListingsLayout from './Listings/ListingsLayout.js';
 import beforeYouBuy from '../images/buy-a-home/before-you-buy.jpg';
 import findingTheDeal from '../images/buy-a-home/finding-the-deal.jpg';
@@ -44,7 +45,7 @@ function BuyAHome() {
     }
 
     async function getListings() {
-        const response = await axios.get('http://localhost:3001/get-listings', 
+        const response = await axios.get(config.SERVER_URL + 'get-listings', 
         {
             headers: { 'Content-Type': 'application/json',
                     'Access-Control-Allow-Origin' : '*',
@@ -52,6 +53,7 @@ function BuyAHome() {
                     'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With'}
         })
         setListings(response.data)
+        // console.log(response.data)
     }
 
     

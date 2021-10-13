@@ -1,12 +1,19 @@
 .listing {
     width: 48%;
+    height: 47%;
     border: 1px solid black;
     box-sizing: border-box;
     display: inline-block;
     margin: 1%;
 }
 
+.listing-image-container {
+    /* Adjust the size of the container */
+    height: 70%;
+    width: auto;
+}
+
 .listing-image {
-    height: auto;
-    width: 50%;
+    height: 100%;
+    width: auto;
 }

@@ -4,7 +4,7 @@ import './ContactForm.css';
 
 function ContactForm(props) {
     return (
-      <form action="http://localhost:3001/send-email" method="POST">
+      <form action="config.SERVER_URLsend-email" method="POST">
           <label for="name">Name:</label>
           <input type="text" name="name" placeholder="Enter your name" required />
           <label for="email">Email:</label>

@@ -1,29 +1,54 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './AboutUs.css';
+import config from '../config.json';
 import AgentProfile from './AgentProfile/AgentProfile';
+import Modal from 'react-modal';
+import axios from 'axios';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import rightCarouselArrow from '../images/right-carousel-arrow.png';
 import leftCarouselArrow from '../images/left-carousel-arrow.png';
-import Jacob from '../images/agents/Jacob.jpg';
-import Pam from '../images/agents/Pam.jpg';
-import Mathews from '../images/agents/Mathews.jfif';
-import Binu from '../images/agents/Binu.gif';
-import Hilda from '../images/agents/Hilda.gif';
-import Shazzat from '../images/agents/Shazzat.gif';
-import Karen from '../images/agents/Karen.png';
-import Kerri from '../images/agents/Kerri.gif';
-import Rashed from '../images/agents/Rashed.jpg';
+// import Jacob from '../images/agents/Jacob.jpg';
+// import Pam from '../images/agents/Pam.jpg';
+// import Mathews from '../images/agents/Mathews.jfif';
+// import Binu from '../images/agents/Binu.gif';
+// import Hilda from '../images/agents/Hilda.gif';
+// import Shazzat from '../images/agents/Shazzat.gif';
+// import Karen from '../images/agents/Karen.png';
+// import Kerri from '../images/agents/Kerri.gif';
+// import Rashed from '../images/agents/Rashed.jpg';
 
-function AboutUs() {
-    const [agentProfileModalIsOpen, setAgentProfileModalIsOpen] = useState(false);
-    const [agentProfileName, setAgentProfileName] = useState('Jacob');
-    const [agentProfileTitle, setAgentProfileTitle] = useState('Broker');
-    const [agentProfileImagePath, setAgentProfileImagePath] = useState('');
-    const [agentProfileOfficeNumber, setAgentProfileOfficeNumber] = useState('');
-    const [agentProfileCellNumber, setAgentProfileCellNumber] = useState('');
-    const [agentProfileEmail, setAgentProfileEmail] = useState('');
+function AboutUs({agents}) {
+    // const [agents, setAgents] = useState({})
+    const [agentProfileModalIsOpen, setAgentProfileModalIsOpen] = useState(false)
+    const [agentProfileName, setAgentProfileName] = useState('')
+    const [agentProfileTitle, setAgentProfileTitle] = useState('')
+    const [agentProfileImagePath, setAgentProfileImagePath] = useState('')
+    const [agentProfileOfficeNumber, setAgentProfileOfficeNumber] = useState('')
+    const [agentProfileCellNumber, setAgentProfileCellNumber] = useState('')
+    const [agentProfileEmail, setAgentProfileEmail] = useState('')
+    const [agentProfileBio, setAgentProfileBio] = useState('')
 
+    const agentsArray = []
+    Object.keys(agents).forEach(agent => {
+      agentsArray.push(agents[agent])
+    })
+  //   useEffect(() => {
+  //     getAgents()
+  //     // Turn agents into array maybe
+  //   }, [])
+
+  //   async function getAgents() {
+  //     const response = await axios.get(config.SERVER_URL + 'get-agents', 
+  //     {
+  //         headers: { 'Content-Type': 'application/json',
+  //                 'Access-Control-Allow-Origin' : '*',
+  //                 'Access-Control-Allow-Methods': 'DELETE, POST, GET, OPTIONS',
+  //                 'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With'}
+  //     })
+  //     setAgents(response.data)
+  //     // Should I create agents array?
+  // }
 
     const responsive = {
         superLargeDesktop: {
@@ -45,34 +70,72 @@ function AboutUs() {
         }
       };
 
-      function openAgentProfileModal() {
+      function openAgentProfileModal(agentName) {
           // Set all the agent profile states
-          // Where should the agent profile data be stored for reference?
-          
+          setAgentProfileName(agents[agentName]['Name'])
+          setAgentProfileTitle(agents[agentName]['Title'])
+          setAgentProfileImagePath(config.SERVER_URL + 'agents/images/' + agents[agentName]['Image'])
+          setAgentProfileOfficeNumber(agents[agentName]['OfficeNumber'])
+          setAgentProfileCellNumber(agents[agentName]['CellNumber'])
+          setAgentProfileEmail(agents[agentName]['Email'])
+          setAgentProfileBio(agents[agentName]['Bio'])
+          setAgentProfileModalIsOpen(true)
       }
 
     return (
         <div class="about-us-main">
-            <AgentProfile agentProfileModalIsOpen={agentProfileModalIsOpen} setAgentProfileModalIsOpen={setAgentProfileModalIsOpen}
-              agentProfileName={agentProfileName} agentProfileTitle={agentProfileTitle}
-              agentProfileImagePath={agentProfileImagePath} agentProfileOfficeNumber={agentProfileOfficeNumber}
-              agentProfileCellNumber={agentProfileCellNumber} agentProfileEmail={agentProfileEmail}
-              />
             <h1 class= 'about-us-text'> About us</h1>
             <p>
             Williams Real Estate was founded on principles of 
             </p>
             <Carousel responsive={responsive} slidesToSlide={5} containerClass="carousel" itemClass="carousel-agent" arrows={false} customButtonGroup={<CustomButtonGroupAsArrows />} renderButtonGroupOutside={true}>
-                    <img class="agent-image" alt="Jacob" src={Jacob} onClick={() => openAgentProfileModal()}/>
-                    <img class="agent-image" alt="Pam" src={Pam}/>
-                    <img class="agent-image" alt="Mathews" src={Mathews}/>
-                    <img class="agent-image" alt="Binu" src={Binu}/>
-                    <img class="agent-image" alt="Hilda" src={Hilda}/>
-                    <img class="agent-image" alt="Shazzat" src={Shazzat}/>
-                    <img class="agent-image" alt="Karen" src={Karen}/>
-                    <img class="agent-image" alt="Kerri" src={Kerri}/>
-                    <img class="agent-image" alt="Rashed" src={Rashed}/>
+              {agentsArray.map(agent => {
+                return <img class="agent-image" alt="Agent" src={config.SERVER_URL + 'agents/images/' + agent['Image']} onClick={() => openAgentProfileModal(agent['Name'])}/>
+              })}
             </Carousel>
+            <Modal className = "modal" isOpen = {agentProfileModalIsOpen} onRequestClose={() => setAgentProfileModalIsOpen(false)}
+                style={{
+                    overlay: {
+                        position: 'fixed',
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        backgroundColor: 'rgba(0, 0, 0, 0.75)',
+                        zIndex: 1
+                    },
+                    content: {
+                        position: 'absolute',
+                        top: '50%',
+                        left: '50%',
+                        right: '0',
+                        bottom: '0',
+                        transform: 'translate(-50%, -50%)',
+                        width: '40%',
+                        height: '80%',
+                        minWidth: '500px',
+                        minHeight: '600px',
+                        backgroundPosition: 'center',
+                        border: '1px solid #ccc',
+                        background: 'rgba(240, 234, 214)',
+                        overflowX: 'auto',
+                        overflowY: 'auto',
+                        WebkitOverflowScrolling: 'touch',
+                        borderRadius: '4px',
+                        outline: 'none',
+                        // padding: '1.5071590052750565vh',
+                        radius: '1px',
+                        zIndex: 1
+                    }
+                }}
+              >
+              <AgentProfile agentProfileModalIsOpen={agentProfileModalIsOpen} setAgentProfileModalIsOpen={setAgentProfileModalIsOpen}
+                agentProfileName={agentProfileName} agentProfileTitle={agentProfileTitle}
+                agentProfileImagePath={agentProfileImagePath} agentProfileOfficeNumber={agentProfileOfficeNumber}
+                agentProfileCellNumber={agentProfileCellNumber} agentProfileEmail={agentProfileEmail}
+                agentProfileBio={agentProfileBio}
+                />
+            </Modal>
         </div>
     );
 }
@@ -80,8 +143,8 @@ function AboutUs() {
 const CustomButtonGroupAsArrows = ({ next, previous }) => {
     return (
       <div class="button-group">
-        <img src={leftCarouselArrow} alt="Left Carousel Arrow" class="left-carousel-arrow" onClick={previous}/>
-        <img src={rightCarouselArrow} alt="Right Carousel Arrow" class="right-carousel-arrow" onClick={next}/>
+        <img src={leftCarouselArrow} alt="Left Carousel Arrow" class="carousel-arrow left-carousel-arrow" onClick={previous}/>
+        <img src={rightCarouselArrow} alt="Right Carousel Arrow" class="carousel-arrow right-carousel-arrow" onClick={next}/>
       </div>
     );
   };
