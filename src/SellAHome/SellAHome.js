@@ -35,9 +35,24 @@ function SellAHome() {
         <div class="sell-a-home-main">
             <h1 class="sell-a-home-heading">Sell a Home</h1>
             <div class="sell-a-home-button-group">
-                <button class="sell-a-home-button" onClick={onBeforeYouStartClick}>Before You Start</button>
-                <button class="sell-a-home-button" onClick={onFindingTheDealClick}>Getting the offer</button>
-                <button class="sell-a-home-button" onClick={onSealingTheDealClick}>Making The Deal</button>
+                <button class="button" onClick={onBeforeYouStartClick}>Before You Start
+                <div class="button__horizontal"></div>
+                <div class="button__vertical"></div>
+                </button>
+
+              
+                <button class="button" onClick={onFindingTheDealClick}>Getting the offer
+                <div class="button__horizontal"></div>
+                <div class="button__vertical"></div>
+                </button>
+
+
+                <button class="button" onClick={onSealingTheDealClick}>Making The Deal
+                <div class="button__horizontal"></div>
+                <div class="button__vertical"></div>
+                </button>
+
+
             </div>
             <div className="sell-a-home-content" onAnimationEnd={() => setFadeInSellAHomeContent(0)} animation={fadeInSellAHomeContent}>
                 { showSellAHomeParagraphBefore ? 

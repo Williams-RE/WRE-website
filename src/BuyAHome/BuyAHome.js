@@ -61,18 +61,18 @@ function BuyAHome() {
             <h1 class="buy-a-home-heading">Buy a Home</h1>
             <div class="buy-a-home-button-group">
                 
-                <button class="buy-a-home-button" onClick={onBeforeYouBuyClick}>Before You Buy  
+                <button class="button" onClick={onBeforeYouBuyClick}>Before You Buy  
                 <div class="button__horizontal"></div>
                 <div class="button__vertical"></div>
                 </button>
 
-                <button class="buy-a-home-button" onClick={onFindingTheDealClick}>Finding The Deal
+                <button class="button" onClick={onFindingTheDealClick}>Finding The Deal
                 <div class="button__horizontal"></div>
                 <div class="button__vertical"></div>
                 </button>
 
 
-                <button class="buy-a-home-button" onClick={onSealingTheDealClick}>Sealing The Deal
+                <button class="button" onClick={onSealingTheDealClick}>Sealing The Deal
                 <div class="button__horizontal"></div>
                 <div class="button__vertical"></div>
                 </button>
