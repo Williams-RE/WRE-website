@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './AboutUs.css';
+import config from '../config.json';
 import AgentProfile from './AgentProfile/AgentProfile';
 import Modal from 'react-modal';
 import axios from 'axios';
@@ -17,9 +18,8 @@ import leftCarouselArrow from '../images/left-carousel-arrow.png';
 // import Kerri from '../images/agents/Kerri.gif';
 // import Rashed from '../images/agents/Rashed.jpg';
 
-function AboutUs() {
-    const [agents, setAgents] = useState({})
-    const [agentsLoading, setAgentsLoading] = useState(false)
+function AboutUs({agents}) {
+    // const [agents, setAgents] = useState({})
     const [agentProfileModalIsOpen, setAgentProfileModalIsOpen] = useState(false)
     const [agentProfileName, setAgentProfileName] = useState('')
     const [agentProfileTitle, setAgentProfileTitle] = useState('')
@@ -29,24 +29,26 @@ function AboutUs() {
     const [agentProfileEmail, setAgentProfileEmail] = useState('')
     const [agentProfileBio, setAgentProfileBio] = useState('')
 
-    useEffect(() => {
-      getAgents()
-      // Turn agents into array maybe
-    }, [])
+    const agentsArray = []
+    Object.keys(agents).forEach(agent => {
+      agentsArray.push(agents[agent])
+    })
+  //   useEffect(() => {
+  //     getAgents()
+  //     // Turn agents into array maybe
+  //   }, [])
 
-    async function getAgents() {
-      setAgentsLoading(true)
-      const response = await axios.get('http://localhost:3001/get-agents', 
-      {
-          headers: { 'Content-Type': 'application/json',
-                  'Access-Control-Allow-Origin' : '*',
-                  'Access-Control-Allow-Methods': 'DELETE, POST, GET, OPTIONS',
-                  'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With'}
-      })
-      setAgents(response.data)
-      setAgentsLoading(false)
-      // Should I create agents array?
-  }
+  //   async function getAgents() {
+  //     const response = await axios.get(config.SERVER_URL + 'get-agents', 
+  //     {
+  //         headers: { 'Content-Type': 'application/json',
+  //                 'Access-Control-Allow-Origin' : '*',
+  //                 'Access-Control-Allow-Methods': 'DELETE, POST, GET, OPTIONS',
+  //                 'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With'}
+  //     })
+  //     setAgents(response.data)
+  //     // Should I create agents array?
+  // }
 
     const responsive = {
         superLargeDesktop: {
@@ -72,7 +74,7 @@ function AboutUs() {
           // Set all the agent profile states
           setAgentProfileName(agents[agentName]['Name'])
           setAgentProfileTitle(agents[agentName]['Title'])
-          setAgentProfileImagePath('http://localhost:3001/agents/images/' + agents[agentName]['Image'])
+          setAgentProfileImagePath(config.SERVER_URL + 'agents/images/' + agents[agentName]['Image'])
           setAgentProfileOfficeNumber(agents[agentName]['OfficeNumber'])
           setAgentProfileCellNumber(agents[agentName]['CellNumber'])
           setAgentProfileEmail(agents[agentName]['Email'])
@@ -89,29 +91,10 @@ function AboutUs() {
             Aliquam ullamcorper facilisis malesuada. Nam ullamcorper fermentum ipsum sed dictum. Quisque tincidunt commodo orci vitae rhoncus. Suspendisse fermentum magna et tempus porta. Vivamus blandit mi enim, sit amet pretium sem varius in. 
             Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent id volutpat elit, in tristique mauris. Maecenas purus magna, ornare quis mauris ornare, aliquam sollicitudin tellus. Fusce sollicitudin aliquet commodo.
             </p>
-            {/* <p>
-              {agents['Jacob Williams']['Name']}
-            </p> */}
-            {/* {
-              agentsLoading ? 
-              <p>Loading</p>
-              : <img class="agent-image" alt={agents['Jacob Williams']['Name']} src={'http://localhost:3001/agents/images/Jacob.jpg'} onClick={() => openAgentProfileModal(agents['Jacob Williams']['Name'])}/>
-            } */}
-            
             <Carousel responsive={responsive} slidesToSlide={5} containerClass="carousel" itemClass="carousel-agent" arrows={false} customButtonGroup={<CustomButtonGroupAsArrows />} renderButtonGroupOutside={true}>
-              {/* {Object.keys(agents).forEach(agent => {
-                return <img class="agent-image" alt="Agent" src={'http://localhost:3001/agents/images/' + agents[agent]['Image']} onClick={() => openAgentProfileModal(agents[agent]['Name'])}/>
-              })} */}
-              {/* <img class="agent-image" alt={agents['Jacob Williams']['Name']} src={'http://localhost:3001/agents/images/Jacob.jpg'} onClick={() => openAgentProfileModal(agents['Jacob Williams']['Name'])}/> */}
-                    <img class="agent-image" alt="Jacob" src={'http://localhost:3001/agents/images/Jacob.jpg'} onClick={() => openAgentProfileModal("Jacob Williams")}/>
-                    <img class="agent-image" alt="Pam" src={'http://localhost:3001/agents/images/Pam.jpg'} onClick={() => openAgentProfileModal("Pam Buzzeo")}/>
-                    <img class="agent-image" alt="Mathews" src={'http://localhost:3001/agents/images/Mathews.jfif'} onClick={() => openAgentProfileModal("Mathews Thomas")}/>
-                    <img class="agent-image" alt="Binu" src={'http://localhost:3001/agents/images/Binu.gif'} onClick={() => openAgentProfileModal("Binu Jacob")}/>
-                    <img class="agent-image" alt="Hilda" src={'http://localhost:3001/agents/images/Hilda.gif'} onClick={() => openAgentProfileModal("Hilda Christi")}/>
-                    <img class="agent-image" alt="Shazzat" src={'http://localhost:3001/agents/images/Shazzat.gif'} onClick={() => openAgentProfileModal("Shazzat Tanvir")}/>
-                    <img class="agent-image" alt="Karen" src={'http://localhost:3001/agents/images/Karen.png'} onClick={() => openAgentProfileModal("Karen Bruno-Roos")}/>
-                    <img class="agent-image" alt="Kerri" src={'http://localhost:3001/agents/images/Kerri.gif'} onClick={() => openAgentProfileModal("Kerri Kaylor")}/>
-                    <img class="agent-image" alt="Rashed" src={'http://localhost:3001/agents/images/Rashed.jpg'} onClick={() => openAgentProfileModal("Rashed Ahmed")}/>
+              {agentsArray.map(agent => {
+                return <img class="agent-image" alt="Agent" src={config.SERVER_URL + 'agents/images/' + agent['Image']} onClick={() => openAgentProfileModal(agent['Name'])}/>
+              })}
             </Carousel>
             <Modal className = "modal" isOpen = {agentProfileModalIsOpen} onRequestClose={() => setAgentProfileModalIsOpen(false)}
                 style={{
@@ -137,7 +120,7 @@ function AboutUs() {
                         minHeight: '600px',
                         backgroundPosition: 'center',
                         border: '1px solid #ccc',
-                        background: '#c59775',
+                        background: 'rgba(240, 234, 214)',
                         overflowX: 'auto',
                         overflowY: 'auto',
                         WebkitOverflowScrolling: 'touch',
@@ -163,8 +146,8 @@ function AboutUs() {
 const CustomButtonGroupAsArrows = ({ next, previous }) => {
     return (
       <div class="button-group">
-        <img src={leftCarouselArrow} alt="Left Carousel Arrow" class="left-carousel-arrow" onClick={previous}/>
-        <img src={rightCarouselArrow} alt="Right Carousel Arrow" class="right-carousel-arrow" onClick={next}/>
+        <img src={leftCarouselArrow} alt="Left Carousel Arrow" class="carousel-arrow left-carousel-arrow" onClick={previous}/>
+        <img src={rightCarouselArrow} alt="Right Carousel Arrow" class="carousel-arrow right-carousel-arrow" onClick={next}/>
       </div>
     );
   };

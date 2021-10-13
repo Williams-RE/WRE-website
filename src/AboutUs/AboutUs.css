@@ -6,8 +6,12 @@
 
 .carousel {
     margin-top: 17vh;
-    margin-left: 15vw;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    height: 28vh;
     width: 70vw;
+    border: 1px solid black;
 }
 
 .carousel-agent img {
@@ -21,8 +25,8 @@
 }
 
 .agent-image {
-    height: 200px;
-    width: auto;
+    height: 100%;
+    width: 90%;
     vertical-align: middle;
 }
 
@@ -35,14 +39,18 @@
     cursor: pointer;
 }
 
-.left-carousel-arrow {
+.carousel-arrow {
     position: absolute;
-    left: 9vw;
+    height: 8vw;
+    width: 8vw;
     bottom: 7vh;
+    border: 1px solid black;
+}
+
+.left-carousel-arrow {
+    left: 8vw;
 }
 
 .right-carousel-arrow {
-    position: absolute;
-    right: 7.7vw;
-    bottom: 7vh;
+    right: 8vw;
 }
