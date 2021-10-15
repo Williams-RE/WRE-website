@@ -21,7 +21,6 @@ body{
 }
 
 p {
-    width: 90vw;
     color: var(--tertiary-color);
     font-size: 1.5vw;
 }

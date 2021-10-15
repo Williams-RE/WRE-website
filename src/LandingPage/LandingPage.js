@@ -1,10 +1,17 @@
 import React from 'react';
 import './LandingPage.css';
 
+
+
 function LandingPage() {
     return (
         <div class="landing-page-main">
-            <h1 class="landing-page-heading">Your Dream Home Awaits</h1>
+            <div class="div-heading"> 
+                <div class="landing-page-slogan">Find <small class="transparent">.</small></div> 
+                <div class="landing-page-slogan"> 
+                    <span>  your dream home</span>
+                </div>
+            </div>
         </div>
         
     );

@@ -4,15 +4,33 @@
     max-width: 100%;
 }
 
-.about-us-text {
-    position: relative;
-    right: 30%;
-    border: solid black 10px;
+.about-us-head {
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    transform: translate(-50%);
     font: 5vw light;
     color: var(--secondary-color);
-    /* padding: 10vw;
-    margin: 10 10 10 10; */
+    border: solid black 2px;
+  
 }
+
+.paragraph-div {
+    position: relative;
+
+
+}
+
+.about-us-paragraph {
+    position: absolute;
+    text-align: center;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+
+
 .carousel {
     margin-top: 17vh;
     position: relative;
@@ -22,6 +40,7 @@
     width: 70vw;
     border: 1px solid black;
 }
+
 
 .carousel-agent img {
     display: block;
