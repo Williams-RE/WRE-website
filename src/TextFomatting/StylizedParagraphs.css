@@ -14,4 +14,6 @@
     margin-left: 4%;
     width: 40%;
     line-height: 190%;
+    display: inline-block;
+    min-width: 375px;
 }

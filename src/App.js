@@ -93,7 +93,6 @@ function App() {
       <button class={"modal-button " + modalButtonAnimeClass} onClick = {() => modalOnClick()}> Contact Us  </button>
       <Modal className = "modal" isOpen = {modalIsOpen} onRequestClose={() => setModalIsOpen(false)}  
         style={{
-
           overlay: {
             position: 'fixed',
             top: 0,
@@ -102,7 +101,6 @@ function App() {
             bottom: 0,
             backgroundColor: 'rgba(0, 0, 0, 0.75)',
             zIndex: 1
-           
           },
           content: {
             position: 'absolute',
@@ -118,40 +116,22 @@ function App() {
             outline: 'none',
             padding: '1.5071590052750565vh',
             radius: '1px',
-           
               }
             }}
       >
-
         <h1 class="title-contact"> Contact Form </h1>
-
         <hr class="contact-line"/> 
-
-
         <div class="name">
-
           <label class="modal-label"> Name: </label> 
-
           <input class="modal-input" placeholder="First & Last" type="text"  value={name} onInput={e => setName(e.target.value)}/> 
-          
         </div>
-      
-        
         <div class="modal-element"> 
-
           <label class="modal-label"> Email: </label>
-
           <input class="modal-input" placeholder="you@domain.com" type="email"   value={email} onInput={e => setEmail(e.target.value)}/> 
-          
         </div>
-
-        
         <div class='modal-element'>  
-
           <label class="modal-label"> Agent: </label>
-
           <select class='select-agents' name ='selectAgents'  value={agent} onChange={e => setAgent(e.target.value)} >
-
             <option value="Jacob Williams">Jacob Williams</option>
             <option value="Pam Buzzeo">Pam Buzzeo</option>
             <option value="Mathew Thomas"> Mathew Thomas</option>
@@ -161,23 +141,13 @@ function App() {
             <option value="Karen Bruno">Karen Bruno</option>
             <option value="Kerri Kaylor">Kerri Kaylor</option>
             <option value="Rashed Ahmed">Rashed Ahmed</option>
-
           </select> 
-        
         </div>
-
-
         <div class="modal-element">
-        
           <label class="modal-label" > Subject:</label> 
-
           <textarea class="modal-textarea" rows ="4"  placeholder="Write something.." value={comment} onInput={e => setComment(e.target.value)}>  </textarea>
-
           <button class="submit-button" onClick = { () => submitContactForm(name, email, agent, comment)}> Submit</button>
-
         </div>
-
-
       </Modal>
         
       <nav class = "navigation">
