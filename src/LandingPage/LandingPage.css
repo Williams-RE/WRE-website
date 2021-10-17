@@ -9,7 +9,7 @@
 .landing-page-heading {
     position: absolute;
     top: 21%;
-    left: 54%;
+    left: 52%;
     transform: translate(-50%, -50%);
    
     display: table;             /* Fixed Firefox issue */ 
@@ -74,8 +74,8 @@
   @keyframes reveal {
       0% {opacity:0;width:0px;}
       20% {opacity:1;width:0px;}
-      30% {width:40vw;}
+      30% {width:35vw;}
       80% {opacity:1;}
-      100% {opacity:0;width:40vw;}
+      100% {opacity:0;width:35vw;}
   }
   
