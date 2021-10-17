@@ -156,6 +156,7 @@ img {
   top: 80vh;
   left: 85vw;
   display: inline-block;
+  margin: 0 auto;
   white-space: nowrap;
   width: fit-content;
   border-radius: 5px;
@@ -174,6 +175,7 @@ img {
   transition: 0.3s;
   animation: scaleIn 19s infinite;
   animation-delay: 2.5s;     
+
 } 
 
 @keyframes scaleIn {
