@@ -79,17 +79,12 @@ function BuyAHome() {
                 <div class="button__vertical"></div>
                 </button>
             </div>
-            
-
-
-
-
 
             <button class="listings-modal-button" onClick = {() => setListingsModalIsOpen(true)}> See Our Listings  </button>
-            <div className="buy-a-home-content" onAnimationEnd={() => setFadeInBuyAHomeContent(0)} animation={fadeInBuyAHomeContent}>
+            <div className="buy-a-home-content-group" onAnimationEnd={() => setFadeInBuyAHomeContent(0)} animation={fadeInBuyAHomeContent}>
                 { showBuyAHomeParagraphBefore ? 
 
-                <div>
+                <div class="buy-a-home-content">
                     <StylizedParagraphs passage = "Buying a home is one of the most challenging and rewarding experiences in your life.  
                     To guarantee a smooth process, contact your bank to get a preapproval letter. 
                     If you have any questions feel free to reach out to one of our qualified agents.  WRE is always here to serve you."/>
@@ -99,7 +94,7 @@ function BuyAHome() {
                 : null }
 
                 { showBuyAHomeParagraphFinding ? 
-                <div>
+                <div class="buy-a-home-content">
                     <StylizedParagraphs passage = "Finding the right home is as much as an art as it is a science. The first step is figure out what you want vs what you need in a home. When house hunting you should consider other factors beyond the price and style. How many bedrooms?  How is the neighborhood and how are the schools? Our agents at WRE are best in understanding your budget, tastes, and lifestyles. We will make sure you find the right home. " />
                     
             
@@ -107,7 +102,7 @@ function BuyAHome() {
                 </div>
                 : null }
                 { showBuyAHomeParagraphSealing ? 
-                <div>
+                <div class="buy-a-home-content">
                     <StylizedParagraphs passage = "You spotted the perfect home! Now the next step is to make the offer, and making an agreement with the seller. This is a grueling and tedious time but you do not have to worry.  Our trusted agents will guide you through the process so you will be able to lay back on your new porch and watch the sunset.     " />
                     <img src={sealingTheDeal} alt="Sealing The Deal" class="buy-a-home-image" />
 

@@ -3,6 +3,7 @@ import './SellAHome.css';
 import beforeYouStart from '../images/sell-a-home/before-you-start.jpg';
 import findingTheDeal from '../images/sell-a-home/finding-the-deal.jpg';
 import sealingTheDeal from '../images/sell-a-home/sealing-the-deal.jpg';
+import StylizedParagraphs from '../TextFomatting/StylizedParagraphs.js';
 
 function SellAHome() {
     const [showSellAHomeParagraphBefore, setShowSellAHomeParagraphBefore] = useState(true);
@@ -54,31 +55,25 @@ function SellAHome() {
 
 
             </div>
-            <div className="sell-a-home-content" onAnimationEnd={() => setFadeInSellAHomeContent(0)} animation={fadeInSellAHomeContent}>
+            <div className="sell-a-home-content-group" onAnimationEnd={() => setFadeInSellAHomeContent(0)} animation={fadeInSellAHomeContent}>
                 { showSellAHomeParagraphBefore ? 
-                <div>
-                    <p class="sell-a-home-paragraph">
-                    Selling your home is a hard decision. The four walls have held years full of love and memories. But now you have decided to depart whether  downsize, but you don't know when is the right moment. This is a daunting task but no need to fear.
+                <div class="sell-a-home-content">
+                    <StylizedParagraphs passage = "Selling your home is a hard decision. The four walls have held years full of love and memories. But now you have decided to depart whether  downsize, but you don't know when is the right moment. This is a daunting task but no need to fear.
                      Our agents at WRE our experts in the market and we will ensure you are informed. Now that you've made the decision to sell your house, your trusted agent will help you put your best foot forward when preparing to sell your home. Your agent can walk you through the appraisal, 
-                     give you tips on staging your home, and advise you on doing renovations or making any necessary repairs 
-                    </p> 
+                     give you tips on staging your home, and advise you on doing renovations or making any necessary repairs."/>
                     <img src={beforeYouStart} alt="Before You Start" class="sell-a-home-image"/> 
                 </div>
                 : null }
 
                  { showSellAHomeParagraphFinding ? 
-                <div>
-                    <p class="sell-a-home-paragraph">
-                    You have an offer. There are multiple steps you can take, accept, counteroffer, or reject. But do not fear. Our agents will do the hard work and weigh the options and advise you on the best course of action.
-                    </p>
+                <div class="sell-a-home-content">
+                    <StylizedParagraphs passage = "You have an offer. There are multiple steps you can take, accept, counteroffer, or reject. But do not fear. Our agents will do the hard work and weigh the options and advise you on the best course of action." />
                     <img src={findingTheDeal} alt="Finding The Deal" class="sell-a-home-image"/>
                 </div>
                 : null }
                 { showSellAHomeParagraphSealing ? 
-                <div>
-                    <p class="sell-a-home-paragraph">
-                    Congratulations! You have sold your home. The hard work and patience has paid off and you have entered  a new chapter of your life. 
-                    </p>
+                <div class="sell-a-home-content">
+                    <StylizedParagraphs passage = "Congratulations! You have sold your home. The hard work and patience has paid off and you have entered  a new chapter of your life. " />
                     <img src={sealingTheDeal} alt="Making The Deal" class="sell-a-home-image" />
                 </div>
                  : null }
