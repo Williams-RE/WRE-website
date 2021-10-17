@@ -145,8 +145,15 @@ function AboutUs({agents}) {
 const CustomButtonGroupAsArrows = ({ next, previous }) => {
     return (
       <div class="button-group">
-        <img src={leftCarouselArrow} alt="Left Carousel Arrow" class="carousel-arrow left-carousel-arrow" onClick={previous}/>
-        <img src={rightCarouselArrow} alt="Right Carousel Arrow" class="carousel-arrow right-carousel-arrow" onClick={next}/>
+        <div class="arrow left onClick={previous}"/>
+        <div class="arrow right onClick={next}"/>
+            
+
+        
+     
+
+        {/* <img src={leftCarouselArrow} alt="Left Carousel Arrow" class="carousel-arrow left-carousel-arrow" onClick={previous}/>
+        <img src={rightCarouselArrow} alt="Right Carousel Arrow" class="carousel-arrow right-carousel-arrow" onClick={next}/> */}
       </div>
     );
   };
