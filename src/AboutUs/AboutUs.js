@@ -145,8 +145,8 @@ function AboutUs({agents}) {
 const CustomButtonGroupAsArrows = ({ next, previous }) => {
     return (
       <div class="button-group">
-        <div class="arrow left onClick={previous}"/>
-        <div class="arrow right onClick={next}"/>
+        <div class="arrow left" onClick={previous}/>
+        <div class="arrow right" onClick={next}/>
             
 
         
