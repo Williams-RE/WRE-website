@@ -84,10 +84,12 @@ function AboutUs({agents}) {
 
     return (
         <div class="about-us-main">
-            <h1 class= 'about-us-text'> About us</h1>
-            <p>
-            Williams Real Estate was founded on principles of 
-            </p>
+            <h1 class= "about-us-head"> About Us</h1>
+            <div class="paragraph-div">
+              <p class="about-us-paragraph">
+              Williams Real Estate was founded on principles of <u>innovation</u>,  <u>consistency</u>, and <u>excellence</u>.  Our world class agents are a call away to get you to the home of your dreams. 
+              </p>
+            </div>
             <Carousel responsive={responsive} slidesToSlide={5} containerClass="carousel" itemClass="carousel-agent" arrows={false} customButtonGroup={<CustomButtonGroupAsArrows />} renderButtonGroupOutside={true}>
               {agentsArray.map(agent => {
                 return <img class="agent-image" alt="Agent" src={config.SERVER_URL + 'agents/images/' + agent['Image']} onClick={() => openAgentProfileModal(agent['Name'])}/>
@@ -143,8 +145,15 @@ function AboutUs({agents}) {
 const CustomButtonGroupAsArrows = ({ next, previous }) => {
     return (
       <div class="button-group">
-        <img src={leftCarouselArrow} alt="Left Carousel Arrow" class="carousel-arrow left-carousel-arrow" onClick={previous}/>
-        <img src={rightCarouselArrow} alt="Right Carousel Arrow" class="carousel-arrow right-carousel-arrow" onClick={next}/>
+        <div class="arrow left" onClick={previous}/>
+        <div class="arrow right" onClick={next}/>
+            
+
+        
+     
+
+        {/* <img src={leftCarouselArrow} alt="Left Carousel Arrow" class="carousel-arrow left-carousel-arrow" onClick={previous}/>
+        <img src={rightCarouselArrow} alt="Right Carousel Arrow" class="carousel-arrow right-carousel-arrow" onClick={next}/> */}
       </div>
     );
   };

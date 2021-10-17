@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import './SellAHome.css';
-import beforeYouStart from '../images/sell-a-home/before-you-start.jpg';
-import findingTheDeal from '../images/sell-a-home/finding-the-deal.jpg';
-import sealingTheDeal from '../images/sell-a-home/sealing-the-deal.jpg';
 import StylizedParagraphs from '../TextFomatting/StylizedParagraphs.js';
+import beforeYouStart from '../images/sell-a-home/illustrations/illustration4.jpg';
+import findingTheDeal from '../images/sell-a-home/illustrations/illustration5.jpg';
+import sealingTheDeal from '../images/sell-a-home/illustrations/illustration6.jpg';
 
 function SellAHome() {
     const [showSellAHomeParagraphBefore, setShowSellAHomeParagraphBefore] = useState(true);

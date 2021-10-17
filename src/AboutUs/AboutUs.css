@@ -2,19 +2,38 @@
     /* height: 100vh; */
     width: 100vw;
     max-width: 100%;
+    height: 100vh;
 }
 
-.about-us-text {
-    position: relative;
-    right: 30%;
-    border: solid black 10px;
+.about-us-head {
+    position: absolute;
+    top: 3%;
+    left: 20%;
+    transform: translate(-50%);
     font: 5vw light;
     color: var(--secondary-color);
-    /* padding: 10vw;
-    margin: 10 10 10 10; */
+  
 }
+
+.paragraph-div {
+    position: relative;
+    top: 40%;
+
+
+}
+
+.about-us-paragraph {
+    position: absolute;
+    text-align: center;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+
+
 .carousel {
-    margin-top: 17vh;
+    margin-top: 20vh;
     position: relative;
     left: 50%;
     transform: translate(-50%);
@@ -22,6 +41,7 @@
     width: 70vw;
     border: 1px solid black;
 }
+
 
 .carousel-agent img {
     display: block;
@@ -39,14 +59,7 @@
     vertical-align: middle;
 }
 
-.button-group {
-    position: relative;
-    text-align: center;
-}
 
-.button-group img:hover {
-    cursor: pointer;
-}
 
 .carousel-arrow {
     position: absolute;
@@ -56,10 +69,64 @@
     border: 1px solid black;
 }
 
-.left-carousel-arrow {
+/* .left-carousel-arrow {
     left: 8vw;
 }
 
 .right-carousel-arrow {
     right: 8vw;
+} */
+
+
+.button-group {
+        position: absolute;
+        top: 33%;
+        left: 50%;
+        width: 155vmin;
+        height: 5vmin;
+        transform: translate(-50%, -50%);
+  
+}
+.arrow {
+    position: absolute;
+    top: 40%;
+    width: 3vmin;
+    height: 3vmin;
+    background: transparent;
+    border-top: 1vmin solid black;
+    border-right: 1vmin solid black;
+    box-shadow: 0 0 0 lightgray;
+    transition: all 200ms ease;
+}
+
+
+.arrow.left {
+    left: 0;
+    transform: translate3d(0, -50%, 0) rotate(-135deg);
+}
+
+
+.arrow.right {
+    right: 0;
+    transform: translate3d(0, -50%, 0) rotate(45deg);
+  }
+
+.arrow:hover {
+    border-color: var(--secondary-color);
+    box-shadow: 0.5vmin -0.5vmin 0 black;
+    cursor: pointer;
+}
+
+.arrow:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-40%, -60%) rotate(45deg);
+    /* width: 100%;
+    height: 100%; */
+}
+
+.arrow:active {
+    scale: .7;
 }
