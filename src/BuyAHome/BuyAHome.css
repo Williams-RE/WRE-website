@@ -13,6 +13,50 @@
     margin: 4vh;
 }
 
+.listings-modal-button {
+  position: absolute;
+  background-color: transparent;
+  width: fit-content;
+  font-size: 2.5vw;
+  top: 85%;
+  left: 45%;
+  padding: 1vw 2vh;
+  animation: backgroundColor 5s infinite alternate; 
+  border: solid black 2px;
+  font-family: inherit;
+
+}
+
+@keyframes backgroundColor {
+	0% {
+		color: black;
+    border-color: black ;
+	}
+	25% {
+		color: var(--secondary-color);
+    border-color: var(--secondary-color);
+	}
+	50% {
+    color: black;
+    border-color: black ;
+	}
+	75% {
+    color: var(--secondary-color);
+    border-color: var(--secondary-color);;
+	}
+	100% {
+    color: black;
+    border-color: black ;
+	
+	}
+
+}
+
+
+
+
+
+
 .buy-a-home-button {
     /* display: inline-block; */
     white-space: nowrap;
