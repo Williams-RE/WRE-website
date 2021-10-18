@@ -90,7 +90,9 @@ function App() {
   return (
     <div class="main">
 
-      <button class={"modal-button " + modalButtonAnimeClass} onClick = {() => modalOnClick()}> Contact Us  </button>
+      <button class={"modal-button " + modalButtonAnimeClass} onClick = {() => modalOnClick()}>
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 20 20" width="24px" fill="#fff"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M14.06 9.02l.92.92L5.92 19H5v-.92l9.06-9.06M17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75z"/></svg>
+        <span class="modal-button-text"></span></button>
       <Modal className = "modal" isOpen = {modalIsOpen} onRequestClose={() => setModalIsOpen(false)}  
         style={{
           overlay: {
@@ -104,10 +106,9 @@ function App() {
           },
           content: {
             position: 'absolute',
-            top: '20%',
-            left: '35%',
-            right: '35%',
-            bottom: '20%',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
             border: '1px solid #ccc',
             background: 'white',
             overflow: 'auto',
@@ -116,6 +117,10 @@ function App() {
             outline: 'none',
             padding: '1.5071590052750565vh',
             radius: '1px',
+            width: '500px',
+            minWidth: '500px',
+            minHeight: '500px',
+            textAlign: 'center'
               }
             }}
       >
@@ -145,7 +150,7 @@ function App() {
         </div>
         <div class="modal-element">
           <label class="modal-label" > Subject:</label> 
-          <textarea class="modal-textarea" rows ="4"  placeholder="Write something.." value={comment} onInput={e => setComment(e.target.value)}>  </textarea>
+          <textarea class="modal-textarea" rows ="4"  placeholder="Write something..." value={comment} onInput={e => setComment(e.target.value)}>  </textarea>
           <button class="submit-button" onClick = { () => submitContactForm(name, email, agent, comment)}> Submit</button>
         </div>
       </Modal>

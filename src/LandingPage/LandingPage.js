@@ -7,10 +7,8 @@ function LandingPage() {
     return (
         <div class="landing-page-main">
             <div class="landing-page-heading"> 
-                <div class="landing-page-slogan">Find <small class="transparent">.</small></div> 
-                <div class="landing-page-slogan"> 
-                    <span>  your dream home</span>
-                </div>
+                <div class="landing-page-slogan">Find</div> 
+                <div class="landing-page-slogan"><span>your dream home</span></div>
             </div>
         </div>
         

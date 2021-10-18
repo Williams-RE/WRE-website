@@ -94,16 +94,13 @@ img {
 .navigation-button {
   white-space: nowrap;
   text-align: center;
-  /* width: 100px; */
-  /* min-width: 100px; */
   color: var(--quarternary-color);
   font-size: 30px;
   height: 30px;
   background-color: transparent;
   background-repeat: no-repeat;
   border: 0;
-  padding: 0 10px 0 10px;
-  /* margin: 0 4% 0 2%; */
+  margin: 0 10px 0 10px;
   flex-basis: auto;
   border-radius: 10%;
   box-shadow: inset 0 0 0 0 rgba(211, 122, 71, .8);
@@ -153,27 +150,31 @@ img {
 .modal-button {
   position: fixed;
   top: 80vh;
-  left: 85vw;
+  right: 5vw;
   display: inline-block;
   white-space: nowrap;
-  width: fit-content;
   border-radius: 5px;
   padding: 1rem;
   margin: 0.9rem 1rem;
   align-items: center;
-  width: 10vw;
+  width: fit-content;
   color: var(--quarternary-color);
   background-color: var(--quinary-color);
   border: none;
-  font-size: 1.3vw;
+  font-size: 22px;
   font-weight: 100;
   line-height: 1.6;
   z-index: 1;
   opacity: .85;
   transition: 0.3s;
   animation: scaleIn 19s infinite;
-  animation-delay: 2.5s;     
+  animation-delay: 2.5s;
 } 
+
+.modal-button-text:before {
+  content: 'Contact Us';
+  margin-left: 8px;
+}
 
 @keyframes scaleIn {
   4.7%{ 
@@ -321,23 +322,25 @@ img {
 }
 
 .name {
-  margin: 9% 17% 10%;
+  margin: 5% 10% 5%;
   height: 2.260738507912585vh;
+  /* border: 1px solid black; */
 
 }
 .modal-element {
-  margin: 10% 17% 10%;
+  margin: 5% 10% 5%;
   height: 2.260738507912585vh;
-
+  /* border: 1px solid black; */
 }
 
 .modal-textarea {
   position: relative; 
-  float:right;
-  width:11.71875vw;
-  border:1px solid grey;
-  border-radius:7px;
-  font-size:20px;
+  float: right;
+  width: 300px;
+  height: 180px;
+  border: 1px solid grey;
+  border-radius: 7px;
+  font-size: 20px;
 }
 
 .modal-label { 
@@ -356,12 +359,12 @@ img {
 .modal-input {
   position: relative; 
   float:right;
-  width:11.71875vw;
+  width: 300px;
   border:1px solid grey;
   border-radius:7px;
   font-size:16%;
   padding:9px 0 9px 1px;
-  font-size: 15px;
+  font-size: 20px;
 }
 
 .modal-input:focus { 
@@ -377,7 +380,7 @@ img {
   float: right;
   border: 1px solid grey ;
   border-radius:7px;
-  width: 11.796875vw;
+  width: 300px;
   font: inherit;
   font-size: 20px;
   color: grey;
@@ -393,7 +396,8 @@ img {
 .submit-button {
   background-color: var(--quinary-color);
   color: var(--quarternary-color);
-  padding: 1.2057272042200453vh 1.50vw;
+  padding: 5px 10px;
+  margin-top: 30px;
   text-align: center;
   display: inline-block;
   font-size: 26px;
@@ -401,10 +405,10 @@ img {
   border-radius: 5px;
   opacity: .8;
   transition: .3s;
-  position: fixed;
+  /* position: fixed;
   top: 71vh;
-  left: 48vw;
-  width: 10rem;
+  left: 48vw; */
+  width: 150px;
 }
 
 .submit-button:hover {
@@ -441,13 +445,22 @@ img {
   border-radius: 50px;
 }
 
-/* @media screen and (max-width: 900px) {
+@media screen and (max-width: 600px) {
+  .modal-button-text:before {
+    content: '';
+  }
+
+  .modal-button {
+    border-radius: 50px;
+    padding-bottom: 10px;
+  }
+
   .background {
     background: url('./images/background-small.jpg');
     background-position: center;
     background-size: cover;
   }
-} */
+}
 
 /* * {
   background: #000 !important;
