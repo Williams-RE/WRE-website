@@ -9,7 +9,7 @@
 .landing-page-heading {
     position: absolute;
     top: 21%;
-    left: 50%;
+    left: 52%;
     transform: translate(-50%, -50%);
     display: table;             /* Fixed Firefox issue */ 
     width: intrinsic;           /* Safari/WebKit uses a non-standard name */

@@ -20,6 +20,7 @@ body{
 }
 
 p {
+
     color: var(--tertiary-color);
     /* font-size: 1.5vw; */
 }
@@ -152,6 +153,7 @@ img {
   top: 80vh;
   right: 5vw;
   display: inline-block;
+  margin: 0 auto;
   white-space: nowrap;
   border-radius: 5px;
   padding: 1rem;

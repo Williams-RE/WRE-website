@@ -80,7 +80,7 @@ function BuyAHome() {
                 </button>
             </div>
 
-            <button class="listings-modal-button" onClick = {() => setListingsModalIsOpen(true)}> See Our Listings  </button>
+            <button class="listings-modal-button" onClick = {() => setListingsModalIsOpen(true)}> Listings  </button>
             <div className="buy-a-home-content-group" onAnimationEnd={() => setFadeInBuyAHomeContent(0)} animation={fadeInBuyAHomeContent}>
                 { showBuyAHomeParagraphBefore ? 
 
