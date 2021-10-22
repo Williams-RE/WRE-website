@@ -33,6 +33,7 @@
     line-height: 1.6;
     opacity: .8;
     transition: 0.9s;
+    z-index: 1;
 }
 
 .listings-modal-button:hover {
@@ -42,6 +43,23 @@
 
 .listings-modal-button:active {
   scale: .9;
+}
+
+.listings-modal {
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  right: 5%;
+  bottom: 10%;
+  border: 1px solid #ccc;
+  background: white;
+  overflow-x: hidden;
+  overflow-y: auto;
+  /* WebkitOverflowScrolling: touch; */
+  border-radius: 4px;
+  outline: none;
+  /* radius: 1px; */
+  z-index: 1;
 }
 
 .buy-a-home-content-group {

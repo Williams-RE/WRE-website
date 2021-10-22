@@ -110,7 +110,7 @@ function BuyAHome() {
                 </div>
                  : null }
             </div>
-            <Modal className = "modal" isOpen = {listingsModalIsOpen} onRequestClose={() => setListingsModalIsOpen(false)}  
+            <Modal className = "listings-modal" isOpen = {listingsModalIsOpen} onRequestClose={() => setListingsModalIsOpen(false)}  
                 style={{
                     overlay: {
                         position: 'fixed',
@@ -121,23 +121,6 @@ function BuyAHome() {
                         backgroundColor: 'rgba(0, 0, 0, 0.75)',
                         zIndex: 1
                     },
-                    content: {
-                        position: 'absolute',
-                        top: '10%',
-                        left: '5%',
-                        right: '5%',
-                        bottom: '10%',
-                        border: '1px solid #ccc',
-                        background: 'white',
-                        overflowX: 'hidden',
-                        overflowY: 'auto',
-                        WebkitOverflowScrolling: 'touch',
-                        borderRadius: '4px',
-                        outline: 'none',
-                        // padding: '1.5071590052750565vh',
-                        radius: '1px',
-                        zIndex: 1
-                    }
                 }}
             >
                 <ListingsLayout listings={listings}/>
