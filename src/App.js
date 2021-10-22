@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import './App.css';
 import config from './config.json';
 import logo from './images/wre-logo-new.png';
+import closeModal from './images/close-modal.jpg';
 // import niceHouse from './images/background.jpeg';
 import LandingPage from './LandingPage/LandingPage';
 import BuyAHome from './BuyAHome/BuyAHome';
@@ -25,8 +26,13 @@ function App() {
   const [modalButtonAnimeClass, setModalButtonAnimeClass] = useState('');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [agent, setAgent] = useState('Jacob');
+  const [agent, setAgent] = useState('');
   const [comment, setComment] = useState('');
+
+  const [nameErrorClass, setNameErrorClass] = useState('')
+  const [emailErrorClass, setEmailErrorClass] = useState('')
+  const [namePlaceHolder, setNamePlaceHolder] = useState('Name*')
+  const [emailPlaceHolder, setEmailPlaceHolder] = useState('Email*')
 
   function scrollToLandingPage() {
     landingPageRef.current.scrollIntoView({ behavior: 'smooth'});
@@ -46,7 +52,6 @@ function App() {
 
   useEffect(() => {
     getAgents()
-    // Turn agents into array maybe
   }, [])
 
   async function getAgents() {
@@ -73,18 +78,85 @@ function App() {
       }
     )
     console.log(response.data)
+  }
 
+  function onSubmitButtonClick(name, email, agent, comment) {
+    let errorExists = false
+    if (emailIsValid(email)) {
+      setEmailErrorClass('')
+    }
+    else {
+      setEmailErrorClass('error')
+      setEmailPlaceHolder('Please enter a valid email address')
+      errorExists = true
+    }
+    if (nameIsValid(name)) {
+      setNameErrorClass('')
+    }
+    else {
+      setNameErrorClass('error')
+      setNamePlaceHolder('Please enter your name')
+      errorExists = true
+    }
+    if (!errorExists) submitContactForm(name, email, agent, comment)   
+  }
+
+  function nameIsValid(name) {
+    if (name.length > 0) return true
+    else return false
+  }
+
+  function emailIsValid(email) {
+    if (/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(email)) return true
+    else return false
   }
   
   function submitContactForm(name, email, agent, comment) {
     setModalIsOpen(false);
     sendEmail(name, email, agent, comment);
+    setName('')
+    setEmail('')
+    setAgent('')
+    setComment('')
+  }
+
+  function onNameInputChange(name) {
+    if (nameIsValid(name)) {
+      setNameErrorClass('')
+    }
+    else {
+      setNameErrorClass('error')
+      setNamePlaceHolder('Please enter your name')
+    }
+    setName(name)
+  }
+
+  function onEmailInputChange(email) {
+    if (emailIsValid(email)) {
+      setEmailErrorClass('')
+    }
+    else {
+      setEmailErrorClass('error')
+      setEmailPlaceHolder('Please enter a valid email address')
+    }
+    setEmail(email)
   }
 
   function modalOnClick()  {
     setModalIsOpen(true);
     setModalButtonAnimeClass("pause-animation");
+  }
 
+  function closeContactForm() {
+    setModalIsOpen(false)
+    setName('')
+    setEmail('')
+    setAgent('')
+    setComment('')
+    setEmailErrorClass('')
+    setNameErrorClass('')
+    setNamePlaceHolder('Name*')
+    setEmailPlaceHolder('Email*')
   }
 
   return (
@@ -93,7 +165,7 @@ function App() {
       <button class={"modal-button " + modalButtonAnimeClass} onClick = {() => modalOnClick()}>
         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 20 20" width="24px" fill="#fff"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M14.06 9.02l.92.92L5.92 19H5v-.92l9.06-9.06M17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75z"/></svg>
         <span class="modal-button-text"></span></button>
-      <Modal className = "modal" isOpen = {modalIsOpen} onRequestClose={() => setModalIsOpen(false)}  
+      <Modal className = "modal" isOpen = {modalIsOpen} onRequestClose={() => closeContactForm()}  
         style={{
           overlay: {
             position: 'fixed',
@@ -104,39 +176,25 @@ function App() {
             backgroundColor: 'rgba(0, 0, 0, 0.75)',
             zIndex: 1
           },
-          content: {
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            border: '1px solid #ccc',
-            background: 'white',
-            overflow: 'auto',
-            WebkitOverflowScrolling: 'touch',
-            borderRadius: '4px',
-            outline: 'none',
-            padding: '1.5071590052750565vh',
-            radius: '1px',
-            width: '500px',
-            minWidth: '500px',
-            minHeight: '500px',
-            textAlign: 'center'
-              }
             }}
       >
-        <h1 class="title-contact"> Contact Form </h1>
+        <div class="modal-heading">
+          <h1 class="title-contact">Contact Form</h1>
+          <img src={closeModal} alt="Close Modal" class="close-modal-button" onClick={() => closeContactForm()} />
+        </div>
         <hr class="contact-line"/> 
-        <div class="name">
-          <label class="modal-label"> Name: </label> 
-          <input class="modal-input" placeholder="First & Last" type="text"  value={name} onInput={e => setName(e.target.value)}/> 
+        <div class="modal-element">
+          {/* <label class="modal-label"> Name: </label>  */}
+          <input class={`modal-input ${nameErrorClass}`}  placeholder={namePlaceHolder} type="text"  value={name} onInput={e => onNameInputChange(e.target.value)} required/> 
         </div>
         <div class="modal-element"> 
-          <label class="modal-label"> Email: </label>
-          <input class="modal-input" placeholder="you@domain.com" type="email"   value={email} onInput={e => setEmail(e.target.value)}/> 
+          {/* <label class="modal-label"> Email: </label> */}
+          <input class={`modal-input ${emailErrorClass}`} placeholder={emailPlaceHolder} type="email"   value={email} onInput={e => onEmailInputChange(e.target.value)} required/> 
         </div>
         <div class='modal-element'>  
-          <label class="modal-label"> Agent: </label>
-          <select class='select-agents' name ='selectAgents'  value={agent} onChange={e => setAgent(e.target.value)} >
+          {/* <label class="modal-label"> Agent: </label> */}
+          <select class='select-agents' name ='selectAgents'  value={agent} onChange={e => setAgent(e.target.value)}>
+            <option value="" disabled>Agent</option>
             <option value="Jacob Williams">Jacob Williams</option>
             <option value="Pam Buzzeo">Pam Buzzeo</option>
             <option value="Mathew Thomas"> Mathew Thomas</option>
@@ -149,9 +207,11 @@ function App() {
           </select> 
         </div>
         <div class="modal-element">
-          <label class="modal-label" > Subject:</label> 
-          <textarea class="modal-textarea" rows ="4"  placeholder="Write something..." value={comment} onInput={e => setComment(e.target.value)}>  </textarea>
-          <button class="submit-button" onClick = { () => submitContactForm(name, email, agent, comment)}> Submit</button>
+          {/* <label class="modal-label" > Subject:</label>  */}
+          <textarea class="modal-textarea" rows ="4"  placeholder="How can we help?" value={comment} onInput={e => setComment(e.target.value)}>  </textarea>
+        </div>
+        <div class="modal-element">
+          <button class="submit-button" onClick = { () => onSubmitButtonClick(name, email, agent, comment)}> Submit</button>
         </div>
       </Modal>
         
