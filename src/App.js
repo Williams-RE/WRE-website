@@ -1,8 +1,8 @@
 import React, { useRef, useState, useEffect } from 'react';
 import './App.css';
 import config from './config.json';
-import logo from './images/wre-logo-new.png';
-import closeModal from './images/close-modal.jpg';
+// import logo from './images/wre-logo-new.png';
+import closeModalImg from './images/close-modal.jpg';
 // import niceHouse from './images/background.jpeg';
 import LandingPage from './LandingPage/LandingPage';
 import BuyAHome from './BuyAHome/BuyAHome';
@@ -10,7 +10,7 @@ import SellAHome from './SellAHome/SellAHome';
 import AboutUs from './AboutUs/AboutUs';
 import Modal from 'react-modal';
 import axios from 'axios';
-import { getByTitle } from '@testing-library/react';
+// import { getByTitle } from '@testing-library/react';
 // import homevideo from './images/keys-to-the-house.mp4';
 Modal.setAppElement('#root');
 
@@ -33,6 +33,9 @@ function App() {
   const [emailErrorClass, setEmailErrorClass] = useState('')
   const [namePlaceHolder, setNamePlaceHolder] = useState('Name*')
   const [emailPlaceHolder, setEmailPlaceHolder] = useState('Email*')
+
+  const [scrollTop, setScrollTop] = useState(0)
+
 
   function scrollToLandingPage() {
     landingPageRef.current.scrollIntoView({ behavior: 'smooth'});
@@ -63,7 +66,6 @@ function App() {
                 'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With'}
     })
     setAgents(response.data)
-    // Should I create agents array?
 }
 
   async function sendEmail(name, email, agent, comment) {
@@ -77,7 +79,6 @@ function App() {
                     'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With'}
       }
     )
-    console.log(response.data)
   }
 
   function onSubmitButtonClick(name, email, agent, comment) {
@@ -142,12 +143,25 @@ function App() {
     setEmail(email)
   }
 
+  function openModal() {
+    document.documentElement.style.setProperty('--scroll-top', '-' + document.documentElement.scrollTop + 'px')
+    setScrollTop(document.documentElement.scrollTop)
+    document.body.classList.add('modal-open')
+  }
+
+  function closeModal() {
+    document.body.classList.remove('modal-open')
+    window.scrollTo(0, scrollTop)
+  }
+
   function modalOnClick()  {
-    setModalIsOpen(true);
-    setModalButtonAnimeClass("pause-animation");
+    setModalIsOpen(true)
+    setModalButtonAnimeClass("pause-animation")
+    openModal()
   }
 
   function closeContactForm() {
+    closeModal()
     setModalIsOpen(false)
     setName('')
     setEmail('')
@@ -165,7 +179,7 @@ function App() {
       <button class={"modal-button " + modalButtonAnimeClass} onClick = {() => modalOnClick()}>
         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 20 20" width="24px" fill="#fff"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M14.06 9.02l.92.92L5.92 19H5v-.92l9.06-9.06M17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75z"/></svg>
         <span class="modal-button-text"></span></button>
-      <Modal className = "modal" isOpen = {modalIsOpen} onRequestClose={() => closeContactForm()}  
+      <Modal className = "modal" isOpen = {modalIsOpen} onRequestClose={() => closeContactForm()}
         style={{
           overlay: {
             position: 'fixed',
@@ -180,19 +194,16 @@ function App() {
       >
         <div class="modal-heading">
           <h1 class="title-contact">Contact Form</h1>
-          <img src={closeModal} alt="Close Modal" class="close-modal-button" onClick={() => closeContactForm()} />
+          <img src={closeModalImg} alt="Close Modal" class="close-modal-button" onClick={() => closeContactForm()} />
         </div>
         <hr class="contact-line"/> 
         <div class="modal-element">
-          {/* <label class="modal-label"> Name: </label>  */}
           <input class={`modal-input ${nameErrorClass}`}  placeholder={namePlaceHolder} type="text"  value={name} onInput={e => onNameInputChange(e.target.value)} required/> 
         </div>
         <div class="modal-element"> 
-          {/* <label class="modal-label"> Email: </label> */}
           <input class={`modal-input ${emailErrorClass}`} placeholder={emailPlaceHolder} type="email"   value={email} onInput={e => onEmailInputChange(e.target.value)} required/> 
         </div>
         <div class='modal-element'>  
-          {/* <label class="modal-label"> Agent: </label> */}
           <select class='select-agents' name ='selectAgents'  value={agent} onChange={e => setAgent(e.target.value)}>
             <option value="" disabled>Agent</option>
             <option value="Jacob Williams">Jacob Williams</option>
@@ -207,7 +218,6 @@ function App() {
           </select> 
         </div>
         <div class="modal-element">
-          {/* <label class="modal-label" > Subject:</label>  */}
           <textarea class="modal-textarea" rows ="4"  placeholder="How can we help?" value={comment} onInput={e => setComment(e.target.value)}>  </textarea>
         </div>
         <div class="modal-element">

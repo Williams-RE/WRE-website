@@ -8,6 +8,7 @@ import beforeYouBuy from '../images/buy-a-home/illustrations/illustration1.jpg';
 import findingTheDeal from '../images/buy-a-home/illustrations/illustration2.jpg';
 import sealingTheDeal from '../images/buy-a-home/illustrations/illustration3.jpg';
 import StylizedParagraphs from '../TextFomatting/StylizedParagraphs.js';
+import { openModal, closeModal } from '../App.js'
 
 Modal.setAppElement('#root')
 
@@ -18,6 +19,7 @@ function BuyAHome() {
     const [fadeInBuyAHomeContent, setFadeInBuyAHomeContent] = useState(0)
     const [listings, setListings] = useState({})
     const [listingsModalIsOpen, setListingsModalIsOpen] = useState(false)
+    const [scrollTop, setScrollTop] = useState(0)
 
     useEffect(() => {
         getListings()
@@ -56,7 +58,26 @@ function BuyAHome() {
         // console.log(response.data)
     }
 
+    function openModal() {
+        document.documentElement.style.setProperty('--scroll-top', '-' + document.documentElement.scrollTop + 'px')
+        setScrollTop(document.documentElement.scrollTop)
+        document.body.classList.add('modal-open')
+      }
     
+      function closeModal() {
+        document.body.classList.remove('modal-open')
+        window.scrollTo(0, scrollTop)
+      }
+
+    function openListingsModal() {
+        openModal()
+        setListingsModalIsOpen(true)
+    }
+
+    function closeListingsModal() {
+        closeModal()
+        setListingsModalIsOpen(false)
+    }
 
     return (
         <div class="buy-a-home-main">
@@ -80,7 +101,7 @@ function BuyAHome() {
                 </button>
             </div>
 
-            <button class="listings-modal-button" onClick = {() => setListingsModalIsOpen(true)}> Listings  </button>
+            
             <div className="buy-a-home-content-group" onAnimationEnd={() => setFadeInBuyAHomeContent(0)} animation={fadeInBuyAHomeContent}>
                 { showBuyAHomeParagraphBefore ? 
 
@@ -110,7 +131,8 @@ function BuyAHome() {
                 </div>
                  : null }
             </div>
-            <Modal className = "listings-modal" isOpen = {listingsModalIsOpen} onRequestClose={() => setListingsModalIsOpen(false)}  
+            <button class="listings-modal-button" onClick = {() => openListingsModal()}> Listings  </button>
+            <Modal className = "listings-modal" isOpen = {listingsModalIsOpen} onRequestClose={() => closeListingsModal()}  
                 style={{
                     overlay: {
                         position: 'fixed',

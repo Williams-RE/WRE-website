@@ -5,15 +5,23 @@
     box-sizing: border-box;
     display: inline-block;
     margin: 1%;
+    overflow: auto;
 }
 
 .listing-image-container {
     /* Adjust the size of the container */
     height: 70%;
     width: auto;
+    text-align: center;
 }
 
 .listing-image {
     height: 100%;
     width: auto;
+}
+
+@media screen and (max-width: 900px) {
+    .listing {
+        width: 96%;
+    }
 }

@@ -12,14 +12,11 @@
     transform: translate(-50%);
     font: 5vw light;
     color: var(--secondary-color);
-  
 }
 
 .paragraph-div {
     position: relative;
     top: 40%;
-
-
 }
 
 .about-us-paragraph {
@@ -27,10 +24,7 @@
     text-align: center;
     left: 50%;
     transform: translate(-50%, -50%);
-
 }
-
-
 
 .carousel {
     margin-top: 20vh;
@@ -40,8 +34,8 @@
     height: 28vh;
     width: 70vw;
     border: 1px solid black;
+    z-index: 1;
 }
-
 
 .carousel-agent img {
     display: block;
@@ -58,8 +52,6 @@
     width: 90%;
     vertical-align: middle;
 }
-
-
 
 .carousel-arrow {
     position: absolute;
@@ -79,13 +71,14 @@
 
 
 .button-group {
-        position: absolute;
-        top: 33%;
-        left: 50%;
-        width: 80vw;
-        height: 5vmin;
-        transform: translate(-50%, -50%);
+    position: absolute;
+    top: 33%;
+    left: 50%;
+    width: 80vw;
+    height: 5vmin;
+    transform: translate(-50%, -50%);
 }
+
 .arrow {
     position: absolute;
     top: 40%;
@@ -98,12 +91,10 @@
     transition: all 200ms ease;
 }
 
-
 .arrow.left {
     left: 0;
     transform: translate3d(0, -50%, 0) rotate(-135deg);
 }
-
 
 .arrow.right {
     right: 0;
