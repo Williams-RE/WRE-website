@@ -4,15 +4,15 @@
     border: 1px solid black;
     box-sizing: border-box;
     display: inline-block;
-    margin: 1%;
+    margin: 1vh;
     overflow: auto;
 }
 
 .listing-image-container {
-    /* Adjust the size of the container */
     height: 70%;
     width: auto;
     text-align: center;
+    border: 1px solid black;
 }
 
 .listing-image {

@@ -7,6 +7,7 @@ import ListingsLayout from './Listings/ListingsLayout.js';
 import beforeYouBuy from '../images/buy-a-home/illustrations/illustration1.jpg';
 import findingTheDeal from '../images/buy-a-home/illustrations/illustration2.jpg';
 import sealingTheDeal from '../images/buy-a-home/illustrations/illustration3.jpg';
+import closeModalImg from '../images/close-modal.jpg';
 import StylizedParagraphs from '../TextFomatting/StylizedParagraphs.js';
 import { openModal, closeModal } from '../App.js'
 
@@ -145,7 +146,12 @@ function BuyAHome() {
                     },
                 }}
             >
-                <ListingsLayout listings={listings}/>
+                <div class="listings-modal-heading">
+                    <img src={closeModalImg} alt="Close Modal" class="close-listings-modal-button" onClick={() => closeListingsModal()} />
+                </div>
+                <div class="listings-modal-content">
+                    <ListingsLayout listings={listings}/>
+                </div>
             </Modal>
         </div>
     );
