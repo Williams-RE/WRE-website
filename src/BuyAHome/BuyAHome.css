@@ -13,6 +13,23 @@
     margin: 4vh;
 }
 
+.listings-modal {
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  right: 5%;
+  bottom: 10%;
+  border: 1px solid #ccc;
+  background: white;
+  overflow-x: hidden;
+  overflow-y: auto;
+  /* WebkitOverflowScrolling: touch; */
+  border-radius: 4px;
+  outline: none;
+  /* radius: 1px; */
+  z-index: 1;
+}
+
 .listings-modal-button {
     position: absolute;
     top: 80%;
@@ -43,23 +60,6 @@
 
 .listings-modal-button:active {
   scale: .9;
-}
-
-.listings-modal {
-  position: absolute;
-  top: 10%;
-  left: 5%;
-  right: 5%;
-  bottom: 10%;
-  border: 1px solid #ccc;
-  background: white;
-  overflow-x: hidden;
-  overflow-y: auto;
-  /* WebkitOverflowScrolling: touch; */
-  border-radius: 4px;
-  outline: none;
-  /* radius: 1px; */
-  z-index: 1;
 }
 
 .buy-a-home-content-group {
@@ -180,7 +180,7 @@
     to { opacity: 1; }
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 768px) {
   .buy-a-home-content {
     flex-direction: column-reverse;
     align-items: center;
@@ -190,5 +190,9 @@
   }
   .button {
     height: fit-content;
+  }
+
+  .listings-modal-button {
+    position: relative;
   }
 }

@@ -3,23 +3,13 @@ import './AboutUs.css';
 import config from '../config.json';
 import AgentProfile from './AgentProfile/AgentProfile';
 import Modal from 'react-modal';
-import axios from 'axios';
+// import axios from 'axios';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import rightCarouselArrow from '../images/right-carousel-arrow.png';
-import leftCarouselArrow from '../images/left-carousel-arrow.png';
-// import Jacob from '../images/agents/Jacob.jpg';
-// import Pam from '../images/agents/Pam.jpg';
-// import Mathews from '../images/agents/Mathews.jfif';
-// import Binu from '../images/agents/Binu.gif';
-// import Hilda from '../images/agents/Hilda.gif';
-// import Shazzat from '../images/agents/Shazzat.gif';
-// import Karen from '../images/agents/Karen.png';
-// import Kerri from '../images/agents/Kerri.gif';
-// import Rashed from '../images/agents/Rashed.jpg';
+// import rightCarouselArrow from '../images/right-carousel-arrow.png';
+// import leftCarouselArrow from '../images/left-carousel-arrow.png';
 
 function AboutUs({agents}) {
-    // const [agents, setAgents] = useState({})
     const [agentProfileModalIsOpen, setAgentProfileModalIsOpen] = useState(false)
     const [agentProfileName, setAgentProfileName] = useState('')
     const [agentProfileTitle, setAgentProfileTitle] = useState('')
@@ -28,6 +18,8 @@ function AboutUs({agents}) {
     const [agentProfileCellNumber, setAgentProfileCellNumber] = useState('')
     const [agentProfileEmail, setAgentProfileEmail] = useState('')
     const [agentProfileBio, setAgentProfileBio] = useState('')
+
+    const [scrollTop, setScrollTop] = useState(0)
 
     const agentsArray = []
     Object.keys(agents).forEach(agent => {
@@ -70,8 +62,19 @@ function AboutUs({agents}) {
         }
       };
 
+      function openModal() {
+        document.documentElement.style.setProperty('--scroll-top', '-' + document.documentElement.scrollTop + 'px')
+        setScrollTop(document.documentElement.scrollTop)
+        document.body.classList.add('modal-open')
+      }
+    
+      function closeModal() {
+        document.body.classList.remove('modal-open')
+        window.scrollTo(0, scrollTop)
+      }
+
       function openAgentProfileModal(agentName) {
-          // Set all the agent profile states
+          openModal()
           setAgentProfileName(agents[agentName]['Name'])
           setAgentProfileTitle(agents[agentName]['Title'])
           setAgentProfileImagePath(config.SERVER_URL + 'agents/images/' + agents[agentName]['Image'])
@@ -80,6 +83,11 @@ function AboutUs({agents}) {
           setAgentProfileEmail(agents[agentName]['Email'])
           setAgentProfileBio(agents[agentName]['Bio'])
           setAgentProfileModalIsOpen(true)
+      }
+
+      function closeAgentProfileModal() {
+        closeModal()
+        setAgentProfileModalIsOpen(false)
       }
 
     return (
@@ -95,7 +103,7 @@ function AboutUs({agents}) {
                 return <img class="agent-image" alt="Agent" src={config.SERVER_URL + 'agents/images/' + agent['Image']} onClick={() => openAgentProfileModal(agent['Name'])}/>
               })}
             </Carousel>
-            <Modal className = "modal" isOpen = {agentProfileModalIsOpen} onRequestClose={() => setAgentProfileModalIsOpen(false)}
+            <Modal className = "modal" isOpen = {agentProfileModalIsOpen} onRequestClose={() => closeAgentProfileModal()}
                 style={{
                     overlay: {
                         position: 'fixed',
@@ -147,11 +155,6 @@ const CustomButtonGroupAsArrows = ({ next, previous }) => {
       <div class="button-group">
         <div class="arrow left" onClick={previous}/>
         <div class="arrow right" onClick={next}/>
-            
-
-        
-     
-
         {/* <img src={leftCarouselArrow} alt="Left Carousel Arrow" class="carousel-arrow left-carousel-arrow" onClick={previous}/>
         <img src={rightCarouselArrow} alt="Right Carousel Arrow" class="carousel-arrow right-carousel-arrow" onClick={next}/> */}
       </div>
