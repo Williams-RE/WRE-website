@@ -159,8 +159,8 @@ img {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border: 1px solid #ccc;
-  background: var(--primary-color);
+  border: 1px solid black;
+  background: white;
   overflow: auto;
   /* --webkit-overflow-scrolling: touch; */
   border-radius: 4px;
@@ -173,6 +173,9 @@ img {
   z-index: 2;
 }
 
+.contact-line {
+  border-color: rgb(59, 59, 59);
+}
 .modal > div {
   padding: 2% 0 2% 0;
 }
@@ -337,7 +340,7 @@ img {
 
 .modal-heading {
   vertical-align: middle;
-  margin-top: 25px;
+  margin-top: 15px;
 }
 
 .title-contact {
