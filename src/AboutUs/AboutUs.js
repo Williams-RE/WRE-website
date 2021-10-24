@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './AboutUs.css';
 import config from '../config.json';
 import AgentProfile from './AgentProfile/AgentProfile';
+import closeModalImg from '../images/close-modal.jpg';
 import Modal from 'react-modal';
 // import axios from 'axios';
 import Carousel from 'react-multi-carousel';
@@ -20,6 +21,7 @@ function AboutUs({agents}) {
     const [agentProfileBio, setAgentProfileBio] = useState('')
 
     const [scrollTop, setScrollTop] = useState(0)
+    const [carouselAgentNum, setCarouselAgentNum] = useState(5)
 
     const agentsArray = []
     Object.keys(agents).forEach(agent => {
@@ -44,7 +46,6 @@ function AboutUs({agents}) {
 
     const responsive = {
         superLargeDesktop: {
-          // the naming can be any, depends on you.
           breakpoint: { max: 4000, min: 3000 },
           items: 5
         },
@@ -53,12 +54,12 @@ function AboutUs({agents}) {
           items: 5
         },
         tablet: {
-          breakpoint: { max: 1024, min: 464 },
-          items: 5
+          breakpoint: { max: 1024, min: 768 },
+          items: 4
         },
         mobile: {
-          breakpoint: { max: 464, min: 0 },
-          items: 5
+          breakpoint: { max: 768, min: 0 },
+          items: 3
         }
       };
 
@@ -92,18 +93,23 @@ function AboutUs({agents}) {
 
     return (
         <div class="about-us-main">
-            <h1 class= "about-us-head"> About Us</h1>
-            <div class="paragraph-div">
-              <p class="about-us-paragraph">
-              Williams Real Estate was founded on principles of <u>innovation</u>,  <u>consistency</u>, and <u>excellence</u>.  Our world class agents are a call away to get you to the home of your dreams. 
-              </p>
-            </div>
-            <Carousel responsive={responsive} slidesToSlide={5} containerClass="carousel" itemClass="carousel-agent" arrows={false} customButtonGroup={<CustomButtonGroupAsArrows />} renderButtonGroupOutside={true}>
+            {/* <h1 class= "about-us-heading"> About Us</h1> */}
+            <div class="carousel-group">
+              <h1 class="carousel-heading">
+                Meet Our Agents
+              </h1>
+              <Carousel responsive={responsive} slidesToSlide={4} containerClass="carousel" itemClass="carousel-agent" arrows={false} customButtonGroup={<CustomButtonGroupAsArrows />} renderButtonGroupOutside={true}>
               {agentsArray.map(agent => {
                 return <img class="agent-image" alt="Agent" src={config.SERVER_URL + 'agents/images/' + agent['Image']} onClick={() => openAgentProfileModal(agent['Name'])}/>
               })}
-            </Carousel>
-            <Modal className = "modal" isOpen = {agentProfileModalIsOpen} onRequestClose={() => closeAgentProfileModal()}
+              </Carousel>
+            </div>
+            <div class="paragraph-div">
+              <p class="about-us-paragraph">
+                Williams Real Estate was founded on principles of <u>innovation</u>,  <u>consistency</u>, and <u>excellence</u>.  Our world class agents are a call away to get you to the home of your dreams. 
+              </p>
+            </div>
+            <Modal className = "agent-profile-modal" isOpen = {agentProfileModalIsOpen} onRequestClose={() => closeAgentProfileModal()}
                 style={{
                     overlay: {
                         position: 'fixed',
@@ -112,39 +118,21 @@ function AboutUs({agents}) {
                         right: 0,
                         bottom: 0,
                         backgroundColor: 'rgba(0, 0, 0, 0.75)',
-                        zIndex: 1
+                        zIndex: 2
                     },
-                    content: {
-                        position: 'absolute',
-                        top: '50%',
-                        left: '50%',
-                        right: '0',
-                        bottom: '0',
-                        transform: 'translate(-50%, -50%)',
-                        width: '40%',
-                        height: '80%',
-                        minWidth: '500px',
-                        minHeight: '600px',
-                        backgroundPosition: 'center',
-                        border: '1px solid #ccc',
-                        background: 'rgba(240, 234, 214)',
-                        overflowX: 'auto',
-                        overflowY: 'auto',
-                        WebkitOverflowScrolling: 'touch',
-                        borderRadius: '4px',
-                        outline: 'none',
-                        // padding: '1.5071590052750565vh',
-                        radius: '1px',
-                        zIndex: 1
-                    }
                 }}
               >
-              <AgentProfile agentProfileModalIsOpen={agentProfileModalIsOpen} setAgentProfileModalIsOpen={setAgentProfileModalIsOpen}
-                agentProfileName={agentProfileName} agentProfileTitle={agentProfileTitle}
-                agentProfileImagePath={agentProfileImagePath} agentProfileOfficeNumber={agentProfileOfficeNumber}
-                agentProfileCellNumber={agentProfileCellNumber} agentProfileEmail={agentProfileEmail}
-                agentProfileBio={agentProfileBio}
-                />
+                <div class="agent-profile-modal-heading">
+                  <img src={closeModalImg} alt="Close Modal" class="close-agent-profile-modal-button" onClick={() => closeAgentProfileModal()} />
+                </div>
+                <div class="agent-profile-modal-content">
+                  <AgentProfile agentProfileModalIsOpen={agentProfileModalIsOpen} setAgentProfileModalIsOpen={setAgentProfileModalIsOpen}
+                  agentProfileName={agentProfileName} agentProfileTitle={agentProfileTitle}
+                  agentProfileImagePath={agentProfileImagePath} agentProfileOfficeNumber={agentProfileOfficeNumber}
+                  agentProfileCellNumber={agentProfileCellNumber} agentProfileEmail={agentProfileEmail}
+                  agentProfileBio={agentProfileBio}
+                  />
+                </div>
             </Modal>
         </div>
     );

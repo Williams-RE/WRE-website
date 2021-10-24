@@ -5,42 +5,56 @@
     height: 100vh;
 }
 
-.about-us-head {
+.about-us-heading {
     position: absolute;
     top: 3%;
-    left: 20%;
+    left: 50%;
     transform: translate(-50%);
-    font: 5vw light;
+    /* font: 5vw light; */
     color: var(--secondary-color);
 }
 
 .paragraph-div {
     position: relative;
-    top: 40%;
+    /* top: 40%; */
 }
 
 .about-us-paragraph {
-    position: absolute;
+    position: relative;
     text-align: center;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
+.carousel-group {
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+}
+
+.carousel-heading {
+    color: var(--tertiary-color);
+    padding-bottom: 3vh;
+}
+
 .carousel {
-    margin-top: 20vh;
     position: relative;
     left: 50%;
     transform: translate(-50%);
     height: 28vh;
-    width: 70vw;
+    width: 800px;
     border: 1px solid black;
     z-index: 1;
+    box-sizing: content-box;
+}
+
+.carousel-agent {
+    border: 5px solid white;
 }
 
 .carousel-agent img {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    /* margin-left: auto;
+    margin-right: auto; */
 }
 
 .agent-image:hover {
@@ -49,7 +63,7 @@
 
 .agent-image {
     height: 100%;
-    width: 90%;
+    width: 150px;
     vertical-align: middle;
 }
 
@@ -74,9 +88,10 @@
     position: absolute;
     top: 33%;
     left: 50%;
-    width: 80vw;
+    width: 900px;
     height: 5vmin;
     transform: translate(-50%, -50%);
+    z-index: 0;
 }
 
 .arrow {
@@ -119,4 +134,72 @@
 
 .arrow:active {
     scale: .7;
+}
+
+.agent-profile-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid #ccc;
+  background: var(--primary-color);
+  overflow: auto;
+  /* --webkit-overflow-scrolling: touch; */
+  border-radius: 4px;
+  outline: none;
+  padding: 1.5071590052750565vh;
+  /* radius: 1px; */
+  width: 500px;
+  text-align: center;
+  box-sizing: border-box;
+  z-index: 2;
+}
+
+.agent-profile-modal-heading {
+    height: 3vh;
+    /* border: 1px solid black; */
+}
+
+.agent-profile-modal-content {
+    margin-top: 25px;
+}
+
+.close-agent-profile-modal-button {
+  position: absolute;
+  height: 25px;
+  width: 25x;
+  right: 5%;
+  top: 3vh;
+  cursor: pointer;
+}
+
+.close-agent-profile-modal-button:hover {
+    transform: scale(1.05);
+    opacity: 1;
+}
+
+@media screen and (max-width: 1024px) {
+    .carousel {
+        width: 640px;
+    }
+
+    .button-group {
+        width: 740px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .carousel {
+        width: 480px;
+    }
+
+    .button-group {
+        display: none;
+        width: 580px;
+    }
+    
+    .agent-profile-modal {
+        height: 100%;
+        width: 100%;
+    }
 }
