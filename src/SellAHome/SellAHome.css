@@ -41,6 +41,12 @@
   z-index: 3;
 }
 
+.sell-a-home-content:hover {
+  transform: scale(1.02)
+
+}
+
+
 .card-title {
   margin-top: 1vw;
   margin-bottom: 1vw;
