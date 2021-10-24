@@ -24,14 +24,25 @@
     text-align: center;
     left: 50%;
     transform: translate(-50%, -50%);
+    font-size: 1.6vw;
+    width: 40%;
+    color: var(--tertiary-color);
 }
 
+.principles {
+    text-decoration: italic;
+    color: var(--secondary-color);
+    font-style: italic;
+
+
+}
 .carousel-group {
     margin-top: 10vh;
     margin-bottom: 10vh;
 }
 
 .carousel-heading {
+    font-size: 2.7vw;
     color: var(--tertiary-color);
     padding-bottom: 3vh;
 }
@@ -86,7 +97,7 @@
 
 .button-group {
     position: absolute;
-    top: 33%;
+    top: 33.5%;
     left: 50%;
     width: 900px;
     height: 5vmin;
