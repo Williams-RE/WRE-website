@@ -31,21 +31,45 @@
 }
 
 .sell-a-home-content {
-  display: flex;
-  justify-content: space-evenly;
+  display: grid;
+  justify-content: center; 
+  margin: auto;
+  width: 33%;
+  text-align: center;
+  padding-top: 1vw;
+  background-color: rgb(255, 249, 227); 
+  z-index: 3;
+}
+
+.card-title {
+  margin-top: 1vw;
+  margin-bottom: 1vw;
+  position: inherit;
+
 }
 
 .sell-a-home-paragraph {
-  margin-left: 4%;
-  width: 55%;
+  position: relative;
+  width: 25vw;
   line-height: 140%;
+  float: center;  
+  margin-top:2vw;
+  margin-bottom: 5vw;
+  font-size: 20px;
 }
 
 .sell-a-home-image {
-  display: inline;
-  width: 40vw;
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 25vw;
   min-width: 375px;
   height: auto;
+  border:  solid 5px;
+  border-color: var(--secondary-color);
+  margin-top: .8vw;
+  margin-bottom: .8vw;
 }
 
 .button {

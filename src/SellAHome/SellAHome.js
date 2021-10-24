@@ -58,23 +58,30 @@ function SellAHome() {
             <div className="sell-a-home-content-group" onAnimationEnd={() => setFadeInSellAHomeContent(0)} animation={fadeInSellAHomeContent}>
                 { showSellAHomeParagraphBefore ? 
                 <div class="sell-a-home-content">
-                    <StylizedParagraphs passage = "Selling your home is a hard decision. The four walls have held years full of love and memories. But now you have decided to depart whether  downsize, but you don't know when is the right moment. This is a daunting task but no need to fear.
-                     Our agents at WRE our experts in the market and we will ensure you are informed. Now that you've made the decision to sell your house, your trusted agent will help you put your best foot forward when preparing to sell your home. Your agent can walk you through the appraisal, 
-                     give you tips on staging your home, and advise you on doing renovations or making any necessary repairs."/>
-                    <img src={beforeYouStart} alt="Before You Start" class="sell-a-home-image"/> 
+                    
+                    <img src={beforeYouStart} alt="Before You Start" class="sell-a-home-image"/>
+
+                    <h2 class = "card-title"> Before you start </h2> 
+
+                    <p class = "buy-a-home-paragraph">Selling your home is a hard decision. The four walls have held together years of love and memories. This is a daunting task but no need to fear.
+                     Our agents at WRE our experts in the market. They will help you put your best foot forward when preparing to sell your home..</p>
+                    
                 </div>
                 : null }
 
                  { showSellAHomeParagraphFinding ? 
                 <div class="sell-a-home-content">
-                    <StylizedParagraphs passage = "You have an offer. There are multiple steps you can take, accept, counteroffer, or reject. But do not fear. Our agents will do the hard work and weigh the options and advise you on the best course of action." />
                     <img src={findingTheDeal} alt="Finding The Deal" class="sell-a-home-image"/>
+                    <h2 class = "card-title"> Getting the offer </h2>
+                    <p class = "buy-a-home-paragraph"> You have an offer. There are multiple steps you can take, accept, counteroffer, or reject. But do not fear. Our agents will do the hard work and weigh the options and advise you on the best course of action." </p>
+                    
                 </div>
                 : null }
                 { showSellAHomeParagraphSealing ? 
                 <div class="sell-a-home-content">
-                    <StylizedParagraphs passage = "Congratulations! You have sold your home. The hard work and patience has paid off and you have entered  a new chapter of your life. " />
                     <img src={sealingTheDeal} alt="Making The Deal" class="sell-a-home-image" />
+                    <h2 class = "card-title"> Making the deal </h2>
+                    <p class = "buy-a-home-paragraph"> Congratulations! You have sold your home. The hard work and patience has paid off and you have entered  a new chapter of your life.  </p>
                 </div>
                  : null }
             </div>
