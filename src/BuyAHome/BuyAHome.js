@@ -107,11 +107,15 @@ function BuyAHome() {
                 { showBuyAHomeParagraphBefore ? 
 
                 <div class="buy-a-home-content">
-                    <StylizedParagraphs passage = "Buying a home is one of the most challenging and rewarding experiences in your life.  
-                    To guarantee a smooth process, contact your bank to get a preapproval letter. 
-                    If you have any questions feel free to reach out to one of our qualified agents.  WRE is always here to serve you."/>
-                        
+                  
                     <img src={beforeYouBuy} alt="Before You Buy" class="buy-a-home-image"/> 
+
+                    <p class = "buy-a-home-paragraph">
+
+                        Buying a home is one of the most challenging and rewarding experiences in your life.  
+                        To guarantee a smooth process, contact your bank to get a preapproval letter. 
+                        If you have any questions feel free to reach out to one of our qualified agents.  WRE is always here to serve you.
+                    </p>
                 </div>
                 : null }
 

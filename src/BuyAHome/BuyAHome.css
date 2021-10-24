@@ -85,25 +85,42 @@ scale: .9;
 }
 
 .buy-a-home-content-group[animation='1'] {
-    animation: fadeInBuyAHomeContent .5s 1;
+    animation: fadeInBuyAHomeContent 1s 1;
 }
 
 .buy-a-home-content {
-  display: flex;
-  justify-content: space-evenly;
+  display: grid;
+  justify-content: center;
+  border: solid;
+  margin: auto;
+  width: 33%;
+  text-align: center;
+  padding-top: 1vw;
+
 }
 
 .buy-a-home-paragraph {
-    margin-left: 4%;
-    width: 55%;
+    position: relative;
+    width: 25vw;
     line-height: 140%;
+    float: center;  
+    margin-top: 1vw;
+    margin-bottom: 9vw;
+    font-size: 25px;
 }
 
 .buy-a-home-image {
-  display: inline;
-  width: 40vw;
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 25vw;
   min-width: 375px;
   height: auto;
+  border:  solid 5px;
+  border-color: var(--secondary-color);
+  margin-top: 1vw;
+  margin-bottom: 1vw;
 }
 
 .buy-a-home-button-group {
