@@ -14,18 +14,20 @@ Modal.setAppElement('#root');
                 </div>
                 <div class="agent-profile-content">
                     <img class="agent-profile-image" src={props.agentProfileImagePath} alt={props.agentProfileName}/>
-                    <h4>
-                        {props.agentProfileBio}
-                    </h4>
-                    <h4>
-                        Office Number: {props.agentProfileOfficeNumber}
-                    </h4>
-                    <h4>
-                        Cell Number: {props.agentProfileCellNumber}
-                    </h4>
-                    <h4>
-                        Email: {props.agentProfileEmail}
-                    </h4>
+                    <div class="agent-profile-text">
+                        <h4>
+                            {props.agentProfileBio}
+                        </h4>
+                        {/* <h4>
+                            Office Number: {props.agentProfileOfficeNumber}
+                        </h4> */}
+                        <h4>
+                            Cell Number: {props.agentProfileCellNumber}
+                        </h4>
+                        <h4>
+                            Email: {props.agentProfileEmail}
+                        </h4>
+                    </div>
                 </div>
         </div>
      );

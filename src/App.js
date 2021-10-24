@@ -188,7 +188,7 @@ function App() {
             right: 0,
             bottom: 0,
             backgroundColor: 'rgba(0, 0, 0, 0.75)',
-            zIndex: 1
+            zIndex: 2
           },
             }}
       >
@@ -206,15 +206,14 @@ function App() {
         <div class='modal-element'>  
           <select class='select-agents' name ='selectAgents'  value={agent} onChange={e => setAgent(e.target.value)}>
             <option value="" disabled>Agent</option>
-            <option value="Jacob Williams">Jacob Williams</option>
-            <option value="Pam Buzzeo">Pam Buzzeo</option>
+            {/* <option value="Jacob Williams">Jacob Williams</option>
             <option value="Mathew Thomas"> Mathew Thomas</option>
             <option value="Binu Jacob">Binu Jacob</option>
-            <option value="Hilda Christi">Hilda Christi</option>
             <option value="Shazzat Tanvir">Shazzat Tanvir</option>
-            <option value="Karen Bruno">Karen Bruno</option>
-            <option value="Kerri Kaylor">Kerri Kaylor</option>
-            <option value="Rashed Ahmed">Rashed Ahmed</option>
+            <option value="Karen Roos">Karen Roos</option>
+            <option value="Kerri Kaylor">Kerri Kaylor</option> */}
+            <option value="Shelby Simpson">Shelby Simpson</option>
+            <option value="Andrew Williams">Andrew Williams</option>
           </select> 
         </div>
         <div class="modal-element">

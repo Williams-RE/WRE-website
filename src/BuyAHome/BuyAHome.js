@@ -9,7 +9,6 @@ import findingTheDeal from '../images/buy-a-home/illustrations/illustration2.jpg
 import sealingTheDeal from '../images/buy-a-home/illustrations/illustration3.jpg';
 import closeModalImg from '../images/close-modal.jpg';
 import StylizedParagraphs from '../TextFomatting/StylizedParagraphs.js';
-import { openModal, closeModal } from '../App.js'
 
 Modal.setAppElement('#root')
 
@@ -146,7 +145,7 @@ function BuyAHome() {
                         right: 0,
                         bottom: 0,
                         backgroundColor: 'rgba(0, 0, 0, 0.75)',
-                        zIndex: 1
+                        zIndex: 2
                     },
                 }}
             >
