@@ -211,7 +211,7 @@ function App() {
             <option value="Binu Jacob">Binu Jacob</option>
             <option value="Shazzat Tanvir">Shazzat Tanvir</option>
             <option value="Karen Roos">Karen Roos</option>
-            <option value="Kerri Kaylor">Kerri Kaylor</option> 
+            <option value="Kerri Kaylor">Kerri Kaylor</option>
           </select> 
         </div>
         <div class="modal-element">
