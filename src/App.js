@@ -206,14 +206,12 @@ function App() {
         <div class='modal-element'>  
           <select class='select-agents' name ='selectAgents'  value={agent} onChange={e => setAgent(e.target.value)}>
             <option value="" disabled>Agent</option>
-            {/* <option value="Jacob Williams">Jacob Williams</option>
+            <option value="Jacob Williams">Jacob Williams</option>
             <option value="Mathew Thomas"> Mathew Thomas</option>
             <option value="Binu Jacob">Binu Jacob</option>
             <option value="Shazzat Tanvir">Shazzat Tanvir</option>
             <option value="Karen Roos">Karen Roos</option>
-            <option value="Kerri Kaylor">Kerri Kaylor</option> */}
-            <option value="Shelby Simpson">Shelby Simpson</option>
-            <option value="Andrew Williams">Andrew Williams</option>
+            <option value="Kerri Kaylor">Kerri Kaylor</option>
           </select> 
         </div>
         <div class="modal-element">
