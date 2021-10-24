@@ -26,9 +26,16 @@
     transform: translate(-50%, -50%);
     font-size: 1.6vw;
     width: 40%;
-    color: var(--secondary-color);
+    color: var(--tertiary-color);
 }
 
+.principles {
+    text-decoration: italic;
+    color: var(--secondary-color);
+    font-style: italic;
+
+
+}
 .carousel-group {
     margin-top: 10vh;
     margin-bottom: 10vh;

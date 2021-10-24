@@ -106,7 +106,7 @@ function AboutUs({agents}) {
             </div>
             <div class="paragraph-div">
               <p class="about-us-paragraph">
-                Williams Real Estate was founded on principles of <u>innovation</u>,  <u>consistency</u>, and <u>excellence</u>.  Our world class agents are a call away to get you to the home of your dreams. 
+                Williams Real Estate was founded on principles of <span class="principles">innovation</span>,  <span class="principles">consistency</span>, and <span class="principles">excellence</span>.  Our world class agents are a call away to get you to the home of your dreams. 
               </p>
             </div>
             <Modal className = "agent-profile-modal" isOpen = {agentProfileModalIsOpen} onRequestClose={() => closeAgentProfileModal()}
