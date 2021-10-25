@@ -151,7 +151,7 @@ transform: scale(.96);
 
 .buy-a-home-button-group {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   margin: 4vh;
 }
 
