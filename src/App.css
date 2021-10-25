@@ -17,6 +17,7 @@ body{
   --tertiary-color: rgba(143,20,2,1);
   --quarternary-color: #efeae6;
   --quinary-color: #4e81d5;
+  --senary-color: rgb(255, 249, 227);
   --scroll-top: auto;
 }
 
@@ -481,17 +482,31 @@ img {
 }
 
 @media screen and (max-width: 768px) {
+
+  :root {
+    --primary-color: #999fb6;
+    --secondary-color: #b75a1e;
+    --tertiary-color: #625456;
+    --quarternary-color: #efeae6;
+    --quinary-color: #867c83;
+    --senary-color: #acb2ca;
+    --scroll-top: auto;
+  }
+
+
+
+
   .modal-button-text:before {
     content: '';
   }
 
   .modal-button {
     border-radius: 50px;
-    padding-bottom: 10px;
+    padding-bottom: 9px;
   }
 
   .background {
-    background: url('./images/background-small.jpg');
+    background: url('./images/scale.webp');
     background-position: center;
     background-size: cover;
   }
@@ -503,6 +518,14 @@ img {
   .navigation-button {
     font-size: 20px;
   }
+
+  .navigation-button:hover {
+    /* background-color: transparent; */
+     /* color: var(--secondary-color);
+     transform: scale(1.1); */
+     box-shadow: inset 20vw 0 0 0 #b75a1e;
+     cursor: pointer;
+ }
 
   .modal {
     width: 100%;

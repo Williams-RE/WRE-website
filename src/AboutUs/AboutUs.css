@@ -5,14 +5,7 @@
     height: 100vh;
 }
 
-.about-us-heading {
-    position: absolute;
-    top: 3%;
-    left: 50%;
-    transform: translate(-50%);
-    /* font: 5vw light; */
-    color: var(--secondary-color);
-}
+
 
 .paragraph-div {
     position: relative;
@@ -53,7 +46,7 @@
     transform: translate(-50%);
     height: 28vh;
     width: 800px;
-    background-color: rgb(255, 249, 227);
+    background-color: var(--senary-color);
     z-index: 1;
     box-sizing: content-box;
 }
@@ -212,5 +205,16 @@
     .agent-profile-modal {
         height: 100%;
         width: 100%;
+    }
+    
+    .about-us-paragraph {
+        font-size: 20px;
+        width: 90%;
+
+    }
+
+    .carousel-heading {
+        font-size: 40px;
+        
     }
 }
