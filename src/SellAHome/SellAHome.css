@@ -9,7 +9,7 @@
 
 .sell-a-home-button-group {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     margin: 4vh;
 }
 
@@ -19,11 +19,14 @@
 }
 
 .sell-a-home-content-group {
-    position: relative;
-    height: 78vh;
-    animation-name: sell-a-home-content;
-    animation-duration: 1s;
-    animation-fill-mode: forwards;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
+  width: 500px;
+  /* height: 70vh; */
+  animation-name: buy-a-home-content;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
 }
 
 .sell-a-home-content-group[animation='1'] {
@@ -31,12 +34,12 @@
 }
 
 .sell-a-home-content {
-  display: grid;
-  justify-content: center; 
+  position: relative;
   margin: auto;
-  width: 33%;
   text-align: center;
-  padding-top: 1vw;
+  /* padding-top: 1vw; */
+  /* padding-bottom: 1vw; */
+  padding: 5% 15% 5% 15%;
   background-color: rgb(255, 249, 227); 
   z-index: 3;
 }
@@ -50,12 +53,12 @@
 
 .sell-a-home-paragraph {
   position: relative;
-  width: 25vw;
-  line-height: 140%;
-  float: center;  
-  margin-top:2vw;
-  margin-bottom: 5vw;
-  font-size: 20px;
+    line-height: 140%;
+    float: center;
+    margin-top:2vw;
+    margin-bottom: 5vw;
+    font-size: 20px;
+    width: 100%;
 }
 
 .sell-a-home-image {
@@ -63,7 +66,7 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 25vw;
+  width: 100%;
   min-width: 375px;
   height: auto;
   border:  solid 5px;
@@ -146,6 +149,14 @@
 @keyframes fadeInSellAHomeContent {
     from { opacity: 0; }
     to { opacity: 1; }
+}
+
+@media screen and (max-width: 1100px) {
+  .listings-modal-button {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+  }
 }
 
 @media screen and (max-width: 900px) {
