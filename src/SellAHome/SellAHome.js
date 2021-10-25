@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './SellAHome.css';
 import StylizedParagraphs from '../TextFomatting/StylizedParagraphs.js';
 import beforeYouStart from '../images/sell-a-home/illustrations/illustration4.jpg';
-import findingTheDeal from '../images/sell-a-home/illustrations/illustration5.jpg';
+import findingTheDeal from '../images/sell-a-home/illustrations/update5-05.png';
 import sealingTheDeal from '../images/sell-a-home/illustrations/illustration6.jpg';
 
 function SellAHome() {

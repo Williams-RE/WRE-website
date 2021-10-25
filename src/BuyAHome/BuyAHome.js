@@ -4,9 +4,9 @@ import Modal from 'react-modal';
 import './BuyAHome.css';
 import config from '../config.json';
 import ListingsLayout from './Listings/ListingsLayout.js';
-import beforeYouBuy from '../images/buy-a-home/illustrations/illustration1.jpg';
-import findingTheDeal from '../images/buy-a-home/illustrations/illustration2.jpg';
-import sealingTheDeal from '../images/buy-a-home/illustrations/illustration3.jpg';
+import beforeYouBuy from '../images/buy-a-home/illustrations/update1-03.png';
+import findingTheDeal from '../images/buy-a-home/illustrations/update2-02.png';
+import sealingTheDeal from '../images/buy-a-home/illustrations/update3-03.png';
 import closeModalImg from '../images/close-modal.jpg';
 import StylizedParagraphs from '../TextFomatting/StylizedParagraphs.js';
 
