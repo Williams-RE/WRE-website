@@ -266,6 +266,11 @@ transform: scale(.96);
     width: auto;
   }
 
+  .buy-a-home-content:hover {
+    transform: scale(1)
+  
+  }
+
   .buy-a-home-paragraph {
     width: auto;
   }

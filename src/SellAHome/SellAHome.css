@@ -179,6 +179,12 @@
   
 
   }
+
+  .sell-a-home-content:hover {
+    transform: scale(1)
+  
+  }
+
   .button {
     height: fit-content;
     width: auto;
