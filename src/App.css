@@ -17,7 +17,8 @@ body{
   --tertiary-color: rgba(143,20,2,1);
   --quarternary-color: #efeae6;
   --quinary-color: #4e81d5;
-  --senary-color: rgb(255, 249, 227);
+  --senary-color:  rgba(255, 249, 227);
+  --septenary-color: rgba(255, 249, 227, 0.472);
   --scroll-top: auto;
 }
 
@@ -127,7 +128,7 @@ img {
 
 .page {
     margin-top: 10vh;
-    padding-top: 75px;
+    /* padding-top: 75px; */
     position: relative;
 }
 
