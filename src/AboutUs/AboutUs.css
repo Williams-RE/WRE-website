@@ -3,14 +3,10 @@
     width: 100vw;
     max-width: 100%;
     height: 100vh;
-
     background-color: var(--septenary-color);
     padding-top: 12vh;
     padding-bottom: 20vh;
-
 }
-
-
 
 .paragraph-div {
     position: relative;
@@ -31,9 +27,8 @@
     text-decoration: italic;
     color: var(--secondary-color);
     font-style: italic;
-
-
 }
+
 .carousel-group {
     margin-top: 10vh;
     margin-bottom: 10vh;
@@ -215,11 +210,15 @@
     .about-us-paragraph {
         font-size: 20px;
         width: 90%;
-
     }
 
     .carousel-heading {
         font-size: 40px;
-        
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .carousel {
+        width: 100%;
     }
 }
