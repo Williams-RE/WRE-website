@@ -21,6 +21,9 @@ function App() {
   const sellAHomeRef = useRef();
   const aboutUsRef = useRef();
 
+  const emailInputRef = useRef()
+  const agentDropdownRef = useRef()
+
   const [agents, setAgents] = useState({})
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalButtonAnimeClass, setModalButtonAnimeClass] = useState('');
@@ -173,6 +176,19 @@ function App() {
     setEmailPlaceHolder('Email*')
   }
 
+  function handleNameKeyPress(event) {
+    if (event.key === 'Enter') {
+      // Focus on next input
+      emailInputRef.current.focus()
+    }
+  }
+
+  function handleEmailKeyPress(event) {
+    if (event.key === 'Enter') {
+      agentDropdownRef.current.focus()
+    }
+  }
+
   return (
     <div class="main">
 
@@ -199,13 +215,13 @@ function App() {
         </div>
         <hr class="contact-line"/> 
         <div class="modal-element">
-          <input class={`modal-input ${nameErrorClass}`}  placeholder={namePlaceHolder} type="text"  value={name} onInput={e => onNameInputChange(e.target.value)} required/> 
+          <input class={`modal-input ${nameErrorClass}`}  placeholder={namePlaceHolder} type="text"  value={name} onInput={e => onNameInputChange(e.target.value)} onKeyDown={(e) => handleNameKeyPress(e)} required/> 
         </div>
         <div class="modal-element"> 
-          <input class={`modal-input ${emailErrorClass}`} placeholder={emailPlaceHolder} type="email"   value={email} onInput={e => onEmailInputChange(e.target.value)} required/> 
+          <input class={`modal-input ${emailErrorClass}`} placeholder={emailPlaceHolder} type="email" value={email} onInput={e => onEmailInputChange(e.target.value)} onKeyDown={(e) => handleEmailKeyPress(e)} required ref={emailInputRef}/> 
         </div>
         <div class='modal-element'>  
-          <select class='select-agents' name ='selectAgents'  value={agent} onChange={e => setAgent(e.target.value)}>
+          <select class='select-agents' name ='selectAgents'  value={agent} onChange={e => setAgent(e.target.value)} ref={agentDropdownRef}>
             <option value="" disabled>Agent</option>
             <option value="Jacob Williams">Jacob Williams</option>
             <option value="Mathew Thomas"> Mathew Thomas</option>
