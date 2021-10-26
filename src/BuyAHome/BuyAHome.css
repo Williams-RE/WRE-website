@@ -1,11 +1,24 @@
 .buy-a-home-main {
     /* border: 1px solid pink; */
+    background-color: var(--septenary-color);
+    padding-top: 10vh;
+    padding-bottom: 20vh;
+    /* margin-top: 10vh; */
 }
 
 .buy-a-home-heading {
-    text-align: center;
+    /* padding: 2vh 0 2vh 0; */
     font-size: 4vh;
-    color: transparent;
+    position: absolute;
+    top: 3.5%;
+    left: 10%;
+    width: fit-content;
+    text-align: left;
+    margin-bottom: 10vh;
+    color: var(--tertiary-color);
+
+
+
 }
 
 .buy-a-home-button-group {
@@ -16,7 +29,7 @@
 
 .listings-modal-button {
   position: absolute;
-  top: 50%;
+  top: 45%;
   left: 20%;
   transform: translate(-50%);
   min-width: 10rem;
@@ -123,8 +136,8 @@ transform: scale(.96);
 
 }
 .card-title {
-  margin-top: 1vw;
-  margin-bottom: 1vw;
+  margin-top: 1vh;
+  margin-bottom: .1vh;
   position: inherit;
 }
 
