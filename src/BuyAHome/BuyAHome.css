@@ -1,19 +1,22 @@
 .buy-a-home-main {
     /* border: 1px solid pink; */
     background-color: var(--septenary-color);
-    padding-top: 12vh;
+    padding-top: 10vh;
     padding-bottom: 20vh;
     /* margin-top: 10vh; */
 }
 
 .buy-a-home-heading {
-    text-align: center;
+    /* padding: 2vh 0 2vh 0; */
     font-size: 4vh;
     position: absolute;
-    text-decoration: underline;
     top: 3.5%;
     left: 10%;
+    width: fit-content;
+    text-align: left;
+    margin-bottom: 10vh;
     color: var(--tertiary-color);
+
 
 
 }
