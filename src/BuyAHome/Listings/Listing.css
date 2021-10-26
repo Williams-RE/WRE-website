@@ -1,11 +1,14 @@
 .listing {
     width: 48%;
-    height: 47%;
-    border: 1px solid black;
+    height: 53%;
+    background-color: var(--senary-color);
     box-sizing: border-box;
     display: inline-block;
     margin: 1vh;
     overflow: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
 }
 
 .listing-image-container {
@@ -17,6 +20,10 @@
 .listing-image {
     height: 100%;
     width: auto;
+}
+
+.listing-content {
+    padding-top: 20px;
 }
 
 @media screen and (max-width: 900px) {

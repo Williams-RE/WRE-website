@@ -8,6 +8,7 @@
 
 body{
    font-family: 'Roboto',serif;
+   overflow-x: hidden;
 }
 
 :root {
@@ -206,122 +207,6 @@ img {
   animation-delay: 2.5s;
 } 
 
-.modal-button-text:before {
-  content: 'Contact Us';
-  margin-left: 8px;
-}
-
-@keyframes scaleIn {
-  4.7%{ 
-    transform: scale(1.20);
-  }
-  9.5% { 
-    transform: scale(1);
-  }
-
-  14.2%{ 
-    transform: scale(1.20);
-  }
-  18.9% { 
-    transform: scale(1);
-  }
-
-  23.57%{ 
-    transform: scale(1.20);
-  }
-  28.2% { 
-    transform: scale(1);
-  }
-
-  32.97%{ 
-    transform: scale(1.20);
-  }
-  37.67% { 
-    transform: scale(1);
-  }
-
-  42.37%{ 
-    transform: scale(1.20);
-  }
-  47% { 
-    transform: scale(1);
-  }
-}
-
-@-webkit-keyframes scaleIn {
-  4.7%{ 
-    transform: scale(1.20);
-  }
-  9.5% { 
-    transform: scale(1);
-  }
-
-  14.2%{ 
-    transform: scale(1.20);
-  }
-  18.9% { 
-    transform: scale(1);
-  }
-
-  23.57%{ 
-    transform: scale(1.20);
-  }
-  28.2% { 
-    transform: scale(1);
-  }
-
-  32.97%{ 
-    transform: scale(1.20);
-  }
-  37.67% { 
-    transform: scale(1);
-  }
-
-  42.37%{ 
-    transform: scale(1.20);
-  }
-  47% { 
-    transform: scale(1);
-  }
-}
-
-@-o-keyframes scaleIn {
-  4.7%{ 
-    transform: scale(1.20);
-  }
-  9.5% { 
-    transform: scale(1);
-  }
-
-  14.2%{ 
-    transform: scale(1.20);
-  }
-  18.9% { 
-    transform: scale(1);
-  }
-
-  23.57%{ 
-    transform: scale(1.20);
-  }
-  28.2% { 
-    transform: scale(1);
-  }
-
-  32.97%{ 
-    transform: scale(1.20);
-  }
-  37.67% { 
-    transform: scale(1);
-  }
-
-  42.37%{ 
-    transform: scale(1.20);
-  }
-  47% { 
-    transform: scale(1);
-  }
-}
-
 .modal-button:hover {
     opacity: 1;
     box-shadow: 0px 15px 25px -5px rgba(darken((0,0,0,0.24),40%));
@@ -333,6 +218,14 @@ img {
   opacity: 1;
   box-shadow: 0px 4px 8px  rgba(darken((0,0,0,0.24), 30%));
   transform: scale(.90);
+}
+
+.modal-button-text {
+  color: white;
+}
+
+.pencil-svg {
+  display: none;
 }
 
 .pause-animation {
@@ -460,6 +353,125 @@ img {
   animation: move 5s infinite ease-in-out;
 }
 
+.area {
+  width: 250px;
+  height: 50px;
+  margin: 0 auto;
+  border: 2px solid #f06d06;
+  border-radius: 50px;
+}
+
+@keyframes scaleIn {
+  4.7%{ 
+    transform: scale(1.20);
+  }
+  9.5% { 
+    transform: scale(1);
+  }
+
+  14.2%{ 
+    transform: scale(1.20);
+  }
+  18.9% { 
+    transform: scale(1);
+  }
+
+  23.57%{ 
+    transform: scale(1.20);
+  }
+  28.2% { 
+    transform: scale(1);
+  }
+
+  32.97%{ 
+    transform: scale(1.20);
+  }
+  37.67% { 
+    transform: scale(1);
+  }
+
+  42.37%{ 
+    transform: scale(1.20);
+  }
+  47% { 
+    transform: scale(1);
+  }
+}
+
+@-webkit-keyframes scaleIn {
+  4.7%{ 
+    transform: scale(1.20);
+  }
+  9.5% { 
+    transform: scale(1);
+  }
+
+  14.2%{ 
+    transform: scale(1.20);
+  }
+  18.9% { 
+    transform: scale(1);
+  }
+
+  23.57%{ 
+    transform: scale(1.20);
+  }
+  28.2% { 
+    transform: scale(1);
+  }
+
+  32.97%{ 
+    transform: scale(1.20);
+  }
+  37.67% { 
+    transform: scale(1);
+  }
+
+  42.37%{ 
+    transform: scale(1.20);
+  }
+  47% { 
+    transform: scale(1);
+  }
+}
+
+@-o-keyframes scaleIn {
+  4.7%{ 
+    transform: scale(1.20);
+  }
+  9.5% { 
+    transform: scale(1);
+  }
+
+  14.2%{ 
+    transform: scale(1.20);
+  }
+  18.9% { 
+    transform: scale(1);
+  }
+
+  23.57%{ 
+    transform: scale(1.20);
+  }
+  28.2% { 
+    transform: scale(1);
+  }
+
+  32.97%{ 
+    transform: scale(1.20);
+  }
+  37.67% { 
+    transform: scale(1);
+  }
+
+  42.37%{ 
+    transform: scale(1.20);
+  }
+  47% { 
+    transform: scale(1);
+  }
+}
+
 @keyframes move {
   20%, 100% {
     opacity: 0;
@@ -471,14 +483,6 @@ img {
   10% {
     opacity: 1;
   }
-}
-
-.area {
-  width: 250px;
-  height: 50px;
-  margin: 0 auto;
-  border: 2px solid #f06d06;
-  border-radius: 50px;
 }
 
 @media screen and (max-width: 768px) {
@@ -493,16 +497,19 @@ img {
     --scroll-top: auto;
   }
 
-
-
-
-  .modal-button-text:before {
-    content: '';
+  .modal-button-text {
+    display: none;
   }
 
   .modal-button {
-    border-radius: 50px;
+    background-color: white;
+    border-radius: 50%;
     padding-bottom: 9px;
+    text-align: center;
+  }
+
+  .pencil-svg {
+    display: inline;
   }
 
   .background {

@@ -51,9 +51,9 @@
   opacity: 1;
 }
 
-.listings-modal-button:active {
+/* .listings-modal-button:active {
 transform: scale(.96);
-}
+} */
 
 .listings-modal {
   position: absolute;
@@ -90,12 +90,16 @@ transform: scale(.96);
   cursor: pointer;
 }
 
+.close-listings-modal-button:hover {
+  transform: scale(1.05);
+  opacity: 1;
+}
+
 .buy-a-home-content-group {
   position: relative;
   left: 50%;
   transform: translate(-50%);
   width: 500px;
-  /* height: 70vh; */
   animation-name: buy-a-home-content;
   animation-duration: 1s;
   animation-fill-mode: forwards;
@@ -109,11 +113,8 @@ transform: scale(.96);
   position: relative;
   margin: auto;
   text-align: center;
-  /* padding-top: 1vw; */
-  /* padding-bottom: 1vw; */
   padding: 5% 15% 5% 15%;
   background-color: var(--senary-color); 
-  /* background-color:  rgb(255, 249, 227); */
   box-sizing: border-box;
 
 }
@@ -143,7 +144,6 @@ transform: scale(.96);
   margin-left: auto;
   margin-right: auto;
   width: 100%;
-  min-width: 375px;
   height: auto;
   border: solid 5px;
   border-color: var(--secondary-color);
@@ -157,7 +157,7 @@ transform: scale(.96);
   margin: 4vh;
 }
 
-.button {
+.buy-a-home-button {
 	--offset: 10px;
 	--border-size: 2px;
 	font-size: 2vh;
@@ -167,7 +167,7 @@ transform: scale(.96);
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
-	/* border: 1px solid black; */
+  border: 0;
 	background-color:  var(--senary-color);
 	color: var(--secondary-color);
 	text-transform: uppercase;
@@ -180,7 +180,7 @@ transform: scale(.96);
 	transition: background 0.8s ease;
 }
 
-.button:hover {
+.buy-a-home-button:hover {
 	background: rgba(100, 0, 0, 0.03);
 
 }
@@ -214,7 +214,7 @@ transform: scale(.96);
 	right: calc(var(--vertical-offset) * -1);
 }
 
-.button:hover .button__horizontal {
+.buy-a-home-button:hover .button__horizontal {
 	transform: scaleX(0);
 }
 
@@ -231,7 +231,7 @@ transform: scale(.96);
 	right: calc(var(--horizontal-offset) - var(--border-size));
 }
 
-.button:hover .button__vertical {
+.buy-a-home-button:hover .button__vertical {
 	transform: scaleY(0);
 }
 
@@ -260,6 +260,10 @@ transform: scale(.96);
 }
 
 @media screen and (max-width: 768px) {
+  .buy-a-home-content-group {
+    width: 100%;
+  }
+  
   .buy-a-home-content {
     flex-direction: column-reverse;
     align-items: center;
@@ -268,7 +272,6 @@ transform: scale(.96);
 
   .buy-a-home-content:hover {
     transform: scale(1)
-  
   }
 
   .buy-a-home-paragraph {
@@ -278,19 +281,12 @@ transform: scale(.96);
   .buy-a-home-button-group {
     flex-direction: row;
     position: relative;
-    transform: scale(.7)
-
-  
-
-  
+    transform: scale(.7);
   }
   
-  .button {
-    --offset: 5px;
-    --border-size: 1px;
-    font-size: 2vh;
-    display: block;
-    position: absolute;
+  .buy-a-home-button {
+    height: fit-content;
+    width: auto;
   }
 
   .listings-modal {
@@ -307,10 +303,3 @@ transform: scale(.96);
     top: 1.5vh;
   }
 }
-
-/* @media screen and (max-width: 650px) {
-  .listings-modal {
-    left: 5%;
-    right: 5%;
-  }
-} */

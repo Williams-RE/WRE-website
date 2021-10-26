@@ -47,9 +47,7 @@
 
 .sell-a-home-content:hover {
   transform: scale(1.02)
-
 }
-
 
 .card-title {
   margin-top: 1vw;
@@ -74,7 +72,6 @@
   margin-left: auto;
   margin-right: auto;
   width: 100%;
-  min-width: 375px;
   height: auto;
   border:  solid 5px;
   border-color: var(--secondary-color);
@@ -82,7 +79,7 @@
   margin-bottom: .8vw;
 }
 
-.button {
+.sell-a-home-button {
 	--offset: 10px;
 	--border-size: 2px;
 	font-size: 2vh;
@@ -93,7 +90,7 @@
 	   -moz-appearance: none;
 			appearance: none;
 	border: 0;
-	background: transparent;
+	background-color:  var(--senary-color);
 	color: var(--secondary-color);
 	text-transform: uppercase;
 	letter-spacing: 0.25em;
@@ -106,10 +103,11 @@
   opacity: .93;
   }
 
-  .button:hover {
+  .sell-a-home-button:hover {
 	background: rgba(100, 0, 0, 0.03);
   opacity: 1;
   }
+
   .button__horizontal, .button__vertical {
 	position: absolute;
 	top: var(--horizontal-offset, 0);
@@ -119,37 +117,44 @@
 	transition: transform 0.8s ease;
 	will-change: transform;
   }
+
   .button__horizontal::before, .button__vertical::before {
 	content: "";
 	position: absolute;
 	border: inherit;
   }
+
   .button__horizontal {
 	--vertical-offset: calc(var(--offset) * -1);
 	border-top: var(--border-size) solid currentcolor;
 	border-bottom: var(--border-size) solid currentcolor;
   }
+
   .button__horizontal::before {
 	top: calc(var(--vertical-offset) - var(--border-size));
 	bottom: calc(var(--vertical-offset) - var(--border-size));
 	left: calc(var(--vertical-offset) * -1);
 	right: calc(var(--vertical-offset) * -1);
   }
-  .button:hover .button__horizontal {
+
+  .sell-a-home-button:hover .button__horizontal {
 	transform: scaleX(0);
   }
+  
   .button__vertical {
 	--horizontal-offset: calc(var(--offset) * -1);
 	border-left: var(--border-size) solid currentcolor;
 	border-right: var(--border-size) solid currentcolor;
   }
+
   .button__vertical::before {
 	top: calc(var(--horizontal-offset) * -1);
 	bottom: calc(var(--horizontal-offset) * -1);
 	left: calc(var(--horizontal-offset) - var(--border-size));
 	right: calc(var(--horizontal-offset) - var(--border-size));
   }
-  .button:hover .button__vertical {
+  
+  .sell-a-home-button:hover .button__vertical {
 	transform: scaleY(0);
   }
 
@@ -158,34 +163,27 @@
     to { opacity: 1; }
 }
 
-@media screen and (max-width: 1100px) {
-  .listings-modal-button {
-    position: relative;
-    left: 50%;
-    transform: translate(-50%);
+@media screen and (max-width: 768px) {
+  .sell-a-home-content-group {
+    width: 100%;
   }
-}
-
-@media screen and (max-width: 900px) {
+  
   .sell-a-home-content {
     flex-direction: column-reverse;
     align-items: center;
   }
+
   .sell-a-home-button-group {
     flex-direction: row;
     position: relative;
     transform: scale(.7);
-  
-  
-
   }
 
   .sell-a-home-content:hover {
     transform: scale(1)
-  
   }
 
-  .button {
+  .sell-a-home-button {
     height: fit-content;
     width: auto;
   }

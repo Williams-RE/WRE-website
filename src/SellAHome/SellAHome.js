@@ -36,19 +36,19 @@ function SellAHome() {
         <div class="sell-a-home-main">
             <h1 class="sell-a-home-heading">Sell a Home</h1>
             <div class="sell-a-home-button-group">
-                <button class="button" onClick={onBeforeYouStartClick}>Before You Start
+                <button class="sell-a-home-button" onClick={onBeforeYouStartClick}>Before You Start
                 <div class="button__horizontal"></div>
                 <div class="button__vertical"></div>
                 </button>
 
               
-                <button class="button" onClick={onFindingTheDealClick}>Getting the offer
+                <button class="sell-a-home-button" onClick={onFindingTheDealClick}>Getting the offer
                 <div class="button__horizontal"></div>
                 <div class="button__vertical"></div>
                 </button>
 
 
-                <button class="button" onClick={onSealingTheDealClick}>Making The Deal
+                <button class="sell-a-home-button" onClick={onSealingTheDealClick}>Making The Deal
                 <div class="button__horizontal"></div>
                 <div class="button__vertical"></div>
                 </button>
