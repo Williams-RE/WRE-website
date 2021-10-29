@@ -489,7 +489,7 @@ img {
 @media screen and (max-width: 768px) {
 
   :root {
-    --primary-color: #999fb6;
+    --primary-color: #c5c5c500;
     --secondary-color: #b75a1e;
     --tertiary-color: #625456;
     --quarternary-color: #efeae6;

@@ -115,7 +115,7 @@ function BuyAHome() {
 
                         Buying a home is one of the most challenging and rewarding experiences in your life.  
                         To guarantee a smooth process, contact your bank to get a preapproval letter. 
-                        If you have any questions feel free to reach out to one of our qualified agents.  WRE is always here to serve you.
+                        If you have any questions feel free to reach out to one of our qualified agents. <span class= "underline"> WRE is always here to serve you. </span>
                     </p>
                 </div>
                 : null }
@@ -127,7 +127,7 @@ function BuyAHome() {
                    
                     <h2 classname = 'card-title'> Finding the deal </h2>
 
-                    <p class = "buy-a-home-paragraph"> Finding the right home is as much as an art as it is a science. The first step is figure out what you want vs what you need in a home. When house hunting you should consider other factors beyond the price and style. Our agents at WRE are best in understanding your budget, tastes, and lifestyles.  " </p>
+                    <p class = "buy-a-home-paragraph"> Finding the right home is as much as an art as it is a science. The first step is figure out what you want vs what you need in a home. When house hunting you should consider other factors beyond the price and style. <span class = "underline" >Our agents at WRE are best in understanding your budget, tastes, and lifestyles. </span>  </p>
                     
             
                     
@@ -139,7 +139,7 @@ function BuyAHome() {
 
                     <h2 class = "card-title"> Sealing the deal </h2>
 
-                    <p class = "buy-a-home-paragraph"> You spotted the perfect home! Now the next step is to make the offer, and making an agreement with the seller. This is a grueling and tedious time but you do not have to worry.  Our trusted agents will guide you through the process.     </p>
+                    <p class = "buy-a-home-paragraph"> You spotted the perfect home! Now the next step is to make the offer, and making an agreement with the seller. This is a grueling and tedious time but you do not have to worry. <span class="underline"> Our trusted agents will guide you through the process. </span>    </p>
                     
 
 

@@ -64,7 +64,7 @@ function SellAHome() {
                     <h2 class = "card-title"> Before you start </h2> 
 
                     <p class = "buy-a-home-paragraph">Selling your home is a hard decision. The four walls have held together years of love and memories. This is a daunting task but no need to fear.
-                     Our agents at WRE our experts in the market. They will help you put your best foot forward when preparing to sell your home..</p>
+                     <span class = "underline"> Our agents at WRE our experts in the market. </span> They will help you put your best foot forward when preparing to sell your home.</p>
                     
                 </div>
                 : null }
@@ -73,7 +73,7 @@ function SellAHome() {
                 <div class="sell-a-home-content">
                     <img src={findingTheDeal} alt="Finding The Deal" class="sell-a-home-image"/>
                     <h2 class = "card-title"> Getting the offer </h2>
-                    <p class = "buy-a-home-paragraph"> You have an offer. There are multiple steps you can take, accept, counteroffer, or reject. But do not fear. Our agents will do the hard work and weigh the options and advise you on the best course of action." </p>
+                    <p class = "buy-a-home-paragraph"> You have an offer. There are multiple steps you can take, accept, counteroffer, or reject. But do not fear. <span class = "underline"> Our agents will do the hard work and weigh the options and advise you on the best course of action. </span> </p>
                     
                 </div>
                 : null }
@@ -81,7 +81,7 @@ function SellAHome() {
                 <div class="sell-a-home-content">
                     <img src={sealingTheDeal} alt="Making The Deal" class="sell-a-home-image" />
                     <h2 class = "card-title"> Making the deal </h2>
-                    <p class = "buy-a-home-paragraph"> Congratulations! You have sold your home. The hard work and patience has paid off and you have entered  a new chapter of your life.  </p>
+                    <p class = "buy-a-home-paragraph"> <span class = "underline">Congratulations!  </span>  You have sold your home. The hard work and patience has paid off and you have entered  a new chapter of your life.</p>
                 </div>
                  : null }
             </div>
