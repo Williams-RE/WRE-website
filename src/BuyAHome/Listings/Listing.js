@@ -10,10 +10,10 @@ function Listing({imagePath, address, price, propertyInfo, listingAgent}) {
                 <img src={imagePath} onError={error => error.target.src=config.SERVER_URL + 'listingImages/image-not-available.jpg'} class="listing-image" alt="Listing"/>
             </div>
             <div class="listing-content">
-                <h3>{price}</h3>
+                <h3 class="listing-price">{price}</h3>
                 <p>{address}</p>
                 <p>{propertyInfo}</p>
-                <p>Listing courtesy of {listingAgent} on SmartMLS</p>
+                <p class="listing-agent-mls">Courtesy of {listingAgent} on SmartMLS</p>
             </div>
         </div>
     )

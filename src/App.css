@@ -192,7 +192,7 @@ img {
   white-space: nowrap;
   border-radius: 5px;
   padding: 1rem;
-  margin: 0.9rem 1rem;
+  margin: -1rem 1rem;
   align-items: center;
   width: fit-content;
   color: var(--quarternary-color);
