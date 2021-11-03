@@ -1,85 +1,85 @@
 .about-us-main {
-    /* height: 100vh; */
-    width: 100vw;
-    max-width: 100%;
-    height: 100vh;
-    background-color: var(--septenary-color);
-    padding-top: 12vh;
-    padding-bottom: 20vh;
+  /* height: 100vh; */
+  width: 100vw;
+  max-width: 100%;
+  height: 100vh;
+  background-color: var(--septenary-color);
+  padding-top: 12vh;
+  padding-bottom: 20vh;
 }
 
 .paragraph-div {
-    position: relative;
-    /* top: 40%; */
+  position: relative;
+  /* top: 40%; */
 }
 
 .about-us-paragraph {
-    position: relative;
-    text-align: center;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 1.6vw;
-    width: 40%;
-    color: var(--tertiary-color);
+  position: relative;
+  text-align: center;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.6vw;
+  width: 40%;
+  color: var(--tertiary-color);
 }
 
 .principles {
-    text-decoration: italic;
-    color: var(--secondary-color);
-    font-style: italic;
+  text-decoration: italic;
+  color: var(--secondary-color);
+  font-style: italic;
 }
 
 .carousel-group {
-    margin-top: 10vh;
-    margin-bottom: 10vh;
+  margin-top: 10vh;
+  margin-bottom: 10vh;
 }
 
 .carousel-heading {
-    font-size: 2.7vw;
-    color: var(--tertiary-color);
-    padding-bottom: 3vh;
+  font-size: 2.7vw;
+  color: var(--tertiary-color);
+  padding-bottom: 3vh;
 }
 
 .carousel {
-    position: relative;
-    left: 50%;
-    transform: translate(-50%);
-    height: 28vh;
-    width: 800px;
-    background-color: var(--senary-color);
-    z-index: 1;
-    box-sizing: content-box;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
+  height: 28vh;
+  width: 800px;
+  background-color: var(--senary-color);
+  z-index: 1;
+  box-sizing: content-box;
 }
 
 .carousel-agent {
-    border: 5px solid white;
+  border: 5px solid white;
 }
 
 .carousel-agent img {
-    display: block;
-    overflow: hidden;
-    /* margin-left: auto;
+  display: block;
+  overflow: hidden;
+  /* margin-left: auto;
     margin-right: auto; */
 }
 
 .agent-image:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .agent-image {
-    height: 27vh;
-    width: auto;
-    object-fit: cover;
-    object-position: center;
-    vertical-align: middle;
+  height: 27vh;
+  width: auto;
+  object-fit: cover;
+  object-position: center;
+  vertical-align: middle;
 }
 
 .carousel-arrow {
-    position: absolute;
-    height: 8vw;
-    width: 8vw;
-    bottom: 7vh;
-    border: 1px solid black;
+  position: absolute;
+  height: 8vw;
+  width: 8vw;
+  bottom: 7vh;
+  border: 1px solid black;
 }
 
 /* .left-carousel-arrow {
@@ -90,57 +90,56 @@
     right: 8vw;
 } */
 
-
 .button-group {
-    position: absolute;
-    top: 45%;
-    left: 50%;
-    width: 950px;
-    height: 5vmin;
-    transform: translate(-50%, -50%);
-    z-index: 0;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  width: 950px;
+  height: 5vmin;
+  transform: translate(-50%, -50%);
+  z-index: 0;
 }
 
 .arrow {
-    position: absolute;
-    top: 40%;
-    width: 3vmin;
-    height: 3vmin;
-    background: transparent;
-    border-top: 1vmin solid black;
-    border-right: 1vmin solid black;
-    box-shadow: 0 0 0 lightgray;
-    transition: all 200ms ease;
+  position: absolute;
+  top: 40%;
+  width: 3vmin;
+  height: 3vmin;
+  background: transparent;
+  border-top: 1vmin solid black;
+  border-right: 1vmin solid black;
+  box-shadow: 0 0 0 lightgray;
+  transition: all 200ms ease;
 }
 
 .arrow.left {
-    left: 0;
-    transform: translate3d(0, -50%, 0) rotate(-135deg);
+  left: 0;
+  transform: translate3d(0, -50%, 0) rotate(-135deg);
 }
 
 .arrow.right {
-    right: 0;
-    transform: translate3d(0, -50%, 0) rotate(45deg);
-  }
+  right: 0;
+  transform: translate3d(0, -50%, 0) rotate(45deg);
+}
 
 .arrow:hover {
-    border-color: var(--secondary-color);
-    box-shadow: 0.5vmin -0.5vmin 0 black;
-    cursor: pointer;
+  border-color: var(--secondary-color);
+  box-shadow: 0.5vmin -0.5vmin 0 black;
+  cursor: pointer;
 }
 
 .arrow:before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-40%, -60%) rotate(45deg);
-    /* width: 100%;
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-40%, -60%) rotate(45deg);
+  /* width: 100%;
     height: 100%; */
 }
 
 .arrow:active {
-    scale: .7;
+  scale: 0.7;
 }
 
 .agent-profile-modal {
@@ -163,12 +162,14 @@
 }
 
 .agent-profile-modal-heading {
-    height: 3vh;
-    /* border: 1px solid black; */
+  height: 3vh;
+  color: var(--secondary-color);
+  /* border: 1px solid black; */
 }
 
 .agent-profile-modal-content {
-    margin-top: 25px;
+  margin-top: 25px;
+  /* color: var(--secondary-color); */
 }
 
 .close-agent-profile-modal-button {
@@ -181,47 +182,47 @@
 }
 
 .close-agent-profile-modal-button:hover {
-    transform: scale(1.05);
-    opacity: 1;
+  transform: scale(1.05);
+  opacity: 1;
 }
 
 @media screen and (max-width: 1024px) {
-    .carousel {
-        width: 640px;
-    }
+  .carousel {
+    width: 640px;
+  }
 
-    .button-group {
-        width: 740px;
-    }
+  .button-group {
+    width: 740px;
+  }
 }
 
 @media screen and (max-width: 768px) {
-    .carousel {
-        width: 480px;
-    }
+  .carousel {
+    width: 480px;
+  }
 
-    .button-group {
-        display: none;
-        width: 580px;
-    }
-    
-    .agent-profile-modal {
-        height: 100%;
-        width: 100%;
-    }
-    
-    .about-us-paragraph {
-        font-size: 20px;
-        width: 90%;
-    }
+  .button-group {
+    display: none;
+    width: 580px;
+  }
 
-    .carousel-heading {
-        font-size: 40px;
-    }
+  .agent-profile-modal {
+    height: 100%;
+    width: 100%;
+  }
+
+  .about-us-paragraph {
+    font-size: 20px;
+    width: 90%;
+  }
+
+  .carousel-heading {
+    font-size: 40px;
+  }
 }
 
 @media screen and (max-width: 480px) {
-    .carousel {
-        width: 100%;
-    }
+  .carousel {
+    width: 100%;
+  }
 }
