@@ -184,6 +184,10 @@
     margin-bottom: 50px;
   }
 
+  .card-title {
+    color: var(--secondary-color);
+  }
+
 
 
 

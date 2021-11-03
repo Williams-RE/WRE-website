@@ -273,6 +273,10 @@ transform: scale(.96);
     color: var(--tertiary-color);
     border-color: var(--primary-color);
   }
+
+  .card-title {
+    color: var(--secondary-color);
+  }
 }
 
 @media screen and (max-width: 900px) {

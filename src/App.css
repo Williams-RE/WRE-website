@@ -489,7 +489,7 @@ img {
 @media screen and (max-width: 768px) {
 
   :root {
-    --primary-color: #c5c5c500;
+    --primary-color: #9ca1b6a9;
     --secondary-color: #b75a1e;
     --tertiary-color: #625456;
     --quarternary-color: #ece6ef;
@@ -504,7 +504,7 @@ img {
   }
 
   .modal-button {
-    background-color: rgb(175, 152, 152);
+    background-color: rgb(240, 240, 240);
     border-radius: 50%;
     padding-bottom: 9px;
     text-align: center;

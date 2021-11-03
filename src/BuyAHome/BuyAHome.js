@@ -109,7 +109,7 @@ function BuyAHome() {
                   
                     <img src={beforeYouBuy} alt="Before You Buy" class="buy-a-home-image"/> 
                     
-                    <h2 classname = 'card-title'> Before you buy</h2>
+                    <h2 class = 'card-title'> Before you buy</h2>
 
                     <p class = "buy-a-home-paragraph">
 
@@ -125,7 +125,7 @@ function BuyAHome() {
 
                     <img src={findingTheDeal} alt="Finding The Deal" class="buy-a-home-image"/>
                    
-                    <h2 classname = 'card-title'> Finding the deal </h2>
+                    <h2 class = "card-title"> Finding the deal </h2>
 
                     <p class = "buy-a-home-paragraph"> Finding the right home is as much as an art as it is a science. The first step is figure out what you want vs what you need in a home. When house hunting you should consider other factors beyond the price and style. <span class = "underline" >Our agents at WRE are best in understanding your budget, tastes, and lifestyles. </span>  </p>
                     
