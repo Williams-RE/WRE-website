@@ -495,7 +495,7 @@ img {
     --quarternary-color: #ece6ef;
     --quinary-color: #9ca1b6a9;
     --senary-color: #2f2e2e;
-    /* --septenary-color: #acb2caa9; */
+    --septenary-color: #acb2caa9;
     
   }
 
@@ -504,7 +504,7 @@ img {
   }
 
   .modal-button {
-    background-color: rgb(161, 148, 148);
+    background-color: rgb(175, 152, 152);
     border-radius: 50%;
     padding-bottom: 9px;
     text-align: center;
