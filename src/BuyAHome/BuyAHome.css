@@ -338,7 +338,9 @@ transform: scale(.96);
     left: 0;
     bottom: 0;
     right: 0;
+    color: var(--secondary-color);
   }
+
 
   .close-listings-modal-button {
     right: 5%;
