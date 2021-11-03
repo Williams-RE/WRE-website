@@ -133,11 +133,8 @@ transform: scale(.96);
     inset 0 -1px 0 0 #003648;
 }
 
-
-
-.buy-a-home-content:hover >* > .underline {
+.buy-a-home-content:hover > * > .underline {
   color: var(--secondary-color);
-
 }
 
 .card-title {
@@ -265,9 +262,16 @@ transform: scale(.96);
 
 @media screen and (max-width: 1100px) {
   .listings-modal-button {
+    margin-top: 250px;
     position: relative;
     left: 50%;
     transform: translate(-50%);
+    opacity: 1;
+  }
+
+  .listings-modal-button:hover {
+    color: var(--tertiary-color);
+    border-color: var(--primary-color);
   }
 }
 
@@ -294,7 +298,7 @@ transform: scale(.96);
   }
 
   .buy-a-home-content-group {
-    width: 100%;
+    width: 90%;
   }
 
   .buy-a-home-content {
@@ -309,6 +313,7 @@ transform: scale(.96);
 
   .buy-a-home-paragraph {
     width: auto;
+    color: var(--quarternary-color);
   }
 
   .buy-a-home-button-group {

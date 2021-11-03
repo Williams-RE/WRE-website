@@ -192,7 +192,7 @@ img {
   white-space: nowrap;
   border-radius: 5px;
   padding: 1rem;
-  margin: -1rem 1rem;
+  margin: 0.9rem 1rem;
   align-items: center;
   width: fit-content;
   color: var(--quarternary-color);
@@ -492,11 +492,11 @@ img {
     --primary-color: #c5c5c500;
     --secondary-color: #b75a1e;
     --tertiary-color: #625456;
-    --quarternary-color: #efeae6;
-    --quinary-color: #867c83;
-    --senary-color: #acb2ca;
-    --septenary-color: #acb2caa9;
-    --scroll-top: auto;
+    --quarternary-color: #ece6ef;
+    --quinary-color: #9ca1b6a9;
+    --senary-color: #2f2e2e;
+    /* --septenary-color: #acb2caa9; */
+    
   }
 
   .modal-button-text {
@@ -504,10 +504,15 @@ img {
   }
 
   .modal-button {
-    background-color: white;
+    background-color: rgb(161, 148, 148);
     border-radius: 50%;
     padding-bottom: 9px;
     text-align: center;
+    opacity: .9;
+  }
+
+  .modal-button:hover {
+    background-color: var(--secondary-color);
   }
 
   .pencil-svg {
