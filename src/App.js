@@ -68,7 +68,7 @@ function App() {
                 'Access-Control-Allow-Methods': 'DELETE, POST, GET, OPTIONS',
                 'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With'}
     })
-    setAgents(response.data)
+      setAgents(response.data)
 }
 
   async function sendEmail(name, email, agent, comment) {
@@ -91,7 +91,7 @@ function App() {
     }
     else {
       setEmailErrorClass('error')
-      setEmailPlaceHolder('Please enter a valid email address')
+      setEmailPlaceHolder('Please enter a valid email')
       errorExists = true
     }
     if (nameIsValid(name)) {
@@ -141,7 +141,7 @@ function App() {
     }
     else {
       setEmailErrorClass('error')
-      setEmailPlaceHolder('Please enter a valid email address')
+      setEmailPlaceHolder('Please enter a valid email')
     }
     setEmail(email)
   }
@@ -204,7 +204,7 @@ function App() {
             left: 0,
             right: 0,
             bottom: 0,
-            backgroundColor: 'rgba(0, 0, 0, 0.75)',
+            backgroundColor: 'rgba(0, 0, 0, 0.80)',
             zIndex: 2
           },
             }}
@@ -213,7 +213,6 @@ function App() {
           <h1 class="title-contact">Contact Form</h1>
           <img src={closeModalImg} alt="Close Modal" class="close-modal-button" onClick={() => closeContactForm()} />
         </div>
-        <hr class="contact-line"/> 
         <div class="modal-element">
           <input class={`modal-input ${nameErrorClass}`}  placeholder={namePlaceHolder} type="text"  value={name} onInput={e => onNameInputChange(e.target.value)} onKeyDown={(e) => handleNameKeyPress(e)} required/> 
         </div>
@@ -221,7 +220,7 @@ function App() {
           <input class={`modal-input ${emailErrorClass}`} placeholder={emailPlaceHolder} type="email" value={email} onInput={e => onEmailInputChange(e.target.value)} onKeyDown={(e) => handleEmailKeyPress(e)} required ref={emailInputRef}/> 
         </div>
         <div class='modal-element'>  
-          <select class='select-agents' name ='selectAgents'  value={agent} onChange={e => setAgent(e.target.value)} ref={agentDropdownRef}>
+          <select class='select-agents' name='selectAgents'  value={agent} onChange={e => setAgent(e.target.value)} ref={agentDropdownRef}>
             <option value="" disabled>Agent</option>
             <option value="Jacob Williams">Jacob Williams</option>
             <option value="Mathew Thomas"> Mathew Thomas</option>
