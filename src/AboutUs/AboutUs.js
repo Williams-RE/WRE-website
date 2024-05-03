@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './AboutUs.css';
 import config from '../config.json';
 import AgentProfile from './AgentProfile/AgentProfile';
@@ -27,22 +27,7 @@ function AboutUs({agents}) {
     Object.keys(agents).forEach(agent => {
       agentsArray.push(agents[agent])
     })
-  //   useEffect(() => {
-  //     getAgents()
-  //     // Turn agents into array maybe
-  //   }, [])
 
-  //   async function getAgents() {
-  //     const response = await axios.get(config.SERVER_URL + 'get-agents', 
-  //     {
-  //         headers: { 'Content-Type': 'application/json',
-  //                 'Access-Control-Allow-Origin' : '*',
-  //                 'Access-Control-Allow-Methods': 'DELETE, POST, GET, OPTIONS',
-  //                 'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With'}
-  //     })
-  //     setAgents(response.data)
-  //     // Should I create agents array?
-  // }
 
     const responsive = {
         superLargeDesktop: {
