@@ -10,7 +10,7 @@ Production-ready, lightweight fully customizable React carousel component that r
 <img alt="download per month" src="https://img.shields.io/npm/dm/react-multi-carousel" target="_blank" />
 </a>
 [![Build Status](https://api.travis-ci.org/YIZHUANG/react-multi-carousel.svg?branch=master)](https://travis-ci.org/YIZHUANG/react-multi-carousel)
-<a href="https://w3js.com/react-multi-carousel">
+<a href="https://react-multi-carousel.surge.sh">
 <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" target="_blank" />
 </a>
 <a href="https://github.com/YIZHUANG/react-multi-carousel/graphs/commit-activity">
@@ -58,6 +58,7 @@ If you are using this component seriously, please donate or talk to your manager
 - Accessibility support
 - Center mode.
 - Show next/previous set of items partially
+- RTL support
 
 ### Shoutouts 🙏
 
@@ -65,7 +66,7 @@ If you are using this component seriously, please donate or talk to your manager
 
 Big thanks to [BrowserStack](https://www.browserstack.com) for letting the maintainers use their service to debug browser issues.
 
-## [Documentation](https://w3js.com/react-multi-carousel)
+## [Documentation](https://react-multi-carousel.surge.sh)
 
 ## Other important links.
 
@@ -83,7 +84,7 @@ Big thanks to [BrowserStack](https://www.browserstack.com) for letting the maint
 
 ## Demo.
 
-Documentation is [here](https://w3js.com/react-multi-carousel).
+Documentation is [here](https://react-multi-carousel.surge.sh).
 
 Demo for the SSR <https://react-multi-carousel.now.sh/>
 
@@ -436,7 +437,7 @@ Go to slide on click and make the slide a current slide.
 
 ## additionalTransfrom Props.
 
-This is very useful when you are fully customizing the control functionality by yourself like this [one](https://w3js.com/react-multi-carousel/?selectedKind=Carousel&selectedStory=With%20custom%20control%20functionality&full=0&addons=1&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel)
+This is very useful when you are fully customizing the control functionality by yourself like this [one](https://react-multi-carousel.surge.sh/?selectedKind=Carousel&selectedStory=With%20custom%20control%20functionality&full=0&addons=1&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel)
 
 [Code](https://github.com/YIZHUANG/react-multi-carousel/blob/master/stories/WithScrollbar.js)
 
@@ -463,7 +464,7 @@ For example if you give to your carousel item padding left and padding right 20p
 | customRightArrow        |                                                                       `jsx`                                                                        |              `null`               | Replace the default arrow with your own                                                                                                                               |
 | customDot               |                                                                       `jsx`                                                                        |               null                | Replace the default dots with your own                                                                                                                                |
 | customButtonGroup       |                                                                       `jsx`                                                                        |               null                | Fully customize your own control functionality if you don't want arrows or dots                                                                                       |
-| infinite                |                                                                     `boolean`                                                                      |               false               | Infinite loop                                                                                                                                                         |
+| infinite                |                                                                     `boolean`                                                                      |               false               | Enables infinite scrolling in both directions. Carousel items are cloned in the DOM to achieve this.                                                                                                                                                        |
 | minimumTouchDrag        |                                                                      `number`                                                                      |               `50`                | The amount of distance to drag / swipe in order to move to the next slide.                                                                                            |
 | afterChange             |                                                                     `function`                                                                     |              `null`               | A callback after sliding everytime.                                                                                                                                   |
 | beforeChange            |                                                                     `function`                                                                     |              `null`               | A callback before sliding everytime.                                                                                                                                  |
@@ -479,9 +480,13 @@ For example if you give to your carousel item padding left and padding right 20p
 | partialVisible          |                                                                 `boolean` | `string`                                                                 |              `false`              | Show partial next slides. This is use with the `responsive` prop, see example for details                                                                             |
 | customTransition        |                                                                      `string`                                                                      |   `transform 300ms ease-in-out`   | Configure your own anaimation when sliding                                                                                                                            |
 | transitionDuration      | `number |`300` | The unit is ms, if you are using customTransition, make sure to put the duration here as this is needed for the resizing to work. |
-| focusOnSelect           |                                    `boolean |`false` | Go to slide on click and make the slide a current slide.                                    |
-| centerMode              |                                       `boolean |`false` | Shows the next items and previous items partially.                                       |
-| additionalTransfrom     |                                              `number |`0` | additional transfrom to the current one.                                               |
+| focusOnSelect           |                                    `boolean` |`false` | Go to slide on click and make the slide a current slide.                                    |
+| centerMode              |                                       `boolean` |`false` | Shows the next items and previous items partially.                                       |
+| additionalTransfrom     |                                              `number` |`0` | additional transfrom to the current one.                                               |
+| shouldResetAutoplay     |                                              `boolean` |`true` | resets autoplay when clicking next, previous button and the dots                                              |
+| rewind     |                                              `boolean` |`false` | if infinite is not enabled and autoPlay explicitly is, this option rewinds the carousel when the end is reached (Lightweight infinite mode alternative without cloning).
+| rewindWithAnimation     |                                              `boolean` |`false` | when rewinding the carousel back to the beginning, this decides if the rewind process should be instant or with transition.                                             |
+| rtl     |                                              `boolean` |`false` | Sets the carousel direction to be right to left                                              |
 
 ## Author
 
@@ -566,6 +571,13 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="http://t.me/s/filimonovvadim"><img src="https://avatars1.githubusercontent.com/u/11225648?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Vadim Filimonov</b></sub></a><br /><a href="https://github.com/YIZHUANG/react-multi-carousel/commits?author=VadimFilimonov" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/groomain"><img src="https://avatars3.githubusercontent.com/u/3601848?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Romain</b></sub></a><br /><a href="https://github.com/YIZHUANG/react-multi-carousel/commits?author=groomain" title="Code">💻</a></td>
     <td align="center"><a href="http://rileylundquist.com"><img src="https://avatars.githubusercontent.com/u/5504497?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Riley Lundquist</b></sub></a><br /><a href="https://github.com/YIZHUANG/react-multi-carousel/commits?author=rlundquist3" title="Code">💻</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/ak-pdeshaies"><img src="https://avatars.githubusercontent.com/u/78373209?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Paul Deshaies Jr</b></sub></a><br /><a href="https://github.com/YIZHUANG/react-multi-carousel/commits?author=ak-pdeshaies" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/donotcodeit"><img src="https://avatars.githubusercontent.com/u/30778436?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Pavel Mikheev</b></sub></a><br /><a href="https://github.com/YIZHUANG/react-multi-carousel/commits?author=donotcodeit" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/nev1d"><img src="https://avatars.githubusercontent.com/u/69861627?v=4?s=100" width="100px;" alt=""/><br /><sub><b>nev1d</b></sub></a><br /><a href="https://github.com/YIZHUANG/react-multi-carousel/commits?author=nev1d" title="Code">💻</a></td>
+    <td align="center"><a href="https://brandinavian.com"><img src="https://avatars.githubusercontent.com/u/62725224?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Mads Vammen</b></sub></a><br /><a href="https://github.com/YIZHUANG/react-multi-carousel/commits?author=MaSchVam" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/jir-f"><img src="https://avatars.githubusercontent.com/u/13970855?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jiro Farah</b></sub></a><br /><a href="https://github.com/YIZHUANG/react-multi-carousel/commits?author=jir-f" title="Code">💻</a></td>
   </tr>
 </table>
 
