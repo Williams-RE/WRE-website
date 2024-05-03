@@ -1,107 +1,122 @@
 .landing-page-main {
-    height: 100vh; 
-    width: 100%; 
-    position: relative; 
-    z-index: 0;
-    /* border: 1px solid pink; */
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  z-index: 0;
+  /* border: 1px solid pink; */
 }
 
 .landing-page-heading {
-    position: absolute;
-    top: 21%;
-    left: 52%;
-    transform: translate(-50%, -50%);
-    display: table;             /* Fixed Firefox issue */ 
-    width: intrinsic;           /* Safari/WebKit uses a non-standard name */
-    width: -moz-max-content;    /* Firefox/Gecko */
-    width: -webkit-max-content; /* Chrome */
-    width: fit-content;
-    /* overflow: none;  */
-        /* -webkit-backface-visibility: hidden;
+  position: absolute;
+  top: 21%;
+  left: 52%;
+  transform: translate(-50%, -50%);
+  display: table; /* Fixed Firefox issue */
+  width: intrinsic; /* Safari/WebKit uses a non-standard name */
+  width: -moz-max-content; /* Firefox/Gecko */
+  width: -webkit-max-content; /* Chrome */
+  width: fit-content;
+  /* overflow: none;  */
+  /* -webkit-backface-visibility: hidden;
         -webkit-perspective: 1000;
         -webkit-transform: translate3d(0,0,0); */
 }
 
 .transparent {
-    color: transparent;
-    font-size: xx-small;
+  color: transparent;
+  font-size: xx-small;
 }
 
 .landing-page-slogan {
-    display: inline-block;
-    overflow: hidden;
-    white-space: nowrap;
-    font-size: 5vw;
-    font-weight: 300;
-    font-family: Roboto;
-    color: var(--quarternary-color);
-    /* text-align: center;  */
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 5vw;
+  font-weight: 300;
+  font-family: Roboto;
+  color: var(--quarternary-color);
+  /* text-align: center;  */
 }
 
-  .landing-page-slogan:first-of-type {   
-    animation: showup 7s infinite;
+.landing-page-slogan:first-of-type {
+  animation: showup 7s infinite;
+}
+
+.landing-page-slogan:last-of-type {
+  width: 0px;
+  animation: reveal 7s infinite;
+}
+
+.landing-page-slogan:last-of-type span {
+  margin-left: -20.8671875vw;
+  animation: slidein 7s infinite;
+}
+
+@keyframes showup {
+  0% {
+    opacity: 0;
   }
-  
-  .landing-page-slogan:last-of-type {
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes slidein {
+  0% {
+    margin-left: -40.25vw;
+  }
+  20% {
+    margin-left: -40.25vw;
+  }
+  35% {
+    margin-left: 0px;
+  }
+  100% {
+    margin-left: 0px;
+  }
+}
+
+@keyframes reveal {
+  0% {
+    opacity: 0;
     width: 0px;
-    animation: reveal 7s infinite ;
   }
-  
-  .landing-page-slogan:last-of-type span {
-    margin-left: -20.8671875vw;
-    animation: slidein 7s infinite;
+  20% {
+    opacity: 1;
+    width: 0px;
   }
-  
-  @keyframes showup {
-      0% {opacity: 0;}
-      20% {opacity: 1;}
-      80% {opacity: 1;}
-      100% {opacity: 0;}
+  30% {
+    width: 41vw;
   }
-  
-  @keyframes slidein {
-      0% { margin-left: -40.25vw; }
-      20% { margin-left: -40.25vw; }
-      35% { margin-left: 0px; }
-      100% { margin-left: 0px; }
+  80% {
+    opacity: 1;
   }
-  
-  @keyframes reveal {
-      0% {opacity: 0; width: 0px;}
-      20% {opacity: 1; width: 0px;}
-      30% {width: 41vw;}
-      80% {opacity: 1;}
-      100% {opacity: 0; width: 41vw;}
+  100% {
+    opacity: 0;
+    width: 41vw;
   }
- 
- 
-  
+}
 
-
-
-  @media screen and (max-width: 768px) {
-
-
-
-    .landing-page-heading {
-      position: absolute;
-      top: 30%;
-      left: 52%;
-      transform: translate(-50%, -50%);
-      display: table;             /* Fixed Firefox issue */ 
-      width: intrinsic;           /* Safari/WebKit uses a non-standard name */
-      width: -moz-max-content;    /* Firefox/Gecko */
-      width: -webkit-max-content; /* Chrome */
-      width: fit-content;
-      /* overflow: none;  */
-          /* -webkit-backface-visibility: hidden;
+@media screen and (max-width: 768px) {
+  .landing-page-heading {
+    position: absolute;
+    top: 30%;
+    left: 52%;
+    transform: translate(-50%, -50%);
+    display: table; /* Fixed Firefox issue */
+    width: intrinsic; /* Safari/WebKit uses a non-standard name */
+    width: -moz-max-content; /* Firefox/Gecko */
+    width: -webkit-max-content; /* Chrome */
+    width: fit-content;
+    /* overflow: none;  */
+    /* -webkit-backface-visibility: hidden;
           -webkit-perspective: 1000;
           -webkit-transform: translate3d(0,0,0); */
   }
-  
-
-
-
-
-
 }

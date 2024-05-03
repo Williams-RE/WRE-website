@@ -2,12 +2,21 @@
   "name": "wre",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "start": "NODE_OPTIONS=--openssl-legacy-provider react-scripts start",
+    "build": "NODE_OPTIONS=--openssl-legacy-provider react-scripts build",
+    "test": "NODE_OPTIONS=--openssl-legacy-provider react-scripts test",
+    "eject": "NODE_OPTIONS=--openssl-legacy-provider react-scripts eject",
+    "format": "prettier --write \"**/*.+(js|ts|jsx|tsx|json|css)\"",
+    "format:check": "prettier --check \"**/*.+(js|ts|jsx|tsx|json|css)\""
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.3",
     "focus-trap-react": "^8.7.1",
+    "prettier": "^3.2.5",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.2.0",
@@ -19,13 +28,6 @@
     "styled-components": "^5.3.1",
     "web-vitals": "^1.0.1"
   },
-  "scripts": {
-    "start": "NODE_OPTIONS=--openssl-legacy-provider react-scripts start",
-    "build": "NODE_OPTIONS=--openssl-legacy-provider react-scripts build",
-    "test": "NODE_OPTIONS=--openssl-legacy-provider react-scripts test",
-    "eject": "NODE_OPTIONS=--openssl-legacy-provider react-scripts eject"
-  }
-,
   "eslintConfig": {
     "extends": [
       "react-app",

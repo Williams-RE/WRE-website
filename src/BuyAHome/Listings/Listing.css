@@ -1,41 +1,41 @@
 .listing {
-    width: 48%;
-    height: fit-content;
-    background-color: var(--senary-color);
-    box-sizing: border-box;
-    display: inline-block;
-    margin: 1vh;
-    overflow: auto;
-    padding: 3vh;
+  width: 48%;
+  height: fit-content;
+  background-color: var(--senary-color);
+  box-sizing: border-box;
+  display: inline-block;
+  margin: 1vh;
+  overflow: auto;
+  padding: 3vh;
 }
 
 .listing-image-container {
-    height: 25vh;
-    width: 100%;
-    text-align: center;
+  height: 25vh;
+  width: 100%;
+  text-align: center;
 }
 
 .listing-image {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    object-position: center;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .listing-content {
-    padding-top: 20px;
+  padding-top: 20px;
 }
 
 .listing-price {
-    padding-bottom: 1vh;
+  padding-bottom: 1vh;
 }
 
 .listing-agent-mls {
-    font-size: 90%;
+  font-size: 90%;
 }
 
 @media screen and (max-width: 900px) {
-    .listing {
-        width: 96%;
-    }
+  .listing {
+    width: 96%;
+  }
 }
