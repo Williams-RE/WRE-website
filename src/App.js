@@ -72,19 +72,24 @@ function App() {
   }
 
   async function sendEmail(name, email, agent, comment) {
-    const response = await axios.post(config.SERVER_URL + "send-email", {
-      name: name,
-      email: email,
-      agent: agent,
-      comment: comment,
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "DELETE, POST, GET, OPTIONS",
-        "Access-Control-Allow-Headers":
-          "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With",
-      },
-    });
+    try {
+      const response = await axios.post(config.SERVER_URL + "send-email", {
+        name: name,
+        email: email,
+        agent: agent,
+        comment: comment,
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "DELETE, POST, GET, OPTIONS",
+          "Access-Control-Allow-Headers":
+            "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With",
+        },
+      });
+      console.info("response from sending email", response);
+    } catch (error) {
+      console.error("Error in sending email, ", error);
+    }
   }
 
   function onSubmitButtonClick(name, email, agent, comment) {
@@ -272,7 +277,7 @@ function App() {
             </option>
             <option value="Jacob Williams">Jacob Williams</option>
             <option value="Mathew Thomas"> Mathew Thomas</option>
-            <option value="Binu Jacob">Binu Jacob</option>
+            <option value="Jose Ancheril">Jose Ancheril</option>
             <option value="Shazzat Tanvir">Shazzat Tanvir</option>
             <option value="Karen Roos">Karen Roos</option>
             <option value="Kerri Kaylor">Kerri Kaylor</option>
