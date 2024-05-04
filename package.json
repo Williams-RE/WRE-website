@@ -1,29 +1,27 @@
 {
-  "name": "wre",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "axios": "^0.21.3",
-    "focus-trap-react": "^8.7.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-icons": "^4.2.0",
-    "react-modal": "^3.14.3",
-    "react-multi-carousel": "^2.6.5",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.3",
-    "react-spring": "^9.0.0-rc.3",
-    "styled-components": "^5.3.1",
-    "web-vitals": "^1.0.1"
-  },
+  "name": "wre-frontend",
+  "version": "0.1.1",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "format": "prettier --write \"**/*.+(js|ts|jsx|tsx|json|css)\"",
+    "format:check": "prettier --check \"**/*.+(js|ts|jsx|tsx|json|css)\""
+  },
+  "dependencies": {
+    "axios": "^1.6.8",
+    "focus-trap-react": "^10.2.3",
+    "prettier": "^3.2.5",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-icons": "^5.2.0",
+    "react-modal": "^3.16.1",
+    "react-multi-carousel": "^2.8.5",
+    "react-router-dom": "^6.23.0",
+    "react-scripts": "^5.0.1",
+    "react-spring": "^9.7.3",
+    "styled-components": "^6.1.9"
   },
   "eslintConfig": {
     "extends": [

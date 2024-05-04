@@ -14,14 +14,14 @@
 }
 
 .sell-a-home-button-group {
-    display: flex;
-    justify-content: space-evenly;
-    margin: 4vh;
+  display: flex;
+  justify-content: space-evenly;
+  margin: 4vh;
 }
 
 .sell-a-home-button:hover {
-    color: var(--tertiary-color);
-    opacity: 1;
+  color: var(--tertiary-color);
+  opacity: 1;
 }
 
 .sell-a-home-content-group {
@@ -35,8 +35,8 @@
   animation-fill-mode: forwards;
 }
 
-.sell-a-home-content-group[animation='1'] {
-    animation: fadeInSellAHomeContent .5s 1;
+.sell-a-home-content-group[animation="1"] {
+  animation: fadeInSellAHomeContent 0.5s 1;
 }
 
 .sell-a-home-content {
@@ -46,31 +46,31 @@
   /* padding-top: 1vw; */
   /* padding-bottom: 1vw; */
   padding: 5% 15% 5% 15%;
-  background-color: var(--senary-color); 
+  background-color: var(--senary-color);
   z-index: 3;
-  box-shadow: 0 8px 12px 0 rgb(0 0 0 / 12%), 0 4px 8px 0 rgb(0 0 0 / 24%), inset 0 -1px 0 0 #003648;
+  box-shadow:
+    0 8px 12px 0 rgb(0 0 0 / 12%),
+    0 4px 8px 0 rgb(0 0 0 / 24%),
+    inset 0 -1px 0 0 #003648;
 }
 
-
-.sell-a-home-content:hover >* > .underline {
+.sell-a-home-content:hover > * > .underline {
   color: var(--secondary-color);
-
 }
 .card-title {
   margin-top: 1vw;
   margin-bottom: 1vw;
   position: inherit;
-
 }
 
 .sell-a-home-paragraph {
   position: relative;
-    line-height: 140%;
-    float: center;
-    margin-top:2vw;
-    margin-bottom: 5vw;
-    font-size: 20px;
-    width: 100%;
+  line-height: 140%;
+  float: center;
+  margin-top: 2vw;
+  margin-bottom: 5vw;
+  font-size: 20px;
+  width: 100%;
 }
 
 .sell-a-home-image {
@@ -80,98 +80,103 @@
   margin-right: auto;
   width: 100%;
   height: auto;
-  border:  solid 5px;
+  border: solid 5px;
   border-color: var(--secondary-color);
-  margin-top: .8vw;
-  margin-bottom: .8vw;
+  margin-top: 0.8vw;
+  margin-bottom: 0.8vw;
 }
 
 .sell-a-home-button {
-	--offset: 10px;
-	--border-size: 2px;
-	font-size: 2vh;
-	display: block;
-	position: relative;
-	padding: 1.5em 3em;
-	-webkit-appearance: none;
-	   -moz-appearance: none;
-			appearance: none;
-	border: 0;
-	background-color:  var(--senary-color);
-	color: var(--secondary-color);
-	text-transform: uppercase;
-	letter-spacing: 0.25em;
-	outline: none;
-	cursor: pointer;
-	font-weight: bold;
-	border-radius: 0;
-	box-shadow: inset 0 0 0 var(--border-size) currentcolor;
-	transition: background 0.8s ease;
-  opacity: .93;
-  }
+  --offset: 10px;
+  --border-size: 2px;
+  font-size: 2vh;
+  display: block;
+  position: relative;
+  padding: 1.5em 3em;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 0;
+  background-color: var(--senary-color);
+  color: var(--secondary-color);
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  outline: none;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 0;
+  box-shadow: inset 0 0 0 var(--border-size) currentcolor;
+  transition: background 0.8s ease;
+  opacity: 0.93;
+}
 
-  .sell-a-home-button:hover {
-	background: rgba(100, 0, 0, 0.03);
+.sell-a-home-button:hover {
+  background: rgba(100, 0, 0, 0.03);
   opacity: 1;
-  }
+}
 
-  .button__horizontal, .button__vertical {
-	position: absolute;
-	top: var(--horizontal-offset, 0);
-	right: var(--vertical-offset, 0);
-	bottom: var(--horizontal-offset, 0);
-	left: var(--vertical-offset, 0);
-	transition: transform 0.8s ease;
-	will-change: transform;
-  }
+.button__horizontal,
+.button__vertical {
+  position: absolute;
+  top: var(--horizontal-offset, 0);
+  right: var(--vertical-offset, 0);
+  bottom: var(--horizontal-offset, 0);
+  left: var(--vertical-offset, 0);
+  transition: transform 0.8s ease;
+  will-change: transform;
+}
 
-  .button__horizontal::before, .button__vertical::before {
-	content: "";
-	position: absolute;
-	border: inherit;
-  }
+.button__horizontal::before,
+.button__vertical::before {
+  content: "";
+  position: absolute;
+  border: inherit;
+}
 
-  .button__horizontal {
-	--vertical-offset: calc(var(--offset) * -1);
-	border-top: var(--border-size) solid currentcolor;
-	border-bottom: var(--border-size) solid currentcolor;
-  }
+.button__horizontal {
+  --vertical-offset: calc(var(--offset) * -1);
+  border-top: var(--border-size) solid currentcolor;
+  border-bottom: var(--border-size) solid currentcolor;
+}
 
-  .button__horizontal::before {
-	top: calc(var(--vertical-offset) - var(--border-size));
-	bottom: calc(var(--vertical-offset) - var(--border-size));
-	left: calc(var(--vertical-offset) * -1);
-	right: calc(var(--vertical-offset) * -1);
-  }
+.button__horizontal::before {
+  top: calc(var(--vertical-offset) - var(--border-size));
+  bottom: calc(var(--vertical-offset) - var(--border-size));
+  left: calc(var(--vertical-offset) * -1);
+  right: calc(var(--vertical-offset) * -1);
+}
 
-  .sell-a-home-button:hover .button__horizontal {
-	transform: scaleX(0);
-  }
-  
-  .button__vertical {
-	--horizontal-offset: calc(var(--offset) * -1);
-	border-left: var(--border-size) solid currentcolor;
-	border-right: var(--border-size) solid currentcolor;
-  }
+.sell-a-home-button:hover .button__horizontal {
+  transform: scaleX(0);
+}
 
-  .button__vertical::before {
-	top: calc(var(--horizontal-offset) * -1);
-	bottom: calc(var(--horizontal-offset) * -1);
-	left: calc(var(--horizontal-offset) - var(--border-size));
-	right: calc(var(--horizontal-offset) - var(--border-size));
-  }
-  
-  .sell-a-home-button:hover .button__vertical {
-	transform: scaleY(0);
-  }
+.button__vertical {
+  --horizontal-offset: calc(var(--offset) * -1);
+  border-left: var(--border-size) solid currentcolor;
+  border-right: var(--border-size) solid currentcolor;
+}
+
+.button__vertical::before {
+  top: calc(var(--horizontal-offset) * -1);
+  bottom: calc(var(--horizontal-offset) * -1);
+  left: calc(var(--horizontal-offset) - var(--border-size));
+  right: calc(var(--horizontal-offset) - var(--border-size));
+}
+
+.sell-a-home-button:hover .button__vertical {
+  transform: scaleY(0);
+}
 
 @keyframes fadeInSellAHomeContent {
-    from { opacity: 0; }
-    to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @media screen and (max-width: 768px) {
-  
   .sell-a-home-heading {
     text-align: center;
     font-size: 40px;
@@ -186,13 +191,10 @@
     color: var(--secondary-color);
   }
 
-
-
-
   .sell-a-home-content-group {
     width: 90%;
   }
-  
+
   .sell-a-home-content {
     flex-direction: column-reverse;
     align-items: center;
@@ -201,11 +203,11 @@
   .sell-a-home-button-group {
     flex-direction: row;
     position: relative;
-    transform: scale(.7);
+    transform: scale(0.7);
   }
 
   .sell-a-home-content:hover {
-    transform: scale(1)
+    transform: scale(1);
   }
 
   .sell-a-home-button {

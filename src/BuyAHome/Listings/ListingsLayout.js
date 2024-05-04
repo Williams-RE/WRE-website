@@ -1,21 +1,33 @@
-import React from 'react';
-import './ListingsLayout.css';
-import config from '../../config.json';
-import Listing from './Listing.js';
+import React from "react";
+import "./ListingsLayout.css";
+import config from "../../config.json";
+import Listing from "./Listing.js";
 
-function ListingsLayout({listings}) {
-    const listingsArray = [];
-    Object.keys(listings).forEach((listing) => {
-        listingsArray.push(listings[listing]);
-    })
-    return (
-        <div class="listings-layout">
-            {listingsArray.map(listing => {
-                return (<Listing imagePath={config.SERVER_URL + 'listingImages/' + listing['Matrix_Unique_ID'] + '.jpg'} address={listing['Address']} price={listing['Price']}
-                    propertyInfo = {listing['PropertyInfo']} listingAgent={listing['ListAgentFullName']}/>);
-            })}
-        </div>
-    )
+function ListingsLayout({ listings }) {
+  const listingsArray = [];
+  Object.keys(listings).forEach((listing) => {
+    listingsArray.push(listings[listing]);
+  });
+  return (
+    <div class="listings-layout">
+      {listingsArray.map((listing) => {
+        return (
+          <Listing
+            imagePath={
+              config.SERVER_URL +
+              "listingImages/" +
+              listing["Matrix_Unique_ID"] +
+              ".jpg"
+            }
+            address={listing["Address"]}
+            price={listing["Price"]}
+            propertyInfo={listing["PropertyInfo"]}
+            listingAgent={listing["ListAgentFullName"]}
+          />
+        );
+      })}
+    </div>
+  );
 }
 
-export default ListingsLayout
+export default ListingsLayout;

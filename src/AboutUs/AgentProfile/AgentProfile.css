@@ -1,41 +1,42 @@
 .agent-profile-container {
-    overflow-wrap: break-word;
-    width: 100%;
-    box-sizing: border-box;
+  overflow-wrap: break-word;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.agent-profile-content > *, .agent-profile-content > * > * {
-    margin-top: 5%;
-    font-weight: normal;
+.agent-profile-content > *,
+.agent-profile-content > * > * {
+  margin-top: 5%;
+  font-weight: normal;
 }
 
 .agent-profile-heading {
-    text-align: center;
-    margin-bottom: 5%;
+  text-align: center;
+  margin-bottom: 5%;
 }
 
 .agent-profile-name {
-    color: black;
+  color: black;
 }
 
 .agent-profile-image {
-    margin: auto;
-    display: block;
-    height: 70%;
-    width: 70%;
+  margin: auto;
+  display: block;
+  height: 70%;
+  width: 70%;
 }
 
 .agent-profile-content {
-    white-space: normal;
-    overflow-wrap: break-word;
-    width: 100%;
-    box-sizing: border-box;
-    /* text-align: left; */
-    padding-left: 5%;
-    padding-right: 5%;
+  white-space: normal;
+  overflow-wrap: break-word;
+  width: 100%;
+  box-sizing: border-box;
+  /* text-align: left; */
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 .agent-profile-text {
-    padding-bottom: 5%;
-    /* background: ; */
+  padding-bottom: 5%;
+  /* background: ; */
 }
