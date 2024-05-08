@@ -8,7 +8,6 @@ import beforeYouBuy from "../images/buy-a-home/illustrations/update1-03.png";
 import findingTheDeal from "../images/buy-a-home/illustrations/update2-02.png";
 import sealingTheDeal from "../images/buy-a-home/illustrations/update3-03.png";
 import closeModalImg from "../images/close-modal.jpg";
-import StylizedParagraphs from "../TextFormatting/StylizedParagraphs.js";
 
 Modal.setAppElement("#root");
 
@@ -50,7 +49,7 @@ function BuyAHome() {
   }
 
   async function getListings() {
-    const response = await axios.get(config.SERVER_URL + "get-listings", {
+    const response = await axios.get(`${config.SERVER_URL}/get-listings`, {
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
