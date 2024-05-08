@@ -1,5 +1,5 @@
 /node_modules
 /.vscode
 /build
-/src/config.json
+/src/config.js
 node_modules/

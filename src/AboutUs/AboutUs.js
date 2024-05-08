@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./AboutUs.css";
-import config from "../config.json";
+import config from "../config.js";
 import AgentProfile from "./AgentProfile/AgentProfile";
 import closeModalImg from "../images/close-modal.jpg";
 import Modal from "react-modal";

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Modal from "react-modal";
 import "./BuyAHome.css";
-import config from "../config.json";
+import config from "../config.js";
 import ListingsLayout from "./Listings/ListingsLayout.js";
 import beforeYouBuy from "../images/buy-a-home/illustrations/update1-03.png";
 import findingTheDeal from "../images/buy-a-home/illustrations/update2-02.png";

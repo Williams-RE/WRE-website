@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import "./App.css";
-import config from "./config.json";
+import config from "./config.js";
 // import logo from './images/wre-logo-new.png';
 import closeModalImg from "./images/close-modal.jpg";
 // import niceHouse from './images/background.jpeg';

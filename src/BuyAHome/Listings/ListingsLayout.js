@@ -1,6 +1,6 @@
 import React from "react";
 import "./ListingsLayout.css";
-import config from "../../config.json";
+import config from "../../config.js";
 import Listing from "./Listing.js";
 
 function ListingsLayout({ listings }) {
