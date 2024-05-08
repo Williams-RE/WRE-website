@@ -59,7 +59,7 @@ function App() {
   }, []);
 
   async function getAgents() {
-    const response = await axios.get(config.SERVER_URL + "get-agents", {
+    const response = await axios.get(`${config.SERVER_URL}/get-agents`, {
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
@@ -73,7 +73,7 @@ function App() {
 
   async function sendEmail(name, email, agent, comment) {
     try {
-      const response = await axios.post(config.SERVER_URL + "send-email", {
+      const response = await axios.post(`${config.SERVER_URL}/send-email`, {
         name: name,
         email: email,
         agent: agent,

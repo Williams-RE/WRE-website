@@ -1,13 +1,24 @@
 import React from "react";
-// import { useState } from 'react';
+import config from "../config.js";
 import "./ContactForm.css";
 
 function ContactForm(props) {
+  const handleSubmit = (event) => {
+    console.info("Submitting contact info");
+    event.preventDefault();
+    props.changeContactFormState("display-none");
+    event.target.submit();
+  };
+
   return (
-    <form action="config.SERVER_URLsend-email" method="POST">
-      <label for="name">Name:</label>
+    <form
+      action={`${config.SERVER_URL}/send-email`}
+      method="POST"
+      onSubmit={handleSubmit}
+    >
+      <label htmlForfor="name">Name:</label>
       <input type="text" name="name" placeholder="Enter your name" required />
-      <label for="email">Email:</label>
+      <label htmlForfor="email">Email:</label>
       <input
         type="email"
         name="email"
@@ -22,14 +33,7 @@ function ContactForm(props) {
         required
       />
 
-      <button
-        type="submit"
-        onClick={() => {
-          props.changeContactFormState("display-none");
-        }}
-      >
-        Submit
-      </button>
+      <button type="submit">Submit</button>
     </form>
   );
 }
