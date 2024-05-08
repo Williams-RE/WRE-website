@@ -3,16 +3,19 @@ import config from "../config.js";
 import "./ContactForm.css";
 
 function ContactForm(props) {
-
   const handleSubmit = (event) => {
-    console.info('Submitting contact info')
-    event.preventDefault(); 
+    console.info("Submitting contact info");
+    event.preventDefault();
     props.changeContactFormState("display-none");
-    event.target.submit(); 
+    event.target.submit();
   };
 
   return (
-    <form action={`${config.SERVER_URL}/send-email`} method="POST" onSubmit={handleSubmit}>
+    <form
+      action={`${config.SERVER_URL}/send-email`}
+      method="POST"
+      onSubmit={handleSubmit}
+    >
       <label htmlForfor="name">Name:</label>
       <input type="text" name="name" placeholder="Enter your name" required />
       <label htmlForfor="email">Email:</label>
@@ -30,11 +33,7 @@ function ContactForm(props) {
         required
       />
 
-      <button
-        type="submit"
-      >
-        Submit
-      </button>
+      <button type="submit">Submit</button>
     </form>
   );
 }
