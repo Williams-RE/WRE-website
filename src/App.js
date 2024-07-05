@@ -1,17 +1,14 @@
 import React, { useRef, useState, useEffect } from "react";
 import "./App.css";
 import config from "./config.js";
-// import logo from './images/wre-logo-new.png';
 import closeModalImg from "./images/close-modal.jpg";
-// import niceHouse from './images/background.jpeg';
 import LandingPage from "./LandingPage/LandingPage";
 import BuyAHome from "./BuyAHome/BuyAHome";
 import SellAHome from "./SellAHome/SellAHome";
 import AboutUs from "./AboutUs/AboutUs";
 import Modal from "react-modal";
 import axios from "axios";
-// import { getByTitle } from '@testing-library/react';
-// import homevideo from './images/keys-to-the-house.mp4';
+
 Modal.setAppElement("#root");
 
 function App() {
@@ -93,6 +90,7 @@ function App() {
   }
 
   function onSubmitButtonClick(name, email, agent, comment) {
+    console.info("submitting info , ", name, email, agent, comment);
     let errorExists = false;
     if (emailIsValid(email)) {
       setEmailErrorClass("");
@@ -151,6 +149,7 @@ function App() {
   }
 
   function openModal() {
+    console.log("opening up modal");
     document.documentElement.style.setProperty(
       "--scroll-top",
       "-" + document.documentElement.scrollTop + "px",
