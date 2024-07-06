@@ -2,13 +2,10 @@ import React, { useState } from "react";
 import "./AboutUs.css";
 import config from "../config.js";
 import AgentProfile from "./AgentProfile/AgentProfile";
-import closeModalImg from "../images/close-modal.jpg";
+import closeModalImg from "../assets/close-modal.jpg";
 import Modal from "react-modal";
-// import axios from 'axios';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-// import rightCarouselArrow from '../images/right-carousel-arrow.png';
-// import leftCarouselArrow from '../images/left-carousel-arrow.png';
 
 function AboutUs({ agents }) {
   const [agentProfileModalIsOpen, setAgentProfileModalIsOpen] = useState(false);
@@ -162,8 +159,6 @@ const CustomButtonGroupAsArrows = ({ next, previous }) => {
     <div class="button-group">
       <div class="arrow left" onClick={previous} />
       <div class="arrow right" onClick={next} />
-      {/* <img src={leftCarouselArrow} alt="Left Carousel Arrow" class="carousel-arrow left-carousel-arrow" onClick={previous}/>
-        <img src={rightCarouselArrow} alt="Right Carousel Arrow" class="carousel-arrow right-carousel-arrow" onClick={next}/> */}
     </div>
   );
 };

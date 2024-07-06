@@ -1,7 +1,6 @@
 import React from "react";
 import "./Listing.css";
 import config from "../../config.js";
-import beforeYouBuyImg from "../../images/buy-a-home/before-you-buy.jpg";
 
 function Listing({ imagePath, address, price, propertyInfo, listingAgent }) {
   return (

@@ -4,10 +4,10 @@ import Modal from "react-modal";
 import "./BuyAHome.css";
 import config from "../config.js";
 import ListingsLayout from "./Listings/ListingsLayout.js";
-import beforeYouBuy from "../images/buy-a-home/illustrations/update1-03.png";
-import findingTheDeal from "../images/buy-a-home/illustrations/update2-02.png";
-import sealingTheDeal from "../images/buy-a-home/illustrations/update3-03.png";
-import closeModalImg from "../images/close-modal.jpg";
+import beforeYouBuy from "../assets/buy-a-home/illustrations/update1-03.png";
+import findingTheDeal from "../assets/buy-a-home/illustrations/update2-02.png";
+import sealingTheDeal from "../assets/buy-a-home/illustrations/update3-03.png";
+import closeModalImg from "../assets/close-modal.jpg";
 
 Modal.setAppElement("#root");
 

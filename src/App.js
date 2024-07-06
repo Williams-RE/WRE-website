@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import "./App.css";
 import config from "./config.js";
-import closeModalImg from "./images/close-modal.jpg";
+import closeModalImg from "./assets/close-modal.jpg";
 import LandingPage from "./LandingPage/LandingPage";
 import BuyAHome from "./BuyAHome/BuyAHome";
 import SellAHome from "./SellAHome/SellAHome";
@@ -115,8 +115,8 @@ function App() {
   }
 
   function emailIsValid(email) {
-    if (/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(email)) return true;
-    else return false;
+    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}$/;
+    return regex.test(email);
   }
 
   function submitContactForm(name, email, agent, comment) {
