@@ -275,7 +275,7 @@ function App() {
               Agent
             </option>
             <option value="Jacob Williams">Jacob Williams</option>
-            <option value="Mathew Thomas"> Mathew Thomas</option>
+            <option value="Mathews Thomas"> Mathews Thomas</option>
             <option value="Jose Ancheril">Jose Ancheril</option>
             <option value="Shazzat Tanvir">Shazzat Tanvir</option>
             <option value="Karen Roos">Karen Roos</option>
