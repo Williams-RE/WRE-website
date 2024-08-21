@@ -17,13 +17,22 @@ function AgentProfile(props) {
           src={props.agentProfileImagePath}
           alt={props.agentProfileName}
         />
-        <div class="agent-profile-text">
+        <div className="agent-profile-text">
           <h4>{props.agentProfileBio}</h4>
           {/* <h4>
-                            Office Number: {props.agentProfileOfficeNumber}
-                        </h4> */}
+          Office Number: {props.agentProfileOfficeNumber}
+        </h4> */}
           <h4>Cell Number: {props.agentProfileCellNumber}</h4>
-          <h4>Email: {props.agentProfileEmail}</h4>
+          <h4>
+            Email:{" "}
+            <a
+              href={`mailto:${props.agentProfileEmail}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {props.agentProfileEmail}
+            </a>
+          </h4>
         </div>
       </div>
     </div>
