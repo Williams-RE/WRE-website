@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import Modal from "react-modal";
 import "./BuyAHome.css";
 import config from "../config.js";
 import ListingsLayout from "./Listings/ListingsLayout.js";
-import beforeYouBuy from "../assets/buy-a-home/illustrations/update1-03.png";
-import findingTheDeal from "../assets/buy-a-home/illustrations/update2-02.png";
-import sealingTheDeal from "../assets/buy-a-home/illustrations/update3-03.png";
-import closeModalImg from "../assets/close-modal.jpg";
+import beforeYouBuy from "../assets/buy-a-home/illustrations/update1-03.avif";
+import findingTheDeal from "../assets/buy-a-home/illustrations/update2-02.avif";
+import sealingTheDeal from "../assets/buy-a-home/illustrations/update3-03.avif";
+import closeModalImg from "../assets/close-modal.avif";
 
 Modal.setAppElement("#root");
 
@@ -49,17 +48,28 @@ function BuyAHome() {
   }
 
   async function getListings() {
-    const response = await axios.get(`${config.SERVER_URL}/get-listings`, {
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "DELETE, POST, GET, OPTIONS",
-        "Access-Control-Allow-Headers":
-          "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With",
-      },
-    });
-    setListings(response.data);
-    // console.log(response.data)
+    try {
+      const response = await fetch(`${config.SERVER_URL}/get-listings`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "DELETE, POST, GET, OPTIONS",
+          "Access-Control-Allow-Headers":
+            "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      setListings(data);
+      // console.log(data);
+    } catch (error) {
+      console.error("There was a problem with the fetch operation:", error);
+    }
   }
 
   function openModal() {

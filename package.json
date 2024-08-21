@@ -1,6 +1,6 @@
 {
   "name": "wre-frontend",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "scripts": {
     "start": "serve -s build",
     "dev": "react-scripts start",
@@ -11,9 +11,7 @@
     "format:check": "prettier --check \"**/*.+(js|ts|jsx|tsx|json|css|md|yml|yaml|html)\""
   },
   "dependencies": {
-    "axios": "^1.6.8",
     "focus-trap-react": "^10.2.3",
-    "prettier": "^3.2.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-icons": "^5.2.0",
@@ -22,7 +20,6 @@
     "react-router-dom": "^6.23.0",
     "react-scripts": "^5.0.1",
     "react-spring": "^9.7.3",
-    "serve": "^14.2.3",
     "styled-components": "^6.1.9"
   },
   "eslintConfig": {
@@ -44,6 +41,7 @@
     ]
   },
   "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "prettier": "^3.3.3"
   }
 }

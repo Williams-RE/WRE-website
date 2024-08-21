@@ -1,13 +1,12 @@
 import React, { useRef, useState, useEffect } from "react";
 import "./App.css";
 import config from "./config.js";
-import closeModalImg from "./assets/close-modal.jpg";
+import closeModalImg from "./assets/close-modal.avif";
 import LandingPage from "./LandingPage/LandingPage";
 import BuyAHome from "./BuyAHome/BuyAHome";
 import SellAHome from "./SellAHome/SellAHome";
 import AboutUs from "./AboutUs/AboutUs";
 import Modal from "react-modal";
-import axios from "axios";
 
 Modal.setAppElement("#root");
 
@@ -56,25 +55,9 @@ function App() {
   }, []);
 
   async function getAgents() {
-    const response = await axios.get(`${config.SERVER_URL}/get-agents`, {
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "DELETE, POST, GET, OPTIONS",
-        "Access-Control-Allow-Headers":
-          "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With",
-      },
-    });
-    setAgents(response.data);
-  }
-
-  async function sendEmail(name, email, agent, comment) {
     try {
-      const response = await axios.post(`${config.SERVER_URL}/send-email`, {
-        name: name,
-        email: email,
-        agent: agent,
-        comment: comment,
+      const response = await fetch(`${config.SERVER_URL}/get-agents`, {
+        method: "GET",
         headers: {
           "Content-Type": "application/json",
           "Access-Control-Allow-Origin": "*",
@@ -83,7 +66,43 @@ function App() {
             "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With",
         },
       });
-      console.info("response from sending email", response);
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      setAgents(data);
+    } catch (error) {
+      console.error("There was a problem with the fetch operation:", error);
+    }
+  }
+
+  async function sendEmail(name, email, agent, comment) {
+    try {
+      const response = await fetch(`${config.SERVER_URL}/send-email`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "DELETE, POST, GET, OPTIONS",
+          "Access-Control-Allow-Headers":
+            "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With",
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          agent,
+          comment,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.info("response from sending email", data);
     } catch (error) {
       console.error("Error in sending email, ", error);
     }
