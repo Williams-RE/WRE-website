@@ -63,7 +63,7 @@ function AboutUs({ agents }) {
     setAgentProfileName(agents[agentName]["Name"]);
     setAgentProfileTitle(agents[agentName]["Title"]);
     setAgentProfileImagePath(
-      `${config.SERVER_URL}/agents/images/` + agents[agentName]["Image"],
+      `${config.SERVER_URL}agents/images/` + agents[agentName]["Image"],
     );
     setAgentProfileOfficeNumber(agents[agentName]["OfficeNumber"]);
     setAgentProfileCellNumber(agents[agentName]["CellNumber"]);
