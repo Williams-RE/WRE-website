@@ -53,7 +53,7 @@ const AddListing = ({ onListingAdded }) => {
 
   const fetchAgents = async () => {
     try {
-      const response = await fetch(`${config.SERVER_URL}get-agents`);
+      const response = await fetch(`${config.SERVER_URL}/get-agents`);
       if (response.ok) {
         const data = await response.json();
         setAgents(data);
@@ -85,7 +85,7 @@ const AddListing = ({ onListingAdded }) => {
     e.preventDefault();
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(`${config.SERVER_URL}api/listings`, {
+      const response = await fetch(`${config.SERVER_URL}/api/listings`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

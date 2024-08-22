@@ -49,7 +49,7 @@ function BuyAHome() {
 
   async function getListings() {
     try {
-      const response = await fetch(`${config.SERVER_URL}get-listings`, {
+      const response = await fetch(`${config.SERVER_URL}/get-listings`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
