@@ -35,25 +35,25 @@ function SellAHome() {
   }
 
   return (
-    <div class="sell-a-home-main">
-      <h1 class="sell-a-home-heading">Sell a Home</h1>
-      <div class="sell-a-home-button-group">
-        <button class="sell-a-home-button" onClick={onBeforeYouStartClick}>
+    <div className="sell-a-home-main">
+      <h1 className="sell-a-home-heading">Sell a Home</h1>
+      <div className="sell-a-home-button-group">
+        <button className="sell-a-home-button" onClick={onBeforeYouStartClick}>
           Before You Start
-          <div class="button__horizontal"></div>
-          <div class="button__vertical"></div>
+          <div className="button__horizontal"></div>
+          <div className="button__vertical"></div>
         </button>
 
-        <button class="sell-a-home-button" onClick={onFindingTheDealClick}>
+        <button className="sell-a-home-button" onClick={onFindingTheDealClick}>
           Getting the offer
-          <div class="button__horizontal"></div>
-          <div class="button__vertical"></div>
+          <div className="button__horizontal"></div>
+          <div className="button__vertical"></div>
         </button>
 
-        <button class="sell-a-home-button" onClick={onSealingTheDealClick}>
+        <button className="sell-a-home-button" onClick={onSealingTheDealClick}>
           Making The Deal
-          <div class="button__horizontal"></div>
-          <div class="button__vertical"></div>
+          <div className="button__horizontal"></div>
+          <div className="button__vertical"></div>
         </button>
       </div>
       <div
@@ -62,20 +62,20 @@ function SellAHome() {
         animation={fadeInSellAHomeContent}
       >
         {showSellAHomeParagraphBefore ? (
-          <div class="sell-a-home-content">
+          <div className="sell-a-home-content">
             <img
               src={beforeYouStart}
               alt="Before You Start"
-              class="sell-a-home-image"
+              className="sell-a-home-image"
             />
 
-            <h2 class="card-title"> Before you start </h2>
+            <h2 className="card-title"> Before you start </h2>
 
-            <p class="buy-a-home-paragraph">
+            <p className="buy-a-home-paragraph">
               Selling your home is a hard decision. The four walls have held
               together years of love and memories. This is a daunting task but
               no need to fear.
-              <span class="underline">
+              <span className="underline">
                 {" "}
                 Our agents at WRE our experts in the market.{" "}
               </span>{" "}
@@ -86,18 +86,18 @@ function SellAHome() {
         ) : null}
 
         {showSellAHomeParagraphFinding ? (
-          <div class="sell-a-home-content">
+          <div className="sell-a-home-content">
             <img
               src={findingTheDeal}
               alt="Finding The Deal"
-              class="sell-a-home-image"
+              className="sell-a-home-image"
             />
-            <h2 class="card-title"> Getting the offer </h2>
-            <p class="buy-a-home-paragraph">
+            <h2 className="card-title"> Getting the offer </h2>
+            <p className="buy-a-home-paragraph">
               {" "}
               You have an offer. There are multiple steps you can take, accept,
               counteroffer, or reject. But do not fear.{" "}
-              <span class="underline">
+              <span className="underline">
                 {" "}
                 Our agents will do the hard work and weigh the options and
                 advise you on the best course of action.{" "}
@@ -106,16 +106,16 @@ function SellAHome() {
           </div>
         ) : null}
         {showSellAHomeParagraphSealing ? (
-          <div class="sell-a-home-content">
+          <div className="sell-a-home-content">
             <img
               src={sealingTheDeal}
               alt="Making The Deal"
-              class="sell-a-home-image"
+              className="sell-a-home-image"
             />
-            <h2 class="card-title"> Making the deal </h2>
-            <p class="buy-a-home-paragraph">
+            <h2 className="card-title"> Making the deal </h2>
+            <p className="buy-a-home-paragraph">
               {" "}
-              <span class="underline">Congratulations! </span> You have sold
+              <span className="underline">Congratulations! </span> You have sold
               your home. The hard work and patience has paid off and you have
               entered a new chapter of your life.
             </p>

@@ -97,25 +97,25 @@ function BuyAHome() {
   }
 
   return (
-    <div class="buy-a-home-main">
-      <h1 class="buy-a-home-heading">Buy a Home</h1>
-      <div class="buy-a-home-button-group">
-        <button class="buy-a-home-button" onClick={onBeforeYouBuyClick}>
+    <div className="buy-a-home-main">
+      <h1 className="buy-a-home-heading">Buy a Home</h1>
+      <div className="buy-a-home-button-group">
+        <button className="buy-a-home-button" onClick={onBeforeYouBuyClick}>
           Before You Buy
-          <div class="button__horizontal"></div>
-          <div class="button__vertical"></div>
+          <div className="button__horizontal"></div>
+          <div className="button__vertical"></div>
         </button>
 
-        <button class="buy-a-home-button" onClick={onFindingTheDealClick}>
+        <button className="buy-a-home-button" onClick={onFindingTheDealClick}>
           Finding The Deal
-          <div class="button__horizontal"></div>
-          <div class="button__vertical"></div>
+          <div className="button__horizontal"></div>
+          <div className="button__vertical"></div>
         </button>
 
-        <button class="buy-a-home-button" onClick={onSealingTheDealClick}>
+        <button className="buy-a-home-button" onClick={onSealingTheDealClick}>
           Sealing The Deal
-          <div class="button__horizontal"></div>
-          <div class="button__vertical"></div>
+          <div className="button__horizontal"></div>
+          <div className="button__vertical"></div>
         </button>
       </div>
 
@@ -125,42 +125,45 @@ function BuyAHome() {
         animation={fadeInBuyAHomeContent}
       >
         {showBuyAHomeParagraphBefore ? (
-          <div class="buy-a-home-content">
+          <div className="buy-a-home-content">
             <img
               src={beforeYouBuy}
               alt="Before You Buy"
-              class="buy-a-home-image"
+              className="buy-a-home-image"
             />
 
-            <h2 class="card-title"> Before you buy</h2>
+            <h2 className="card-title"> Before you buy</h2>
 
-            <p class="buy-a-home-paragraph">
+            <p className="buy-a-home-paragraph">
               Buying a home is one of the most challenging and rewarding
               experiences in your life. To guarantee a smooth process, contact
               your bank to get a preapproval letter. If you have any questions
               feel free to reach out to one of our qualified agents.{" "}
-              <span class="underline"> WRE is always here to serve you. </span>
+              <span className="underline">
+                {" "}
+                WRE is always here to serve you.{" "}
+              </span>
             </p>
           </div>
         ) : null}
 
         {showBuyAHomeParagraphFinding ? (
-          <div class="buy-a-home-content">
+          <div className="buy-a-home-content">
             <img
               src={findingTheDeal}
               alt="Finding The Deal"
-              class="buy-a-home-image"
+              className="buy-a-home-image"
             />
 
-            <h2 class="card-title"> Finding the deal </h2>
+            <h2 className="card-title"> Finding the deal </h2>
 
-            <p class="buy-a-home-paragraph">
+            <p className="buy-a-home-paragraph">
               {" "}
               Finding the right home is as much as an art as it is a science.
               The first step is figure out what you want vs what you need in a
               home. When house hunting you should consider other factors beyond
               the price and style.{" "}
-              <span class="underline">
+              <span className="underline">
                 Our agents at WRE are best in understanding your budget, tastes,
                 and lifestyles.{" "}
               </span>{" "}
@@ -168,21 +171,21 @@ function BuyAHome() {
           </div>
         ) : null}
         {showBuyAHomeParagraphSealing ? (
-          <div class="buy-a-home-content">
+          <div className="buy-a-home-content">
             <img
               src={sealingTheDeal}
               alt="Sealing The Deal"
-              class="buy-a-home-image"
+              className="buy-a-home-image"
             />
 
-            <h2 class="card-title"> Sealing the deal </h2>
+            <h2 className="card-title"> Sealing the deal </h2>
 
-            <p class="buy-a-home-paragraph">
+            <p className="buy-a-home-paragraph">
               {" "}
               You spotted the perfect home! Now the next step is to make the
               offer, and making an agreement with the seller. This is a grueling
               and tedious time but you do not have to worry.{" "}
-              <span class="underline">
+              <span className="underline">
                 {" "}
                 Our trusted agents will guide you through the process.{" "}
               </span>{" "}
@@ -190,7 +193,10 @@ function BuyAHome() {
           </div>
         ) : null}
       </div>
-      <button class="listings-modal-button" onClick={() => openListingsModal()}>
+      <button
+        className="listings-modal-button"
+        onClick={() => openListingsModal()}
+      >
         {" "}
         Listings{" "}
       </button>
@@ -210,15 +216,15 @@ function BuyAHome() {
           },
         }}
       >
-        <div class="listings-modal-heading">
+        <div className="listings-modal-heading">
           <img
             src={closeModalImg}
             alt="Close Modal"
-            class="close-listings-modal-button"
+            className="close-listings-modal-button"
             onClick={() => closeListingsModal()}
           />
         </div>
-        <div class="listings-modal-content">
+        <div className="listings-modal-content">
           <ListingsLayout listings={listings} />
         </div>
       </Modal>

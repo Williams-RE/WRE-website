@@ -4,23 +4,25 @@ import config from "../config";
 
 function Listing({ imagePath, address, price, propertyInfo, listingAgent }) {
   return (
-    <div class="listing">
-      <div class="listing-image-container">
+    <div className="listing">
+      <div className="listing-image-container">
         <img
           src={imagePath}
           onError={(error) =>
             (error.target.src =
               config.SERVER_URL + "listingImages/image-not-available.jpg")
           }
-          class="listing-image"
+          className="listing-image"
           alt="Listing"
         />
       </div>
-      <div class="listing-content">
-        <h3 class="listing-price">{price}</h3>
+      <div className="listing-content">
+        <h3 className="listing-price">{price}</h3>
         <p>{address}</p>
         <p>{propertyInfo}</p>
-        <p class="listing-agent-mls">Courtesy of {listingAgent} on SmartMLS</p>
+        <p className="listing-agent-mls">
+          Courtesy of {listingAgent} on SmartMLS
+        </p>
       </div>
     </div>
   );

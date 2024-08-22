@@ -5,6 +5,7 @@ const normalizeUrl = (url) => {
 
 const config = {
   SERVER_URL: `${normalizeUrl(process.env.REACT_APP_SERVER_URL)}`,
+  
 };
 
 

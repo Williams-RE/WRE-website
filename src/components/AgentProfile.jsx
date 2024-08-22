@@ -6,14 +6,14 @@ Modal.setAppElement("#root");
 
 function AgentProfile(props) {
   return (
-    <div class="agent-profile-container">
-      <div class="agent-profile-heading">
-        <h1 class="agent-profile-name">{props.agentProfileName}</h1>
+    <div className="agent-profile-container">
+      <div className="agent-profile-heading">
+        <h1 className="agent-profile-name">{props.agentProfileName}</h1>
         <h2>{props.agentProfileTitle}</h2>
       </div>
-      <div class="agent-profile-content">
+      <div className="agent-profile-content">
         <img
-          class="agent-profile-image"
+          className="agent-profile-image"
           src={props.agentProfileImagePath}
           alt={props.agentProfileName}
         />
