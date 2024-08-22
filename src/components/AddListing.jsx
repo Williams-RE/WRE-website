@@ -31,11 +31,11 @@ const AddListing = ({ onListingAdded }) => {
     fontSize: "18px",
     border: "2px solid #ccc",
     borderRadius: "5px",
-    boxSizing: "border-box", // This includes padding in the width calculation
+    boxSizing: "border-box",
   };
 
   const labelStyles = {
-    display: "left-aligned",
+    display: "block",
     marginBottom: "10px",
     fontSize: "20px",
     fontWeight: "bold",
