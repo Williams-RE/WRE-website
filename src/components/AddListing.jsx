@@ -25,12 +25,13 @@ const AddListing = ({ onListingAdded }) => {
   };
 
   const inputStyles = {
-    width: "100%",
+    width: "50%",
     padding: "15px",
     marginBottom: "20px",
     fontSize: "18px",
     border: "2px solid #ccc",
     borderRadius: "5px",
+    boxSizing: "border-box",
   };
 
   const labelStyles = {
@@ -47,8 +48,9 @@ const AddListing = ({ onListingAdded }) => {
     backgroundColor: "#007bff",
     color: "white",
     border: "none",
-    borderRadius: "5px",
+    borderRadius: "5%",
     cursor: "pointer",
+    width: "50%",
   };
 
   const fetchAgents = async () => {
@@ -203,7 +205,11 @@ const AddListing = ({ onListingAdded }) => {
         required
       />
 
-      <button type="submit" style={buttonStyles}>
+      {/* Add some vertical space before the button */}
+      <div style={{ marginTop: "20px" }}></div>
+
+      {/* Move the button here, at the end of the form */}
+      <button type="submit" style={{ ...buttonStyles, marginTop: "20px" }}>
         Add Listing
       </button>
     </form>
