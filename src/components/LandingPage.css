@@ -8,7 +8,7 @@
 
 .landing-page-heading {
   position: absolute;
-  top: 21%;
+  top: 30%;
   left: 52%;
   transform: translate(-50%, -50%);
   display: table; /* Fixed Firefox issue */
@@ -92,14 +92,16 @@
     width: 0px;
   }
   30% {
-    width: 41vw;
+    /* width: 41vw; */
+    width: max-content;
   }
   80% {
     opacity: 1;
+    width: max-content;
   }
   100% {
     opacity: 0;
-    width: 41vw;
+    width: max-content;
   }
 }
 

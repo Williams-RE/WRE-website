@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
 import "./BuyAHome.css";
-import config from "../config.js";
-import ListingsLayout from "./Listings/ListingsLayout.js";
+import config from "../config";
+import ListingsLayout from "./ListingsLayout.jsx";
 import beforeYouBuy from "../assets/buy-a-home/illustrations/update1-03.avif";
 import findingTheDeal from "../assets/buy-a-home/illustrations/update2-02.avif";
 import sealingTheDeal from "../assets/buy-a-home/illustrations/update3-03.avif";

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./AboutUs.css";
 import config from "../config.js";
-import AgentProfile from "./AgentProfile/AgentProfile";
+import AgentProfile from "./AgentProfile.jsx";
 import closeModalImg from "../assets/close-modal.avif";
 import Modal from "react-modal";
 import Carousel from "react-multi-carousel";
