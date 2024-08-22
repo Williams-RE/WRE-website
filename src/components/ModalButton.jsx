@@ -162,10 +162,10 @@ export const ModalButton = () => {
   return (
     <>
       <button
-        class={"modal-button " + modalButtonAnimeClass}
+        className={"modal-button " + modalButtonAnimeClass}
         onClick={() => modalOnClick()}
       >
-        <div class="pencil-svg">
+        <div className="pencil-svg">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24px"
@@ -194,19 +194,19 @@ export const ModalButton = () => {
           },
         }}
       >
-        <div class="modal-heading">
-          <h1 class="title-contact">Let's Connect</h1>
+        <div className="modal-heading">
+          <h1 className="title-contact">Let's Connect</h1>
           <p>Fill out the details below and we'll reach out to you shortly!</p>
           <img
             src={closeModalImg}
             alt="Close Modal"
-            class="close-modal-button"
+            className="close-modal-button"
             onClick={() => closeContactForm()}
           />
         </div>
-        <div class="modal-element">
+        <div className="modal-element">
           <input
-            class={`modal-input ${nameErrorClass}`}
+            className={`modal-input ${nameErrorClass}`}
             placeholder={namePlaceHolder}
             type="text"
             value={name}
@@ -215,9 +215,9 @@ export const ModalButton = () => {
             required
           />
         </div>
-        <div class="modal-element">
+        <div className="modal-element">
           <input
-            class={`modal-input ${emailErrorClass}`}
+            className={`modal-input ${emailErrorClass}`}
             placeholder={emailPlaceHolder}
             type="email"
             value={email}
@@ -227,9 +227,9 @@ export const ModalButton = () => {
             ref={emailInputRef}
           />
         </div>
-        <div class="modal-element">
+        <div className="modal-element">
           <select
-            class="select-agents"
+            className="select-agents"
             name="selectAgents"
             value={agent}
             onChange={(e) => setAgent(e.target.value)}
@@ -246,9 +246,9 @@ export const ModalButton = () => {
             <option value="Kerri Kaylor">Kerri Kaylor</option>
           </select>
         </div>
-        <div class="modal-element">
+        <div className="modal-element">
           <textarea
-            class="modal-textarea"
+            className="modal-textarea"
             rows="4"
             placeholder="Anything you'd like to share before we chat?"
             value={comment}
@@ -257,9 +257,9 @@ export const ModalButton = () => {
             {" "}
           </textarea>
         </div>
-        <div class="modal-element">
+        <div className="modal-element">
           <button
-            class="submit-button"
+            className="submit-button"
             onClick={() => onSubmitButtonClick(name, email, agent, comment)}
           >
             {" "}

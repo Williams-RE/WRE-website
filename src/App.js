@@ -10,6 +10,7 @@ import { ModalButton } from "./components/ModalButton.jsx";
 import { Login } from "./components/Login.jsx";
 import { BuyerBrokerTable } from "./components/BuyerBrokerTable.jsx";
 import AddListing from "./components/AddListing.jsx";
+import posthog from "posthog-js";
 
 function App() {
   const landingPageRef = useRef();
@@ -77,6 +78,10 @@ function App() {
     setIsLoggedIn((prevState) => !prevState);
   };
 
+  posthog.init(`${process.env.POSTHOG}`, {
+    api_host: "https://us.i.posthog.com",
+    person_profiles: "always",
+  });
   return (
     <div className="main">
       <NavBar

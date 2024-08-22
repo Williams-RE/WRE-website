@@ -76,10 +76,9 @@ function AboutUs({ agents }) {
   }
 
   return (
-    <div class="about-us-main">
-      {/* <h1 class= "about-us-heading"> About Us</h1> */}
-      <div class="carousel-group">
-        <h1 class="carousel-heading">Meet Our Agents</h1>
+    <div className="about-us-main">
+      <div className="carousel-group">
+        <h1 className="carousel-heading">Meet Our Agents</h1>
         <Carousel
           responsive={responsive}
           slidesToSlide={4}
@@ -92,7 +91,7 @@ function AboutUs({ agents }) {
           {agentsArray.map((agent) => {
             return (
               <img
-                class="agent-image"
+                className="agent-image"
                 alt="Agent"
                 src={`${config.SERVER_URL}/agents/images/` + agent["Image"]}
                 onClick={() => openAgentProfileModal(agent["Name"])}
@@ -101,13 +100,13 @@ function AboutUs({ agents }) {
           })}
         </Carousel>
       </div>
-      <div class="paragraph-div">
-        <p class="about-us-paragraph">
+      <div className="paragraph-div">
+        <p className="about-us-paragraph">
           Williams Real Estate was founded on principles of{" "}
-          <span class="principles">innovation</span>,{" "}
-          <span class="principles">consistency</span>, and{" "}
-          <span class="principles">excellence</span>. Our world class agents are
-          a call away to get you to the home of your dreams.
+          <span className="principles">innovation</span>,{" "}
+          <span className="principles">consistency</span>, and{" "}
+          <span className="principles">excellence</span>. Our world class agents
+          are a call away to get you to the home of your dreams.
         </p>
       </div>
       <Modal
@@ -126,15 +125,15 @@ function AboutUs({ agents }) {
           },
         }}
       >
-        <div class="agent-profile-modal-heading">
+        <div className="agent-profile-modal-heading">
           <img
             src={closeModalImg}
             alt="Close Modal"
-            class="close-agent-profile-modal-button"
+            className="close-agent-profile-modal-button"
             onClick={() => closeAgentProfileModal()}
           />
         </div>
-        <div class="agent-profile-modal-content">
+        <div className="agent-profile-modal-content">
           <AgentProfile
             agentProfileModalIsOpen={agentProfileModalIsOpen}
             setAgentProfileModalIsOpen={setAgentProfileModalIsOpen}
@@ -154,9 +153,9 @@ function AboutUs({ agents }) {
 
 const CustomButtonGroupAsArrows = ({ next, previous }) => {
   return (
-    <div class="button-group">
-      <div class="arrow left" onClick={previous} />
-      <div class="arrow right" onClick={next} />
+    <div className="button-group">
+      <div className="arrow left" onClick={previous} />
+      <div className="arrow right" onClick={next} />
     </div>
   );
 };

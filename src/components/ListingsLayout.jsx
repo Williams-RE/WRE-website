@@ -9,7 +9,7 @@ function ListingsLayout({ listings }) {
     listingsArray.push(listings[listing]);
   });
   return (
-    <div class="listings-layout">
+    <div className="listings-layout">
       {listingsArray.map((listing) => {
         return (
           <Listing
