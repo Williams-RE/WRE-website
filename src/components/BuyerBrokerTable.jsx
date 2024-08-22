@@ -35,7 +35,8 @@ export const BuyerBrokerTable = () => {
 
   const fetchListings = async () => {
     try {
-      const response = await fetch(`${config.SERVER_URL}api/listings`);
+      console.log(config.SERVER_URL);
+      const response = await fetch(`${config.SERVER_URL}/api/listings`);
       if (response.ok) {
         const data = await response.json();
         console.info("listings data is ", data);

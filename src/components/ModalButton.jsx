@@ -131,7 +131,7 @@ export const ModalButton = () => {
 
   async function sendEmail(name, email, agent, comment) {
     try {
-      const response = await fetch(`${config.SERVER_URL}send-email`, {
+      const response = await fetch(`${config.SERVER_URL}/send-email`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
