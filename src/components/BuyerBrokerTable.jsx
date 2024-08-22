@@ -6,6 +6,7 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import "./BuyerBrokerTable.css";
+import config from "../config";
 
 // Fake data generator
 const generateFakeData = (count) => {
@@ -28,18 +29,18 @@ export const BuyerBrokerTable = () => {
 
   useEffect(() => {
     // Instead of fetching, we're now using our fake data generator
-    setListings(generateFakeData(10)); // Generate 10 fake listings
+    // setListings(generateFakeData(10)); // Generate 10 fake listings
+    fetchListings();
   }, []);
 
   const columnHelper = createColumnHelper();
 
   const fetchListings = async () => {
     try {
-      const response = await fetch(
-        `${process.env.REACT_APP_API_URL}/api/listings`,
-      );
+      const response = await fetch(`${config.SERVER_URL}/api/listings`);
       if (response.ok) {
         const data = await response.json();
+        console.info("listings data is ", data);
         setListings(data);
       } else {
         console.error("Failed to fetch listings");
