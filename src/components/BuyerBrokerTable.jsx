@@ -28,8 +28,6 @@ export const BuyerBrokerTable = () => {
   const [listings, setListings] = useState([]);
 
   useEffect(() => {
-    // Instead of fetching, we're now using our fake data generator
-    // setListings(generateFakeData(10)); // Generate 10 fake listings
     fetchListings();
   }, []);
 
@@ -37,7 +35,7 @@ export const BuyerBrokerTable = () => {
 
   const fetchListings = async () => {
     try {
-      const response = await fetch(`${config.SERVER_URL}/api/listings`);
+      const response = await fetch(`${config.SERVER_URL}api/listings`);
       if (response.ok) {
         const data = await response.json();
         console.info("listings data is ", data);
