@@ -1,6 +1,6 @@
 import React from "react";
 import "./Listing.css";
-import config from "../../config.js";
+import config from "../../../config.js";
 
 function Listing({ imagePath, address, price, propertyInfo, listingAgent }) {
   return (

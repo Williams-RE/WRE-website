@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "./SellAHome.css";
-import beforeYouStart from "../assets/sell-a-home/illustrations/illustration4.avif";
-import findingTheDeal from "../assets/sell-a-home/illustrations/update5-05.avif";
-import sealingTheDeal from "../assets/sell-a-home/illustrations/illustration6.avif";
+import beforeYouStart from "../../assets/sell-a-home/illustrations/illustration4.avif";
+import findingTheDeal from "../../assets/sell-a-home/illustrations/update5-05.avif";
+import sealingTheDeal from "../../assets/sell-a-home/illustrations/illustration6.avif";
 
 function SellAHome() {
   const [showSellAHomeParagraphBefore, setShowSellAHomeParagraphBefore] =
