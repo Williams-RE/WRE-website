@@ -78,10 +78,14 @@ function App() {
     setIsLoggedIn((prevState) => !prevState);
   };
 
-  posthog.init(`${process.env.POSTHOG}`, {
+  posthog.init(`${process.env.REACT_APP_POSTHOG_API_KEY}`, {
     api_host: "https://us.i.posthog.com",
     person_profiles: "always",
+    loaded: (posthog) => {
+      console.log("PostHog loaded successfully");
+    },
   });
+
   return (
     <div className="main">
       <NavBar
