@@ -39,7 +39,6 @@ export const BuyerBrokerTable = () => {
       const response = await fetch(`${config.SERVER_URL}/api/listings`);
       if (response.ok) {
         const data = await response.json();
-        console.info("listings data is ", data);
         setListings(data);
       } else {
         console.error("Failed to fetch listings");
@@ -50,13 +49,13 @@ export const BuyerBrokerTable = () => {
   };
 
   const columns = [
-    columnHelper.accessor("id", {
+    columnHelper.accessor("mlsId", {
       header: "MLS ID",
       cell: (info) => info.getValue(),
     }),
     columnHelper.accessor("compensation", {
       header: "Compensation",
-      cell: (info) => `${info.getValue()}%`,
+      cell: (info) => `${parseFloat(info.getValue()).toFixed(1)}%`,
     }),
     columnHelper.accessor("address", {
       header: "Address",
@@ -64,7 +63,7 @@ export const BuyerBrokerTable = () => {
     columnHelper.accessor("city", {
       header: "City/Town",
     }),
-    columnHelper.accessor("zipCode", {
+    columnHelper.accessor("zip", {
       header: "Zip",
     }),
     columnHelper.accessor("listingBroker", {
@@ -119,5 +118,3 @@ export const BuyerBrokerTable = () => {
     </div>
   );
 };
-
-export default BuyerBrokerTable;
