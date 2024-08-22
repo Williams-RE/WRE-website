@@ -3,6 +3,7 @@ export const NavBar = ({
   scrollToBuyAHome,
   scrollToSellAHome,
   scrollToAboutUs,
+  scrollToBuyerBrokerCompensation,
 }) => {
   return (
     <nav className="navigation">
@@ -20,6 +21,13 @@ export const NavBar = ({
       <span className="separator">|</span>
       <button className="navigation-button" onClick={scrollToAboutUs}>
         <span>About Us</span>
+      </button>
+      <span className="separator">|</span>
+      <button
+        className="navigation-button"
+        onClick={scrollToBuyerBrokerCompensation}
+      >
+        <span>Buyer Broker Compensation</span>
       </button>
     </nav>
   );

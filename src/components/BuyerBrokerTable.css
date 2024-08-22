@@ -1,0 +1,42 @@
+.table-container {
+  overflow-x: auto;
+  margin-bottom: 40px; /* Add space below the table */
+}
+
+.buyer-broker-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+}
+
+.table-header {
+  padding: 12px;
+  text-align: left;
+  background-color: #f3f4f6;
+  color: #6b7280;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.table-cell {
+  padding: 12px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.buyer-broker-table tbody tr:hover {
+  background-color: #f9fafb;
+}
+
+.table-footer-space {
+  height: 60px; /* Additional space after the table */
+}
+
+@media screen and (max-width: 640px) {
+  .table-header,
+  .table-cell {
+    padding: 8px;
+    font-size: 0.75rem;
+  }
+}

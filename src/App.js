@@ -7,12 +7,16 @@ import SellAHome from "./components/SellAHome.jsx";
 import AboutUs from "./components/AboutUs.jsx";
 import { NavBar } from "./components/NavBar.jsx";
 import { ModalButton } from "./components/ModalButton.jsx";
+import { Login } from "./components/Login.jsx";
+import { BuyerBrokerTable } from "./components/BuyerBrokerTable.jsx";
 
 function App() {
   const landingPageRef = useRef();
   const buyAHomeRef = useRef();
   const sellAHomeRef = useRef();
   const aboutUsRef = useRef();
+  const loginRef = useRef();
+  const buyerCompRef = useRef();
 
   const [agents, setAgents] = useState({});
 
@@ -55,6 +59,7 @@ function App() {
         scrollToBuyAHome={() => scrollToRef(buyAHomeRef)}
         scrollToSellAHome={() => scrollToRef(sellAHomeRef)}
         scrollToAboutUs={() => scrollToRef(aboutUsRef)}
+        scrollToBuyerBrokerCompensation={() => scrollToRef(buyerCompRef)}
       />
       <div className="background">
         <div className="content">
@@ -69,6 +74,12 @@ function App() {
           </div>
           <div className="page" ref={aboutUsRef}>
             <AboutUs agents={agents} />
+          </div>
+          <div className="page" ref={loginRef}>
+            <Login />
+          </div>
+          <div className="page" ref={buyerCompRef}>
+            <BuyerBrokerTable />
           </div>
         </div>
       </div>
