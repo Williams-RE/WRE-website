@@ -7,17 +7,14 @@ import SellAHome from "./components/SellAHome.jsx";
 import AboutUs from "./components/AboutUs.jsx";
 import { NavBar } from "./components/NavBar.jsx";
 import { ModalButton } from "./components/ModalButton.jsx";
-import { Login } from "./components/Login.jsx";
-import { BuyerBrokerTable } from "./components/BuyerBrokerTable.jsx";
-import AddListing from "./components/AddListing.jsx";
 import posthog from "posthog-js";
+import ListingsManager from "./components/ListingsManager.jsx";
 
 function App() {
   const landingPageRef = useRef();
   const buyAHomeRef = useRef();
   const sellAHomeRef = useRef();
   const aboutUsRef = useRef();
-  const loginRef = useRef();
   const buyerCompRef = useRef();
 
   const [agents, setAgents] = useState({});
@@ -61,21 +58,9 @@ function App() {
     ref.current.scrollIntoView({ behavior: "smooth" });
   };
 
-  const handleLogin = () => {
-    setIsLoggedIn(true);
-  };
-
   const handleLogout = () => {
     localStorage.removeItem("token");
     setIsLoggedIn(false);
-  };
-
-  const handleListingAdded = () => {
-    // Refresh the BuyerBrokerTable
-    // You might want to implement a more efficient way to update the table
-    // For simplicity, we're just forcing a re-render here
-    setIsLoggedIn((prevState) => !prevState);
-    setIsLoggedIn((prevState) => !prevState);
   };
 
   posthog.init(`${process.env.REACT_APP_POSTHOG_API_KEY}`, {
@@ -111,15 +96,11 @@ function App() {
           <div className="page" ref={aboutUsRef}>
             <AboutUs agents={agents} />
           </div>
-          <div className="page" ref={loginRef}>
-            {!isLoggedIn ? (
-              <Login onLogin={handleLogin} />
-            ) : (
-              <AddListing onListingAdded={handleListingAdded} />
-            )}
-          </div>
           <div className="page" ref={buyerCompRef}>
-            <BuyerBrokerTable />
+            <ListingsManager
+              isLoggedIn={isLoggedIn}
+              setIsLoggedIn={setIsLoggedIn}
+            />
           </div>
         </div>
       </div>

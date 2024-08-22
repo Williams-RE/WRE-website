@@ -24,12 +24,13 @@ const generateFakeData = (count) => {
   }));
 };
 
-export const BuyerBrokerTable = () => {
+export const BuyerBrokerTable = ({ refreshKey }) => {
   const [listings, setListings] = useState([]);
+  console.log("refreshKey", refreshKey);
 
   useEffect(() => {
     fetchListings();
-  }, []);
+  }, [refreshKey]); // Re-fetch listings when refreshKey changes
 
   const columnHelper = createColumnHelper();
 
