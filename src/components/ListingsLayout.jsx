@@ -1,7 +1,7 @@
 import React from "react";
 import "./ListingsLayout.css";
-import config from "../../../config.js";
-import Listing from "./Listing.js";
+import config from "../config.js";
+import Listing from "./Listing.jsx";
 
 function ListingsLayout({ listings }) {
   const listingsArray = [];

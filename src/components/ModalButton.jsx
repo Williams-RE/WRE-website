@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
-import closeModalImg from "./assets/close-modal.avif";
+import closeModalImg from "../assets/close-modal.avif";
 import Modal from "react-modal";
-import config from "./config.js";
+import config from "../config";
 
 export const ModalButton = () => {
   const emailInputRef = useRef();
