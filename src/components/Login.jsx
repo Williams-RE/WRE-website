@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import config from "../config";
 
 export const Login = ({ onLogin }) => {
   const [username, setUsername] = useState("");
@@ -7,7 +8,7 @@ export const Login = ({ onLogin }) => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("/api/login", {
+      const response = await fetch(`${config.SERVER_URL}/api/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
