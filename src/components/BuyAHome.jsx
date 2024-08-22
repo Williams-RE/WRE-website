@@ -22,9 +22,9 @@ function BuyAHome() {
   const [listingsModalIsOpen, setListingsModalIsOpen] = useState(false);
   const [scrollTop, setScrollTop] = useState(0);
 
-  useEffect(() => {
-    getListings();
-  }, []);
+  // useEffect(() => {
+  //   getListings();
+  // }, []);
 
   function onBeforeYouBuyClick() {
     setFadeInBuyAHomeContent(1);

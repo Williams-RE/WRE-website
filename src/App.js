@@ -9,6 +9,7 @@ import { NavBar } from "./components/NavBar.jsx";
 import { ModalButton } from "./components/ModalButton.jsx";
 import { Login } from "./components/Login.jsx";
 import { BuyerBrokerTable } from "./components/BuyerBrokerTable.jsx";
+import AddListing from "./components/AddListing.jsx";
 
 function App() {
   const landingPageRef = useRef();
@@ -19,9 +20,15 @@ function App() {
   const buyerCompRef = useRef();
 
   const [agents, setAgents] = useState({});
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     getAgents();
+    const token = localStorage.getItem("token");
+    console.log("token is ", token);
+    if (token) {
+      setIsLoggedIn(true);
+    }
   }, []);
 
   async function getAgents() {
@@ -42,6 +49,7 @@ function App() {
       }
 
       const data = await response.json();
+      console.log("data is ", data);
       setAgents(data);
     } catch (error) {
       console.error("There was a problem with the fetch operation:", error);
@@ -52,6 +60,23 @@ function App() {
     ref.current.scrollIntoView({ behavior: "smooth" });
   };
 
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setIsLoggedIn(false);
+  };
+
+  const handleListingAdded = () => {
+    // Refresh the BuyerBrokerTable
+    // You might want to implement a more efficient way to update the table
+    // For simplicity, we're just forcing a re-render here
+    setIsLoggedIn((prevState) => !prevState);
+    setIsLoggedIn((prevState) => !prevState);
+  };
+
   return (
     <div className="main">
       <NavBar
@@ -60,6 +85,8 @@ function App() {
         scrollToSellAHome={() => scrollToRef(sellAHomeRef)}
         scrollToAboutUs={() => scrollToRef(aboutUsRef)}
         scrollToBuyerBrokerCompensation={() => scrollToRef(buyerCompRef)}
+        isLoggedIn={isLoggedIn}
+        onLogout={handleLogout}
       />
       <div className="background">
         <div className="content">
@@ -76,7 +103,11 @@ function App() {
             <AboutUs agents={agents} />
           </div>
           <div className="page" ref={loginRef}>
-            <Login />
+            {!isLoggedIn ? (
+              <Login onLogin={handleLogin} />
+            ) : (
+              <AddListing onListingAdded={handleListingAdded} />
+            )}
           </div>
           <div className="page" ref={buyerCompRef}>
             <BuyerBrokerTable />

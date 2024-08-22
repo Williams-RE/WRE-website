@@ -28,7 +28,7 @@ export const BuyerBrokerTable = () => {
 
   useEffect(() => {
     // Instead of fetching, we're now using our fake data generator
-    setListings(generateFakeData(10)); // Generate 10 fake listings
+    // setListings(generateFakeData(10)); // Generate 10 fake listings
   }, []);
 
   const columnHelper = createColumnHelper();
