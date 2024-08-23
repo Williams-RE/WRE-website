@@ -1,37 +1,10 @@
 /* Reset styles for body and html */
 html,
 body {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden; /* Prevent horizontal scroll */
-}
-
-/* Ensure #root and its parent elements take full width and height */
-#root,
-.main,
-.background {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  display: flex;
-}
-
-/* Ensure background covers the entire area */
-.background {
-  background: url("./assets/scale.webp") no-repeat center center fixed;
-  background-size: cover;
-  width: 100%;
-  height: 100%;
-  min-width: 100vw;
-  min-height: 100vh;
+  overflow-x: hidden;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
-
-body {
-  font-family: "Roboto", serif;
-  overflow-x: hidden;
-}
 
 :root {
   --primary-color: rgba(240, 234, 214);
@@ -43,6 +16,16 @@ body {
   --senary-color: rgba(255, 249, 227);
   --septenary-color: rgba(255, 249, 227, 0.472);
   --scroll-top: auto;
+}
+
+.solid-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--primary-color);
+  z-index: -1;
 }
 
 p {
@@ -63,7 +46,6 @@ img {
 }
 
 .main {
-  height: 100%;
   position: relative;
   background-color: var(--primary-color);
   text-align: center;
@@ -87,12 +69,6 @@ img {
   z-index: 2;
 }
 
-/* .logo {
-  border-radius: 5px;
-  width: 230px;
-  height: 75px;
-} */
-
 .navigation-button {
   white-space: nowrap;
   text-align: center;
@@ -115,10 +91,6 @@ img {
 }
 
 .navigation-button:hover {
-  /* background-color: transparent; */
-  /* color: var(--secondary-color);
-    transform: scale(1.1); */
-  /* box-shadow: inset 70vw 40vw 40vw 0 rgba(211, 122, 71, 0.8); */
   cursor: pointer;
 }
 
@@ -133,7 +105,6 @@ img {
 
 .page {
   margin-top: 10vh;
-  /* padding-top: 75px; */
   position: relative;
 }
 
@@ -169,11 +140,9 @@ img {
   border: 1px solid black;
   background: var(--primary-color);
   overflow: auto;
-  /* --webkit-overflow-scrolling: touch; */
   border-radius: 4px;
   outline: none;
   padding: 1.5071590052750565vh;
-  /* radius: 1px; */
   width: 500px;
   text-align: center;
   box-sizing: border-box;
@@ -388,130 +357,50 @@ img {
   border-radius: 50px;
 }
 
-@keyframes scaleIn {
-  4.7% {
-    transform: scale(1.2);
-  }
-  9.5% {
-    transform: scale(1);
-  }
-
-  14.2% {
-    transform: scale(1.2);
-  }
-  18.9% {
-    transform: scale(1);
-  }
-
-  23.57% {
-    transform: scale(1.2);
-  }
-  28.2% {
-    transform: scale(1);
-  }
-
-  32.97% {
-    transform: scale(1.2);
-  }
-  37.67% {
-    transform: scale(1);
-  }
-
-  42.37% {
-    transform: scale(1.2);
-  }
-  47% {
-    transform: scale(1);
-  }
+.video-background {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  overflow: hidden;
 }
 
-@-webkit-keyframes scaleIn {
-  4.7% {
-    transform: scale(1.2);
-  }
-  9.5% {
-    transform: scale(1);
-  }
-
-  14.2% {
-    transform: scale(1.2);
-  }
-  18.9% {
-    transform: scale(1);
-  }
-
-  23.57% {
-    transform: scale(1.2);
-  }
-  28.2% {
-    transform: scale(1);
-  }
-
-  32.97% {
-    transform: scale(1.2);
-  }
-  37.67% {
-    transform: scale(1);
-  }
-
-  42.37% {
-    transform: scale(1.2);
-  }
-  47% {
-    transform: scale(1);
-  }
+.video-background video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: cover;
 }
 
-@-o-keyframes scaleIn {
-  4.7% {
-    transform: scale(1.2);
-  }
-  9.5% {
-    transform: scale(1);
-  }
-
-  14.2% {
-    transform: scale(1.2);
-  }
-  18.9% {
-    transform: scale(1);
-  }
-
-  23.57% {
-    transform: scale(1.2);
-  }
-  28.2% {
-    transform: scale(1);
-  }
-
-  32.97% {
-    transform: scale(1.2);
-  }
-  37.67% {
-    transform: scale(1);
-  }
-
-  42.37% {
-    transform: scale(1.2);
-  }
-  47% {
-    transform: scale(1);
-  }
+.content-overlay {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
-@keyframes move {
-  20%,
-  100% {
-    opacity: 0;
-    transform: translate(200px, 0);
-  }
-  0% {
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
+/* Update existing .background class */
+.background {
+  width: 100%;
+  height: 100%;
+  min-width: 100vw;
+  min-height: 100vh;
 }
+
+/* Mobile-specific styles */
 
 @media screen and (max-width: 768px) {
   :root {
@@ -522,6 +411,16 @@ img {
     --quinary-color: #9ca1b6a9;
     --senary-color: #2f2e2e;
     --septenary-color: ;
+  }
+
+  .video-background video {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .content-overlay {
+    padding: 10px;
   }
 
   .modal-button-text {

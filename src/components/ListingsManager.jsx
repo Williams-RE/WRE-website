@@ -16,11 +16,7 @@ const ListingsManager = ({ isLoggedIn, setIsLoggedIn }) => {
   return (
     <div>
       <h1>Listings Manager</h1>
-      {!isLoggedIn ? (
-        <Login onLogin={handleLogin} />
-      ) : (
-        <AddListing onListingAdded={handleListingAdded} />
-      )}
+      {!isLoggedIn ? <></> : <AddListing onListingAdded={handleListingAdded} />}
       <BuyerBrokerTable refreshKey={refreshKey} />
     </div>
   );
