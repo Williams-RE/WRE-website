@@ -1,0 +1,98 @@
+.navbar {
+  border-radius: 10px;
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  padding: 0.5vh 1vw;
+  margin: 15px 0 0 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  z-index: 1000;
+  height: 40px;
+}
+
+.navbar-content {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.navigation-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #fff;
+  padding: 0 1rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.separator {
+  color: #fff;
+  margin: 0 0.5rem;
+}
+
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #fff;
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1001;
+}
+
+@media (max-width: 999px) {
+  .navbar {
+    justify-content: flex-end;
+    width: 70%;
+    border-radius: 10px;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .navbar-content.mobile {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 1rem;
+    z-index: 999;
+    border-radius: 0 0 10px 10px;
+  }
+
+  .navbar-content.mobile.open {
+    display: flex;
+    height: max-content;
+  }
+
+  .navbar-content.mobile .navigation-button {
+    width: 100%;
+    text-align: left;
+    padding: 0.5rem 0;
+  }
+
+  .separator {
+    display: none;
+  }
+}
