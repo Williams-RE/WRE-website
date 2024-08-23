@@ -1,7 +1,6 @@
 name: Package Size Report
 
-on:
-  pull_request:
+on: pull_request
 
 jobs:
   pkg-size-report:
