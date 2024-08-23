@@ -12,8 +12,8 @@ import ListingsManager from "./components/ListingsManager.jsx";
 
 function App() {
   const landingPageRef = useRef();
-  const buyAHomeRef = useRef();
-  const sellAHomeRef = useRef();
+  // const buyAHomeRef = useRef();
+  // const sellAHomeRef = useRef();
   const aboutUsRef = useRef();
   const buyerCompRef = useRef();
 
@@ -75,8 +75,8 @@ function App() {
     <div className="main">
       <NavBar
         scrollToLandingPage={() => scrollToRef(landingPageRef)}
-        scrollToBuyAHome={() => scrollToRef(buyAHomeRef)}
-        scrollToSellAHome={() => scrollToRef(sellAHomeRef)}
+        // scrollToBuyAHome={() => scrollToRef(buyAHomeRef)}
+        // scrollToSellAHome={() => scrollToRef(sellAHomeRef)}
         scrollToAboutUs={() => scrollToRef(aboutUsRef)}
         scrollToBuyerBrokerCompensation={() => scrollToRef(buyerCompRef)}
         isLoggedIn={isLoggedIn}
@@ -87,12 +87,13 @@ function App() {
           <div ref={landingPageRef}>
             <LandingPage />
           </div>
-          <div className="page" ref={buyAHomeRef}>
+          {/* Removing buy and sell pages for now */}
+          {/* <div className="page" ref={buyAHomeRef}>
             <BuyAHome />
           </div>
           <div className="page" ref={sellAHomeRef}>
             <SellAHome />
-          </div>
+          </div>  */}
           <div className="page" ref={aboutUsRef}>
             <AboutUs agents={agents} />
           </div>
