@@ -4,6 +4,7 @@ import { useAgents } from "../contexts/AgentContext.js";
 
 const AddListing = ({ onListingAdded }) => {
   const { agents, loading, error: agentsError } = useAgents();
+  console.log("agents are ", agents);
   const [listing, setListing] = useState({
     mlsId: "",
     compensation: "",
@@ -109,8 +110,65 @@ const AddListing = ({ onListingAdded }) => {
 
   return (
     <form onSubmit={handleSubmit} style={formStyles}>
-      {/* ... (keep your other form fields as they are) */}
+      <div>
+        <label style={labelStyles}>MLS ID</label>
+        <input
+          style={inputStyles}
+          name="mlsId"
+          value={listing.mlsId}
+          onChange={handleChange}
+          placeholder="MLS ID"
+          required
+        />
+      </div>
 
+      <div>
+        <label style={labelStyles}>Compensation %</label>
+        <input
+          style={inputStyles}
+          name="compensation"
+          value={listing.compensation}
+          onChange={handleChange}
+          placeholder="Compensation %"
+          required
+        />
+      </div>
+
+      <div>
+        <label style={labelStyles}>Address</label>
+        <input
+          style={inputStyles}
+          name="address"
+          value={listing.address}
+          onChange={handleChange}
+          placeholder="Address"
+          required
+        />
+      </div>
+
+      <div>
+        <label style={labelStyles}>City/Town</label>
+        <input
+          style={inputStyles}
+          name="city"
+          value={listing.city}
+          onChange={handleChange}
+          placeholder="City/Town"
+          required
+        />
+      </div>
+
+      <div>
+        <label style={labelStyles}>ZIP</label>
+        <input
+          style={inputStyles}
+          name="zip"
+          value={listing.zip}
+          onChange={handleChange}
+          placeholder="ZIP"
+          required
+        />
+      </div>
       <div>
         <label style={labelStyles}>Listing Broker</label>
         <select
@@ -124,7 +182,7 @@ const AddListing = ({ onListingAdded }) => {
           {loading ? (
             <option disabled>Loading agents...</option>
           ) : (
-            agents.map((agent) => (
+            Object.values(agents).map((agent) => (
               <option key={agent.id} value={agent.name}>
                 {agent.name}
               </option>

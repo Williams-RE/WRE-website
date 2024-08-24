@@ -17,30 +17,15 @@ import { Login } from "./components/Login.jsx";
 import { AgentsProvider } from "./contexts/AgentContext.js";
 
 function App() {
-  const [agents, setAgents] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showNavBarDelay, setShowNavBarDelay] = useState(true);
 
   useEffect(() => {
-    getAgents();
     const token = localStorage.getItem("token");
     if (token) {
       setIsLoggedIn(true);
     }
   }, []);
-
-  async function getAgents() {
-    try {
-      const response = await fetch(`${config.SERVER_URL}/api/v1/agents`);
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      const data = await response.json();
-      setAgents(data);
-    } catch (error) {
-      console.error("Error fetching agents:", error);
-    }
-  }
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -51,7 +36,6 @@ function App() {
     <AgentsProvider>
       <Router>
         <AppContent
-          agents={agents}
           isLoggedIn={isLoggedIn}
           setIsLoggedIn={setIsLoggedIn}
           handleLogout={handleLogout}
@@ -63,7 +47,6 @@ function App() {
 }
 
 function AppContent({
-  agents,
   isLoggedIn,
   setIsLoggedIn,
   handleLogout,
@@ -105,7 +88,7 @@ function AppContent({
       <div className="content-overlay">
         <Routes>
           <Route path="/" element={<LandingPage />} />
-          <Route path="/about" element={<AboutUs agents={agents} />} />
+          <Route path="/about" element={<AboutUs />} />
           <Route
             path="/listings"
             element={

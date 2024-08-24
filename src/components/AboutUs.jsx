@@ -6,24 +6,13 @@ import closeModalImg from "../assets/close-modal.avif";
 import Modal from "react-modal";
 import Carousel from "react-multi-carousel";
 import "../lib/react-multi-carousel.css";
+import { useAgents } from "../contexts/AgentContext.js";
 
-function AboutUs({ agents }) {
+function AboutUs() {
+  const { agents, loading, error } = useAgents();
   const [agentProfileModalIsOpen, setAgentProfileModalIsOpen] = useState(false);
-  const [agentProfileName, setAgentProfileName] = useState("");
-  const [agentProfileTitle, setAgentProfileTitle] = useState("");
-  const [agentProfileImagePath, setAgentProfileImagePath] = useState("");
-  const [agentProfileOfficeNumber, setAgentProfileOfficeNumber] = useState("");
-  const [agentProfileCellNumber, setAgentProfileCellNumber] = useState("");
-  const [agentProfileEmail, setAgentProfileEmail] = useState("");
-  const [agentProfileBio, setAgentProfileBio] = useState("");
-
+  const [selectedAgent, setSelectedAgent] = useState(null);
   const [scrollTop, setScrollTop] = useState(0);
-  const [carouselAgentNum, setCarouselAgentNum] = useState(5);
-
-  const agentsArray = [];
-  Object.keys(agents).forEach((agent) => {
-    agentsArray.push(agents[agent]);
-  });
 
   const responsive = {
     superLargeDesktop: {
@@ -58,23 +47,24 @@ function AboutUs({ agents }) {
     window.scrollTo(0, scrollTop);
   }
 
-  function openAgentProfileModal(agentName) {
+  function openAgentProfileModal(agent) {
     openModal();
-    setAgentProfileName(agents[agentName]["Name"]);
-    setAgentProfileTitle(agents[agentName]["Title"]);
-    setAgentProfileImagePath(
-      `${config.SERVER_URL}/api/v1/agents/images/` + agents[agentName]["Image"],
-    );
-    setAgentProfileOfficeNumber(agents[agentName]["OfficeNumber"]);
-    setAgentProfileCellNumber(agents[agentName]["CellNumber"]);
-    setAgentProfileEmail(agents[agentName]["Email"]);
-    setAgentProfileBio(agents[agentName]["Bio"]);
+    setSelectedAgent(agent);
     setAgentProfileModalIsOpen(true);
   }
 
   function closeAgentProfileModal() {
     closeModal();
     setAgentProfileModalIsOpen(false);
+    setSelectedAgent(null);
+  }
+
+  if (loading) {
+    return <div>Loading agents...</div>;
+  }
+
+  if (error) {
+    return <div>Error loading agents: {error}</div>;
   }
 
   return (
@@ -88,18 +78,15 @@ function AboutUs({ agents }) {
           itemClass="carousel-agent"
           arrows={true}
         >
-          {agentsArray.map((agent) => {
-            return (
-              <img
-                className="agent-image"
-                alt="Agent"
-                src={
-                  `${config.SERVER_URL}/api/v1/agents/images/` + agent["Image"]
-                }
-                onClick={() => openAgentProfileModal(agent["Name"])}
-              />
-            );
-          })}
+          {Object.values(agents).map((agent) => (
+            <img
+              key={agent.id}
+              className="agent-image"
+              alt={agent.Name}
+              src={`${config.SERVER_URL}/api/v1/agents/images/${agent.Image}`}
+              onClick={() => openAgentProfileModal(agent)}
+            />
+          ))}
         </Carousel>
       </div>
       <div className="paragraph-div">
@@ -114,7 +101,7 @@ function AboutUs({ agents }) {
       <Modal
         className="agent-profile-modal"
         isOpen={agentProfileModalIsOpen}
-        onRequestClose={() => closeAgentProfileModal()}
+        onRequestClose={closeAgentProfileModal}
         style={{
           overlay: {
             position: "fixed",
@@ -132,21 +119,23 @@ function AboutUs({ agents }) {
             src={closeModalImg}
             alt="Close Modal"
             className="close-agent-profile-modal-button"
-            onClick={() => closeAgentProfileModal()}
+            onClick={closeAgentProfileModal}
           />
         </div>
         <div className="agent-profile-modal-content">
-          <AgentProfile
-            agentProfileModalIsOpen={agentProfileModalIsOpen}
-            setAgentProfileModalIsOpen={setAgentProfileModalIsOpen}
-            agentProfileName={agentProfileName}
-            agentProfileTitle={agentProfileTitle}
-            agentProfileImagePath={agentProfileImagePath}
-            agentProfileOfficeNumber={agentProfileOfficeNumber}
-            agentProfileCellNumber={agentProfileCellNumber}
-            agentProfileEmail={agentProfileEmail}
-            agentProfileBio={agentProfileBio}
-          />
+          {selectedAgent && (
+            <AgentProfile
+              agentProfileModalIsOpen={agentProfileModalIsOpen}
+              setAgentProfileModalIsOpen={setAgentProfileModalIsOpen}
+              agentProfileName={selectedAgent.Name}
+              agentProfileTitle={selectedAgent.Title}
+              agentProfileImagePath={`${config.SERVER_URL}/api/v1/agents/images/${selectedAgent.Image}`}
+              agentProfileOfficeNumber={selectedAgent.OfficeNumber}
+              agentProfileCellNumber={selectedAgent.CellNumber}
+              agentProfileEmail={selectedAgent.Email}
+              agentProfileBio={selectedAgent.Bio}
+            />
+          )}
         </div>
       </Modal>
     </div>

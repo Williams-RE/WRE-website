@@ -15,7 +15,7 @@ export const ModalButton = ({ showDelay }) => {
   const [error, setError] = useState("");
 
   const { agents, loading, error: agentsError } = useAgents();
-
+  console.log("agents are ", agents);
   useEffect(() => {
     if (showDelay) {
       const initialTimer = setTimeout(() => {
@@ -106,7 +106,7 @@ export const ModalButton = ({ showDelay }) => {
                 {loading ? (
                   <option disabled>Loading agents...</option>
                 ) : (
-                  agents.map((agent) => (
+                  Object.values(agents).map((agent) => (
                     <option key={agent.id} value={agent.name}>
                       {agent.name}
                     </option>
