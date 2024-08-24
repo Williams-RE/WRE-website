@@ -30,11 +30,6 @@
   font-style: italic;
 }
 
-.carousel-group {
-  /* margin-top: 10vh;
-  margin-bottom: 10vh; */
-}
-
 .carousel-heading {
   font-size: 2.7vw;
   color: var(--tertiary-color);
@@ -106,18 +101,16 @@
 .agent-profile-modal-heading {
   height: 3vh;
   color: var(--secondary-color);
-  /* border: 1px solid black; */
 }
 
 .agent-profile-modal-content {
   margin-top: 25px;
-  /* color: var(--secondary-color); */
 }
 
 .close-agent-profile-modal-button {
   position: absolute;
-  height: 25px;
-  width: 25x;
+  height: 15px;
+  width: 15x;
   right: 5%;
   top: 3vh;
   cursor: pointer;

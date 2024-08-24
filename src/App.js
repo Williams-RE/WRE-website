@@ -14,32 +14,18 @@ import { NavBar } from "./components/NavBar.jsx";
 import { ModalButton } from "./components/ModalButton.jsx";
 import ListingsManager from "./components/ListingsManager.jsx";
 import { Login } from "./components/Login.jsx";
+import { AgentsProvider } from "./contexts/AgentContext.js";
 
 function App() {
-  const [agents, setAgents] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showNavBarDelay, setShowNavBarDelay] = useState(true);
 
   useEffect(() => {
-    getAgents();
     const token = localStorage.getItem("token");
     if (token) {
       setIsLoggedIn(true);
     }
   }, []);
-
-  async function getAgents() {
-    try {
-      const response = await fetch(`${config.SERVER_URL}/api/v1/agents`);
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      const data = await response.json();
-      setAgents(data);
-    } catch (error) {
-      console.error("Error fetching agents:", error);
-    }
-  }
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -47,20 +33,20 @@ function App() {
   };
 
   return (
-    <Router>
-      <AppContent
-        agents={agents}
-        isLoggedIn={isLoggedIn}
-        setIsLoggedIn={setIsLoggedIn}
-        handleLogout={handleLogout}
-        showNavBarDelay={showNavBarDelay}
-      />
-    </Router>
+    <AgentsProvider>
+      <Router>
+        <AppContent
+          isLoggedIn={isLoggedIn}
+          setIsLoggedIn={setIsLoggedIn}
+          handleLogout={handleLogout}
+          showNavBarDelay={showNavBarDelay}
+        />
+      </Router>
+    </AgentsProvider>
   );
 }
 
 function AppContent({
-  agents,
   isLoggedIn,
   setIsLoggedIn,
   handleLogout,
@@ -102,7 +88,7 @@ function AppContent({
       <div className="content-overlay">
         <Routes>
           <Route path="/" element={<LandingPage />} />
-          <Route path="/about" element={<AboutUs agents={agents} />} />
+          <Route path="/about" element={<AboutUs />} />
           <Route
             path="/listings"
             element={
