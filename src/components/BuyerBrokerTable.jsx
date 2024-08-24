@@ -10,16 +10,19 @@ import config from "../config";
 
 export const BuyerBrokerTable = ({ refreshKey }) => {
   const [listings, setListings] = useState([]);
-  const [editRowId, setEditRowId] = useState(null); // Track which row is being edited
-  const [editListing, setEditListing] = useState({}); // Store the values of the row being edited
+  const [editRowId, setEditRowId] = useState(null);
+  const [editListing, setEditListing] = useState({});
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // New state to track login status
 
   useEffect(() => {
+    // Check if user is logged in by verifying the token in local storage
+    const token = localStorage.getItem("token");
+    setIsLoggedIn(!!token); // If token exists, user is logged in
     fetchListings();
-  }, [refreshKey]); // Re-fetch listings when refreshKey changes
+  }, [refreshKey]);
 
   const columnHelper = createColumnHelper();
 
-  // Fetch listings from the backend
   const fetchListings = async () => {
     try {
       const response = await fetch(`${config.SERVER_URL}/api/v1/listings`);
@@ -33,20 +36,17 @@ export const BuyerBrokerTable = ({ refreshKey }) => {
     }
   };
 
-  // Handle the click of the Edit button
   const handleEditClick = (row) => {
-    setEditRowId(row.original._id); // Set the row ID to be edited (MongoDB _id)
-    setEditListing({ ...row.original }); // Store the original row data in editListing state
+    setEditRowId(row.original._id);
+    setEditListing({ ...row.original });
   };
 
-  // Handle input change in the edit mode
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setEditListing((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Handle the click of the Save button
-  const handleSaveClick = async (listingId, updatedData) => {
+  const handleSaveClick = async (listingId) => {
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(
@@ -57,7 +57,7 @@ export const BuyerBrokerTable = ({ refreshKey }) => {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
-          body: JSON.stringify(updatedData),
+          body: JSON.stringify(editListing),
         },
       );
       if (!response.ok) {
@@ -65,12 +65,36 @@ export const BuyerBrokerTable = ({ refreshKey }) => {
       }
       const data = await response.json();
       console.info("Listing updated successfully", data);
+      setEditRowId(null);
+      fetchListings(); // Refresh the listings after saving
     } catch (error) {
       console.error("Error updating listing:", error);
     }
   };
 
-  // Define table columns
+  const handleDeleteClick = async (listingId) => {
+    try {
+      const token = localStorage.getItem("token");
+      const response = await fetch(
+        `${config.SERVER_URL}/api/v1/listings/${listingId}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      console.info("Listing deleted successfully", data);
+      fetchListings(); // Refresh the listings after deletion
+    } catch (error) {
+      console.error("Error deleting listing:", error);
+    }
+  };
+
   const columns = [
     columnHelper.accessor("mlsId", {
       header: "MLS ID",
@@ -179,32 +203,42 @@ export const BuyerBrokerTable = ({ refreshKey }) => {
     {
       header: "Actions",
       cell: (info) =>
-        editRowId === info.row.original._id ? (
-          <>
-            <button
-              className="button"
-              onClick={() =>
-                handleSaveClick(info.row.original._id, editListing)
-              }
-            >
-              Save
-            </button>
-            <button
-              className="button cancel"
-              onClick={() => setEditRowId(null)}
-            >
-              Cancel
-            </button>
-          </>
-        ) : (
-          <button className="button" onClick={() => handleEditClick(info.row)}>
-            Edit
-          </button>
-        ),
+        isLoggedIn ? (
+          editRowId === info.row.original._id ? (
+            <>
+              <button
+                className="button"
+                onClick={() => handleSaveClick(info.row.original._id)}
+              >
+                Save
+              </button>
+              <button
+                className="button cancel"
+                onClick={() => setEditRowId(null)}
+              >
+                Cancel
+              </button>
+            </>
+          ) : (
+            <>
+              <button
+                className="button"
+                onClick={() => handleEditClick(info.row)}
+              >
+                Edit
+              </button>
+              <button
+                className="button delete"
+                onClick={() => handleDeleteClick(info.row.original._id)}
+              >
+                Delete
+              </button>
+            </>
+          )
+        ) : null,
     },
   ];
 
-  // Create the table instance
   const table = useReactTable({
     data: listings,
     columns,
