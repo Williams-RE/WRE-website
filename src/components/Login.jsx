@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import config from "../config";
 import "./Login.css";
 
-export const Login = ({ onLogin }) => {
+export const Login = ({ setIsLoggedIn }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -25,10 +25,12 @@ export const Login = ({ onLogin }) => {
 
       const data = await response.json();
       localStorage.setItem("token", data.token);
-      onLogin();
+      console.log("setIsLoggedIn is ", setIsLoggedIn);
+      setIsLoggedIn(true);
     } catch (error) {
       console.error("Login failed:", error);
       setError("Login failed. Please check your credentials and try again.");
+      setIsLoggedIn(false);
     }
   };
 

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import AddListing from "./AddListing";
 import { BuyerBrokerTable } from "./BuyerBrokerTable";
-import { Login } from "./Login";
 
 const ListingsManager = ({ isLoggedIn, setIsLoggedIn }) => {
   const [refreshKey, setRefreshKey] = useState(0);
@@ -9,12 +8,9 @@ const ListingsManager = ({ isLoggedIn, setIsLoggedIn }) => {
   const handleListingAdded = () => {
     setRefreshKey((oldKey) => oldKey + 1);
   };
-  const handleLogin = () => {
-    setIsLoggedIn(true);
-  };
 
   return (
-    <div>
+    <div style={{ marginTop: "60px" }}>
       <h1>Listings Manager</h1>
       {!isLoggedIn ? <></> : <AddListing onListingAdded={handleListingAdded} />}
       <BuyerBrokerTable refreshKey={refreshKey} />
