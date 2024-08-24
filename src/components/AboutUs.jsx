@@ -40,7 +40,7 @@ function AboutUs({ agents }) {
     },
     mobile: {
       breakpoint: { max: 768, min: 0 },
-      items: 3,
+      items: 1,
     },
   };
 
@@ -86,9 +86,7 @@ function AboutUs({ agents }) {
           slidesToSlide={4}
           containerClass="carousel"
           itemClass="carousel-agent"
-          arrows={false}
-          customButtonGroup={<CustomButtonGroupAsArrows />}
-          renderButtonGroupOutside={true}
+          arrows={true}
         >
           {agentsArray.map((agent) => {
             return (
@@ -154,14 +152,5 @@ function AboutUs({ agents }) {
     </div>
   );
 }
-
-const CustomButtonGroupAsArrows = ({ next, previous }) => {
-  return (
-    <div className="button-group">
-      <div className="arrow left" onClick={previous} />
-      <div className="arrow right" onClick={next} />
-    </div>
-  );
-};
 
 export default AboutUs;
