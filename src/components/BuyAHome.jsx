@@ -49,26 +49,14 @@ function BuyAHome() {
 
   async function getListings() {
     try {
-      const response = await fetch(`${config.SERVER_URL}/get-listings`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "DELETE, POST, GET, OPTIONS",
-          "Access-Control-Allow-Headers":
-            "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With",
-        },
-      });
-
+      const response = await fetch(`${config.SERVER_URL}/api/v1/listings`);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-
       const data = await response.json();
       setListings(data);
-      // console.log(data);
     } catch (error) {
-      console.error("There was a problem with the fetch operation:", error);
+      console.error("Error fetching listings:", error);
     }
   }
 

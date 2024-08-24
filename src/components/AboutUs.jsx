@@ -63,7 +63,7 @@ function AboutUs({ agents }) {
     setAgentProfileName(agents[agentName]["Name"]);
     setAgentProfileTitle(agents[agentName]["Title"]);
     setAgentProfileImagePath(
-      `${config.SERVER_URL}/agents/images/` + agents[agentName]["Image"],
+      `${config.SERVER_URL}/api/v1/agents/images/` + agents[agentName]["Image"],
     );
     setAgentProfileOfficeNumber(agents[agentName]["OfficeNumber"]);
     setAgentProfileCellNumber(agents[agentName]["CellNumber"]);
@@ -95,7 +95,9 @@ function AboutUs({ agents }) {
               <img
                 className="agent-image"
                 alt="Agent"
-                src={`${config.SERVER_URL}/agents/images/` + agent["Image"]}
+                src={
+                  `${config.SERVER_URL}/api/v1/agents/images/` + agent["Image"]
+                }
                 onClick={() => openAgentProfileModal(agent["Name"])}
               />
             );
