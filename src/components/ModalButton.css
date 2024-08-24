@@ -72,6 +72,11 @@
   height: 24px;
 }
 
+.close-modal-button {
+  width: 8px;
+  height: 8px;
+}
+
 @media screen and (max-width: 768px) {
   .modal {
     width: 100%;

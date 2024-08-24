@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import config from "../config.js";
+import { useAgents } from "../contexts/AgentContext.js";
 
 const AddListing = ({ onListingAdded }) => {
-  const [agents, setAgents] = useState({});
+  const { agents, loading, error: agentsError } = useAgents();
   const [listing, setListing] = useState({
     mlsId: "",
     compensation: "",
@@ -13,10 +14,6 @@ const AddListing = ({ onListingAdded }) => {
     phone: "",
     email: "",
   });
-
-  useEffect(() => {
-    fetchAgents();
-  }, []);
 
   const formStyles = {
     maxWidth: "800px",
@@ -60,25 +57,12 @@ const AddListing = ({ onListingAdded }) => {
     marginTop: "20px",
   };
 
-  const fetchAgents = async () => {
-    try {
-      const response = await fetch(`${config.SERVER_URL}/api/v1/agents`);
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      const data = await response.json();
-      setAgents(data);
-    } catch (error) {
-      console.error("Error fetching agents:", error);
-    }
-  };
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setListing((prev) => ({ ...prev, [name]: value }));
 
     if (name === "listingBroker") {
-      const selectedAgent = agents[value];
+      const selectedAgent = agents.find((agent) => agent.name === value);
       if (selectedAgent) {
         setListing((prev) => ({
           ...prev,
@@ -125,65 +109,7 @@ const AddListing = ({ onListingAdded }) => {
 
   return (
     <form onSubmit={handleSubmit} style={formStyles}>
-      <div>
-        <label style={labelStyles}>MLS ID</label>
-        <input
-          style={inputStyles}
-          name="mlsId"
-          value={listing.mlsId}
-          onChange={handleChange}
-          placeholder="MLS ID"
-          required
-        />
-      </div>
-
-      <div>
-        <label style={labelStyles}>Compensation %</label>
-        <input
-          style={inputStyles}
-          name="compensation"
-          value={listing.compensation}
-          onChange={handleChange}
-          placeholder="Compensation %"
-          required
-        />
-      </div>
-
-      <div>
-        <label style={labelStyles}>Address</label>
-        <input
-          style={inputStyles}
-          name="address"
-          value={listing.address}
-          onChange={handleChange}
-          placeholder="Address"
-          required
-        />
-      </div>
-
-      <div>
-        <label style={labelStyles}>City/Town</label>
-        <input
-          style={inputStyles}
-          name="city"
-          value={listing.city}
-          onChange={handleChange}
-          placeholder="City/Town"
-          required
-        />
-      </div>
-
-      <div>
-        <label style={labelStyles}>ZIP</label>
-        <input
-          style={inputStyles}
-          name="zip"
-          value={listing.zip}
-          onChange={handleChange}
-          placeholder="ZIP"
-          required
-        />
-      </div>
+      {/* ... (keep your other form fields as they are) */}
 
       <div>
         <label style={labelStyles}>Listing Broker</label>
@@ -194,12 +120,16 @@ const AddListing = ({ onListingAdded }) => {
           onChange={handleChange}
           required
         >
-          <option value="">Select Listing Broker</option>
-          {Object.keys(agents).map((agentName) => (
-            <option key={agentName} value={agentName}>
-              {agentName}
-            </option>
-          ))}
+          <option value="">Select an agent</option>
+          {loading ? (
+            <option disabled>Loading agents...</option>
+          ) : (
+            agents.map((agent) => (
+              <option key={agent.id} value={agent.name}>
+                {agent.name}
+              </option>
+            ))
+          )}
         </select>
       </div>
 

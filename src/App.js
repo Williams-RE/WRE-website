@@ -14,6 +14,7 @@ import { NavBar } from "./components/NavBar.jsx";
 import { ModalButton } from "./components/ModalButton.jsx";
 import ListingsManager from "./components/ListingsManager.jsx";
 import { Login } from "./components/Login.jsx";
+import { AgentsProvider } from "./contexts/AgentContext.js";
 
 function App() {
   const [agents, setAgents] = useState({});
@@ -47,15 +48,17 @@ function App() {
   };
 
   return (
-    <Router>
-      <AppContent
-        agents={agents}
-        isLoggedIn={isLoggedIn}
-        setIsLoggedIn={setIsLoggedIn}
-        handleLogout={handleLogout}
-        showNavBarDelay={showNavBarDelay}
-      />
-    </Router>
+    <AgentsProvider>
+      <Router>
+        <AppContent
+          agents={agents}
+          isLoggedIn={isLoggedIn}
+          setIsLoggedIn={setIsLoggedIn}
+          handleLogout={handleLogout}
+          showNavBarDelay={showNavBarDelay}
+        />
+      </Router>
+    </AgentsProvider>
   );
 }
 

@@ -204,14 +204,7 @@ function BuyAHome() {
           },
         }}
       >
-        <div className="listings-modal-heading">
-          <img
-            src={closeModalImg}
-            alt="Close Modal"
-            className="close-listings-modal-button"
-            onClick={() => closeListingsModal()}
-          />
-        </div>
+        <div className="listings-modal-heading"></div>
         <div className="listings-modal-content">
           <ListingsLayout listings={listings} />
         </div>
