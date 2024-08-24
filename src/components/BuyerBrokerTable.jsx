@@ -48,12 +48,14 @@ export const BuyerBrokerTable = ({ refreshKey }) => {
   // Handle the click of the Save button
   const handleSaveClick = async (listingId, updatedData) => {
     try {
+      const token = localStorage.getItem("token");
       const response = await fetch(
         `${config.SERVER_URL}/api/v1/listings/${listingId}`,
         {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify(updatedData),
         },
