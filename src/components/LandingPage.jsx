@@ -3,21 +3,25 @@ import "./LandingPage.css";
 
 const LandingPage = () => {
   const [showInitialMessage, setShowInitialMessage] = useState(false);
+  const [hideInitialMessage, setHideInitialMessage] = useState(false);
   const [showWelcome, setShowWelcome] = useState(false);
 
   useEffect(() => {
-    // Fade in the initial message after a short delay
     const initialTimer = setTimeout(() => {
       setShowInitialMessage(true);
     }, 1000);
 
-    // Show the welcome message after 4 seconds
+    const startFadeOutTimer = setTimeout(() => {
+      setHideInitialMessage(true);
+    }, 3000);
+
     const welcomeTimer = setTimeout(() => {
       setShowWelcome(true);
-    }, 8000);
+    }, 6000);
 
     return () => {
       clearTimeout(initialTimer);
+      clearTimeout(startFadeOutTimer);
       clearTimeout(welcomeTimer);
     };
   }, []);
@@ -27,15 +31,16 @@ const LandingPage = () => {
       <div className="landing-page-heading">
         {!showWelcome ? (
           <h1
-            className={`landing-page-slogan ${showInitialMessage ? "fade-in" : "hidden"}`}
+            className={`landing-page-slogan ${
+              showInitialMessage ? "fade-in" : ""
+            } ${hideInitialMessage ? "fade-out" : ""}`}
           >
             Find your dream home
           </h1>
         ) : (
-          <div className="welcome-text fade-in">
-            {/* <h2 className="welcome-to"></h2> */}
-            <h1 className="company-name">Williams Real Estates</h1>
-          </div>
+          <h1 className={`company-name ${showWelcome ? "fade-in" : ""}`}>
+            Williams Real Estates
+          </h1>
         )}
       </div>
     </div>

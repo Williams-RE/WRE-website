@@ -1,10 +1,10 @@
-import { useState, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import closeModalImg from "../assets/close-modal.avif";
 import Modal from "react-modal";
 import config from "../config";
 import "./ModalButton.css";
 
-export const ModalButton = () => {
+export const ModalButton = ({ showDelay }) => {
   const emailInputRef = useRef();
   const agentDropdownRef = useRef();
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -13,6 +13,7 @@ export const ModalButton = () => {
   const [email, setEmail] = useState("");
   const [agent, setAgent] = useState("");
   const [comment, setComment] = useState("");
+  const [showButton, setShowButton] = useState(!showDelay);
 
   const [nameErrorClass, setNameErrorClass] = useState("");
   const [emailErrorClass, setEmailErrorClass] = useState("");
@@ -20,6 +21,16 @@ export const ModalButton = () => {
   const [emailPlaceHolder, setEmailPlaceHolder] = useState("Email*");
 
   const [scrollTop, setScrollTop] = useState(0);
+
+  useEffect(() => {
+    if (showDelay) {
+      const initialTimer = setTimeout(() => {
+        setShowButton(true);
+      }, 8000); // Same delay as NavBar
+
+      return () => clearTimeout(initialTimer);
+    }
+  }, [showDelay]);
 
   Modal.setAppElement("#root");
 
@@ -158,10 +169,16 @@ export const ModalButton = () => {
       console.error("Error in sending email, ", error);
     }
   }
+  if (!showButton) {
+    return null;
+  }
 
   return (
     <>
-      <button className="modal-button" onClick={() => modalOnClick()}>
+      <button
+        className={`modal-button ${showButton ? "fade-in" : ""}`}
+        onClick={() => modalOnClick()}
+      >
         <svg
           className="contact-icon"
           xmlns="http://www.w3.org/2000/svg"

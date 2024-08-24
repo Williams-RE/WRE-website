@@ -18,6 +18,7 @@ import { Login } from "./components/Login.jsx";
 function App() {
   const [agents, setAgents] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [showNavBarDelay, setShowNavBarDelay] = useState(true);
 
   useEffect(() => {
     getAgents();
@@ -52,19 +53,39 @@ function App() {
         isLoggedIn={isLoggedIn}
         setIsLoggedIn={setIsLoggedIn}
         handleLogout={handleLogout}
+        showNavBarDelay={showNavBarDelay}
       />
     </Router>
   );
 }
 
-function AppContent({ agents, isLoggedIn, setIsLoggedIn, handleLogout }) {
+function AppContent({
+  agents,
+  isLoggedIn,
+  setIsLoggedIn,
+  handleLogout,
+  showNavBarDelay,
+}) {
   const location = useLocation();
   const isHomePage = location.pathname === "/";
   console.log("location is ", location.pathname);
 
   return (
     <div className="main">
-      <NavBar isLoggedIn={isLoggedIn} onLogout={handleLogout} />
+      {isHomePage ? (
+        <NavBar
+          showDelay={showNavBarDelay}
+          isLoggedIn={isLoggedIn}
+          onLogout={handleLogout}
+        />
+      ) : (
+        <NavBar
+          isLoggedIn={isLoggedIn}
+          onLogout={handleLogout}
+          showDelay={false}
+        />
+      )}
+
       {isHomePage ? (
         <div className="video-background">
           <video autoPlay loop muted playsInline>
@@ -116,7 +137,11 @@ function AppContent({ agents, isLoggedIn, setIsLoggedIn, handleLogout }) {
           />
         </Routes>
       </div>
-      <ModalButton />
+      {isHomePage ? (
+        <ModalButton showDelay={showNavBarDelay} />
+      ) : (
+        <ModalButton showDelay={false} />
+      )}
     </div>
   );
 }
