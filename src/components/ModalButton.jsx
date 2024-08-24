@@ -15,7 +15,8 @@ export const ModalButton = ({ showDelay }) => {
   const [error, setError] = useState("");
 
   const { agents, loading, error: agentsError } = useAgents();
-  console.log("agents are ", agents);
+  console.log(Object.values(agents));
+  console.log("agent", agent);
   useEffect(() => {
     if (showDelay) {
       const initialTimer = setTimeout(() => {
@@ -36,7 +37,6 @@ export const ModalButton = ({ showDelay }) => {
     try {
       await sendEmail(name, email, agent, comment);
       setModalIsOpen(false);
-      // Reset form fields
       setName("");
       setEmail("");
       setAgent("");
@@ -45,6 +45,16 @@ export const ModalButton = ({ showDelay }) => {
       setError("Failed to send message. Please try again.");
     }
   };
+
+  function nameIsValid(name) {
+    if (name.length > 0) return true;
+    else return false;
+  }
+
+  function emailIsValid(email) {
+    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}$/;
+    return regex.test(email);
+  }
 
   if (!showButton) {
     return null;
@@ -107,8 +117,8 @@ export const ModalButton = ({ showDelay }) => {
                   <option disabled>Loading agents...</option>
                 ) : (
                   Object.values(agents).map((agent) => (
-                    <option key={agent.id} value={agent.name}>
-                      {agent.name}
+                    <option key={agent.MATRIX_UNIQUE_ID} value={agent.Name}>
+                      {agent.Name}
                     </option>
                   ))
                 )}
