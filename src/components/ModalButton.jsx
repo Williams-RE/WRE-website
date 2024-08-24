@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import closeModalImg from "../assets/close-modal.avif";
 import Modal from "react-modal";
 import "./ModalButton.css";
-import { sendEmail } from "../lib/utils";
+import toast, { Toaster } from "react-hot-toast";
+import { sendEmail, validateEmail } from "../lib/utils";
 import { useAgents } from "../contexts/AgentContext.js";
 
 export const ModalButton = ({ showDelay }) => {
@@ -12,11 +13,10 @@ export const ModalButton = ({ showDelay }) => {
   const [email, setEmail] = useState("");
   const [agent, setAgent] = useState("");
   const [comment, setComment] = useState("");
-  const [error, setError] = useState("");
+  const [errors, setErrors] = useState({});
 
   const { agents, loading, error: agentsError } = useAgents();
-  console.log(Object.values(agents));
-  console.log("agent", agent);
+
   useEffect(() => {
     if (showDelay) {
       const initialTimer = setTimeout(() => {
@@ -27,13 +27,31 @@ export const ModalButton = ({ showDelay }) => {
     }
   }, [showDelay]);
 
+  const validateAgent = (agent) => {
+    return agent.trim().length > 0;
+  };
+
+  const validateComment = (comment) => {
+    return comment.trim().length <= 500; // Example: limit comment to 500 characters
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
-    if (!name || !email) {
-      setError("Name and Email are required.");
+    const newErrors = {};
+
+    if (!name.length) newErrors.name = "Name is required.";
+    if (!validateEmail(email))
+      newErrors.email = "Please enter a valid email address.";
+    if (!validateAgent(agent)) newErrors.agent = "Please select an agent.";
+    if (!validateComment(comment))
+      newErrors.comment = "Comment must be 500 characters or less.";
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      toast.error("Please correct the errors in the form.");
       return;
     }
+
     try {
       await sendEmail(name, email, agent, comment);
       setModalIsOpen(false);
@@ -41,20 +59,14 @@ export const ModalButton = ({ showDelay }) => {
       setEmail("");
       setAgent("");
       setComment("");
+      setErrors({});
+      toast.success("Introduction email sent to agent!");
     } catch (error) {
-      setError("Failed to send message. Please try again.");
+      console.error("Error sending information to agent:", error);
+      setErrors({ submit: "Failed to send message. Please try again." });
+      toast.error("Error sending information to agent. Please try again.");
     }
   };
-
-  function nameIsValid(name) {
-    if (name.length > 0) return true;
-    else return false;
-  }
-
-  function emailIsValid(email) {
-    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}$/;
-    return regex.test(email);
-  }
 
   if (!showButton) {
     return null;
@@ -62,6 +74,16 @@ export const ModalButton = ({ showDelay }) => {
 
   return (
     <>
+      <Toaster
+        position="top-right"
+        toastOptions={{
+          duration: 5000,
+          style: {
+            background: "#363636",
+            color: "#fff",
+          },
+        }}
+      />
       <button
         className={`modal-button ${showButton ? "fade-in" : ""}`}
         onClick={() => setModalIsOpen(true)}
@@ -94,6 +116,7 @@ export const ModalButton = ({ showDelay }) => {
                 onChange={(e) => setName(e.target.value)}
                 required
               />
+              {errors.name && <p className="error-message">{errors.name}</p>}
             </div>
             <div className="input-group">
               <label htmlFor="email">Email*</label>
@@ -104,13 +127,15 @@ export const ModalButton = ({ showDelay }) => {
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
+              {errors.email && <p className="error-message">{errors.email}</p>}
             </div>
             <div className="input-group">
-              <label htmlFor="agent">Agent</label>
+              <label htmlFor="agent">Agent*</label>
               <select
                 id="agent"
                 value={agent}
                 onChange={(e) => setAgent(e.target.value)}
+                required
               >
                 <option value="">Select an agent</option>
                 {loading ? (
@@ -123,6 +148,7 @@ export const ModalButton = ({ showDelay }) => {
                   ))
                 )}
               </select>
+              {errors.agent && <p className="error-message">{errors.agent}</p>}
             </div>
             <div className="input-group">
               <label htmlFor="comment">Comments</label>
@@ -132,10 +158,12 @@ export const ModalButton = ({ showDelay }) => {
                 onChange={(e) => setComment(e.target.value)}
                 placeholder="Anything you'd like to share before we chat?"
               ></textarea>
+              {errors.comment && (
+                <p className="error-message">{errors.comment}</p>
+              )}
             </div>
-            {(error || agentsError) && (
-              <p className="error-message">{error || agentsError}</p>
-            )}
+            {errors.submit && <p className="error-message">{errors.submit}</p>}
+            {agentsError && <p className="error-message">{agentsError}</p>}
             <button type="submit" className="submit-button">
               Submit
             </button>
