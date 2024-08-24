@@ -11,7 +11,7 @@ const ListingsManager = ({ isLoggedIn, setIsLoggedIn }) => {
 
   return (
     <div style={{ marginTop: "60px" }}>
-      <h1>Listings Manager</h1>
+      <h1 style={{ fontSize: "2.7vw" }}>Listings Manager</h1>
       {!isLoggedIn ? <></> : <AddListing onListingAdded={handleListingAdded} />}
       <BuyerBrokerTable refreshKey={refreshKey} />
     </div>

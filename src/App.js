@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -12,9 +12,8 @@ import LandingPage from "./components/LandingPage.jsx";
 import AboutUs from "./components/AboutUs.jsx";
 import { NavBar } from "./components/NavBar.jsx";
 import { ModalButton } from "./components/ModalButton.jsx";
-import posthog from "posthog-js";
 import ListingsManager from "./components/ListingsManager.jsx";
-import { Login } from "./components/Login.jsx"; // New component to be created
+import { Login } from "./components/Login.jsx";
 
 function App() {
   const [agents, setAgents] = useState({});
@@ -45,14 +44,6 @@ function App() {
     localStorage.removeItem("token");
     setIsLoggedIn(false);
   };
-
-  posthog.init(`${process.env.REACT_APP_POSTHOG_API_KEY}`, {
-    api_host: "https://us.i.posthog.com",
-    person_profiles: "always",
-    loaded: (posthog) => {
-      console.log("PostHog loaded successfully");
-    },
-  });
 
   return (
     <Router>
