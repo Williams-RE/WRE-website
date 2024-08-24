@@ -5,7 +5,7 @@ import AgentProfile from "./AgentProfile.jsx";
 import closeModalImg from "../assets/close-modal.avif";
 import Modal from "react-modal";
 import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
+import "../lib/react-multi-carousel.css";
 
 function AboutUs({ agents }) {
   const [agentProfileModalIsOpen, setAgentProfileModalIsOpen] = useState(false);
