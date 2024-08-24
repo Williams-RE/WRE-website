@@ -92,10 +92,12 @@ const AddListing = ({ onListingAdded }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      const token = localStorage.getItem("token");
       const response = await fetch(`${config.SERVER_URL}/api/v1/listings`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(listing),
       });
