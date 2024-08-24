@@ -22,12 +22,19 @@ const AddListing = ({ onListingAdded }) => {
     maxWidth: "800px",
     margin: "0 auto",
     padding: "20px",
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr", // Two equal columns
+    gap: "20px", // Space between columns
+    "@media (max-width: 768px)": {
+      // Adjust layout for mobile screens
+      gridTemplateColumns: "1fr", // Switch to single column for movile
+      gap: "10px",
+    },
   };
 
   const inputStyles = {
-    width: "50%",
+    width: "100%",
     padding: "15px",
-    marginBottom: "20px",
     fontSize: "18px",
     border: "2px solid #ccc",
     borderRadius: "5px",
@@ -35,22 +42,22 @@ const AddListing = ({ onListingAdded }) => {
   };
 
   const labelStyles = {
-    display: "block",
-    marginBottom: "10px",
-    fontSize: "20px",
+    marginBottom: "5px",
+    fontSize: "18px",
     fontWeight: "bold",
     color: "white",
   };
 
   const buttonStyles = {
+    gridColumn: "span 2", // Make the button span both columns
     padding: "15px 30px",
     fontSize: "20px",
     backgroundColor: "#007bff",
     color: "white",
     border: "none",
-    borderRadius: "5%",
+    borderRadius: "10px",
     cursor: "pointer",
-    width: "50%",
+    marginTop: "20px",
   };
 
   const fetchAgents = async () => {
@@ -119,97 +126,109 @@ const AddListing = ({ onListingAdded }) => {
 
   return (
     <form onSubmit={handleSubmit} style={formStyles}>
-      <label style={labelStyles}>MLS ID</label>
-      <input
-        style={inputStyles}
-        name="mlsId"
-        value={listing.mlsId}
-        onChange={handleChange}
-        placeholder="MLS ID"
-        required
-      />
+      <div>
+        <label style={labelStyles}>MLS ID</label>
+        <input
+          style={inputStyles}
+          name="mlsId"
+          value={listing.mlsId}
+          onChange={handleChange}
+          placeholder="MLS ID"
+          required
+        />
+      </div>
 
-      <label style={labelStyles}>Compensation %</label>
-      <input
-        style={inputStyles}
-        name="compensation"
-        value={listing.compensation}
-        onChange={handleChange}
-        placeholder="Compensation %"
-        required
-      />
+      <div>
+        <label style={labelStyles}>Compensation %</label>
+        <input
+          style={inputStyles}
+          name="compensation"
+          value={listing.compensation}
+          onChange={handleChange}
+          placeholder="Compensation %"
+          required
+        />
+      </div>
 
-      <label style={labelStyles}>Address</label>
-      <input
-        style={inputStyles}
-        name="address"
-        value={listing.address}
-        onChange={handleChange}
-        placeholder="Address"
-        required
-      />
+      <div>
+        <label style={labelStyles}>Address</label>
+        <input
+          style={inputStyles}
+          name="address"
+          value={listing.address}
+          onChange={handleChange}
+          placeholder="Address"
+          required
+        />
+      </div>
 
-      <label style={labelStyles}>City/Town</label>
-      <input
-        style={inputStyles}
-        name="city"
-        value={listing.city}
-        onChange={handleChange}
-        placeholder="City/Town"
-        required
-      />
+      <div>
+        <label style={labelStyles}>City/Town</label>
+        <input
+          style={inputStyles}
+          name="city"
+          value={listing.city}
+          onChange={handleChange}
+          placeholder="City/Town"
+          required
+        />
+      </div>
 
-      <label style={labelStyles}>ZIP</label>
-      <input
-        style={inputStyles}
-        name="zip"
-        value={listing.zip}
-        onChange={handleChange}
-        placeholder="ZIP"
-        required
-      />
+      <div>
+        <label style={labelStyles}>ZIP</label>
+        <input
+          style={inputStyles}
+          name="zip"
+          value={listing.zip}
+          onChange={handleChange}
+          placeholder="ZIP"
+          required
+        />
+      </div>
 
-      <label style={labelStyles}>Listing Broker</label>
-      <select
-        style={inputStyles}
-        name="listingBroker"
-        value={listing.listingBroker}
-        onChange={handleChange}
-        required
-      >
-        <option value="">Select Listing Broker</option>
-        {Object.keys(agents).map((agentName) => (
-          <option key={agentName} value={agentName}>
-            {agentName}
-          </option>
-        ))}
-      </select>
+      <div>
+        <label style={labelStyles}>Listing Broker</label>
+        <select
+          style={inputStyles}
+          name="listingBroker"
+          value={listing.listingBroker}
+          onChange={handleChange}
+          required
+        >
+          <option value="">Select Listing Broker</option>
+          {Object.keys(agents).map((agentName) => (
+            <option key={agentName} value={agentName}>
+              {agentName}
+            </option>
+          ))}
+        </select>
+      </div>
 
-      <label style={labelStyles}>Phone</label>
-      <input
-        style={inputStyles}
-        name="phone"
-        value={listing.phone}
-        onChange={handleChange}
-        placeholder="Phone"
-        required
-      />
+      <div>
+        <label style={labelStyles}>Phone</label>
+        <input
+          style={inputStyles}
+          name="phone"
+          value={listing.phone}
+          onChange={handleChange}
+          placeholder="Phone"
+          required
+        />
+      </div>
 
-      <label style={labelStyles}>Email</label>
-      <input
-        style={inputStyles}
-        name="email"
-        value={listing.email}
-        onChange={handleChange}
-        placeholder="Email"
-        required
-      />
+      <div>
+        <label style={labelStyles}>Email</label>
+        <input
+          style={inputStyles}
+          name="email"
+          value={listing.email}
+          onChange={handleChange}
+          placeholder="Email"
+          required
+        />
+      </div>
 
-      {/* Add some vertical space before the button */}
-      <div style={{ marginTop: "20px" }}></div>
-
-      {/* Move the button here, at the end of the form */}
-      <button type="submit" style={{ ...buttonStyles, marginTop: "20px" }}>
+      <button type="submit" style={buttonStyles}>
         Add Listing
       </button>
     </form>
