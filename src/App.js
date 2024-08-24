@@ -30,26 +30,14 @@ function App() {
 
   async function getAgents() {
     try {
-      const response = await fetch(`${config.SERVER_URL}/get-agents`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "GET",
-          "Access-Control-Allow-Headers":
-            "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With",
-        },
-      });
-
+      const response = await fetch(`${config.SERVER_URL}/api/v1/agents`);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-
       const data = await response.json();
-      console.log("data is ", data);
       setAgents(data);
     } catch (error) {
-      console.error("There was a problem with the fetch operation:", error);
+      console.error("Error fetching agents:", error);
     }
   }
 

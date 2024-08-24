@@ -62,13 +62,12 @@ const AddListing = ({ onListingAdded }) => {
 
   const fetchAgents = async () => {
     try {
-      const response = await fetch(`${config.SERVER_URL}/get-agents`);
-      if (response.ok) {
-        const data = await response.json();
-        setAgents(data);
-      } else {
-        console.error("Failed to fetch agents");
+      const response = await fetch(`${config.SERVER_URL}/api/v1/agents`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
+      const data = await response.json();
+      setAgents(data);
     } catch (error) {
       console.error("Error fetching agents:", error);
     }
@@ -93,31 +92,29 @@ const AddListing = ({ onListingAdded }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const token = localStorage.getItem("token");
-      const response = await fetch(`${config.SERVER_URL}/api/listings`, {
+      const response = await fetch(`${config.SERVER_URL}/api/v1/listings`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(listing),
       });
-
-      if (response.ok) {
-        onListingAdded();
-        setListing({
-          mlsId: "",
-          compensation: "",
-          address: "",
-          city: "",
-          zip: "",
-          listingBroker: "",
-          phone: "",
-          email: "",
-        });
-      } else {
-        throw new Error("Failed to add listing");
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
+      const data = await response.json();
+      console.info("Listing added successfully", data);
+      onListingAdded();
+      setListing({
+        mlsId: "",
+        compensation: "",
+        address: "",
+        city: "",
+        zip: "",
+        listingBroker: "",
+        phone: "",
+        email: "",
+      });
     } catch (error) {
       console.error("Error adding listing:", error);
       alert("Failed to add listing. Please try again.");

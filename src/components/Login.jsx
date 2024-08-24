@@ -11,7 +11,7 @@ export const Login = ({ setIsLoggedIn }) => {
     e.preventDefault();
     setError("");
     try {
-      const response = await fetch(`${config.SERVER_URL}/api/login`, {
+      const response = await fetch(`${config.SERVER_URL}/api/v1/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -20,15 +20,16 @@ export const Login = ({ setIsLoggedIn }) => {
       });
 
       if (!response.ok) {
-        throw new Error("Login failed");
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
 
       const data = await response.json();
+      console.info("Login successful", data);
       localStorage.setItem("token", data.token);
       console.log("setIsLoggedIn is ", setIsLoggedIn);
       setIsLoggedIn(true);
     } catch (error) {
-      console.error("Login failed:", error);
+      console.error("Error logging in:", error);
       setError("Login failed. Please check your credentials and try again.");
       setIsLoggedIn(false);
     }

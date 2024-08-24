@@ -22,13 +22,12 @@ export const BuyerBrokerTable = ({ refreshKey }) => {
   // Fetch listings from the backend
   const fetchListings = async () => {
     try {
-      const response = await fetch(`${config.SERVER_URL}/api/listings`);
-      if (response.ok) {
-        const data = await response.json();
-        setListings(data);
-      } else {
-        console.error("Failed to fetch listings");
+      const response = await fetch(`${config.SERVER_URL}/api/v1/listings`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
+      const data = await response.json();
+      setListings(data);
     } catch (error) {
       console.error("Error fetching listings:", error);
     }
@@ -47,27 +46,23 @@ export const BuyerBrokerTable = ({ refreshKey }) => {
   };
 
   // Handle the click of the Save button
-  const handleSaveClick = async (rowId) => {
+  const handleSaveClick = async (listingId, updatedData) => {
     try {
-      const token = localStorage.getItem("token"); // Retrieve token from localStorage
       const response = await fetch(
-        `${config.SERVER_URL}/api/listings/${rowId}`,
+        `${config.SERVER_URL}/api/v1/listings/${listingId}`,
         {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`, // Include the token in the header
           },
-          body: JSON.stringify(editListing),
+          body: JSON.stringify(updatedData),
         },
       );
-
-      if (response.ok) {
-        setEditRowId(null); // Exit edit mode
-        fetchListings(); // Refresh listings
-      } else {
-        console.error("Failed to update listing");
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
+      const data = await response.json();
+      console.info("Listing updated successfully", data);
     } catch (error) {
       console.error("Error updating listing:", error);
     }
@@ -186,7 +181,9 @@ export const BuyerBrokerTable = ({ refreshKey }) => {
           <>
             <button
               className="button"
-              onClick={() => handleSaveClick(info.row.original._id)}
+              onClick={() =>
+                handleSaveClick(info.row.original._id, editListing)
+              }
             >
               Save
             </button>
