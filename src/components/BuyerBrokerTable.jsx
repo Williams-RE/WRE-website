@@ -230,6 +230,7 @@ export const BuyerBrokerTable = ({ refreshKey }) => {
               <button
                 className="button delete"
                 onClick={() => handleDeleteClick(info.row.original._id)}
+                data-testid={`delete-button-${info.row.original.mlsId}`}
               >
                 Delete
               </button>
@@ -247,7 +248,7 @@ export const BuyerBrokerTable = ({ refreshKey }) => {
 
   return (
     <div className="table-container">
-      <table className="buyer-broker-table">
+      <table className="buyer-broker-table" data-testid="buyer-broker-table">
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>
@@ -266,7 +267,7 @@ export const BuyerBrokerTable = ({ refreshKey }) => {
         </thead>
         <tbody>
           {table.getRowModel().rows.map((row) => (
-            <tr key={row.id}>
+            <tr key={row.id} data-testid={`table-row-${row.original.mlsId}`}>
               {row.getVisibleCells().map((cell) => (
                 <td key={cell.id} className="table-cell">
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}

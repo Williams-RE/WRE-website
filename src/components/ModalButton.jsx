@@ -115,6 +115,7 @@ export const ModalButton = ({ showDelay }) => {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
+                data-testid="contact-form-name"
               />
               {errors.name && <p className="error-message">{errors.name}</p>}
             </div>
@@ -126,6 +127,7 @@ export const ModalButton = ({ showDelay }) => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
+                data-testid="contact-form-email"
               />
               {errors.email && <p className="error-message">{errors.email}</p>}
             </div>
@@ -136,6 +138,7 @@ export const ModalButton = ({ showDelay }) => {
                 value={agent}
                 onChange={(e) => setAgent(e.target.value)}
                 required
+                data-testid="contact-form-agent"
               >
                 <option value="">Select an agent</option>
                 {loading ? (
@@ -157,6 +160,7 @@ export const ModalButton = ({ showDelay }) => {
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
                 placeholder="Anything you'd like to share before we chat?"
+                data-testid="contact-form-comment"
               ></textarea>
               {errors.comment && (
                 <p className="error-message">{errors.comment}</p>
@@ -164,7 +168,11 @@ export const ModalButton = ({ showDelay }) => {
             </div>
             {errors.submit && <p className="error-message">{errors.submit}</p>}
             {agentsError && <p className="error-message">{agentsError}</p>}
-            <button type="submit" className="submit-button">
+            <button
+              type="submit"
+              className="submit-button"
+              data-testid="contact-form-submit"
+            >
               Submit
             </button>
           </form>

@@ -179,6 +179,7 @@ const AddListing = ({ onListingAdded }) => {
             onChange={handleChange}
             placeholder="MLS ID"
             required
+            data-testid="mls-id-input"
           />
           {errors.mlsId && <p style={errorStyle}>{errors.mlsId}</p>}
         </div>
@@ -192,6 +193,7 @@ const AddListing = ({ onListingAdded }) => {
             onChange={handleChange}
             placeholder="Compensation %"
             required
+            data-testid="compensation-input"
           />
           {errors.compensation && (
             <p style={errorStyle}>{errors.compensation}</p>
@@ -207,12 +209,14 @@ const AddListing = ({ onListingAdded }) => {
             onChange={handleChange}
             placeholder="Address"
             required
+            data-testid="address-input"
           />
           {errors.address && <p style={errorStyle}>{errors.address}</p>}
         </div>
 
         <div>
           <label style={labelStyles}>City/Town</label>
+
           <input
             style={inputStyles}
             name="city"
@@ -220,11 +224,13 @@ const AddListing = ({ onListingAdded }) => {
             onChange={handleChange}
             placeholder="City/Town"
             required
+            data-testid="city-input"
           />
           {errors.city && <p style={errorStyle}>{errors.city}</p>}
         </div>
         <div>
           <label style={labelStyles}>ZIP</label>
+
           <input
             style={inputStyles}
             name="zip"
@@ -232,6 +238,7 @@ const AddListing = ({ onListingAdded }) => {
             onChange={handleChange}
             placeholder="ZIP"
             required
+            data-testid="zip-input"
           />
           {errors.zip && <p style={errorStyle}>{errors.zip}</p>}
         </div>
@@ -244,6 +251,7 @@ const AddListing = ({ onListingAdded }) => {
             value={listing.listingBroker}
             onChange={handleChange}
             required
+            data-testid="listing-broker-select"
           >
             <option value="">Select an agent</option>
             {loading ? (
@@ -270,6 +278,7 @@ const AddListing = ({ onListingAdded }) => {
             onChange={handleChange}
             placeholder="Phone"
             required
+            data-testid="phone-select"
           />
           {errors.phone && <p style={errorStyle}>{errors.phone}</p>}
         </div>
@@ -283,11 +292,16 @@ const AddListing = ({ onListingAdded }) => {
             onChange={handleChange}
             placeholder="Email"
             required
+            data-testid="email-select"
           />
           {errors.email && <p style={errorStyle}>{errors.email}</p>}
         </div>
 
-        <button type="submit" style={buttonStyles}>
+        <button
+          type="submit"
+          style={buttonStyles}
+          data-testid="add-listing-button"
+        >
           Add Listing
         </button>
       </form>
