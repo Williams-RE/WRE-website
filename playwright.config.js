@@ -11,12 +11,18 @@ module.exports = defineConfig({
     },
     ignoreHTTPSErrors: true,
   },
-  timeout: 600000,
+  timeout: 60000,
   expect: {
-    timeout: 600000,
+    timeout: 60000,
   },
-  workers: 1,
-  fullyParallel: false,
+  workers: 3,
+  fullyParallel: true,
   retries: 0,
-  reporter: [["html"], ["list"]],
+  reporter: "html",
+  /* Run your local dev server before starting the tests */
+  webServer: {
+    command: "npm run dev",
+    url: "http://127.0.0.1:3000",
+    reuseExistingServer: false,
+  },
 });

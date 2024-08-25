@@ -5,7 +5,7 @@
     "start": "serve -s build",
     "dev": "react-scripts start",
     "build": "CI=false react-scripts build",
-    "test:e2e": "playwright test",
+    "test:e2e": "npx playwright test",
     "eject": "react-scripts eject",
     "format": "prettier --write \"**/*.+(js|ts|jsx|tsx|json|css|md|yml|yaml|html)\"",
     "format:check": "prettier --check \"**/*.+(js|ts|jsx|tsx|json|css|md|yml|yaml|html)\""
