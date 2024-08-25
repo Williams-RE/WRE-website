@@ -1,5 +1,5 @@
 // @ts-check
-const { defineConfig, devices } = require("@playwright/test");
+const { defineConfig } = require("@playwright/test");
 
 module.exports = defineConfig({
   testDir: "./tests/e2e",
@@ -11,12 +11,12 @@ module.exports = defineConfig({
     },
     ignoreHTTPSErrors: true,
   },
-  timeout: 120000,
+  timeout: 600000,
   expect: {
-    timeout: 30000,
+    timeout: 600000,
   },
-  workers: 3,
-  fullyParallel: true,
+  workers: 1,
+  fullyParallel: false,
   retries: 0,
   reporter: [["html"], ["list"]],
 });

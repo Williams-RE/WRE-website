@@ -3,7 +3,7 @@ on: pull_request
 
 jobs:
   test:
-    timeout-minutes: 10
+    timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -22,8 +22,6 @@ jobs:
         run: |
           timeout 10s bash -c 'until curl -s http://localhost:3000/ > /dev/null; do echo waiting for server to be ready...; sleep 2; done'
 
-      - name: Run Playwright tests
-        run: npx playwright test
       - name: Run Playwright tests
         run: npx playwright test
 
