@@ -6,10 +6,6 @@ module.exports = defineConfig({
   use: {
     headless: true,
     viewport: null,
-    launchOptions: {
-      args: ["--start-maximized"],
-    },
-    ignoreHTTPSErrors: true,
   },
   timeout: 60000,
   expect: {
