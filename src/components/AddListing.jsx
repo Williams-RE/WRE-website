@@ -1,10 +1,22 @@
 import React, { useState } from "react";
 import config from "../config.js";
 import { useAgents } from "../contexts/AgentContext.js";
+import toast, { Toaster } from "react-hot-toast";
+import {
+  validateMlsId,
+  validateAddress,
+  validateCity,
+  validateCompensation,
+  validateEmail,
+  validateListingBroker,
+  validatePhone,
+  validateZip,
+} from "../lib/utils.js";
 
 const AddListing = ({ onListingAdded }) => {
   const { agents, loading, error: agentsError } = useAgents();
-  console.log("agents are ", agents);
+  const [errors, setErrors] = useState({});
+
   const [listing, setListing] = useState({
     mlsId: "",
     compensation: "",
@@ -28,6 +40,11 @@ const AddListing = ({ onListingAdded }) => {
       gridTemplateColumns: "1fr", // Switch to single column for movile
       gap: "10px",
     },
+  };
+  const errorStyle = {
+    color: "red",
+    fontSize: "14px",
+    marginTop: "5px",
   };
 
   const inputStyles = {
@@ -61,21 +78,51 @@ const AddListing = ({ onListingAdded }) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setListing((prev) => ({ ...prev, [name]: value }));
+    setErrors((prev) => ({ ...prev, [name]: "" }));
 
     if (name === "listingBroker") {
-      const selectedAgent = agents.find((agent) => agent.name === value);
+      const selectedAgent = Object.values(agents).find(
+        (agent) => agent.Name === value,
+      );
       if (selectedAgent) {
         setListing((prev) => ({
           ...prev,
           phone: selectedAgent.CellNumber,
           email: selectedAgent.Email,
         }));
+        setErrors((prev) => ({ ...prev, phone: "", email: "" }));
       }
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const newErrors = {};
+
+    if (!validateMlsId(listing.mlsId))
+      newErrors.mlsId = "Valid MLS ID is required.";
+    if (!validateCompensation(listing.compensation))
+      newErrors.compensation =
+        "Compensation must be a number between 0 and 100.";
+    if (!validateAddress(listing.address))
+      newErrors.address = "Address is required.";
+    if (!validateCity(listing.city)) newErrors.city = "City is required.";
+    if (!validateZip(listing.zip))
+      newErrors.zip = "Valid ZIP code is required.";
+    if (!validateListingBroker(listing.listingBroker))
+      newErrors.listingBroker = "Listing broker is required.";
+    if (!validatePhone(listing.phone))
+      newErrors.phone = "Valid phone number is required.";
+    if (!validateEmail(listing.email))
+      newErrors.email = "Valid email is required.";
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      console.log("newErrors are ", newErrors);
+      toast.error("Please correct the errors in the form.");
+      return;
+    }
+
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(`${config.SERVER_URL}/api/v1/listings`, {
@@ -102,123 +149,163 @@ const AddListing = ({ onListingAdded }) => {
         phone: "",
         email: "",
       });
+      setErrors({});
+      toast.success("Listing added successfully!");
     } catch (error) {
       console.error("Error adding listing:", error);
-      alert("Failed to add listing. Please try again.");
+      toast.error("Failed to add listing. Please try again.");
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} style={formStyles}>
-      <div>
-        <label style={labelStyles}>MLS ID</label>
-        <input
-          style={inputStyles}
-          name="mlsId"
-          value={listing.mlsId}
-          onChange={handleChange}
-          placeholder="MLS ID"
-          required
-        />
-      </div>
+    <>
+      <Toaster
+        position="top-right"
+        toastOptions={{
+          duration: 5000,
+          style: {
+            background: "#363636",
+            color: "#fff",
+          },
+        }}
+      />
+      <form onSubmit={handleSubmit} style={formStyles}>
+        <div>
+          <label style={labelStyles}>MLS ID</label>
+          <input
+            style={inputStyles}
+            name="mlsId"
+            value={listing.mlsId}
+            onChange={handleChange}
+            placeholder="MLS ID"
+            required
+            data-testid="mls-id-input"
+          />
+          {errors.mlsId && <p style={errorStyle}>{errors.mlsId}</p>}
+        </div>
 
-      <div>
-        <label style={labelStyles}>Compensation %</label>
-        <input
-          style={inputStyles}
-          name="compensation"
-          value={listing.compensation}
-          onChange={handleChange}
-          placeholder="Compensation %"
-          required
-        />
-      </div>
-
-      <div>
-        <label style={labelStyles}>Address</label>
-        <input
-          style={inputStyles}
-          name="address"
-          value={listing.address}
-          onChange={handleChange}
-          placeholder="Address"
-          required
-        />
-      </div>
-
-      <div>
-        <label style={labelStyles}>City/Town</label>
-        <input
-          style={inputStyles}
-          name="city"
-          value={listing.city}
-          onChange={handleChange}
-          placeholder="City/Town"
-          required
-        />
-      </div>
-
-      <div>
-        <label style={labelStyles}>ZIP</label>
-        <input
-          style={inputStyles}
-          name="zip"
-          value={listing.zip}
-          onChange={handleChange}
-          placeholder="ZIP"
-          required
-        />
-      </div>
-      <div>
-        <label style={labelStyles}>Listing Broker</label>
-        <select
-          style={inputStyles}
-          name="listingBroker"
-          value={listing.listingBroker}
-          onChange={handleChange}
-          required
-        >
-          <option value="">Select an agent</option>
-          {loading ? (
-            <option disabled>Loading agents...</option>
-          ) : (
-            Object.values(agents).map((agent) => (
-              <option key={agent.id} value={agent.name}>
-                {agent.name}
-              </option>
-            ))
+        <div>
+          <label style={labelStyles}>Compensation %</label>
+          <input
+            style={inputStyles}
+            name="compensation"
+            value={listing.compensation}
+            onChange={handleChange}
+            placeholder="Compensation %"
+            required
+            data-testid="compensation-input"
+          />
+          {errors.compensation && (
+            <p style={errorStyle}>{errors.compensation}</p>
           )}
-        </select>
-      </div>
+        </div>
 
-      <div>
-        <label style={labelStyles}>Phone</label>
-        <input
-          style={inputStyles}
-          name="phone"
-          value={listing.phone}
-          onChange={handleChange}
-          placeholder="Phone"
-          required
-        />
-      </div>
+        <div>
+          <label style={labelStyles}>Address</label>
+          <input
+            style={inputStyles}
+            name="address"
+            value={listing.address}
+            onChange={handleChange}
+            placeholder="Address"
+            required
+            data-testid="address-input"
+          />
+          {errors.address && <p style={errorStyle}>{errors.address}</p>}
+        </div>
 
-      <div>
-        <label style={labelStyles}>Email</label>
-        <input
-          style={inputStyles}
-          name="email"
-          value={listing.email}
-          onChange={handleChange}
-          placeholder="Email"
-          required
-        />
-      </div>
+        <div>
+          <label style={labelStyles}>City/Town</label>
 
-      <button type="submit" style={buttonStyles}>
-        Add Listing
-      </button>
-    </form>
+          <input
+            style={inputStyles}
+            name="city"
+            value={listing.city}
+            onChange={handleChange}
+            placeholder="City/Town"
+            required
+            data-testid="city-input"
+          />
+          {errors.city && <p style={errorStyle}>{errors.city}</p>}
+        </div>
+        <div>
+          <label style={labelStyles}>ZIP</label>
+
+          <input
+            style={inputStyles}
+            name="zip"
+            value={listing.zip}
+            onChange={handleChange}
+            placeholder="ZIP"
+            required
+            data-testid="zip-input"
+          />
+          {errors.zip && <p style={errorStyle}>{errors.zip}</p>}
+        </div>
+
+        <div>
+          <label style={labelStyles}>Listing Broker</label>
+          <select
+            style={inputStyles}
+            name="listingBroker"
+            value={listing.listingBroker}
+            onChange={handleChange}
+            required
+            data-testid="listing-broker-select"
+          >
+            <option value="">Select an agent</option>
+            {loading ? (
+              <option disabled>Loading agents...</option>
+            ) : (
+              Object.values(agents).map((agent) => (
+                <option key={agent.MATRIX_UNIQUE_ID} value={agent.Name}>
+                  {agent.Name}
+                </option>
+              ))
+            )}
+          </select>
+          {errors.listingBroker && (
+            <p style={errorStyle}>{errors.listingBroker}</p>
+          )}
+        </div>
+
+        <div>
+          <label style={labelStyles}>Phone</label>
+          <input
+            style={inputStyles}
+            name="phone"
+            value={listing.phone}
+            onChange={handleChange}
+            placeholder="Phone"
+            required
+            data-testid="phone-select"
+          />
+          {errors.phone && <p style={errorStyle}>{errors.phone}</p>}
+        </div>
+
+        <div>
+          <label style={labelStyles}>Email</label>
+          <input
+            style={inputStyles}
+            name="email"
+            value={listing.email}
+            onChange={handleChange}
+            placeholder="Email"
+            required
+            data-testid="email-select"
+          />
+          {errors.email && <p style={errorStyle}>{errors.email}</p>}
+        </div>
+
+        <button
+          type="submit"
+          style={buttonStyles}
+          data-testid="add-listing-button"
+        >
+          Add Listing
+        </button>
+      </form>
+    </>
   );
 };
 
