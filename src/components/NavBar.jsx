@@ -11,7 +11,7 @@ export const NavBar = ({ isLoggedIn, onLogout, showDelay }) => {
     if (showDelay) {
       const initialTimer = setTimeout(() => {
         setShowNavBar(true);
-      }, 8000);
+      }, 4000);
 
       return () => clearTimeout(initialTimer);
     }

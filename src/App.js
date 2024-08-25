@@ -82,9 +82,7 @@ function AppContent({
             Your browser does not support the video tag.
           </video>
         </div>
-      ) : (
-        <div className="solid-background"></div>
-      )}
+      ) : null}
       <div className="content-overlay">
         <Routes>
           <Route path="/" element={<LandingPage />} />

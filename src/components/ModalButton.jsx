@@ -21,7 +21,7 @@ export const ModalButton = ({ showDelay }) => {
     if (showDelay) {
       const initialTimer = setTimeout(() => {
         setShowButton(true);
-      }, 10000);
+      }, 4000);
 
       return () => clearTimeout(initialTimer);
     }

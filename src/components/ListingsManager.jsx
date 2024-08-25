@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import AddListing from "./AddListing";
 import { BuyerBrokerTable } from "./BuyerBrokerTable";
+import "./ListingsManager.css";
 
 const ListingsManager = ({ isLoggedIn, setIsLoggedIn }) => {
   const [refreshKey, setRefreshKey] = useState(0);
@@ -10,8 +11,8 @@ const ListingsManager = ({ isLoggedIn, setIsLoggedIn }) => {
   };
 
   return (
-    <div style={{ marginTop: "60px" }}>
-      <h1 style={{ fontSize: "2.7vw" }}>Buyer Broker Compensation</h1>
+    <div>
+      <h1 className="page-title">Buyer Broker Compensation</h1>
       {!isLoggedIn ? <></> : <AddListing onListingAdded={handleListingAdded} />}
       <BuyerBrokerTable refreshKey={refreshKey} />
     </div>

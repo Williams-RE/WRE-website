@@ -9,15 +9,15 @@ const LandingPage = () => {
   useEffect(() => {
     const initialTimer = setTimeout(() => {
       setShowInitialMessage(true);
-    }, 1000);
+    }, 450);
 
     const startFadeOutTimer = setTimeout(() => {
       setHideInitialMessage(true);
-    }, 3000);
+    }, 1200);
 
     const welcomeTimer = setTimeout(() => {
       setShowWelcome(true);
-    }, 6000);
+    }, 2500);
 
     return () => {
       clearTimeout(initialTimer);

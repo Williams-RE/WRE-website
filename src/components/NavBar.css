@@ -103,12 +103,14 @@
   .navbar-content.mobile.open {
     display: flex;
     height: max-content;
+    font-size: larger;
   }
 
   .navbar-content.mobile .navigation-button {
-    width: 100%;
+    width: 90%;
     text-align: left;
-    padding: 0.5rem 0;
+    padding: 1rem;
+    font-size: larger;
   }
 
   .separator {

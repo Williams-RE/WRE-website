@@ -39,20 +39,6 @@
     0 1px 3px rgba(0, 0, 0, 0.08);
   z-index: 1001; /* Ensure it's above the overlay */
 }
-.modal {
-  position: relative; /* Changed from absolute to relative */
-  background: var(--primary-color);
-  border-radius: 8px;
-  padding: 20px;
-  width: 500px;
-  max-width: 90%;
-  max-height: 90vh;
-  overflow-y: auto;
-  box-shadow:
-    0 4px 6px rgba(0, 0, 0, 0.1),
-    0 1px 3px rgba(0, 0, 0, 0.08);
-  z-index: 1001; /* Ensure it's above the overlay */
-}
 
 .contact-icon {
   width: 24px;
@@ -107,7 +93,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
+  background-color: rgba(0, 0, 0, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -132,13 +118,12 @@
   }
 
   .modal-button {
-    background-color: var(--quinary-color);
-    border-radius: 50%;
+    background-color: var(--secondary-color);
     padding-bottom: 9px;
     text-align: center;
     opacity: 0.9;
-    width: 12px;
-    height: 12px;
+    width: 70px;
+    height: 70px;
     font-size: 20px;
   }
 
@@ -146,8 +131,8 @@
     background-color: var(--secondary-color);
   }
   .contact-icon {
-    width: 20px;
-    height: 20px;
+    width: 35px;
+    height: 35px;
   }
 
   .submit-button {
