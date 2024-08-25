@@ -1,167 +1,93 @@
-import { useState, useRef } from "react";
+import { useState, useEffect } from "react";
 import closeModalImg from "../assets/close-modal.avif";
 import Modal from "react-modal";
-import config from "../config";
 import "./ModalButton.css";
+import toast, { Toaster } from "react-hot-toast";
+import { sendEmail, validateEmail } from "../lib/utils";
+import { useAgents } from "../contexts/AgentContext.js";
 
-export const ModalButton = () => {
-  const emailInputRef = useRef();
-  const agentDropdownRef = useRef();
+export const ModalButton = ({ showDelay }) => {
+  const [showButton, setShowButton] = useState(!showDelay);
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [modalButtonAnimeClass, setModalButtonAnimeClass] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [agent, setAgent] = useState("");
   const [comment, setComment] = useState("");
+  const [errors, setErrors] = useState({});
 
-  const [nameErrorClass, setNameErrorClass] = useState("");
-  const [emailErrorClass, setEmailErrorClass] = useState("");
-  const [namePlaceHolder, setNamePlaceHolder] = useState("Name*");
-  const [emailPlaceHolder, setEmailPlaceHolder] = useState("Email*");
+  const { agents, loading, error: agentsError } = useAgents();
 
-  const [scrollTop, setScrollTop] = useState(0);
+  useEffect(() => {
+    if (showDelay) {
+      const initialTimer = setTimeout(() => {
+        setShowButton(true);
+      }, 10000);
 
-  Modal.setAppElement("#root");
-
-  function onSubmitButtonClick(name, email, agent, comment) {
-    console.info("submitting info , ", name, email, agent, comment);
-    let errorExists = false;
-    if (emailIsValid(email)) {
-      setEmailErrorClass("");
-    } else {
-      setEmailErrorClass("error");
-      setEmailPlaceHolder("Please enter a valid email");
-      errorExists = true;
+      return () => clearTimeout(initialTimer);
     }
-    if (nameIsValid(name)) {
-      setNameErrorClass("");
-    } else {
-      setNameErrorClass("error");
-      setNamePlaceHolder("Please enter your name");
-      errorExists = true;
+  }, [showDelay]);
+
+  const validateAgent = (agent) => {
+    return agent.trim().length > 0;
+  };
+
+  const validateComment = (comment) => {
+    return comment.trim().length <= 500; // Example: limit comment to 500 characters
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const newErrors = {};
+
+    if (!name.length) newErrors.name = "Name is required.";
+    if (!validateEmail(email))
+      newErrors.email = "Please enter a valid email address.";
+    if (!validateAgent(agent)) newErrors.agent = "Please select an agent.";
+    if (!validateComment(comment))
+      newErrors.comment = "Comment must be 500 characters or less.";
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      toast.error("Please correct the errors in the form.");
+      return;
     }
-    if (!errorExists) submitContactForm(name, email, agent, comment);
-  }
 
-  function nameIsValid(name) {
-    if (name.length > 0) return true;
-    else return false;
-  }
-
-  function emailIsValid(email) {
-    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}$/;
-    return regex.test(email);
-  }
-
-  function submitContactForm(name, email, agent, comment) {
-    setModalIsOpen(false);
-    sendEmail(name, email, agent, comment);
-    setName("");
-    setEmail("");
-    setAgent("");
-    setComment("");
-  }
-
-  function onNameInputChange(name) {
-    if (nameIsValid(name)) {
-      setNameErrorClass("");
-    } else {
-      setNameErrorClass("error");
-      setNamePlaceHolder("Please enter your name");
-    }
-    setName(name);
-  }
-
-  function onEmailInputChange(email) {
-    if (emailIsValid(email)) {
-      setEmailErrorClass("");
-    } else {
-      setEmailErrorClass("error");
-      setEmailPlaceHolder("Please enter a valid email");
-    }
-    setEmail(email);
-  }
-
-  function openModal() {
-    console.log("opening up modal");
-    document.documentElement.style.setProperty(
-      "--scroll-top",
-      "-" + document.documentElement.scrollTop + "px",
-    );
-    setScrollTop(document.documentElement.scrollTop);
-    document.body.classList.add("modal-open");
-  }
-
-  function closeModal() {
-    document.body.classList.remove("modal-open");
-    window.scrollTo(0, scrollTop);
-  }
-
-  function modalOnClick() {
-    setModalIsOpen(true);
-    setModalButtonAnimeClass("pause-animation");
-    openModal();
-  }
-
-  function closeContactForm() {
-    closeModal();
-    setModalIsOpen(false);
-    setName("");
-    setEmail("");
-    setAgent("");
-    setComment("");
-    setEmailErrorClass("");
-    setNameErrorClass("");
-    setNamePlaceHolder("Name*");
-    setEmailPlaceHolder("Email*");
-  }
-
-  function handleNameKeyPress(event) {
-    if (event.key === "Enter") {
-      // Focus on next input
-      emailInputRef.current.focus();
-    }
-  }
-
-  function handleEmailKeyPress(event) {
-    if (event.key === "Enter") {
-      agentDropdownRef.current.focus();
-    }
-  }
-
-  async function sendEmail(name, email, agent, comment) {
     try {
-      const response = await fetch(`${config.SERVER_URL}/send-email`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "DELETE, POST, GET, OPTIONS",
-          "Access-Control-Allow-Headers":
-            "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With",
-        },
-        body: JSON.stringify({
-          name,
-          email,
-          agent,
-          comment,
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      const data = await response.json();
-      console.info("response from sending email", data);
+      await sendEmail(name, email, agent, comment);
+      setModalIsOpen(false);
+      setName("");
+      setEmail("");
+      setAgent("");
+      setComment("");
+      setErrors({});
+      toast.success("Introduction email sent to agent!");
     } catch (error) {
-      console.error("Error in sending email, ", error);
+      console.error("Error sending information to agent:", error);
+      setErrors({ submit: "Failed to send message. Please try again." });
+      toast.error("Error sending information to agent. Please try again.");
     }
+  };
+
+  if (!showButton) {
+    return null;
   }
 
   return (
     <>
-      <button className="modal-button" onClick={() => modalOnClick()}>
+      <Toaster
+        position="top-right"
+        toastOptions={{
+          duration: 5000,
+          style: {
+            background: "#363636",
+            color: "#fff",
+          },
+        }}
+      />
+      <button
+        className={`modal-button ${showButton ? "fade-in" : ""}`}
+        onClick={() => setModalIsOpen(true)}
+      >
         <svg
           className="contact-icon"
           xmlns="http://www.w3.org/2000/svg"
@@ -172,91 +98,89 @@ export const ModalButton = () => {
         </svg>
       </button>
       <Modal
-        className="modal"
         isOpen={modalIsOpen}
-        onRequestClose={() => closeContactForm()}
-        style={{
-          overlay: {
-            position: "fixed",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: "rgba(0, 0, 0, 0.80)",
-            zIndex: 2,
-          },
-        }}
+        onRequestClose={() => setModalIsOpen(false)}
+        className="modal"
+        overlayClassName="modal-overlay"
       >
-        <div className="modal-heading">
-          <h1 className="title-contact">Let's Connect</h1>
+        <div className="modal-content">
+          <h2>Let's Connect</h2>
           <p>Fill out the details below and we'll reach out to you shortly!</p>
-          <img
-            src={closeModalImg}
-            alt="Close Modal"
-            className="close-modal-button"
-            onClick={() => closeContactForm()}
-          />
-        </div>
-        <div className="modal-element">
-          <input
-            className={`modal-input ${nameErrorClass}`}
-            placeholder={namePlaceHolder}
-            type="text"
-            value={name}
-            onInput={(e) => onNameInputChange(e.target.value)}
-            onKeyDown={(e) => handleNameKeyPress(e)}
-            required
-          />
-        </div>
-        <div className="modal-element">
-          <input
-            className={`modal-input ${emailErrorClass}`}
-            placeholder={emailPlaceHolder}
-            type="email"
-            value={email}
-            onInput={(e) => onEmailInputChange(e.target.value)}
-            onKeyDown={(e) => handleEmailKeyPress(e)}
-            required
-            ref={emailInputRef}
-          />
-        </div>
-        <div className="modal-element">
-          <select
-            className="select-agents"
-            name="selectAgents"
-            value={agent}
-            onChange={(e) => setAgent(e.target.value)}
-            ref={agentDropdownRef}
-          >
-            <option value="" disabled>
-              Agent
-            </option>
-            <option value="Jacob Williams">Jacob Williams</option>
-            <option value="Mathews Thomas"> Mathews Thomas</option>
-            <option value="Jose Ancheril">Jose Ancheril</option>
-            <option value="Shazzat Tanvir">Shazzat Tanvir</option>
-            <option value="Karen Roos">Karen Roos</option>
-            <option value="Kerri Kaylor">Kerri Kaylor</option>
-          </select>
-        </div>
-        <div className="modal-element">
-          <textarea
-            className="modal-textarea"
-            rows="4"
-            placeholder="Anything you'd like to share before we chat?"
-            value={comment}
-            onInput={(e) => setComment(e.target.value)}
-          >
-            {" "}
-          </textarea>
-        </div>
-        <div className="modal-element">
+          <form onSubmit={handleSubmit}>
+            <div className="input-group">
+              <label htmlFor="name">Name*</label>
+              <input
+                id="name"
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+                data-testid="contact-form-name"
+              />
+              {errors.name && <p className="error-message">{errors.name}</p>}
+            </div>
+            <div className="input-group">
+              <label htmlFor="email">Email*</label>
+              <input
+                id="email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                data-testid="contact-form-email"
+              />
+              {errors.email && <p className="error-message">{errors.email}</p>}
+            </div>
+            <div className="input-group">
+              <label htmlFor="agent">Agent*</label>
+              <select
+                id="agent"
+                value={agent}
+                onChange={(e) => setAgent(e.target.value)}
+                required
+                data-testid="contact-form-agent"
+              >
+                <option value="">Select an agent</option>
+                {loading ? (
+                  <option disabled>Loading agents...</option>
+                ) : (
+                  Object.values(agents).map((agent) => (
+                    <option key={agent.MATRIX_UNIQUE_ID} value={agent.Name}>
+                      {agent.Name}
+                    </option>
+                  ))
+                )}
+              </select>
+              {errors.agent && <p className="error-message">{errors.agent}</p>}
+            </div>
+            <div className="input-group">
+              <label htmlFor="comment">Comments</label>
+              <textarea
+                id="comment"
+                value={comment}
+                onChange={(e) => setComment(e.target.value)}
+                placeholder="Anything you'd like to share before we chat?"
+                data-testid="contact-form-comment"
+              ></textarea>
+              {errors.comment && (
+                <p className="error-message">{errors.comment}</p>
+              )}
+            </div>
+            {errors.submit && <p className="error-message">{errors.submit}</p>}
+            {agentsError && <p className="error-message">{agentsError}</p>}
+            <button
+              type="submit"
+              className="submit-button"
+              data-testid="contact-form-submit"
+            >
+              Submit
+            </button>
+          </form>
           <button
-            className="submit-button"
-            onClick={() => onSubmitButtonClick(name, email, agent, comment)}
+            className="close-modal-button"
+            onClick={() => setModalIsOpen(false)}
           >
-            {" "}
-            Submit
+            <img src={closeModalImg} alt="Close" />
           </button>
         </div>
       </Modal>

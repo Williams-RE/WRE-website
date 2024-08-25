@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -12,80 +12,66 @@ import LandingPage from "./components/LandingPage.jsx";
 import AboutUs from "./components/AboutUs.jsx";
 import { NavBar } from "./components/NavBar.jsx";
 import { ModalButton } from "./components/ModalButton.jsx";
-import posthog from "posthog-js";
 import ListingsManager from "./components/ListingsManager.jsx";
-import { Login } from "./components/Login.jsx"; // New component to be created
+import { Login } from "./components/Login.jsx";
+import { AgentsProvider } from "./contexts/AgentContext.js";
 
 function App() {
-  const [agents, setAgents] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [showNavBarDelay, setShowNavBarDelay] = useState(true);
 
   useEffect(() => {
-    getAgents();
     const token = localStorage.getItem("token");
     if (token) {
       setIsLoggedIn(true);
     }
   }, []);
 
-  async function getAgents() {
-    try {
-      const response = await fetch(`${config.SERVER_URL}/get-agents`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "GET",
-          "Access-Control-Allow-Headers":
-            "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With",
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      const data = await response.json();
-      console.log("data is ", data);
-      setAgents(data);
-    } catch (error) {
-      console.error("There was a problem with the fetch operation:", error);
-    }
-  }
-
   const handleLogout = () => {
     localStorage.removeItem("token");
     setIsLoggedIn(false);
   };
 
-  posthog.init(`${process.env.REACT_APP_POSTHOG_API_KEY}`, {
-    api_host: "https://us.i.posthog.com",
-    person_profiles: "always",
-    loaded: (posthog) => {
-      console.log("PostHog loaded successfully");
-    },
-  });
-
   return (
-    <Router>
-      <AppContent
-        agents={agents}
-        isLoggedIn={isLoggedIn}
-        setIsLoggedIn={setIsLoggedIn}
-        handleLogout={handleLogout}
-      />
-    </Router>
+    <AgentsProvider>
+      <Router>
+        <AppContent
+          isLoggedIn={isLoggedIn}
+          setIsLoggedIn={setIsLoggedIn}
+          handleLogout={handleLogout}
+          showNavBarDelay={showNavBarDelay}
+        />
+      </Router>
+    </AgentsProvider>
   );
 }
 
-function AppContent({ agents, isLoggedIn, setIsLoggedIn, handleLogout }) {
+function AppContent({
+  isLoggedIn,
+  setIsLoggedIn,
+  handleLogout,
+  showNavBarDelay,
+}) {
   const location = useLocation();
   const isHomePage = location.pathname === "/";
   console.log("location is ", location.pathname);
 
   return (
     <div className="main">
-      <NavBar isLoggedIn={isLoggedIn} onLogout={handleLogout} />
+      {isHomePage ? (
+        <NavBar
+          showDelay={showNavBarDelay}
+          isLoggedIn={isLoggedIn}
+          onLogout={handleLogout}
+        />
+      ) : (
+        <NavBar
+          isLoggedIn={isLoggedIn}
+          onLogout={handleLogout}
+          showDelay={false}
+        />
+      )}
+
       {isHomePage ? (
         <div className="video-background">
           <video autoPlay loop muted playsInline>
@@ -102,7 +88,7 @@ function AppContent({ agents, isLoggedIn, setIsLoggedIn, handleLogout }) {
       <div className="content-overlay">
         <Routes>
           <Route path="/" element={<LandingPage />} />
-          <Route path="/about" element={<AboutUs agents={agents} />} />
+          <Route path="/about" element={<AboutUs />} />
           <Route
             path="/listings"
             element={
@@ -137,7 +123,11 @@ function AppContent({ agents, isLoggedIn, setIsLoggedIn, handleLogout }) {
           />
         </Routes>
       </div>
-      <ModalButton />
+      {isHomePage ? (
+        <ModalButton showDelay={showNavBarDelay} />
+      ) : (
+        <ModalButton showDelay={false} />
+      )}
     </div>
   );
 }

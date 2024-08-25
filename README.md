@@ -20,3 +20,11 @@ npm run start
 ```
 
 And take a look at the localhost site on http://localhost:3000 to see immediate changes.
+
+For running e2e tests,
+
+1. Make sure you run
+
+```
+npx playwright install
+```

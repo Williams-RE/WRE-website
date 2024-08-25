@@ -2,9 +2,20 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./NavBar.css";
 
-export const NavBar = ({ isLoggedIn, onLogout }) => {
+export const NavBar = ({ isLoggedIn, onLogout, showDelay }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 1000);
+  const [showNavBar, setShowNavBar] = useState(!showDelay);
+
+  useEffect(() => {
+    if (showDelay) {
+      const initialTimer = setTimeout(() => {
+        setShowNavBar(true);
+      }, 8000);
+
+      return () => clearTimeout(initialTimer);
+    }
+  }, [showDelay]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -19,8 +30,12 @@ export const NavBar = ({ isLoggedIn, onLogout }) => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  if (!showNavBar) {
+    return null;
+  }
+
   return (
-    <nav className="navbar">
+    <nav className={`navbar ${showNavBar ? "fade-in" : ""}`}>
       {isMobile && (
         <button className="hamburger" onClick={toggleMenu}>
           ☰

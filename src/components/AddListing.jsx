@@ -1,8 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import config from "../config.js";
+import { useAgents } from "../contexts/AgentContext.js";
+import toast, { Toaster } from "react-hot-toast";
+import {
+  validateMlsId,
+  validateAddress,
+  validateCity,
+  validateCompensation,
+  validateEmail,
+  validateListingBroker,
+  validatePhone,
+  validateZip,
+} from "../lib/utils.js";
 
 const AddListing = ({ onListingAdded }) => {
-  const [agents, setAgents] = useState({});
+  const { agents, loading, error: agentsError } = useAgents();
+  const [errors, setErrors] = useState({});
+
   const [listing, setListing] = useState({
     mlsId: "",
     compensation: "",
@@ -14,20 +28,28 @@ const AddListing = ({ onListingAdded }) => {
     email: "",
   });
 
-  useEffect(() => {
-    fetchAgents();
-  }, []);
-
   const formStyles = {
     maxWidth: "800px",
     margin: "0 auto",
     padding: "20px",
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr", // Two equal columns
+    gap: "20px", // Space between columns
+    "@media (max-width: 768px)": {
+      // Adjust layout for mobile screens
+      gridTemplateColumns: "1fr", // Switch to single column for movile
+      gap: "10px",
+    },
+  };
+  const errorStyle = {
+    color: "red",
+    fontSize: "14px",
+    marginTop: "5px",
   };
 
   const inputStyles = {
-    width: "50%",
+    width: "100%",
     padding: "15px",
-    marginBottom: "20px",
     fontSize: "18px",
     border: "2px solid #ccc",
     borderRadius: "5px",
@@ -35,59 +57,75 @@ const AddListing = ({ onListingAdded }) => {
   };
 
   const labelStyles = {
-    display: "block",
-    marginBottom: "10px",
-    fontSize: "20px",
+    marginBottom: "5px",
+    fontSize: "18px",
     fontWeight: "bold",
     color: "white",
   };
 
   const buttonStyles = {
+    gridColumn: "span 2", // Make the button span both columns
     padding: "15px 30px",
     fontSize: "20px",
     backgroundColor: "#007bff",
     color: "white",
     border: "none",
-    borderRadius: "5%",
+    borderRadius: "10px",
     cursor: "pointer",
-    width: "50%",
-  };
-
-  const fetchAgents = async () => {
-    try {
-      const response = await fetch(`${config.SERVER_URL}/get-agents`);
-      if (response.ok) {
-        const data = await response.json();
-        setAgents(data);
-      } else {
-        console.error("Failed to fetch agents");
-      }
-    } catch (error) {
-      console.error("Error fetching agents:", error);
-    }
+    marginTop: "20px",
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setListing((prev) => ({ ...prev, [name]: value }));
+    setErrors((prev) => ({ ...prev, [name]: "" }));
 
     if (name === "listingBroker") {
-      const selectedAgent = agents[value];
+      const selectedAgent = Object.values(agents).find(
+        (agent) => agent.Name === value,
+      );
       if (selectedAgent) {
         setListing((prev) => ({
           ...prev,
           phone: selectedAgent.CellNumber,
           email: selectedAgent.Email,
         }));
+        setErrors((prev) => ({ ...prev, phone: "", email: "" }));
       }
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const newErrors = {};
+
+    if (!validateMlsId(listing.mlsId))
+      newErrors.mlsId = "Valid MLS ID is required.";
+    if (!validateCompensation(listing.compensation))
+      newErrors.compensation =
+        "Compensation must be a number between 0 and 100.";
+    if (!validateAddress(listing.address))
+      newErrors.address = "Address is required.";
+    if (!validateCity(listing.city)) newErrors.city = "City is required.";
+    if (!validateZip(listing.zip))
+      newErrors.zip = "Valid ZIP code is required.";
+    if (!validateListingBroker(listing.listingBroker))
+      newErrors.listingBroker = "Listing broker is required.";
+    if (!validatePhone(listing.phone))
+      newErrors.phone = "Valid phone number is required.";
+    if (!validateEmail(listing.email))
+      newErrors.email = "Valid email is required.";
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      console.log("newErrors are ", newErrors);
+      toast.error("Please correct the errors in the form.");
+      return;
+    }
+
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(`${config.SERVER_URL}/api/listings`, {
+      const response = await fetch(`${config.SERVER_URL}/api/v1/listings`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -95,124 +133,179 @@ const AddListing = ({ onListingAdded }) => {
         },
         body: JSON.stringify(listing),
       });
-
-      if (response.ok) {
-        onListingAdded();
-        setListing({
-          mlsId: "",
-          compensation: "",
-          address: "",
-          city: "",
-          zip: "",
-          listingBroker: "",
-          phone: "",
-          email: "",
-        });
-      } else {
-        throw new Error("Failed to add listing");
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
+      const data = await response.json();
+      console.info("Listing added successfully", data);
+      onListingAdded();
+      setListing({
+        mlsId: "",
+        compensation: "",
+        address: "",
+        city: "",
+        zip: "",
+        listingBroker: "",
+        phone: "",
+        email: "",
+      });
+      setErrors({});
+      toast.success("Listing added successfully!");
     } catch (error) {
       console.error("Error adding listing:", error);
-      alert("Failed to add listing. Please try again.");
+      toast.error("Failed to add listing. Please try again.");
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} style={formStyles}>
-      <label style={labelStyles}>MLS ID</label>
-      <input
-        style={inputStyles}
-        name="mlsId"
-        value={listing.mlsId}
-        onChange={handleChange}
-        placeholder="MLS ID"
-        required
+    <>
+      <Toaster
+        position="top-right"
+        toastOptions={{
+          duration: 5000,
+          style: {
+            background: "#363636",
+            color: "#fff",
+          },
+        }}
       />
+      <form onSubmit={handleSubmit} style={formStyles}>
+        <div>
+          <label style={labelStyles}>MLS ID</label>
+          <input
+            style={inputStyles}
+            name="mlsId"
+            value={listing.mlsId}
+            onChange={handleChange}
+            placeholder="MLS ID"
+            required
+            data-testid="mls-id-input"
+          />
+          {errors.mlsId && <p style={errorStyle}>{errors.mlsId}</p>}
+        </div>
 
-      <label style={labelStyles}>Compensation %</label>
-      <input
-        style={inputStyles}
-        name="compensation"
-        value={listing.compensation}
-        onChange={handleChange}
-        placeholder="Compensation %"
-        required
-      />
+        <div>
+          <label style={labelStyles}>Compensation %</label>
+          <input
+            style={inputStyles}
+            name="compensation"
+            value={listing.compensation}
+            onChange={handleChange}
+            placeholder="Compensation %"
+            required
+            data-testid="compensation-input"
+          />
+          {errors.compensation && (
+            <p style={errorStyle}>{errors.compensation}</p>
+          )}
+        </div>
 
-      <label style={labelStyles}>Address</label>
-      <input
-        style={inputStyles}
-        name="address"
-        value={listing.address}
-        onChange={handleChange}
-        placeholder="Address"
-        required
-      />
+        <div>
+          <label style={labelStyles}>Address</label>
+          <input
+            style={inputStyles}
+            name="address"
+            value={listing.address}
+            onChange={handleChange}
+            placeholder="Address"
+            required
+            data-testid="address-input"
+          />
+          {errors.address && <p style={errorStyle}>{errors.address}</p>}
+        </div>
 
-      <label style={labelStyles}>City/Town</label>
-      <input
-        style={inputStyles}
-        name="city"
-        value={listing.city}
-        onChange={handleChange}
-        placeholder="City/Town"
-        required
-      />
+        <div>
+          <label style={labelStyles}>City/Town</label>
 
-      <label style={labelStyles}>ZIP</label>
-      <input
-        style={inputStyles}
-        name="zip"
-        value={listing.zip}
-        onChange={handleChange}
-        placeholder="ZIP"
-        required
-      />
+          <input
+            style={inputStyles}
+            name="city"
+            value={listing.city}
+            onChange={handleChange}
+            placeholder="City/Town"
+            required
+            data-testid="city-input"
+          />
+          {errors.city && <p style={errorStyle}>{errors.city}</p>}
+        </div>
+        <div>
+          <label style={labelStyles}>ZIP</label>
 
-      <label style={labelStyles}>Listing Broker</label>
-      <select
-        style={inputStyles}
-        name="listingBroker"
-        value={listing.listingBroker}
-        onChange={handleChange}
-        required
-      >
-        <option value="">Select Listing Broker</option>
-        {Object.keys(agents).map((agentName) => (
-          <option key={agentName} value={agentName}>
-            {agentName}
-          </option>
-        ))}
-      </select>
+          <input
+            style={inputStyles}
+            name="zip"
+            value={listing.zip}
+            onChange={handleChange}
+            placeholder="ZIP"
+            required
+            data-testid="zip-input"
+          />
+          {errors.zip && <p style={errorStyle}>{errors.zip}</p>}
+        </div>
 
-      <label style={labelStyles}>Phone</label>
-      <input
-        style={inputStyles}
-        name="phone"
-        value={listing.phone}
-        onChange={handleChange}
-        placeholder="Phone"
-        required
-      />
+        <div>
+          <label style={labelStyles}>Listing Broker</label>
+          <select
+            style={inputStyles}
+            name="listingBroker"
+            value={listing.listingBroker}
+            onChange={handleChange}
+            required
+            data-testid="listing-broker-select"
+          >
+            <option value="">Select an agent</option>
+            {loading ? (
+              <option disabled>Loading agents...</option>
+            ) : (
+              Object.values(agents).map((agent) => (
+                <option key={agent.MATRIX_UNIQUE_ID} value={agent.Name}>
+                  {agent.Name}
+                </option>
+              ))
+            )}
+          </select>
+          {errors.listingBroker && (
+            <p style={errorStyle}>{errors.listingBroker}</p>
+          )}
+        </div>
 
-      <label style={labelStyles}>Email</label>
-      <input
-        style={inputStyles}
-        name="email"
-        value={listing.email}
-        onChange={handleChange}
-        placeholder="Email"
-        required
-      />
+        <div>
+          <label style={labelStyles}>Phone</label>
+          <input
+            style={inputStyles}
+            name="phone"
+            value={listing.phone}
+            onChange={handleChange}
+            placeholder="Phone"
+            required
+            data-testid="phone-select"
+          />
+          {errors.phone && <p style={errorStyle}>{errors.phone}</p>}
+        </div>
 
-      {/* Add some vertical space before the button */}
-      <div style={{ marginTop: "20px" }}></div>
+        <div>
+          <label style={labelStyles}>Email</label>
+          <input
+            style={inputStyles}
+            name="email"
+            value={listing.email}
+            onChange={handleChange}
+            placeholder="Email"
+            required
+            data-testid="email-select"
+          />
+          {errors.email && <p style={errorStyle}>{errors.email}</p>}
+        </div>
 
-      {/* Move the button here, at the end of the form */}
-      <button type="submit" style={{ ...buttonStyles, marginTop: "20px" }}>
-        Add Listing
-      </button>
-    </form>
+        <button
+          type="submit"
+          style={buttonStyles}
+          data-testid="add-listing-button"
+        >
+          Add Listing
+        </button>
+      </form>
+    </>
   );
 };
 

@@ -8,74 +8,236 @@ import {
 import "./BuyerBrokerTable.css";
 import config from "../config";
 
-// Fake data generator
-const generateFakeData = (count) => {
-  return Array.from({ length: count }, (_, index) => ({
-    id: `MLS${1000 + index}`,
-    compensation: (2 + Math.random() * 1).toFixed(2),
-    address: `${1000 + index} Main St`,
-    city: ["New York", "Los Angeles", "Chicago", "Houston", "Phoenix"][
-      Math.floor(Math.random() * 5)
-    ],
-    zipCode: Math.floor(10000 + Math.random() * 90000).toString(),
-    listingBroker: `Broker ${index + 1}`,
-    phone: `(${Math.floor(100 + Math.random() * 900)}) ${Math.floor(100 + Math.random() * 900)}-${Math.floor(1000 + Math.random() * 9000)}`,
-    email: `broker${index + 1}@example.com`,
-  }));
-};
-
 export const BuyerBrokerTable = ({ refreshKey }) => {
   const [listings, setListings] = useState([]);
-  console.log("refreshKey", refreshKey);
+  const [editRowId, setEditRowId] = useState(null);
+  const [editListing, setEditListing] = useState({});
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // New state to track login status
 
   useEffect(() => {
+    // Check if user is logged in by verifying the token in local storage
+    const token = localStorage.getItem("token");
+    setIsLoggedIn(!!token); // If token exists, user is logged in
     fetchListings();
-  }, [refreshKey]); // Re-fetch listings when refreshKey changes
+  }, [refreshKey]);
 
   const columnHelper = createColumnHelper();
 
   const fetchListings = async () => {
     try {
-      console.log(config.SERVER_URL);
-      const response = await fetch(`${config.SERVER_URL}/api/listings`);
-      if (response.ok) {
-        const data = await response.json();
-        setListings(data);
-      } else {
-        console.error("Failed to fetch listings");
+      const response = await fetch(`${config.SERVER_URL}/api/v1/listings`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
+      const data = await response.json();
+      setListings(data);
     } catch (error) {
       console.error("Error fetching listings:", error);
+    }
+  };
+
+  const handleEditClick = (row) => {
+    setEditRowId(row.original._id);
+    setEditListing({ ...row.original });
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setEditListing((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSaveClick = async (listingId) => {
+    try {
+      const token = localStorage.getItem("token");
+      const response = await fetch(
+        `${config.SERVER_URL}/api/v1/listings/${listingId}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(editListing),
+        },
+      );
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      console.info("Listing updated successfully", data);
+      setEditRowId(null);
+      fetchListings(); // Refresh the listings after saving
+    } catch (error) {
+      console.error("Error updating listing:", error);
+    }
+  };
+
+  const handleDeleteClick = async (listingId) => {
+    try {
+      const token = localStorage.getItem("token");
+      const response = await fetch(
+        `${config.SERVER_URL}/api/v1/listings/${listingId}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      console.info("Listing deleted successfully", data);
+      fetchListings(); // Refresh the listings after deletion
+    } catch (error) {
+      console.error("Error deleting listing:", error);
     }
   };
 
   const columns = [
     columnHelper.accessor("mlsId", {
       header: "MLS ID",
-      cell: (info) => info.getValue(),
+      cell: (info) =>
+        editRowId === info.row.original._id ? (
+          <input
+            name="mlsId"
+            value={editListing.mlsId || ""}
+            onChange={handleInputChange}
+          />
+        ) : (
+          info.getValue()
+        ),
     }),
     columnHelper.accessor("compensation", {
       header: "Compensation",
-      cell: (info) => `${parseFloat(info.getValue()).toFixed(1)}%`,
+      cell: (info) =>
+        editRowId === info.row.original._id ? (
+          <input
+            name="compensation"
+            value={editListing.compensation || ""}
+            onChange={handleInputChange}
+          />
+        ) : (
+          `${parseFloat(info.getValue()).toFixed(1)}%`
+        ),
     }),
     columnHelper.accessor("address", {
       header: "Address",
+      cell: (info) =>
+        editRowId === info.row.original._id ? (
+          <input
+            name="address"
+            value={editListing.address || ""}
+            onChange={handleInputChange}
+          />
+        ) : (
+          info.getValue()
+        ),
     }),
     columnHelper.accessor("city", {
       header: "City/Town",
+      cell: (info) =>
+        editRowId === info.row.original._id ? (
+          <input
+            name="city"
+            value={editListing.city || ""}
+            onChange={handleInputChange}
+          />
+        ) : (
+          info.getValue()
+        ),
     }),
     columnHelper.accessor("zip", {
       header: "Zip",
+      cell: (info) =>
+        editRowId === info.row.original._id ? (
+          <input
+            name="zip"
+            value={editListing.zip || ""}
+            onChange={handleInputChange}
+          />
+        ) : (
+          info.getValue()
+        ),
     }),
     columnHelper.accessor("listingBroker", {
       header: "Listing Broker",
+      cell: (info) =>
+        editRowId === info.row.original._id ? (
+          <input
+            name="listingBroker"
+            value={editListing.listingBroker || ""}
+            onChange={handleInputChange}
+          />
+        ) : (
+          info.getValue()
+        ),
     }),
     columnHelper.accessor("phone", {
       header: "Phone",
+      cell: (info) =>
+        editRowId === info.row.original._id ? (
+          <input
+            name="phone"
+            value={editListing.phone || ""}
+            onChange={handleInputChange}
+          />
+        ) : (
+          info.getValue()
+        ),
     }),
     columnHelper.accessor("email", {
       header: "Email",
+      cell: (info) =>
+        editRowId === info.row.original._id ? (
+          <input
+            name="email"
+            value={editListing.email || ""}
+            onChange={handleInputChange}
+          />
+        ) : (
+          info.getValue()
+        ),
     }),
+    {
+      header: "Actions",
+      cell: (info) =>
+        isLoggedIn ? (
+          editRowId === info.row.original._id ? (
+            <>
+              <button
+                className="button"
+                onClick={() => handleSaveClick(info.row.original._id)}
+              >
+                Save
+              </button>
+              <button
+                className="button cancel"
+                onClick={() => setEditRowId(null)}
+              >
+                Cancel
+              </button>
+            </>
+          ) : (
+            <>
+              <button
+                className="button"
+                onClick={() => handleEditClick(info.row)}
+              >
+                Edit
+              </button>
+              <button
+                className="button delete"
+                onClick={() => handleDeleteClick(info.row.original._id)}
+                data-testid={`delete-button-${info.row.original.mlsId}`}
+              >
+                Delete
+              </button>
+            </>
+          )
+        ) : null,
+    },
   ];
 
   const table = useReactTable({
@@ -86,7 +248,7 @@ export const BuyerBrokerTable = ({ refreshKey }) => {
 
   return (
     <div className="table-container">
-      <table className="buyer-broker-table">
+      <table className="buyer-broker-table" data-testid="buyer-broker-table">
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>
@@ -105,7 +267,7 @@ export const BuyerBrokerTable = ({ refreshKey }) => {
         </thead>
         <tbody>
           {table.getRowModel().rows.map((row) => (
-            <tr key={row.id}>
+            <tr key={row.id} data-testid={`table-row-${row.original.mlsId}`}>
               {row.getVisibleCells().map((cell) => (
                 <td key={cell.id} className="table-cell">
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}

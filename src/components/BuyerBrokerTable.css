@@ -4,15 +4,24 @@
 }
 
 .buyer-broker-table {
+  margin-top: 3rem;
   width: 100%;
   border-collapse: collapse;
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.6); /* Semi-transparent background */
+  backdrop-filter: blur(10px); /* Blur effect */
+  border-radius: 10px; /* Optional: Add rounded corners for a better effect */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
 }
 
 .table-header {
   padding: 12px;
   text-align: left;
-  background-color: #f3f4f6;
+  background-color: rgba(
+    243,
+    244,
+    246,
+    0.7
+  ); /* Semi-transparent header background */
   color: #6b7280;
   font-weight: 600;
   font-size: 0.875rem;
@@ -22,15 +31,48 @@
 
 .table-cell {
   padding: 12px;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid rgba(229, 231, 235, 0.7); /* Semi-transparent border */
 }
 
 .buyer-broker-table tbody tr:hover {
-  background-color: #f9fafb;
+  background-color: rgba(
+    249,
+    250,
+    251,
+    0.8
+  ); /* Slightly more opaque on hover */
 }
 
 .table-footer-space {
   height: 60px; /* Additional space after the table */
+}
+
+.button {
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-size: 14px;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+
+.button.cancel {
+  background-color: #6c757d;
+  color: white;
+}
+
+.button.delete {
+  background-color: #dc3545;
+  color: white;
+}
+
+.button.cancel:hover,
+.button.delete:hover {
+  opacity: 0.85;
 }
 
 @media screen and (max-width: 640px) {
