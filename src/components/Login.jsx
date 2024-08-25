@@ -39,7 +39,7 @@ export const Login = ({ setIsLoggedIn }) => {
     <>
       <div className="login-container">
         <form className="login-form" onSubmit={handleLogin}>
-          <h1 style={{ fontSize: "2.7vw" }}>Login</h1>
+          <h1 className="page-title">Login</h1>
           <div className="input-group">
             <label htmlFor="username">Username</label>
             <input

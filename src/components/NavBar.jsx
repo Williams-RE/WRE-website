@@ -11,7 +11,7 @@ export const NavBar = ({ isLoggedIn, onLogout, showDelay }) => {
     if (showDelay) {
       const initialTimer = setTimeout(() => {
         setShowNavBar(true);
-      }, 8000);
+      }, 4000);
 
       return () => clearTimeout(initialTimer);
     }
@@ -66,6 +66,14 @@ export const NavBar = ({ isLoggedIn, onLogout, showDelay }) => {
           onClick={() => setIsMenuOpen(false)}
         >
           Buyer Broker Compensation
+        </Link>
+        {!isMobile && <span className="separator">|</span>}
+        <Link
+          to="/resources"
+          className="navigation-button"
+          onClick={() => setIsMenuOpen(false)}
+        >
+          Resources
         </Link>
         {!isMobile && <span className="separator">|</span>}
         {isLoggedIn ? (

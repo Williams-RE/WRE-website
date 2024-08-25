@@ -6,6 +6,9 @@ module.exports = defineConfig({
   use: {
     headless: true,
     viewport: null,
+    use: {
+      video: "on",
+    },
   },
   timeout: 60000,
   expect: {

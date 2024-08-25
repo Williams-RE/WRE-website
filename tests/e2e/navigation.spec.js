@@ -21,6 +21,7 @@ test.describe("Navigation Tests", () => {
       ["Home", "/"],
       ["About Us", "/about"],
       ["Buyer Broker Compensation", "/buyer-broker-compensation"],
+      ["Resources", "/resources"],
     ]) {
       const link = page.getByRole("link", { name });
       await expect(link).toBeVisible({ timeout: 10000 });
@@ -39,6 +40,7 @@ test.describe("Navigation Tests", () => {
       ["Home", "/"],
       ["About Us", "/about"],
       ["Buyer Broker Compensation", "/buyer-broker-compensation"],
+      ["Resources", "/resources"],
     ]) {
       await hamburgerButton.click();
       const link = page.getByRole("link", { name });
