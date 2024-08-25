@@ -68,6 +68,14 @@ export const NavBar = ({ isLoggedIn, onLogout, showDelay }) => {
           Buyer Broker Compensation
         </Link>
         {!isMobile && <span className="separator">|</span>}
+        <Link
+          to="/resources"
+          className="navigation-button"
+          onClick={() => setIsMenuOpen(false)}
+        >
+          Resources
+        </Link>
+        {!isMobile && <span className="separator">|</span>}
         {isLoggedIn ? (
           <button onClick={onLogout} className="navigation-button">
             Logout

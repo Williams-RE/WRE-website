@@ -7,7 +7,6 @@ import {
   useLocation,
 } from "react-router-dom";
 import "./App.css";
-import config from "./config.js";
 import LandingPage from "./components/LandingPage.jsx";
 import AboutUs from "./components/AboutUs.jsx";
 import { NavBar } from "./components/NavBar.jsx";
@@ -15,6 +14,7 @@ import { ModalButton } from "./components/ModalButton.jsx";
 import ListingsManager from "./components/ListingsManager.jsx";
 import { Login } from "./components/Login.jsx";
 import { AgentsProvider } from "./contexts/AgentContext.js";
+import Resources from "./components/Resources.jsx";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -104,6 +104,15 @@ function AppContent({
             path="/buyer-broker-compensation"
             element={
               <ListingsManager
+                isLoggedIn={isLoggedIn}
+                setIsLoggedIn={setIsLoggedIn}
+              />
+            }
+          />
+          <Route
+            path="/resources"
+            element={
+              <Resources
                 isLoggedIn={isLoggedIn}
                 setIsLoggedIn={setIsLoggedIn}
               />
