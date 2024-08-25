@@ -14,10 +14,9 @@ test.describe("Listings Tests", () => {
   test.beforeAll(async ({ browser }) => {
     const context = await browser.newContext();
     const page = await context.newPage();
-    await page.goto(BASE_URL);
+    await page.goto(`${BASE_URL}/login`);
     await page.waitForLoadState("networkidle");
 
-    await page.getByRole("link", { name: "Login" }).click();
     await page.getByLabel("Username").fill(USERNAME);
     await page.getByLabel("Password").fill(PASSWORD);
     await page.getByRole("button", { name: "Login" }).click();
