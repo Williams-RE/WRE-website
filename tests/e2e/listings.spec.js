@@ -1,7 +1,11 @@
 /* eslint-disable testing-library/prefer-screen-queries */
 const { test, expect } = require("@playwright/test");
 const dotenv = require("dotenv");
-
+const {
+  wrapPlaywrightPage,
+  playwrightConfig,
+  PlaywrightController,
+} = require("@axe-core/watcher");
 dotenv.config();
 
 const BASE_URL = process.env.BASE_URL || "http://localhost:3000";
@@ -13,7 +17,14 @@ test.describe("Listings Tests", () => {
 
   test.beforeAll(async ({ browser }) => {
     const context = await browser.newContext();
-    const page = await context.newPage();
+    let page = await context.newPage();
+    // Add PlaywrightController for accessibility testing
+    const controller = new PlaywrightController(page, {
+      axe: {
+        apiKey: "870d32c8-d82c-4994-8de6-9fe8aa9eb8a7",
+      },
+    });
+    page = wrapPlaywrightPage(page, controller);
     await page.goto(`${BASE_URL}/login`);
     await page.waitForLoadState("networkidle");
 
@@ -34,6 +45,10 @@ test.describe("Listings Tests", () => {
     await page.goto(BASE_URL);
     await page.waitForLoadState("networkidle");
     await page.waitForTimeout(5000); // Wait for any additional animations
+  });
+
+  test.afterEach(async () => {
+    await controller.flush();
   });
 
   test("Add and Delete listing", async ({ page }) => {
