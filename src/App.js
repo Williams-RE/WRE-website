@@ -54,7 +54,18 @@ function AppContent({
 }) {
   const location = useLocation();
   const isHomePage = location.pathname === "/";
-  console.log("location is ", location.pathname);
+
+  // Create the performance observer.
+  const po = new PerformanceObserver((list) => {
+    for (const entry of list.getEntries()) {
+      // Logs all server timing https://developer.mozilla.org/en-US/docs/Web/API/PerformanceObserver/observedata for this response
+      console.log("Server Timing", entry.serverTiming);
+      console.log("entry is ", entry);
+    }
+  });
+
+  // Start listening for `navigation` entries to be dispatched.
+  po.observe({ type: "resource", buffered: true });
 
   return (
     <div className="main">
