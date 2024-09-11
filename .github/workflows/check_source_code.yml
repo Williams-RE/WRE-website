@@ -11,8 +11,5 @@ jobs:
         with:
           node-version: 20
 
-      - name: Checkout code
-        uses: actions/checkout@v4
-
       - name: Format check
         run: npx prettier --check .

@@ -17,9 +17,6 @@ jobs:
         with:
           node-version: 20
 
-      - name: Checkout code
-        uses: actions/checkout@v4
-
       - name: Package size report
         uses: pkg-size/action@v1.1.1
         env:
