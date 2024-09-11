@@ -124,6 +124,8 @@ img {
   width: auto;
   height: auto;
   overflow: hidden;
+  background-size: cover;
+  background-position: center;
 }
 
 .video-background video {

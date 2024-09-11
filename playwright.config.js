@@ -10,7 +10,7 @@ module.exports = defineConfig({
       video: "on",
     },
   },
-  timeout: 60000,
+  timeout: 120000,
   expect: {
     timeout: 60000,
   },

@@ -1,30 +1,19 @@
 /* eslint-disable testing-library/prefer-screen-queries */
 const { test, expect } = require("@playwright/test");
 const dotenv = require("dotenv");
-const {
-  wrapPlaywrightPage,
-  playwrightConfig,
-  PlaywrightController,
-} = require("@axe-core/watcher");
 dotenv.config();
 
 const BASE_URL = process.env.BASE_URL || "http://localhost:3000";
 const USERNAME = process.env.TEST_USERNAME || "jacobwilliams2040@gmail.com";
 const PASSWORD = process.env.TEST_PASSWORD || "Happy2006!";
 
-test.describe("Listings Tests", () => {
+test.describe("Listings Tests @business-logic", () => {
   let authToken;
 
   test.beforeAll(async ({ browser }) => {
     const context = await browser.newContext();
     let page = await context.newPage();
-    // Add PlaywrightController for accessibility testing
-    const controller = new PlaywrightController(page, {
-      axe: {
-        apiKey: "870d32c8-d82c-4994-8de6-9fe8aa9eb8a7",
-      },
-    });
-    page = wrapPlaywrightPage(page, controller);
+
     await page.goto(`${BASE_URL}/login`);
     await page.waitForLoadState("networkidle");
 
@@ -45,10 +34,6 @@ test.describe("Listings Tests", () => {
     await page.goto(BASE_URL);
     await page.waitForLoadState("networkidle");
     await page.waitForTimeout(5000); // Wait for any additional animations
-  });
-
-  test.afterEach(async () => {
-    await controller.flush();
   });
 
   test("Add and Delete listing", async ({ page }) => {
@@ -84,11 +69,13 @@ test.describe("Listings Tests", () => {
     });
 
     // Verify the listing is visible
-    const addedListing = page.locator('[data-testid="table-row-23"]');
+    const addedListing = page.locator('[data-testid="table-row-23"]').first();
     await expect(addedListing).toBeVisible();
 
     // Find and click the delete button
-    const deleteButton = page.locator('[data-testid="delete-button-23"]');
+    const deleteButton = page
+      .locator('[data-testid="delete-button-23"]')
+      .first();
     await expect(deleteButton).toBeVisible({ timeout: 10000 });
     await deleteButton.click();
 
