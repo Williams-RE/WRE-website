@@ -1,4 +1,4 @@
-name: Playwright Tests
+name: Business Logic (e2e tests)
 on: pull_request
 
 jobs:
@@ -7,17 +7,37 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+
+      # Cache node_modules to speed up subsequent runs
+      - name: Cache node_modules
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
       - name: Install dependencies
         run: npm install
+
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
-      - name: Run Playwright tests
-        run: npx playwright test
 
-      - uses: actions/upload-artifact@v3
+      # Optional: Add a step to debug node and Playwright version
+      - name: Debug Node and Playwright Versions
+        run: |
+          node -v
+          npx playwright --version
+
+      - name: Run Playwright tests
+        run: npx playwright test --grep "@business-logic"
+
+      # Upload Playwright report for easy access to results
+      - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: playwright-report

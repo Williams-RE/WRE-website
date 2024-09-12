@@ -5,7 +5,7 @@ dotenv.config();
 
 const BASE_URL = process.env.BASE_URL || "http://localhost:3000";
 
-test.describe("Contact Form Tests", () => {
+test.describe("Contact Form Tests @business-logic", () => {
   test("Submit Contact Form", async ({ page }) => {
     await page.goto(BASE_URL);
     await page.waitForLoadState("networkidle");

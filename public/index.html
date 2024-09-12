@@ -7,12 +7,33 @@
       name="viewport"
       content="width=device-width, initial-scale=0.5, maximum-scale=1.0, user-scalable=no"
     />
+    <link rel="preload" href="background.avif" as="image" type="image/avif" />
     <meta name="theme-color" content="#000000" />
     <meta name="description" content="Your Dream Home Awaits" />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/W icon.png" />
     <title>Williams Real Estates</title>
+
+    <style>
+      /* Inline CSS to show background image until JS takes over */
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        background-image: url("background.avif");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: #ffffff;
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
+    <script>
+      // Once the JavaScript is loaded, remove the inline background
+      document.addEventListener("DOMContentLoaded", function () {
+        document.body.style.backgroundImage = "none"; // Updated to use DOMContentLoaded
+      });
+    </script>
   </body>
 </html>

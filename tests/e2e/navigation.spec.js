@@ -6,7 +6,7 @@ dotenv.config();
 
 const BASE_URL = process.env.BASE_URL || "http://localhost:3000";
 
-test.describe("Navigation Tests", () => {
+test.describe("Navigation Tests @business-logic", () => {
   test("Desktop and Mobile Navigation", async ({ page }) => {
     await page.goto(BASE_URL);
 
