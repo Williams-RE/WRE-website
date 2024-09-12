@@ -1,13 +1,12 @@
 import React from "react";
 import "./Resources.css";
-import config from "../config.js";
 
 function Resources() {
   const resources = [
     {
       id: 1,
       title: "CT Addendum To Exclusive Right To Represent Buyer Agent",
-      description: "Real Estate Interpeter Service Acknowledgment Agreement",
+      description: "Real Estate Interpreter Service Acknowledgment Agreement",
       file: "https://drive.google.com/file/d/1WI12aKV3SGeeDJjU4-VB2X3VFO-EyYQU/view?usp=sharing",
     },
     {
@@ -47,24 +46,37 @@ function Resources() {
       description: "Fair Housing Rule - Purchaser",
       file: "https://drive.google.com/file/d/14-eF81c94v4wPpO68jn4dseU16SpAh2y/view?usp=sharing",
     },
+    // Add the new PDF files
+    {
+      id: 8,
+      title: "Disclosure of Lead-Based Paint",
+      description: "Important information regarding lead-based paint hazards",
+      file: "/Disclosure of Lead-Based Paint.pdf",
+    },
+    {
+      id: 9,
+      title: "CT Real Estate Property Condition Disclosure",
+      description:
+        "State of Connecticut Residential Property Condition Disclosure Report",
+      file: "/CT Real Estate Property Condition Disclosure.pdf",
+    },
+    {
+      id: 10,
+      title: "Mold Disclosure",
+      description: "Mold disclosure information and warnings",
+      file: "/Mold Disclosure.pdf",
+    },
   ];
 
   return (
-    <div className="resources-main">
-      <div className="resources-heading">
-        <h1>Resources</h1>
-      </div>
-      <div className="resources-list">
-        {resources.map((resource) => (
-          <div key={resource.id} className="resource-item">
-            <h2>{resource.title}</h2>
-            <p>{resource.description}</p>
-            <a href={`${resource.file}`} download className="download-button">
-              Download
-            </a>
-          </div>
-        ))}
-      </div>
+    <div>
+      {resources.map((resource) => (
+        <div key={resource.id}>
+          <h3>{resource.title}</h3>
+          <p>{resource.description}</p>
+          <a href={resource.file} download>{`Download ${resource.title}`}</a>
+        </div>
+      ))}
     </div>
   );
 }
