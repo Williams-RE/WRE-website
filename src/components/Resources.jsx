@@ -51,32 +51,38 @@ function Resources() {
       id: 8,
       title: "Disclosure of Lead-Based Paint",
       description: "Important information regarding lead-based paint hazards",
-      file: "/Disclosure of Lead-Based Paint.pdf",
+      file: "/Disclosure of Lead-Based Paint.pdf", // File path in the public folder
     },
     {
       id: 9,
       title: "CT Real Estate Property Condition Disclosure",
       description:
         "State of Connecticut Residential Property Condition Disclosure Report",
-      file: "/CT Real Estate Property Condition Disclosure.pdf",
+      file: "/CT Real Estate Property Condition Disclosure.pdf", // File path in the public folder
     },
     {
       id: 10,
       title: "Mold Disclosure",
       description: "Mold disclosure information and warnings",
-      file: "/Mold Disclosure.pdf",
+      file: "/Mold Disclosure.pdf", // File path in the public folder
     },
   ];
-
   return (
-    <div>
-      {resources.map((resource) => (
-        <div key={resource.id}>
-          <h3>{resource.title}</h3>
-          <p>{resource.description}</p>
-          <a href={resource.file} download>{`Download ${resource.title}`}</a>
-        </div>
-      ))}
+    <div className="resources-main">
+      <div className="resources-heading">
+        <h1>Resources</h1>
+      </div>
+      <div className="resources-list">
+        {resources.map((resource) => (
+          <div key={resource.id} className="resource-item">
+            <h2>{resource.title}</h2>
+            <p>{resource.description}</p>
+            <a href={`${resource.file}`} download className="download-button">
+              Download
+            </a>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
