@@ -1,5 +1,10 @@
 import config from "../config";
 
+export const capitalizeFirstLetter = (string) => {
+  if (typeof string !== "string") return string;
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
 export async function sendEmail(name, email, agent, comment) {
   console.info("incoming email req from ", name);
   try {

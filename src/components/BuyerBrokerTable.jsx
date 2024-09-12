@@ -6,6 +6,7 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import "./BuyerBrokerTable.css";
+import { capitalizeFirstLetter } from "../lib/utils";
 import config from "../config";
 
 export const BuyerBrokerTable = ({ refreshKey }) => {
@@ -106,7 +107,7 @@ export const BuyerBrokerTable = ({ refreshKey }) => {
             onChange={handleInputChange}
           />
         ) : (
-          info.getValue()
+          capitalizeFirstLetter(info.getValue())
         ),
     }),
     columnHelper.accessor("compensation", {
@@ -132,7 +133,7 @@ export const BuyerBrokerTable = ({ refreshKey }) => {
             onChange={handleInputChange}
           />
         ) : (
-          info.getValue()
+          capitalizeFirstLetter(info.getValue())
         ),
     }),
     columnHelper.accessor("city", {
@@ -145,7 +146,7 @@ export const BuyerBrokerTable = ({ refreshKey }) => {
             onChange={handleInputChange}
           />
         ) : (
-          info.getValue()
+          capitalizeFirstLetter(info.getValue())
         ),
     }),
     columnHelper.accessor("zip", {
@@ -171,7 +172,7 @@ export const BuyerBrokerTable = ({ refreshKey }) => {
             onChange={handleInputChange}
           />
         ) : (
-          info.getValue()
+          capitalizeFirstLetter(info.getValue())
         ),
     }),
     columnHelper.accessor("phone", {
@@ -269,7 +270,11 @@ export const BuyerBrokerTable = ({ refreshKey }) => {
           {table.getRowModel().rows.map((row) => (
             <tr key={row.id} data-testid={`table-row-${row.original.mlsId}`}>
               {row.getVisibleCells().map((cell) => (
-                <td key={cell.id} className="table-cell">
+                <td
+                  key={cell.id}
+                  className="table-cell"
+                  data-label={cell.column.columnDef.header} // Add data-label to use as a label on mobile
+                >
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
                 </td>
               ))}
