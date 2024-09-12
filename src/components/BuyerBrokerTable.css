@@ -1,11 +1,11 @@
 .table-container {
-  overflow-x: auto;
+  overflow-x: visible;
   margin-bottom: 40px; /* Add space below the table */
 }
 
 .buyer-broker-table {
   margin-top: 3rem;
-  width: 100%;
+  width: 80%;
   border-collapse: collapse;
   background-color: rgba(255, 255, 255, 0.6); /* Semi-transparent background */
   backdrop-filter: blur(10px); /* Blur effect */
@@ -75,10 +75,24 @@
   opacity: 0.85;
 }
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 720px) {
   .table-header,
   .table-cell {
-    padding: 8px;
+    padding: 4px;
     font-size: 0.75rem;
+  }
+  .buyer-broker-table {
+    margin-top: 2rem;
+    width: 50%;
+    border-collapse: collapse;
+    background-color: rgba(
+      255,
+      255,
+      255,
+      0.6
+    ); /* Semi-transparent background */
+    backdrop-filter: blur(10px); /* Blur effect */
+    border-radius: 10px; /* Optional: Add rounded corners for a better effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
   }
 }
