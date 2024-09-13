@@ -12,6 +12,15 @@ jobs:
         with:
           node-version: 20
 
+      # Use repository secrets as environment variables
+      - name: Set up environment variables
+        run: |
+          echo "Using secrets for testing"
+          echo "TEST_PASSWORD=${{ secrets.TEST_PASSWORD }}" >> $GITHUB_ENV
+          echo "TEST_USERNAME=${{ secrets.TEST_USERNAME }}" >> $GITHUB_ENV
+          echo "BASE_URL=${{ secrets.BASE_URL }}" >> $GITHUB_ENV
+          echo "REACT_APP_SERVER_URL=${{ secrets.REACT_APP_SERVER_URL }}" >> $GITHUB_ENV
+
       # Cache node_modules to speed up subsequent runs
       - name: Cache node_modules
         uses: actions/cache@v4

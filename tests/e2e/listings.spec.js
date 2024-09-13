@@ -4,8 +4,8 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 const BASE_URL = process.env.BASE_URL || "http://localhost:3000";
-const USERNAME = process.env.TEST_USERNAME || "jacobwilliams2040@gmail.com";
-const PASSWORD = process.env.TEST_PASSWORD || "Happy2006!";
+const USERNAME = process.env.TEST_USERNAME;
+const PASSWORD = process.env.TEST_PASSWORD;
 
 test.describe("Listings Tests @business-logic", () => {
   let authToken;
