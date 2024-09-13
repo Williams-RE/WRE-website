@@ -56,6 +56,15 @@ function AppContent({
   const isHomePage = location.pathname === "/";
   const videoRef = useRef(null);
 
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      video.play().catch((error) => {
+        console.log("Autoplay failed:", error);
+      });
+    }
+  }, []);
+
   return (
     <div className="main">
       {isHomePage ? (
@@ -88,11 +97,14 @@ function AppContent({
             width="100%"
             height="auto"
             poster={`${process.env.PUBLIC_URL}/background.avif`}
-            controls
           >
             <source
               type="video/webm"
               src="https://res.cloudinary.com/dnzzm3cnf/video/upload/v1726190825/WRE_Vid_1_k0gomq_c9cdcc.webm"
+            />
+            <source
+              type="video/mp4"
+              src="https://res.cloudinary.com/dnzzm3cnf/video/upload/v1726190825/WRE_Vid_1_k0gomq.mp4"
             />
             Your browser does not support the video tag.
           </video>
