@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -54,6 +54,37 @@ function AppContent({
 }) {
   const location = useLocation();
   const isHomePage = location.pathname === "/";
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    // Lazy-load video using IntersectionObserver
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const video = videoRef.current;
+            if (video) {
+              video.src =
+                "https://res.cloudinary.com/dnzzm3cnf/video/upload/v1726190825/WRE_Vid_1_k0gomq_c9cdcc.webm";
+              observer.unobserve(entry.target);
+            }
+          }
+        });
+      },
+      { threshold: 0.1 },
+    );
+
+    const videoElement = videoRef.current;
+    if (videoElement) {
+      observer.observe(videoElement);
+    }
+
+    return () => {
+      if (videoElement) {
+        observer.unobserve(videoElement);
+      }
+    };
+  }, []);
 
   return (
     <div className="main">
@@ -78,10 +109,20 @@ function AppContent({
             backgroundImage: `url(${process.env.PUBLIC_URL + "/background.avif"})`,
           }}
         >
-          <video autoPlay loop muted playsInline>
+          <video
+            ref={videoRef}
+            autoPlay
+            loop
+            muted
+            playsInline
+            width="100%"
+            height="auto"
+            poster={`${process.env.PUBLIC_URL}/background-placeholder.jpg`}
+            controls
+          >
             <source
-              src="https://res.cloudinary.com/dnzzm3cnf/video/upload/v1724434526/WRE_Vid_1_k0gomq.mp4"
-              type="video/mp4"
+              type="video/webm"
+              src="https://res.cloudinary.com/dnzzm3cnf/video/upload/v1726190825/WRE_Vid_1_k0gomq_c9cdcc.webm"
             />
             Your browser does not support the video tag.
           </video>

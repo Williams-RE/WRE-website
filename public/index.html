@@ -24,6 +24,8 @@
 
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/W icon.png" />
     <link rel="preload" href="background.avif" as="image" type="image/avif" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <title>Williams Real Estates</title>
     <link
       rel="preload"
@@ -54,14 +56,13 @@
   <body>
     <div id="root"></div>
 
-    <script>
-      // Defer background removal until DOM is fully loaded
+    <script defer>
       document.addEventListener("DOMContentLoaded", function () {
-        document.body.style.backgroundImage = "none"; // Remove background once JS is ready
+        document.body.style.backgroundImage = "none";
       });
     </script>
 
-    <script async>
+    <script defer>
       !(function (t, e) {
         var o, n, p, r;
         e.__SV ||
