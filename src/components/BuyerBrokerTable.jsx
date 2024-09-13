@@ -111,12 +111,12 @@ export const BuyerBrokerTable = ({ refreshKey }) => {
         ),
     }),
     columnHelper.accessor("compensation", {
-      header: "Compensation",
+      header: "Fees",
       cell: (info) =>
         editRowId === info.row.original._id ? (
           <input
             name="compensation"
-            value={editListing.compensation || ""}
+            value={editListing.fees || ""}
             onChange={handleInputChange}
           />
         ) : (
@@ -137,7 +137,7 @@ export const BuyerBrokerTable = ({ refreshKey }) => {
         ),
     }),
     columnHelper.accessor("city", {
-      header: "City/Town",
+      header: "City",
       cell: (info) =>
         editRowId === info.row.original._id ? (
           <input
@@ -163,7 +163,7 @@ export const BuyerBrokerTable = ({ refreshKey }) => {
         ),
     }),
     columnHelper.accessor("listingBroker", {
-      header: "Listing Broker",
+      header: "Agent",
       cell: (info) =>
         editRowId === info.row.original._id ? (
           <input
@@ -201,44 +201,47 @@ export const BuyerBrokerTable = ({ refreshKey }) => {
           info.getValue()
         ),
     }),
-    {
-      header: "Actions",
-      cell: (info) =>
-        isLoggedIn ? (
-          editRowId === info.row.original._id ? (
-            <>
-              <button
-                className="button"
-                onClick={() => handleSaveClick(info.row.original._id)}
-              >
-                Save
-              </button>
-              <button
-                className="button cancel"
-                onClick={() => setEditRowId(null)}
-              >
-                Cancel
-              </button>
-            </>
-          ) : (
-            <>
-              <button
-                className="button"
-                onClick={() => handleEditClick(info.row)}
-              >
-                Edit
-              </button>
-              <button
-                className="button delete"
-                onClick={() => handleDeleteClick(info.row.original._id)}
-                data-testid={`delete-button-${info.row.original.mlsId}`}
-              >
-                Delete
-              </button>
-            </>
-          )
-        ) : null,
-    },
+    // Conditionally render the Actions column only if the user is logged in
+    ...(isLoggedIn
+      ? [
+          {
+            header: "Actions",
+            cell: (info) =>
+              editRowId === info.row.original._id ? (
+                <>
+                  <button
+                    className="button"
+                    onClick={() => handleSaveClick(info.row.original._id)}
+                  >
+                    Save
+                  </button>
+                  <button
+                    className="button cancel"
+                    onClick={() => setEditRowId(null)}
+                  >
+                    Cancel
+                  </button>
+                </>
+              ) : (
+                <>
+                  <button
+                    className="button"
+                    onClick={() => handleEditClick(info.row)}
+                  >
+                    Edit
+                  </button>
+                  <button
+                    className="button delete"
+                    onClick={() => handleDeleteClick(info.row.original._id)}
+                    data-testid={`delete-button-${info.row.original.mlsId}`}
+                  >
+                    Delete
+                  </button>
+                </>
+              ),
+          },
+        ]
+      : []),
   ];
 
   const table = useReactTable({

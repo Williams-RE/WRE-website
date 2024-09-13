@@ -4,8 +4,6 @@
 }
 
 .buyer-broker-table {
-  margin-top: 3rem;
-  width: 80%;
   border-collapse: collapse;
   background-color: rgba(255, 255, 255, 0.6); /* Semi-transparent background */
   backdrop-filter: blur(10px); /* Blur effect */
@@ -78,50 +76,26 @@
 @media (max-width: 768px) {
   .table-header,
   .table-cell {
-    padding: 4px;
     font-size: 0.75rem;
+    text-align: left;
+    word-wrap: break-word;
+  }
+  .table-container {
+    overflow-x: scroll; /* Makes the table scrollable if needed */
+    -webkit-overflow-scrolling: touch; /* Adds smooth scrolling on touch devices */
   }
   .buyer-broker-table {
-    margin-top: 2rem;
-    width: 50%;
+    width: 70%;
+    overflow-x: scroll;
     border-collapse: collapse;
-    background-color: rgba(
-      255,
-      255,
-      255,
-      0.6
-    ); /* Semi-transparent background */
+    background-color: rgba(255, 255, 255, 0.6);
     backdrop-filter: blur(10px); /* Blur effect */
     border-radius: 10px; /* Optional: Add rounded corners for a better effect */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
   }
   .buyer-broker-table thead {
-    display: none; /* Hide table headers */
-  }
-  .buyer-broker-table tr {
-    display: block;
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    padding: 10px;
-  }
-  .buyer-broker-table td {
-    display: block;
-    text-align: left;
-    padding: 25px 0; /* Add vertical padding for more space */
-    position: relative;
-    border-bottom: 1px solid #ddd;
-  }
-  .buyer-broker-table td::before {
-    content: attr(data-label); /* Use data-label for the label text */
-    position: absolute;
-    left: 0;
+    position: sticky;
     top: 0;
-    font-weight: bold;
-    text-align: left;
-    width: 120px; /* Adjust the label width based on your design */
-    padding-right: 10px;
-  }
-  .buyer-broker-table td:not(:last-child) {
-    margin-bottom: 15px; /* Add space between each row */
+    background-color: rgba(255, 255, 255, 0.9); /* Ensures header is readable */
   }
 }

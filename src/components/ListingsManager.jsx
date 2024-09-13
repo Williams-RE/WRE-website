@@ -11,8 +11,8 @@ const ListingsManager = ({ isLoggedIn, setIsLoggedIn }) => {
   };
 
   return (
-    <div>
-      <h1 className="page-title">Buyer Broker Compensation</h1>
+    <div style={{ alignSelf: "center" }}>
+      <h1 className="page-title">Broker Commission</h1>
       {!isLoggedIn ? <></> : <AddListing onListingAdded={handleListingAdded} />}
       <BuyerBrokerTable refreshKey={refreshKey} />
     </div>

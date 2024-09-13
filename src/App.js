@@ -116,7 +116,7 @@ function AppContent({
             }
           />
           <Route
-            path="/buyer-broker-compensation"
+            path="/broker-fees"
             element={
               <ListingsManager
                 isLoggedIn={isLoggedIn}

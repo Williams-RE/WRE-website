@@ -20,7 +20,7 @@ test.describe("Navigation Tests @business-logic", () => {
     for (const [name, path] of [
       ["Home", "/"],
       ["About Us", "/about"],
-      ["Buyer Broker Compensation", "/buyer-broker-compensation"],
+      ["Broker Commission", "/broker-fees"],
       ["Resources", "/resources"],
     ]) {
       const link = page.getByRole("link", { name });
@@ -39,7 +39,7 @@ test.describe("Navigation Tests @business-logic", () => {
     for (const [name, path] of [
       ["Home", "/"],
       ["About Us", "/about"],
-      ["Buyer Broker Compensation", "/buyer-broker-compensation"],
+      ["Broker Commission", "/broker-fees"],
       ["Resources", "/resources"],
     ]) {
       await hamburgerButton.click();

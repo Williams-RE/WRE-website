@@ -61,11 +61,11 @@ export const NavBar = ({ isLoggedIn, onLogout, showDelay }) => {
         </Link>
         {!isMobile && <span className="separator">|</span>}
         <Link
-          to="/buyer-broker-compensation"
+          to="/broker-fees"
           className="navigation-button"
           onClick={() => setIsMenuOpen(false)}
         >
-          Buyer Broker Compensation
+          Broker Commission
         </Link>
         {!isMobile && <span className="separator">|</span>}
         <Link
