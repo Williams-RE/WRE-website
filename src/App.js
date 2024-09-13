@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -54,16 +54,6 @@ function AppContent({
 }) {
   const location = useLocation();
   const isHomePage = location.pathname === "/";
-  const videoRef = useRef(null);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (video) {
-      video.play().catch((error) => {
-        console.log("Autoplay failed:", error);
-      });
-    }
-  }, []);
 
   return (
     <div className="main">
@@ -84,27 +74,18 @@ function AppContent({
       {isHomePage ? (
         <div
           className="video-background"
-          style={{
-            backgroundImage: `url(${process.env.PUBLIC_URL + "/background.avif"})`,
-          }}
+          // style={{
+          //   backgroundImage: `url(${process.env.PUBLIC_URL + "/background.avif"})`,
+          // }}
         >
-          <video
-            ref={videoRef}
-            autoPlay
-            loop
-            muted
-            playsInline
-            width="100%"
-            height="auto"
-            poster={`${process.env.PUBLIC_URL}/background.avif`}
-          >
+          <video autoPlay loop muted playsInline preload="auto">
             <source
               type="video/webm"
               src="https://res.cloudinary.com/dnzzm3cnf/video/upload/v1726190825/WRE_Vid_1_k0gomq_c9cdcc.webm"
             />
             <source
               type="video/mp4"
-              src="https://res.cloudinary.com/dnzzm3cnf/video/upload/v1726190825/WRE_Vid_1_k0gomq.mp4"
+              src="https://res.cloudinary.com/dnzzm3cnf/video/upload/v1726190825/WRE_Vid_1_k0gomq_c9cdcc.mp4"
             />
             Your browser does not support the video tag.
           </video>
