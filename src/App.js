@@ -56,6 +56,7 @@ function AppContent({
   const isHomePage = location.pathname === "/";
   const videoRef = useRef(null);
 
+
   useEffect(() => {
     // Lazy-load video using IntersectionObserver
     const observer = new IntersectionObserver(
@@ -64,19 +65,18 @@ function AppContent({
           if (entry.isIntersecting) {
             const video = videoRef.current;
             if (video) {
-              video.src =
-                "https://res.cloudinary.com/dnzzm3cnf/video/upload/v1726190825/WRE_Vid_1_k0gomq_c9cdcc.webm";
-              observer.unobserve(entry.target);
+              video.src = "https://res.cloudinary.com/dnzzm3cnf/video/upload/v1726190825/WRE_Vid_1_k0gomq_c9cdcc.mp4";
+              observer.unobserve(entry.target); 
             }
           }
         });
       },
-      { threshold: 0.1 },
+      { threshold: 0.1 }
     );
 
     const videoElement = videoRef.current;
     if (videoElement) {
-      observer.observe(videoElement);
+      observer.observe(videoElement); 
     }
 
     return () => {
@@ -124,6 +124,7 @@ function AppContent({
               type="video/webm"
               src="https://res.cloudinary.com/dnzzm3cnf/video/upload/v1726190825/WRE_Vid_1_k0gomq_c9cdcc.webm"
             />
+            <source type="video/mp4" src="" />
             Your browser does not support the video tag.
           </video>
         </div>
