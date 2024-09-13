@@ -33,7 +33,6 @@ test.describe("Contact Form Tests @business-logic", () => {
       '[data-testid="contact-form-agent"]',
       "Jacob Williams",
     );
-    await page.fill('[data-testid="contact-form-comment"]', "Testing");
 
     // Submit the form
     await page.click('[data-testid="contact-form-submit"]');

@@ -1,6 +1,5 @@
 import React from "react";
 import "./Resources.css";
-import config from "../config.js";
 
 function Resources() {
   const resources = [

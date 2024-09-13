@@ -12,7 +12,6 @@ export const ModalButton = ({ showDelay }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [agent, setAgent] = useState("");
-  const [comment, setComment] = useState("");
   const [errors, setErrors] = useState({});
 
   const { agents, loading, error: agentsError } = useAgents();
@@ -31,10 +30,6 @@ export const ModalButton = ({ showDelay }) => {
     return agent.trim().length > 0;
   };
 
-  const validateComment = (comment) => {
-    return comment.trim().length <= 500; // Example: limit comment to 500 characters
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newErrors = {};
@@ -43,8 +38,6 @@ export const ModalButton = ({ showDelay }) => {
     if (!validateEmail(email))
       newErrors.email = "Please enter a valid email address.";
     if (!validateAgent(agent)) newErrors.agent = "Please select an agent.";
-    if (!validateComment(comment))
-      newErrors.comment = "Comment must be 500 characters or less.";
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
@@ -53,12 +46,11 @@ export const ModalButton = ({ showDelay }) => {
     }
 
     try {
-      await sendEmail(name, email, agent, comment);
+      await sendEmail(name, email, agent);
       setModalIsOpen(false);
       setName("");
       setEmail("");
       setAgent("");
-      setComment("");
       setErrors({});
       toast.success("Introduction email sent to agent!");
     } catch (error) {
@@ -139,6 +131,7 @@ export const ModalButton = ({ showDelay }) => {
                 onChange={(e) => setAgent(e.target.value)}
                 required
                 data-testid="contact-form-agent"
+                className="select-dropdown"
               >
                 <option value="">Select an agent</option>
                 {loading ? (
@@ -152,19 +145,6 @@ export const ModalButton = ({ showDelay }) => {
                 )}
               </select>
               {errors.agent && <p className="error-message">{errors.agent}</p>}
-            </div>
-            <div className="input-group">
-              <label htmlFor="comment">Comments</label>
-              <textarea
-                id="comment"
-                value={comment}
-                onChange={(e) => setComment(e.target.value)}
-                placeholder="Anything you'd like to share before we chat?"
-                data-testid="contact-form-comment"
-              ></textarea>
-              {errors.comment && (
-                <p className="error-message">{errors.comment}</p>
-              )}
             </div>
             {errors.submit && <p className="error-message">{errors.submit}</p>}
             {agentsError && <p className="error-message">{agentsError}</p>}
