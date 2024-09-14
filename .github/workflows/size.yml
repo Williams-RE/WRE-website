@@ -9,11 +9,11 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      # Checkout the repository
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
 
       # Analyze the bundle size and create a badge
       - name: Analyze and Create Badge
@@ -24,4 +24,5 @@ jobs:
           label: "Bundle Size"
           color: "green"
         env:
+          ACTIONS_STEP_DEBUG: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
