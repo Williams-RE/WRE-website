@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import config from "../config.js";
 import { useAgents } from "../contexts/AgentContext.js";
 import toast, { Toaster } from "react-hot-toast";

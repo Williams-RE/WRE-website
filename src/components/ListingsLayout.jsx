@@ -1,4 +1,3 @@
-import React from "react";
 import "./ListingsLayout.css";
 import config from "../config.js";
 import Listing from "./Listing.jsx";

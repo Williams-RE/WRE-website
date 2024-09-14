@@ -1,4 +1,3 @@
-import React from "react";
 import "./AgentProfile.css";
 import Modal from "react-modal";
 

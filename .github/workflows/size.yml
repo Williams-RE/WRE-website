@@ -1,0 +1,27 @@
+name: "Package Size Report"
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Analyze the bundle size and create a badge
+      - name: Analyze and Create Badge
+        uses: timeowilliams/package-size-badge-action@v1.0.3
+        with:
+          path: "build/static/js/*.js" # User specifies the path to their JS bundle
+          limit: "500 KB" # Bundle size limit
+          label: "Bundle Size"
+          color: "green"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

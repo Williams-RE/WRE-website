@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "./AboutUs.css";
 import config from "../config.js";
 import AgentProfile from "./AgentProfile.jsx";
