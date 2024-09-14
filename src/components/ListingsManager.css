@@ -1,6 +1,11 @@
 .page-title {
-  padding-bottom: 3vh;
   font-size: 50px;
+}
+
+.child-text {
+  font-size: large;
+  font-weight: 350;
+  padding-bottom: 3vh;
 }
 
 /* Initial state for the component when it's loading */

@@ -86,6 +86,14 @@ function AboutUs() {
     >
       <div className="carousel-group">
         <h1 className="carousel-heading">Meet Our Agents</h1>
+        <div className="paragraph-div">
+          <p className="about-us-paragraph">
+            Williams Real Estate was founded on principles of{" "}
+            <span>innovation</span>, <span>consistency</span>, and{" "}
+            <span>excellence</span>. Our world class agents are a call away to
+            get you to the home of your dreams.
+          </p>
+        </div>
         <Carousel
           responsive={responsive}
           slidesToSlide={4}
@@ -104,15 +112,6 @@ function AboutUs() {
             />
           ))}
         </Carousel>
-      </div>
-      <div className="paragraph-div">
-        <p className="about-us-paragraph">
-          Williams Real Estate was founded on principles of{" "}
-          <span className="principles">innovation</span>,{" "}
-          <span className="principles">consistency</span>, and{" "}
-          <span className="principles">excellence</span>. Our world class agents
-          are a call away to get you to the home of your dreams.
-        </p>
       </div>
       <Modal
         className="agent-profile-modal"

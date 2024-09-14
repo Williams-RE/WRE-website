@@ -29,6 +29,10 @@ const ListingsManager = ({ isLoggedIn, setIsLoggedIn }) => {
     >
       <h1 className="page-title">Broker Commission</h1>
       {!isLoggedIn ? <></> : <AddListing onListingAdded={handleListingAdded} />}
+      <p className="child-text">
+        View our company’s listings with sellers offering buyer broker
+        compensation in Connecticut & New York
+      </p>
       <BuyerBrokerTable refreshKey={refreshKey} />
     </div>
   );

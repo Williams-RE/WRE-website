@@ -12,15 +12,14 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-bottom: 5vh;
+  margin-bottom: 2vh;
 }
 
 .about-us-paragraph {
   text-align: center;
-  font-size: 1.4vw;
-  width: 50%;
-  color: var(--tertiary-color);
-  font-weight: 300;
+  font-size: large;
+  width: 65%;
+  font-weight: 350;
   line-height: 1.5;
 }
 .carousel-group-loading {
@@ -42,16 +41,11 @@
 .carousel-group-loaded {
   animation: fadeInLayers 1.5s ease-in-out forwards; /* 6 seconds total for full fade-in */
 }
-.principles {
-  text-decoration: italic;
-  color: var(--secondary-color);
-  font-style: italic;
-}
 
 .carousel-heading {
-  font-size: 2.7vw;
-  color: var(--tertiary-color);
-  padding-bottom: 3vh;
+  font-size: 40px;
+  margin-bottom: 0%;
+  margin-top: -50px;
 }
 
 .carousel {
@@ -168,8 +162,8 @@
   }
 
   .about-us-paragraph {
-    font-size: 20px;
-    width: 90%;
+    font-size: medium;
+    width: 100%;
   }
 
   .carousel-heading {
