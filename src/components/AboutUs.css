@@ -52,7 +52,7 @@
   position: relative;
   left: 50%;
   transform: translate(-50%);
-  height: 28vh;
+  height: 50vh;
   width: 50vw;
   background-color: var(--senary-color);
   z-index: 1;
@@ -64,10 +64,7 @@
   display: flex;
   overflow: hidden;
   width: 100%;
-  border-radius: 10px;
   height: 100%;
-  /* margin-left: auto;
-    margin-right: auto; */
 }
 
 .agent-image:hover {
@@ -75,10 +72,10 @@
 }
 
 .agent-image {
-  height: 27vh;
+  height: 30vh;
   width: auto;
   object-fit: cover;
-  object-position: center;
+  object-position: top;
   vertical-align: middle;
 }
 
