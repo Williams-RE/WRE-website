@@ -1,8 +1,9 @@
 {
   "name": "wre-frontend",
   "version": "0.1.2",
+  "type": "module",
   "scripts": {
-    "start": "serve -s build",
+    "start": "node server.js",
     "dev": "react-scripts start",
     "build": "CI=false react-scripts build",
     "test:e2e": "npx playwright test",
@@ -12,6 +13,7 @@
   },
   "dependencies": {
     "@tanstack/react-table": "^8.20.5",
+    "express": "^4.21.0",
     "focus-trap-react": "^10.2.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -20,11 +22,8 @@
     "react-modal": "^3.16.1",
     "react-multi-carousel": "^2.8.5",
     "react-router-dom": "^6.26.2",
-    "react-scripts": "^5.0.1",
     "react-spring": "^9.7.4",
     "react-transition-group": "^4.4.5",
-    "serve": "^14.2.3",
-    "source-map-explorer": "^2.5.3",
     "styled-components": "^6.1.13"
   },
   "eslintConfig": {
@@ -52,6 +51,9 @@
     "@playwright/test": "^1.47.0",
     "dotenv": "^16.4.5",
     "playwright": "^1.46.1",
-    "prettier": "^3.3.3"
+    "prettier": "^3.3.3",
+    "react-scripts": "^5.0.1",
+    "serve": "^14.2.3",
+    "source-map-explorer": "^2.5.3"
   }
 }

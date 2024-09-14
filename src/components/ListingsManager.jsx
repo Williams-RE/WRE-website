@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import AddListing from "./AddListing";
-import { BuyerBrokerTable } from "./BuyerBrokerTable";
+import BuyerBrokerTable from "./BuyerBrokerTable";
 import "./ListingsManager.css";
 
 const ListingsManager = ({ isLoggedIn, setIsLoggedIn }) => {

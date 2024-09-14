@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -8,14 +8,16 @@ import {
 } from "react-router-dom";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import "./App.css";
-import LandingPage from "./components/LandingPage.jsx";
-import AboutUs from "./components/AboutUs.jsx";
-import { NavBar } from "./components/NavBar.jsx";
+import NavBar from "./components/NavBar.jsx";
 import { ModalButton } from "./components/ModalButton.jsx";
-import ListingsManager from "./components/ListingsManager.jsx";
-import { Login } from "./components/Login.jsx";
+import LandingPage from "./components/LandingPage.jsx";
 import { AgentsProvider } from "./contexts/AgentContext.js";
-import Resources from "./components/Resources.jsx";
+
+// Lazy load components
+const ListingsManager = lazy(() => import("./components/ListingsManager.jsx"));
+const Login = lazy(() => import("./components/Login.jsx"));
+const Resources = lazy(() => import("./components/Resources.jsx"));
+const AboutUs = lazy(() => import("./components/AboutUs.jsx"));
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -90,51 +92,53 @@ function AppContent({
           timeout={500} // Duration of the transition
         >
           <div className="content-overlay">
-            <Routes>
-              <Route path="/" element={<LandingPage />} />
-              <Route path="/about" element={<AboutUs />} />
-              <Route
-                path="/listings"
-                element={
-                  isLoggedIn ? (
+            <Suspense fallback={<div>Loading...</div>}>
+              <Routes>
+                <Route path="/" element={<LandingPage />} />
+                <Route path="/about" element={<AboutUs />} />
+                <Route
+                  path="/listings"
+                  element={
+                    isLoggedIn ? (
+                      <ListingsManager
+                        isLoggedIn={isLoggedIn}
+                        setIsLoggedIn={setIsLoggedIn}
+                      />
+                    ) : (
+                      <Navigate to="/login" />
+                    )
+                  }
+                />
+                <Route
+                  path="/broker-fees"
+                  element={
                     <ListingsManager
                       isLoggedIn={isLoggedIn}
                       setIsLoggedIn={setIsLoggedIn}
                     />
-                  ) : (
-                    <Navigate to="/login" />
-                  )
-                }
-              />
-              <Route
-                path="/broker-fees"
-                element={
-                  <ListingsManager
-                    isLoggedIn={isLoggedIn}
-                    setIsLoggedIn={setIsLoggedIn}
-                  />
-                }
-              />
-              <Route
-                path="/resources"
-                element={
-                  <Resources
-                    isLoggedIn={isLoggedIn}
-                    setIsLoggedIn={setIsLoggedIn}
-                  />
-                }
-              />
-              <Route
-                path="/login"
-                element={
-                  !isLoggedIn ? (
-                    <Login setIsLoggedIn={setIsLoggedIn} />
-                  ) : (
-                    <Navigate to="/listings" />
-                  )
-                }
-              />
-            </Routes>
+                  }
+                />
+                <Route
+                  path="/resources"
+                  element={
+                    <Resources
+                      isLoggedIn={isLoggedIn}
+                      setIsLoggedIn={setIsLoggedIn}
+                    />
+                  }
+                />
+                <Route
+                  path="/login"
+                  element={
+                    !isLoggedIn ? (
+                      <Login setIsLoggedIn={setIsLoggedIn} />
+                    ) : (
+                      <Navigate to="/listings" />
+                    )
+                  }
+                />
+              </Routes>
+            </Suspense>
           </div>
         </CSSTransition>
       </TransitionGroup>

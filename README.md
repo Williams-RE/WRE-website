@@ -19,7 +19,7 @@ npm i
 Afterwards, run this to do local development
 
 ```
-npm run start
+npm run dev
 ```
 
 And take a look at the localhost site on http://localhost:3000 to see immediate changes.

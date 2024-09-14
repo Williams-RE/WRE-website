@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./NavBar.css";
 
-export const NavBar = ({ isLoggedIn, onLogout, showDelay }) => {
+const NavBar = ({ isLoggedIn, onLogout, showDelay }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 1000);
   const [showNavBar, setShowNavBar] = useState(!showDelay);
@@ -93,3 +93,5 @@ export const NavBar = ({ isLoggedIn, onLogout, showDelay }) => {
     </nav>
   );
 };
+
+export default NavBar;

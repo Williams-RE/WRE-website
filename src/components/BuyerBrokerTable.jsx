@@ -9,7 +9,7 @@ import "./BuyerBrokerTable.css";
 import { capitalizeFirstLetter, isMobile } from "../lib/utils";
 import config from "../config";
 
-export const BuyerBrokerTable = ({ refreshKey }) => {
+const BuyerBrokerTable = ({ refreshKey }) => {
   const [listings, setListings] = useState([]);
   const [editRowId, setEditRowId] = useState(null);
   const [editListing, setEditListing] = useState({});
@@ -296,3 +296,5 @@ export const BuyerBrokerTable = ({ refreshKey }) => {
     </div>
   );
 };
+
+export default BuyerBrokerTable;
