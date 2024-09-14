@@ -6,6 +6,7 @@ import {
   Navigate,
   useLocation,
 } from "react-router-dom";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 import "./App.css";
 import LandingPage from "./components/LandingPage.jsx";
 import AboutUs from "./components/AboutUs.jsx";
@@ -91,53 +92,61 @@ function AppContent({
           </video>
         </div>
       ) : null}
-      <div className="content-overlay">
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/about" element={<AboutUs />} />
-          <Route
-            path="/listings"
-            element={
-              isLoggedIn ? (
-                <ListingsManager
-                  isLoggedIn={isLoggedIn}
-                  setIsLoggedIn={setIsLoggedIn}
-                />
-              ) : (
-                <Navigate to="/login" />
-              )
-            }
-          />
-          <Route
-            path="/broker-fees"
-            element={
-              <ListingsManager
-                isLoggedIn={isLoggedIn}
-                setIsLoggedIn={setIsLoggedIn}
+      <TransitionGroup>
+        <CSSTransition
+          key={location.key}
+          classNames="page"
+          timeout={500} // Duration of the transition
+        >
+          <div className="content-overlay">
+            <Routes>
+              <Route path="/" element={<LandingPage />} />
+              <Route path="/about" element={<AboutUs />} />
+              <Route
+                path="/listings"
+                element={
+                  isLoggedIn ? (
+                    <ListingsManager
+                      isLoggedIn={isLoggedIn}
+                      setIsLoggedIn={setIsLoggedIn}
+                    />
+                  ) : (
+                    <Navigate to="/login" />
+                  )
+                }
               />
-            }
-          />
-          <Route
-            path="/resources"
-            element={
-              <Resources
-                isLoggedIn={isLoggedIn}
-                setIsLoggedIn={setIsLoggedIn}
+              <Route
+                path="/broker-fees"
+                element={
+                  <ListingsManager
+                    isLoggedIn={isLoggedIn}
+                    setIsLoggedIn={setIsLoggedIn}
+                  />
+                }
               />
-            }
-          />
-          <Route
-            path="/login"
-            element={
-              !isLoggedIn ? (
-                <Login setIsLoggedIn={setIsLoggedIn} />
-              ) : (
-                <Navigate to="/listings" />
-              )
-            }
-          />
-        </Routes>
-      </div>
+              <Route
+                path="/resources"
+                element={
+                  <Resources
+                    isLoggedIn={isLoggedIn}
+                    setIsLoggedIn={setIsLoggedIn}
+                  />
+                }
+              />
+              <Route
+                path="/login"
+                element={
+                  !isLoggedIn ? (
+                    <Login setIsLoggedIn={setIsLoggedIn} />
+                  ) : (
+                    <Navigate to="/listings" />
+                  )
+                }
+              />
+            </Routes>
+          </div>
+        </CSSTransition>
+      </TransitionGroup>
       {isHomePage ? (
         <ModalButton showDelay={showNavBarDelay} />
       ) : (

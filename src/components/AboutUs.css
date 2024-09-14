@@ -23,7 +23,25 @@
   font-weight: 300;
   line-height: 1.5;
 }
+.carousel-group-loading {
+  opacity: 0;
+  transition: opacity 1s ease-in-out; /* Fade-in effect */
+}
 
+@keyframes fadeInLayers {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Apply the animation to the carousel group when all images are loaded */
+.carousel-group-loaded {
+  animation: fadeInLayers 1.5s ease-in-out forwards; /* 6 seconds total for full fade-in */
+}
 .principles {
   text-decoration: italic;
   color: var(--secondary-color);

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./AboutUs.css";
 import config from "../config.js";
 import AgentProfile from "./AgentProfile.jsx";
@@ -13,6 +13,19 @@ function AboutUs() {
   const [agentProfileModalIsOpen, setAgentProfileModalIsOpen] = useState(false);
   const [selectedAgent, setSelectedAgent] = useState(null);
   const [scrollTop, setScrollTop] = useState(0);
+  const [imagesLoaded, setImagesLoaded] = useState(false); // Track if all images are loaded
+  const [imageLoadCount, setImageLoadCount] = useState(0); // Track how many images have loaded
+
+  // Effect to check if all images are loaded
+  useEffect(() => {
+    if (imageLoadCount === Object.values(agents).length) {
+      setImagesLoaded(true); // Mark all images as loaded
+    }
+  }, [imageLoadCount, agents]);
+
+  const handleImageLoad = () => {
+    setImageLoadCount((prevCount) => prevCount + 1); // Increment count when each image loads
+  };
 
   const responsive = {
     superLargeDesktop: {
@@ -68,7 +81,9 @@ function AboutUs() {
   }
 
   return (
-    <div className="about-us-main">
+    <div
+      className={`about-us-main ${imagesLoaded ? "carousel-group-loaded" : "carousel-group-loading"}`}
+    >
       <div className="carousel-group">
         <h1 className="carousel-heading">Meet Our Agents</h1>
         <Carousel
@@ -84,6 +99,7 @@ function AboutUs() {
               className="agent-image"
               alt={agent.Name}
               src={`${config.SERVER_URL}/api/v1/agents/images/${agent.Image}`}
+              onLoad={handleImageLoad} // Call the handler when the image has loaded
               onClick={() => openAgentProfileModal(agent)}
             />
           ))}

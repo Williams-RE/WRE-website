@@ -9,9 +9,10 @@
 }
 
 .resources-heading h1 {
-  font-size: 2.7vw;
+  padding-top: 23vh;
+  font-size: 3.3vw;
   color: var(--tertiary-color);
-  padding-bottom: 3vh;
+  padding-bottom: 2vh;
 }
 
 .resources-list {
@@ -20,7 +21,6 @@
   align-items: center;
   justify-content: center;
   width: 70%;
-  margin-top: 3vh;
 }
 
 .resource-item {
