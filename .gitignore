@@ -1,6 +1,5 @@
 /node_modules
 /.vscode
-/build
 /src/config.js
 node_modules/
 .env
