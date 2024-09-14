@@ -36,6 +36,8 @@ export async function sendEmail(name, email, agent, comment) {
   }
 }
 
+export const isMobile = () => window.innerWidth <= 768;
+
 export const fetchAgents = async () => {
   try {
     const response = await fetch(`${config.SERVER_URL}/api/v1/agents`);

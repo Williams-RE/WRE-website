@@ -6,7 +6,7 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import "./BuyerBrokerTable.css";
-import { capitalizeFirstLetter } from "../lib/utils";
+import { capitalizeFirstLetter, isMobile } from "../lib/utils";
 import config from "../config";
 
 export const BuyerBrokerTable = ({ refreshKey }) => {
@@ -14,12 +14,14 @@ export const BuyerBrokerTable = ({ refreshKey }) => {
   const [editRowId, setEditRowId] = useState(null);
   const [editListing, setEditListing] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false); // New state to track login status
+  const [isMobileDevice, setIsMobileDevice] = useState(false);
 
   useEffect(() => {
     // Check if user is logged in by verifying the token in local storage
     const token = localStorage.getItem("token");
     setIsLoggedIn(!!token); // If token exists, user is logged in
     fetchListings();
+    setIsMobileDevice(isMobile());
   }, [refreshKey]);
 
   const columnHelper = createColumnHelper();
@@ -188,19 +190,24 @@ export const BuyerBrokerTable = ({ refreshKey }) => {
           info.getValue()
         ),
     }),
-    columnHelper.accessor("email", {
-      header: "Email",
-      cell: (info) =>
-        editRowId === info.row.original._id ? (
-          <input
-            name="email"
-            value={editListing.email || ""}
-            onChange={handleInputChange}
-          />
-        ) : (
-          info.getValue()
-        ),
-    }),
+    ...(isMobileDevice
+      ? []
+      : [
+          columnHelper.accessor("email", {
+            header: "Email",
+            cell: (info) =>
+              editRowId === info.row.original._id ? (
+                <input
+                  name="email"
+                  value={editListing.email || ""}
+                  onChange={handleInputChange}
+                  className="email-column"
+                />
+              ) : (
+                info.getValue()
+              ),
+          }),
+        ]),
     // Conditionally render the Actions column only if the user is logged in
     ...(isLoggedIn
       ? [
