@@ -25,9 +25,9 @@ const ListingsManager = ({ isLoggedIn, setIsLoggedIn }) => {
       className={
         isLoaded ? "listings-manager-loaded" : "listings-manager-loading"
       }
-      style={{ alignSelf: "center" }}
+      // style={{ alignSelf: "center" }}
     >
-      <h1 className="page-title">Broker Commission</h1>
+      <h1 className="page-title">Buyer Broker Commission</h1>
       {!isLoggedIn ? <></> : <AddListing onListingAdded={handleListingAdded} />}
       <p className="child-text">
         View our company’s listings with sellers offering buyer broker

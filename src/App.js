@@ -73,17 +73,8 @@ function AppContent({
       )}
 
       {isHomePage ? (
-        <div
-          className="video-background"
-          // style={{
-          //   backgroundImage: `url(${process.env.PUBLIC_URL + "/background.avif"})`,
-          // }}
-        >
+        <div className="video-background">
           <video autoPlay loop muted playsInline preload="auto">
-            <source
-              type="video/webm"
-              src="https://res.cloudinary.com/dnzzm3cnf/video/upload/v1726190825/WRE_Vid_1_k0gomq_c9cdcc.webm"
-            />
             <source
               type="video/mp4"
               src="https://res.cloudinary.com/dnzzm3cnf/video/upload/v1726190825/WRE_Vid_1_k0gomq_c9cdcc.mp4"

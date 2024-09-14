@@ -96,7 +96,7 @@ function AboutUs() {
         </div>
         <Carousel
           responsive={responsive}
-          slidesToSlide={4}
+          slidesToSlide={1}
           containerClass="carousel"
           itemClass="carousel-agent"
           arrows={true}

@@ -1,7 +1,9 @@
-import React from "react";
+import { useState } from "react";
 import "./Resources.css";
 
 function Resources() {
+  const [isLocked, setIsLocked] = useState(true); // Lock by default
+  const [inputValue, setInputValue] = useState("");
   const resources = [
     {
       id: 1,
@@ -48,12 +50,34 @@ function Resources() {
     },
   ];
 
+  const handleUnlock = () => {
+    if (parseInt(inputValue) === 2040) {
+      setIsLocked(false); // Unlock if passcode is correct
+    } else {
+      alert("Incorrect passcode. Try again.");
+    }
+  };
+
   return (
     <div className="resources-main">
-      <div className="resources-heading">
-        <h1>Resources</h1>
-      </div>
-      <div className="resources-list">
+      {isLocked && (
+        <div className="lock-screen">
+          <div className="lock-content">
+            <h2>Enter Passcode to Unlock</h2>
+            <input
+              type="password"
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+              placeholder="Enter passcode"
+            />
+            <button onClick={handleUnlock}>Unlock</button>
+          </div>
+        </div>
+      )}
+      <div className={`resources-list ${isLocked ? "blurred" : ""}`}>
+        <div className="resources-heading">
+          <h1>Resources</h1>
+        </div>
         {resources.map((resource) => (
           <div key={resource.id} className="resource-item">
             <h2>{resource.title}</h2>

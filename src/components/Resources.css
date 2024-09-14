@@ -57,6 +57,53 @@
   cursor: pointer;
 }
 
+/* Lock Screen Styles */
+.lock-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 9999;
+}
+
+.lock-content {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.lock-content input {
+  padding: 10px;
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.lock-content button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.lock-content button:hover {
+  background-color: #0056b3;
+}
+
+/* Blurred Content */
+.blurred {
+  filter: blur(8px);
+  pointer-events: none;
+  user-select: none;
+}
+
 @media screen and (max-width: 768px) {
   .resource-item {
     width: 90%;
