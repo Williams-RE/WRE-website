@@ -118,9 +118,15 @@
   background-color: #f9f9f9;
   font-size: 16px;
 }
+.input-group {
+  margin: 20px 0;
+}
+form {
+  text-align: left;
+}
 
 .label-style {
-  margin-bottom: 5px;
+  margin: 5px;
   font-size: 18px;
   font-weight: bold;
   color: white;
@@ -128,14 +134,8 @@
 
 @media screen and (max-width: 768px) {
   .modal {
-    .modal {
-      width: 90%;
-      height: 90%;
-      max-width: none;
-      max-height: none;
-      border-radius: 0;
-      padding: 24px;
-    }
+    width: 80%;
+    border-radius: 10px;
   }
 
   .modal-button {
@@ -155,9 +155,5 @@
   .contact-icon {
     width: 30px;
     height: 35px;
-  }
-
-  .submit-button {
-    width: 100%;
   }
 }

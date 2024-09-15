@@ -1,28 +1,17 @@
-name: "Package Size Report"
-
+name: "size"
 on:
-  push:
+  pull_request:
     branches:
       - main
-  pull_request:
-
+permissions:
+  pull-requests: write
 jobs:
-  build:
+  size:
     runs-on: ubuntu-latest
+    env:
+      CI_JOB_NUMBER: 1
     steps:
-      - uses: actions/checkout@v4
-      - name: List files in build/static/js directory
-        run: ls build/static/js/
-
-      # Analyze the bundle size and create a badge
-      - name: Analyze and Create Badge
-        uses: timeowilliams/package-size-badge-action@v1.0.6
-
+      - uses: actions/checkout@v1
+      - uses: andresz1/size-limit-action@v1.8.0
         with:
-          path: "build/static/js/*.js" # User specifies the path to their JS bundle
-          limit: "500 KB" # Bundle size limit
-          label: "Bundle Size"
-          color: "green"
-        env:
-          ACTIONS_STEP_DEBUG: true
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}

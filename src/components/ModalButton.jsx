@@ -100,7 +100,7 @@ export const ModalButton = ({ showDelay }) => {
           <p>Fill out the details below and we'll reach out to you shortly!</p>
           <form onSubmit={handleSubmit}>
             <div className="input-group">
-              <label htmlFor="name">Name*</label>
+              <label htmlFor="name">Name </label>
               <input
                 id="name"
                 type="text"
@@ -112,7 +112,7 @@ export const ModalButton = ({ showDelay }) => {
               {errors.name && <p className="error-message">{errors.name}</p>}
             </div>
             <div className="input-group">
-              <label htmlFor="email">Email*</label>
+              <label htmlFor="email">Email</label>
               <input
                 id="email"
                 type="email"
@@ -124,7 +124,7 @@ export const ModalButton = ({ showDelay }) => {
               {errors.email && <p className="error-message">{errors.email}</p>}
             </div>
             <div className="input-group">
-              <label htmlFor="agent">Agent*</label>
+              <label htmlFor="agent">Agent</label>
               <select
                 id="agent"
                 value={agent}

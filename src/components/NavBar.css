@@ -61,6 +61,11 @@
   z-index: 1001;
 }
 
+label {
+  margin-right: 10px;
+  display: inline-block; /* Ensures labels take up only necessary width */
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -91,10 +96,10 @@
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     background-color: rgba(0, 0, 0, 0.4);
-    max-width: 50px;
-    width: 40px;
-    align-content: center;
-    justify-content: center;
+    max-width: 120px;
+    width: 100px;
+    align-items: center;
+    justify-content: space-around;
   }
 
   @keyframes bounce {
