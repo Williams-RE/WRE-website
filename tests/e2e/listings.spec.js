@@ -1,6 +1,6 @@
 /* eslint-disable testing-library/prefer-screen-queries */
-const { test, expect } = require("@playwright/test");
-const dotenv = require("dotenv");
+import { test, expect } from "@playwright/test";
+import dotenv from "dotenv";
 dotenv.config();
 
 const BASE_URL = process.env.BASE_URL || "http://localhost:3000";

@@ -1,5 +1,5 @@
-const { test, expect } = require("@playwright/test");
-const dotenv = require("dotenv");
+import { test, expect } from "@playwright/test";
+import dotenv from "dotenv";
 
 dotenv.config();
 
