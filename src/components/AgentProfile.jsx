@@ -1,7 +1,4 @@
 import "./AgentProfile.css";
-import Modal from "react-modal";
-
-Modal.setAppElement("#root");
 
 function AgentProfile(props) {
   return (
@@ -18,9 +15,6 @@ function AgentProfile(props) {
         />
         <div className="agent-profile-text">
           <h4>{props.agentProfileBio}</h4>
-          {/* <h4>
-          Office Number: {props.agentProfileOfficeNumber}
-        </h4> */}
           <h4>Cell Number: {props.agentProfileCellNumber}</h4>
           <h4>
             Email:{" "}

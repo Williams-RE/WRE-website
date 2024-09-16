@@ -1,30 +1,31 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, startTransition } from "react";
+import closeModalImg from "../assets/close-modal.avif";
 import "./AboutUs.css";
 import config from "../config.js";
 import AgentProfile from "./AgentProfile.jsx";
-import closeModalImg from "../assets/close-modal.avif";
-import Modal from "react-modal";
 import Carousel from "react-multi-carousel";
 import "../lib/react-multi-carousel.css";
 import { useAgents } from "../contexts/AgentContext.js";
+import CustomModal from "./CustomModal.jsx";
 
-function AboutUs() {
+const AboutUs = () => {
   const { agents, loading, error } = useAgents();
   const [agentProfileModalIsOpen, setAgentProfileModalIsOpen] = useState(false);
   const [selectedAgent, setSelectedAgent] = useState(null);
   const [scrollTop, setScrollTop] = useState(0);
-  const [imagesLoaded, setImagesLoaded] = useState(false); // Track if all images are loaded
-  const [imageLoadCount, setImageLoadCount] = useState(0); // Track how many images have loaded
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+  const [imageLoadCount, setImageLoadCount] = useState(0);
 
-  // Effect to check if all images are loaded
   useEffect(() => {
     if (imageLoadCount === Object.values(agents).length) {
-      setImagesLoaded(true); // Mark all images as loaded
+      startTransition(() => {
+        setImagesLoaded(true);
+      });
     }
   }, [imageLoadCount, agents]);
 
   const handleImageLoad = () => {
-    setImageLoadCount((prevCount) => prevCount + 1); // Increment count when each image loads
+    setImageLoadCount((prevCount) => prevCount + 1);
   };
 
   const responsive = {
@@ -46,31 +47,35 @@ function AboutUs() {
     },
   };
 
-  function openModal() {
+  const openModal = () => {
     document.documentElement.style.setProperty(
       "--scroll-top",
       "-" + document.documentElement.scrollTop + "px",
     );
     setScrollTop(document.documentElement.scrollTop);
     document.body.classList.add("modal-open");
-  }
+  };
 
-  function closeModal() {
+  const closeModal = () => {
     document.body.classList.remove("modal-open");
     window.scrollTo(0, scrollTop);
-  }
+  };
 
-  function openAgentProfileModal(agent) {
+  const openAgentProfileModal = (agent) => {
     openModal();
-    setSelectedAgent(agent);
-    setAgentProfileModalIsOpen(true);
-  }
+    startTransition(() => {
+      setSelectedAgent(agent);
+      setAgentProfileModalIsOpen(true);
+    });
+  };
 
-  function closeAgentProfileModal() {
+  const closeAgentProfileModal = () => {
     closeModal();
-    setAgentProfileModalIsOpen(false);
-    setSelectedAgent(null);
-  }
+    startTransition(() => {
+      setAgentProfileModalIsOpen(false);
+      setSelectedAgent(null);
+    });
+  };
 
   if (loading) {
     return <div>Loading agents...</div>;
@@ -90,7 +95,7 @@ function AboutUs() {
           <p className="about-us-paragraph">
             Williams Real Estate was founded on principles of{" "}
             <span>innovation</span>, <span>consistency</span>, and{" "}
-            <span>excellence</span>. Our world class agents are a call away to
+            <span>excellence</span>. Our world-class agents are a call away to
             get you to the home of your dreams.
           </p>
         </div>
@@ -107,27 +112,17 @@ function AboutUs() {
               className="agent-image"
               alt={agent.Name}
               src={`${config.SERVER_URL}/api/v1/agents/images/${agent.Image}`}
-              onLoad={handleImageLoad} // Call the handler when the image has loaded
+              onLoad={handleImageLoad}
               onClick={() => openAgentProfileModal(agent)}
             />
           ))}
         </Carousel>
       </div>
-      <Modal
-        className="agent-profile-modal"
+      <CustomModal
         isOpen={agentProfileModalIsOpen}
         onRequestClose={closeAgentProfileModal}
-        style={{
-          overlay: {
-            position: "fixed",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: "rgba(0, 0, 0, 0.75)",
-            zIndex: 2,
-          },
-        }}
+        className={"custom-modal-content"}
+        overlayClassName={"custom-modal-overlay"}
       >
         <div className="agent-profile-modal-heading">
           <img
@@ -140,8 +135,6 @@ function AboutUs() {
         <div className="agent-profile-modal-content">
           {selectedAgent && (
             <AgentProfile
-              agentProfileModalIsOpen={agentProfileModalIsOpen}
-              setAgentProfileModalIsOpen={setAgentProfileModalIsOpen}
               agentProfileName={selectedAgent.Name}
               agentProfileTitle={selectedAgent.Title}
               agentProfileImagePath={`${config.SERVER_URL}/api/v1/agents/images/${selectedAgent.Image}`}
@@ -152,9 +145,9 @@ function AboutUs() {
             />
           )}
         </div>
-      </Modal>
+      </CustomModal>
     </div>
   );
-}
+};
 
 export default AboutUs;

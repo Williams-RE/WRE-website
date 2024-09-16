@@ -13,12 +13,12 @@ app.use((req, res, next) => {
   res.setHeader(
     "Content-Security-Policy",
     "default-src 'self'; " +
-      "script-src 'self' 'unsafe-inline' https://wre-server-production.up.railway.app https://us.i.posthog.com https://us-assets.i.posthog.com; " +
+      "script-src 'self' 'unsafe-inline' https://wre-server-production.up.railway.app https://us.i.posthog.com https://us-assets.i.posthog.com https://res.cloudinary.com; " +
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
       "img-src 'self' https://res.cloudinary.com https://wre-server-production.up.railway.app; " +
       "font-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; " +
       "media-src 'self' https://res.cloudinary.com; " +
-      "connect-src 'self' https://wre-server-production.up.railway.app https://us.i.posthog.com; " +
+      "connect-src 'self' https://wre-server-production.up.railway.app https://us.i.posthog.com https://res.cloudinary.com; " +
       "frame-ancestors 'none'; " +
       "report-uri /csp-violation-report-endpoint/",
   );

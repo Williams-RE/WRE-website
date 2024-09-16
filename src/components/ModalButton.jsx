@@ -1,12 +1,12 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import closeModalImg from "../assets/close-modal.avif";
-import Modal from "react-modal";
+import CustomModal from "./CustomModal.jsx";
 import "./ModalButton.css";
 import toast, { Toaster } from "react-hot-toast";
 import { sendEmail, validateEmail } from "../lib/utils";
 import { useAgents } from "../contexts/AgentContext.js";
 
-export const ModalButton = ({ showDelay }) => {
+const ModalButton = ({ showDelay }) => {
   const [showButton, setShowButton] = useState(!showDelay);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [name, setName] = useState("");
@@ -89,7 +89,7 @@ export const ModalButton = ({ showDelay }) => {
           <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
         </svg>
       </button>
-      <Modal
+      <CustomModal
         isOpen={modalIsOpen}
         onRequestClose={() => setModalIsOpen(false)}
         className="modal"
@@ -163,7 +163,9 @@ export const ModalButton = ({ showDelay }) => {
             <img src={closeModalImg} alt="Close" />
           </button>
         </div>
-      </Modal>
+      </CustomModal>
     </>
   );
 };
+
+export default ModalButton;

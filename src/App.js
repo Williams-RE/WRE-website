@@ -8,15 +8,15 @@ import {
 } from "react-router-dom";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import "./App.css";
-import NavBar from "./components/NavBar.jsx";
-import { ModalButton } from "./components/ModalButton.jsx";
-import LandingPage from "./components/LandingPage.jsx";
 import { AgentsProvider } from "./contexts/AgentContext.js";
 
 // Lazy load components
 const ListingsManager = lazy(() => import("./components/ListingsManager.jsx"));
 const Login = lazy(() => import("./components/Login.jsx"));
 const Resources = lazy(() => import("./components/Resources.jsx"));
+const NavBar = lazy(() => import("./components/NavBar.jsx"));
+const LandingPage = lazy(() => import("./components/LandingPage.jsx"));
+const ModalButton = lazy(() => import("./components/ModalButton.jsx"));
 const AboutUs = lazy(() => import("./components/AboutUs.jsx"));
 
 function App() {
