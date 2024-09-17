@@ -38,7 +38,18 @@ const NavBar = ({ isLoggedIn, onLogout, showDelay }) => {
     <nav className={`navbar ${showNavBar ? "fade-in" : ""}`}>
       {isMobile && (
         <button className="hamburger" onClick={toggleMenu}>
-          ☰<span style={{ fontWeight: "200", fontSize: "16px" }}>Menu</span>
+          ☰
+          <span
+            style={{
+              fontWeight: "200",
+              fontSize: "16px",
+              position: "relative",
+              top: "1.5px",
+              paddingLeft: "3px",
+            }}
+          >
+            Menu
+          </span>
         </button>
       )}
       <div
