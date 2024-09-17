@@ -96,11 +96,15 @@ const ModalButton = ({ showDelay }) => {
         overlayClassName="modal-overlay"
       >
         <div className="modal-content">
-          <h2>Let's Connect</h2>
-          <p>Fill out the details below and we'll reach out to you shortly!</p>
+          <h2 style={{ fontWeight: "300" }}>Any Questions?</h2>
+          <p style={{ fontWeight: "350" }}>
+            Fill out your information below and we'll connect you with an agent
+          </p>
           <form onSubmit={handleSubmit}>
             <div className="input-group">
               <label htmlFor="name">Name </label>
+            </div>
+            <div className="input-group">
               <input
                 id="name"
                 type="text"
@@ -108,11 +112,14 @@ const ModalButton = ({ showDelay }) => {
                 onChange={(e) => setName(e.target.value)}
                 required
                 data-testid="contact-form-name"
+                placeholder="Enter your name"
               />
               {errors.name && <p className="error-message">{errors.name}</p>}
             </div>
             <div className="input-group">
               <label htmlFor="email">Email</label>
+            </div>
+            <div className="input-group">
               <input
                 id="email"
                 type="email"
@@ -120,11 +127,14 @@ const ModalButton = ({ showDelay }) => {
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 data-testid="contact-form-email"
+                placeholder="Enter your email"
               />
               {errors.email && <p className="error-message">{errors.email}</p>}
             </div>
             <div className="input-group">
               <label htmlFor="agent">Agent</label>
+            </div>
+            <div className="input-group">
               <select
                 id="agent"
                 value={agent}

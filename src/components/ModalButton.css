@@ -27,6 +27,12 @@
   transition: opacity 1s ease-in-out;
 }
 
+.modal-content {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+
 .modal {
   position: relative; /* Changed from absolute to relative */
   background: var(--primary-color);
@@ -43,8 +49,8 @@
 }
 
 .contact-icon {
-  width: 24px;
-  height: 24px;
+  width: 30px;
+  height: 35px;
 }
 
 .close-modal-button {
@@ -109,6 +115,8 @@
 
 .submit-button {
   width: 100%;
+  font-size: medium;
+  margin-top: 1rem;
 }
 
 .select-dropdown {
@@ -119,10 +127,7 @@
   font-size: 16px;
 }
 .input-group {
-  margin: 20px 0;
-}
-form {
-  text-align: left;
+  margin: 10px 0;
 }
 
 .label-style {
@@ -152,8 +157,9 @@ form {
   .modal-button:hover {
     background-color: var(--secondary-color);
   }
+
   .contact-icon {
-    width: 30px;
-    height: 35px;
+    width: 24px;
+    height: 24px;
   }
 }
