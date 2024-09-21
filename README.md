@@ -7,7 +7,6 @@
   <img alt="package size" src= "https://github.com/Williams-RE/WRE-website/actions/workflows/package_size.yml/badge.svg"/>
   <img alt="accessibility" src="https://github.com/Williams-RE/WRE-website/actions/workflows/accessibility.yml/badge.svg">
   <img alt="dependabot" src="https://github.com/Williams-RE/WRE-website/actions/workflows/dependabot/dependabot-updates/badge.svg">
-<img alt="lighthouse" src="https://github.com/Williams-RE/WRE-website/actions/workflows/lighthouse.yml/badge.svg">
 </p>
 
 To get started, cd into the project and run this:
