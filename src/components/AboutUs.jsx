@@ -1,4 +1,4 @@
-import React,{ useState, useEffect, startTransition } from "react";
+import React, { useState, useEffect, startTransition } from "react";
 import closeModalImg from "../assets/close-modal.avif";
 import "./AboutUs.css";
 import config from "../config.js";
@@ -107,7 +107,6 @@ const AboutUs = () => {
           arrows={true}
         >
           {Object.values(agents).map((agent) => (
-          
             <img
               key={agent.id}
               className="agent-image"
