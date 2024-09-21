@@ -40,11 +40,14 @@ export const isMobile = () => window.innerWidth <= 768;
 
 export const fetchAgents = async () => {
   try {
+    console.log('Agent fetch URL',`${config.SERVER_URL}/api/v1/agents`)
     const response = await fetch(`${config.SERVER_URL}/api/v1/agents`);
+
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     const data = await response.json();
+    console.log('data is ', data)
     return data;
   } catch (error) {
     console.error("Error fetching agents:", error);

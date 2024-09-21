@@ -4,8 +4,7 @@ const normalizeUrl = (url) => {
 };
 
 const config = {
-  SERVER_URL: `${normalizeUrl(process.env.REACT_APP_SERVER_URL)}`,
-  
+  SERVER_URL: process.env.REACT_APP_SERVER_URL || 'https://wre-server-production.up.railway.app',
 };
 
 

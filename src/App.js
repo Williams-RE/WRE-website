@@ -20,6 +20,7 @@ const ModalButton = lazy(() => import("./components/ModalButton.jsx"));
 const AboutUs = lazy(() => import("./components/AboutUs.jsx"));
 
 function App() {
+  console.log('React App is running');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showNavBarDelay, setShowNavBarDelay] = useState(true);
 
