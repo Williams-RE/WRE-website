@@ -5,13 +5,10 @@
   "scripts": {
     "analyze": "source-map-explorer build/*.js",
     "analyze2": "webpack-bundle-analyzer ./build/stats.json",
-    "dev": "react-scripts start",
+    "dev": "webpack serve --mode development --open",
     "build": "webpack --mode production",
-    "start": "webpack serve --mode development --open",
-    "serve:prod": "serve -s build",
-    "build:test": "react-scripts build && serve -s build",
+    "start": "serve -s build",
     "test:e2e": "npx playwright test",
-    "eject": "react-scripts eject",
     "format": "prettier --write \"**/*.+(js|ts|jsx|tsx|json|css|md|yml|yaml|html)\"",
     "format:check": "prettier --check \"**/*.+(js|ts|jsx|tsx|json|css|md|yml|yaml|html)\""
   },
