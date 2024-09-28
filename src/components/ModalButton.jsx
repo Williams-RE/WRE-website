@@ -20,7 +20,7 @@ const ModalButton = ({ showDelay }) => {
     if (showDelay) {
       const initialTimer = setTimeout(() => {
         setShowButton(true);
-      }, 4000);
+      }, 2000);
 
       return () => clearTimeout(initialTimer);
     }
@@ -113,6 +113,7 @@ const ModalButton = ({ showDelay }) => {
                 required
                 data-testid="contact-form-name"
                 placeholder="Enter your name"
+                className="input-field"
               />
               {errors.name && <p className="error-message">{errors.name}</p>}
             </div>
@@ -128,6 +129,7 @@ const ModalButton = ({ showDelay }) => {
                 required
                 data-testid="contact-form-email"
                 placeholder="Enter your email"
+                className="input-field"
               />
               {errors.email && <p className="error-message">{errors.email}</p>}
             </div>
@@ -141,7 +143,7 @@ const ModalButton = ({ showDelay }) => {
                 onChange={(e) => setAgent(e.target.value)}
                 required
                 data-testid="contact-form-agent"
-                className="select-dropdown"
+                className="select-dropdown input-field"
               >
                 <option value="">Select an agent</option>
                 {loading ? (

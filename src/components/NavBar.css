@@ -21,6 +21,7 @@
 
 .navbar.fade-in {
   opacity: 1;
+  animation: fadeIn 0.5s ease-in-out forwards;
 }
 
 .navbar-content {
@@ -74,11 +75,6 @@ label {
     opacity: 1;
   }
 }
-
-.fade-in {
-  animation: fadeIn 0.5s ease-in-out forwards;
-}
-
 @media (max-width: 999px) {
   .navbar {
     justify-content: flex-end;
@@ -87,7 +83,6 @@ label {
     background-color: unset;
     backdrop-filter: none;
   }
-
   .hamburger {
     display: flex;
     left: -10%;

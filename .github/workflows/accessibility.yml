@@ -1,5 +1,11 @@
 name: Accessibility Tests
-on: pull_request
+on:
+  pull_request:
+    paths:
+      - "**/*.ts"
+      - "**/*.js"
+      - "package.json"
+      - "package-lock.json"
 
 jobs:
   accessibility:

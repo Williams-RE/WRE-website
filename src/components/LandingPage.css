@@ -10,41 +10,8 @@
   text-align: center;
 }
 
-.landing-page-slogan,
-.company-name {
-  font-family: Roboto, sans-serif;
-  color: var(--quarternary-color);
-  margin: 0;
-  line-height: 1.2;
-  opacity: 0;
-  transition: opacity 3s ease-in-out;
-}
-
-.landing-page-slogan {
-  font-size: 5vw;
-  font-weight: 300;
-}
-
 .company-name {
   font-size: 5vw;
   font-weight: 350;
-}
-
-.fade-in {
-  opacity: 1;
-}
-
-.fade-out {
-  opacity: 0;
-  transition: opacity 3s ease-in-out;
-}
-
-@media screen and (max-width: 768px) {
-  .landing-page-slogan {
-    font-size: 8vw;
-  }
-
-  .company-name {
-    font-size: 9vw;
-  }
+  color: white;
 }

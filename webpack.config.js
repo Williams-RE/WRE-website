@@ -5,6 +5,7 @@ import HtmlWebpackPlugin from "html-webpack-plugin";
 import TerserPlugin from "terser-webpack-plugin";
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 import CompressionPlugin from "compression-webpack-plugin";
+import CopyWebpackPlugin from "copy-webpack-plugin";
 import webpack from "webpack"; // Import Webpack to use DefinePlugin
 
 // Recreate __dirname and __filename for ESM
@@ -76,6 +77,11 @@ export default {
       test: /\.(js|css|html)$/,
       filename: "[path][base].gz",
       algorithm: "gzip",
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: path.resolve(__dirname, "public/robots.txt"), to: "" }, // Copy robots.txt to build root
+      ],
     }),
     new webpack.DefinePlugin({
       "process.env": JSON.stringify({

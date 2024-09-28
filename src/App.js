@@ -9,13 +9,13 @@ import {
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import "./App.css";
 import { AgentsProvider } from "./contexts/AgentContext.js";
+import LandingPage from "./components/LandingPage.jsx";
 
 // Lazy load components
 const ListingsManager = lazy(() => import("./components/ListingsManager.jsx"));
 const Login = lazy(() => import("./components/Login.jsx"));
 const Resources = lazy(() => import("./components/Resources.jsx"));
 const NavBar = lazy(() => import("./components/NavBar.jsx"));
-const LandingPage = lazy(() => import("./components/LandingPage.jsx"));
 const ModalButton = lazy(() => import("./components/ModalButton.jsx"));
 const AboutUs = lazy(() => import("./components/AboutUs.jsx"));
 

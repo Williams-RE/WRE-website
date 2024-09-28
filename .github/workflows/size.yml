@@ -1,6 +1,11 @@
 name: "size"
 on:
   pull_request:
+    paths:
+      - "**/*.ts"
+      - "**/*.js"
+      - "package.json"
+      - "package-lock.json"
 
 permissions:
   pull-requests: write
