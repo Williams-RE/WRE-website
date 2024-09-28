@@ -82,6 +82,7 @@ label {
     border-radius: 10px;
     background-color: unset;
     backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
   .hamburger {
     display: flex;
