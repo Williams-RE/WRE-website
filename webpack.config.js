@@ -80,7 +80,8 @@ export default {
     }),
     new CopyWebpackPlugin({
       patterns: [
-        { from: path.resolve(__dirname, "public/robots.txt"), to: "" }, // Copy robots.txt to build root
+        { from: path.resolve(__dirname, "public/robots.txt"), to: "" },
+        { from: path.resolve(__dirname, "public/W icon.ico"), to: "" },
       ],
     }),
     new webpack.DefinePlugin({

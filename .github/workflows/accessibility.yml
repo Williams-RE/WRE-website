@@ -18,13 +18,13 @@ jobs:
           node-version: 20
       - name: Install pnpm
         run: npm install -g pnpm
-  
+
       - name: Install dependencies
         run: pnpm install
 
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
-        
+
       - name: Run Accessibility Tests
         env:
           AXE_API_KEY: ${{ secrets.AXE_API_KEY }}

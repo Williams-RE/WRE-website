@@ -1,4 +1,4 @@
-import { useState, useEffect, lazy, Suspense } from "react";
+import { useState, useEffect, lazy, Suspense, useRef } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -59,6 +59,17 @@ function AppContent({
   const location = useLocation();
   const isHomePage = location.pathname === "/";
 
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video && video.paused) {
+      video.play().catch((error) => {
+        console.log("Auto-play failed, user interaction might be needed");
+      });
+    }
+  }, [isHomePage]);
+
   return (
     <div className="main">
       {isHomePage ? (
@@ -77,7 +88,7 @@ function AppContent({
 
       {isHomePage ? (
         <div className="video-background">
-          <video autoPlay loop muted playsInline preload="auto">
+          <video autoPlay loop muted playsInline preload="auto" ref={videoRef}>
             <source
               type="video/mp4"
               src="https://res.cloudinary.com/dnzzm3cnf/video/upload/v1726190825/WRE_Vid_1_k0gomq_c9cdcc.mp4"
