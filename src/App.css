@@ -46,31 +46,6 @@ button {
   border: 1px solid red;
 }
 
-.video-background {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  overflow: hidden;
-  background-size: cover;
-  background-position: center;
-}
-
-.video-background video {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  object-fit: cover;
-}
-
 .content-overlay {
   position: relative;
   z-index: 1;

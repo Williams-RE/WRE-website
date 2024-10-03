@@ -10,6 +10,7 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 import "./App.css";
 import { AgentsProvider } from "./contexts/AgentContext.js";
 import LandingPage from "./components/LandingPage.jsx";
+import Video from "./components/Video.jsx";
 
 // Lazy load components
 const ListingsManager = lazy(() => import("./components/ListingsManager.jsx"));
@@ -59,17 +60,6 @@ function AppContent({
   const location = useLocation();
   const isHomePage = location.pathname === "/";
 
-  const videoRef = useRef(null);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (video && video.paused) {
-      video.play().catch((error) => {
-        console.log("Auto-play failed, user interaction might be needed");
-      });
-    }
-  }, [isHomePage]);
-
   return (
     <div className="main">
       {isHomePage ? (
@@ -86,17 +76,7 @@ function AppContent({
         />
       )}
 
-      {isHomePage ? (
-        <div className="video-background">
-          <video autoPlay loop muted playsInline preload="auto" ref={videoRef}>
-            <source
-              type="video/mp4"
-              src="https://res.cloudinary.com/dnzzm3cnf/video/upload/v1726190825/WRE_Vid_1_k0gomq_c9cdcc.mp4"
-            />
-            Your browser does not support the video tag.
-          </video>
-        </div>
-      ) : null}
+      {isHomePage ? <Video /> : null}
       <TransitionGroup>
         <CSSTransition
           key={location.key}
