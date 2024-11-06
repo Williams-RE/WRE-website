@@ -1,0 +1,29 @@
+name: "Build Size"
+
+on:
+  pull_request:
+    paths:
+      - "**/*.ts"
+      - "**/*.js"
+      - "package.json"
+      - "package-lock.json"
+
+permissions:
+  pull-requests: write
+
+jobs:
+  size:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Analyze and Create Badge
+        uses: timeowilliams/package-size-badge-action@v1.0.7
+        with:
+          path: "build/static/js/*.js"
+          limit: "800"
+          label: "Bundle Size"
+          color: "green"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
