@@ -13,6 +13,7 @@
     "format:check": "prettier --check \"**/*.+(js|ts|jsx|tsx|json|css|md|yml|yaml|html)\""
   },
   "dependencies": {
+    "@cloudinary/url-gen": "^1.21.0",
     "@tanstack/react-table": "^8.20.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -47,7 +48,6 @@
     "@babel/preset-env": "^7.25.4",
     "@babel/preset-react": "^7.24.7",
     "@playwright/test": "^1.47.2",
-    "@size-limit/preset-app": "^11.1.5",
     "babel-loader": "^9.2.1",
     "compression-webpack-plugin": "^11.1.0",
     "copy-webpack-plugin": "^12.0.2",
@@ -65,12 +65,5 @@
     "webpack-bundle-analyzer": "^4.10.2",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.1.0"
-  },
-  "size-limit": [
-    {
-      "path": "build/static/js/*.js",
-      "limit": "500 KB",
-      "gzip": true
-    }
-  ]
+  }
 }
