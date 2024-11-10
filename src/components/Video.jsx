@@ -18,12 +18,12 @@ const Video = () => {
   // Initialize Cloudinary instance
   const cld = new Cloudinary({
     cloud: {
-      cloudName: 'dnzzm3cnf'
-    }
+      cloudName: "dnzzm3cnf",
+    },
   });
 
   // Generate the video URL
-  const videoUrl = cld.video('WRE_Vid_1_k0gomq_c9cdcc').toURL();
+  const videoUrl = cld.video("WRE_Vid_1_k0gomq_c9cdcc").toURL();
 
   return (
     <div className="video-background">
