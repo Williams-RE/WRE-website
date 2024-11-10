@@ -7,5 +7,4 @@ node_modules/
 playwright-report
 test-results
 .env
-build/
 .DS_Store
