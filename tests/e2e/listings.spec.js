@@ -15,11 +15,11 @@ test.describe("Listings Tests @business-logic", () => {
     const page = await context.newPage();
 
     await page.goto(`${BASE_URL}/login`);
-    
+
     // Wait for form elements
     await Promise.all([
-      page.waitForSelector('input[type="text"]', { state: 'visible' }),
-      page.waitForSelector('input[type="password"]', { state: 'visible' })
+      page.waitForSelector('input[type="text"]', { state: "visible" }),
+      page.waitForSelector('input[type="password"]', { state: "visible" }),
     ]);
 
     // Fill login form
@@ -28,36 +28,39 @@ test.describe("Listings Tests @business-logic", () => {
     await page.getByRole("button", { name: "Login" }).click();
 
     // Wait for login response and get token from localStorage
-    await page.waitForSelector('nav', { state: 'visible' }); 
+    await page.waitForSelector("nav", { state: "visible" });
     await page.waitForTimeout(5000);
-    authToken = await page.evaluate(() => localStorage.getItem('token'));
+    authToken = await page.evaluate(() => localStorage.getItem("token"));
 
     await context.close();
   });
 
   test.beforeEach(async ({ context, page }) => {
     // Initialize localStorage with token
-    await context.addInitScript(token => {
-      localStorage.setItem('token', token);
+    await context.addInitScript((token) => {
+      localStorage.setItem("token", token);
     }, authToken);
 
     // Route API calls to production
-    await page.route('**/api/v1/**', async route => {
+    await page.route("**/api/v1/**", async (route) => {
       const url = route.request().url();
-      const prodUrl = url.replace('http://localhost:3000/api/v1', 'https://wre-server-production.up.railway.app/api/v1');
-      
+      const prodUrl = url.replace(
+        "http://localhost:3000/api/v1",
+        "https://wre-server-production.up.railway.app/api/v1",
+      );
+
       try {
         const response = await fetch(prodUrl, {
           method: route.request().method(),
           headers: {
             ...route.request().headers(),
-            'Authorization': `Bearer ${authToken}`
+            Authorization: `Bearer ${authToken}`,
           },
           body: route.request().postData(),
         });
 
-        const contentType = response.headers.get('content-type');
-        if (contentType?.includes('application/json')) {
+        const contentType = response.headers.get("content-type");
+        if (contentType?.includes("application/json")) {
           const json = await response.json();
           await route.fulfill({ json });
         } else {
@@ -66,12 +69,12 @@ test.describe("Listings Tests @business-logic", () => {
             status: response.status,
             body: body,
             headers: {
-              'content-type': contentType || 'text/plain',
-            }
+              "content-type": contentType || "text/plain",
+            },
           });
         }
       } catch (error) {
-        console.error('Route handler error:', error);
+        console.error("Route handler error:", error);
         await route.continue();
       }
     });
@@ -81,7 +84,7 @@ test.describe("Listings Tests @business-logic", () => {
   });
   test("Add and Delete listing", async ({ page }) => {
     await page.goto(`${BASE_URL}/listings`);
-    
+
     // Wait for form to be ready
     await page.waitForSelector('[data-testid="mls-id-input"]', {
       state: "visible",
@@ -100,16 +103,17 @@ test.describe("Listings Tests @business-logic", () => {
       state: "visible",
       timeout: 30000,
     });
-    
+
     await page.selectOption(
       '[data-testid="listing-broker-select"]',
-      "Jacob Williams"
+      "Jacob Williams",
     );
 
     // Submit form and wait for response
     const addResponsePromise = page.waitForResponse(
-      response => response.url().includes('/listings') && 
-                 response.request().method() === 'POST'
+      (response) =>
+        response.url().includes("/listings") &&
+        response.request().method() === "POST",
     );
     await page.click('[data-testid="add-listing-button"]');
     await addResponsePromise;
@@ -121,18 +125,22 @@ test.describe("Listings Tests @business-logic", () => {
     });
 
     // Delete listing
-    const deleteButton = page.locator('[data-testid="delete-button-23"]').first();
+    const deleteButton = page
+      .locator('[data-testid="delete-button-23"]')
+      .first();
     await expect(deleteButton).toBeVisible({ timeout: 30000 });
-    
+
     const deleteResponsePromise = page.waitForResponse(
-      response => response.url().includes('/listings') && 
-                 response.request().method() === 'DELETE'
+      (response) =>
+        response.url().includes("/listings") &&
+        response.request().method() === "DELETE",
     );
     await deleteButton.click();
     await deleteResponsePromise;
 
     // Verify deletion
-    await expect(page.locator('[data-testid="table-row-23"]'))
-      .not.toBeVisible({ timeout: 30000 });
+    await expect(page.locator('[data-testid="table-row-23"]')).not.toBeVisible({
+      timeout: 30000,
+    });
   });
 });

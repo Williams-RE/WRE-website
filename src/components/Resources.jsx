@@ -51,21 +51,23 @@ function Resources() {
     {
       id: 8,
       title: "Lead Disclosure",
-      description: "Every purchaser of any interest in residential real property on which a residential dwelling was built prior to 1978 is notified that such property may present exposure to lead from lead-based paint that may place young children at risk of developing lead poisoning."     
-      ,file: "https://drive.google.com/file/d/1ref8cE8LX4SJZWHoT6JCw-AkxSoOlMZD/view?usp=drive_link"
+      description:
+        "Every purchaser of any interest in residential real property on which a residential dwelling was built prior to 1978 is notified that such property may present exposure to lead from lead-based paint that may place young children at risk of developing lead poisoning.",
+      file: "https://drive.google.com/file/d/1ref8cE8LX4SJZWHoT6JCw-AkxSoOlMZD/view?usp=drive_link",
     },
     {
       id: 9,
       title: "Mold Disclosure",
       description: "Mold and Mold -Forming Condition Disclosure",
-      file: "https://drive.google.com/file/d/1l6h4KkBrzZAquC8wDHyM49lmQ_C1oGFk/view?usp=drive_link"
-    },    
+      file: "https://drive.google.com/file/d/1l6h4KkBrzZAquC8wDHyM49lmQ_C1oGFk/view?usp=drive_link",
+    },
     {
       id: 10,
       title: "CT Residential Property Condition Report",
-      description: "The Uniform Property Condition Disclosure Act (Connecticut General Statutes Section 20-327b) requires the seller of residential property to provide this report to the prospective purchaser prior to the prospective purchaser's execution of any binder, contract to purchase, option, or lease containing a purchase option.",
-      file: "https://drive.google.com/file/d/1fz4X-2RPNOffEPWp-wQydWclXMXMJ6ux/view?usp=drive_link"
-    },  
+      description:
+        "The Uniform Property Condition Disclosure Act (Connecticut General Statutes Section 20-327b) requires the seller of residential property to provide this report to the prospective purchaser prior to the prospective purchaser's execution of any binder, contract to purchase, option, or lease containing a purchase option.",
+      file: "https://drive.google.com/file/d/1fz4X-2RPNOffEPWp-wQydWclXMXMJ6ux/view?usp=drive_link",
+    },
   ];
 
   const handleUnlock = () => {
