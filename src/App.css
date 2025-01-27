@@ -64,33 +64,6 @@ button {
   min-height: 100vh;
 }
 
-/* Define a fade-in and fade-out animation */
-.page-enter {
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-.page-enter-active {
-  opacity: 1;
-  transform: translateY(0);
-  transition:
-    opacity 1s ease-in-out,
-    transform 1s ease-in-out;
-}
-
-.page-exit {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.page-exit-active {
-  opacity: 0;
-  transform: translateY(-20px);
-  transition:
-    opacity 1s ease-in-out,
-    transform 1s ease-in-out;
-}
-
 @media (max-width: 999px) {
   .content-overlay {
     position: relative;
