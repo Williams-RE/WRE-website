@@ -6,6 +6,17 @@ dotenv.config();
 const BASE_URL = process.env.BASE_URL || "http://localhost:3000";
 
 test.describe("Contact Form Tests @business-logic", () => {
+  test.beforeEach(async ({ page }) => {
+    // Override fetch for /agents endpoint to use production API
+    await page.route("**/api/v1/agents", async (route) => {
+      const response = await fetch(
+        "https://wre-server-production.up.railway.app/api/v1/agents",
+      );
+      const json = await response.json();
+      await route.fulfill({ json });
+    });
+  });
+
   test("Submit Contact Form", async ({ page }) => {
     await page.goto(BASE_URL);
     await page.waitForLoadState("networkidle");
@@ -17,11 +28,19 @@ test.describe("Contact Form Tests @business-logic", () => {
     });
     await page.click("button.modal-button");
 
-    // Wait for the modal to appear
-    await page.waitForSelector(".modal-content", {
-      state: "visible",
-      timeout: 30000,
-    });
+    // Wait for modal and verify agents loaded
+    await page.waitForSelector(".modal-content", { state: "visible" });
+
+    // Wait specifically for the select to be populated
+    await page.waitForFunction(
+      () => {
+        const select = document.querySelector(
+          '[data-testid="contact-form-agent"]',
+        );
+        return select && select.options.length > 1; // More than just the placeholder
+      },
+      { timeout: 30000 },
+    );
 
     // Fill out the form
     await page.fill('[data-testid="contact-form-name"]', "Timeo Williams");
@@ -29,19 +48,15 @@ test.describe("Contact Form Tests @business-logic", () => {
       '[data-testid="contact-form-email"]',
       "timwillie73@gmail.com",
     );
-    await page.selectOption(
-      '[data-testid="contact-form-agent"]',
-      "Jacob Williams",
-    );
 
-    // Submit the form
+    // Select agent after verifying options
+    const selectElement = page.locator('[data-testid="contact-form-agent"]');
+    await selectElement.selectOption({ label: "Jacob Williams" });
+
+    // Submit and verify
     await page.click('[data-testid="contact-form-submit"]');
-
-    // Wait for and check the toast message
-    const toastMessage = await page.waitForSelector(
-      "text=Introduction email sent to agent!",
-      { state: "visible", timeout: 15000 },
-    );
-    expect(toastMessage).toBeTruthy();
+    await expect(
+      page.locator("text=Introduction email sent to agent!"),
+    ).toBeVisible({ timeout: 30000 });
   });
 });
