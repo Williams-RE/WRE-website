@@ -8,6 +8,18 @@
   justify-content: center;
 }
 
+.resources-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Creates two equal columns */
+  gap: 20px; /* Adjusts the space between items */
+}
+
+@media screen and (max-width: 768px) {
+  .resources-grid {
+    grid-template-columns: 1fr; /* Switches to one column on mobile */
+  }
+}
+
 .resources-heading h1 {
   padding-top: 23vh;
   font-size: 3.3vw;
